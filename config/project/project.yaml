@@ -1,0 +1,188 @@
+dateModified: 1681828134
+elementSources:
+  craft\elements\Entry:
+    -
+      defaultSort:
+        - postDate
+        - desc
+      disabled: false
+      key: '*'
+      tableAttributes:
+        - section
+        - postDate
+        - expiryDate
+        - author
+        - link
+      type: native
+    -
+      heading: Singles
+      type: heading
+    -
+      key: 'single:696329c8-d035-43a0-96a8-a66d8626feb9' # Home
+      type: native
+    -
+      key: 'single:8ab109e4-3701-4901-8224-d41c805e14fc' # Map
+      type: native
+    -
+      defaultSort:
+        - title
+        - asc
+      disabled: false
+      key: 'single:2b448a30-8f39-40b9-83d4-1742c6fc848a' # Daily Program
+      tableAttributes:
+        - postDate
+        - expiryDate
+        - author
+        - link
+      type: native
+    -
+      defaultSort:
+        - title
+        - asc
+      disabled: false
+      key: 'single:084c0ccc-2bb0-474c-bb48-a6416500c2e7' # Account
+      tableAttributes:
+        - postDate
+        - expiryDate
+        - author
+        - link
+      type: native
+    -
+      defaultSort:
+        - title
+        - asc
+      disabled: false
+      key: 'single:994745bc-5470-46e9-9990-b36b218f7269' # Press
+      tableAttributes:
+        - postDate
+        - expiryDate
+        - author
+        - link
+      type: native
+    -
+      heading: Channels
+      type: heading
+    -
+      key: 'section:be2ea541-5a66-4e01-a84f-f7672294ae3e' # Daily Programs
+      type: native
+    -
+      defaultSort:
+        - postDate
+        - desc
+      disabled: false
+      key: 'section:5cfe211b-9f9b-4723-841e-c5927528cb46' # GLUE History
+      tableAttributes:
+        - postDate
+        - expiryDate
+        - author
+        - link
+      type: native
+email:
+  fromEmail: ikbengerrit92@gmail.com
+  fromName: 'Glueweb Ddev'
+  transportType: craft\mail\transportadapters\Sendmail
+fs:
+  userFiles:
+    hasUrls: true
+    name: 'User Files'
+    settings:
+      path: '@webroot/images/uploads/users'
+    type: craft\fs\Local
+    url: '@web/images/uploads/users'
+  webFiles:
+    hasUrls: true
+    name: 'Web Files'
+    settings:
+      path: '@webroot/images/uploads/web'
+    type: craft\fs\Local
+    url: '@web/images/uploads/web'
+meta:
+  __names__:
+    0bd4d8a8-19ce-4b2a-8fe1-575b0f54a72f: Social # Social
+    0dc72236-a5db-434e-8668-f62c38664692: 'Social Media Link' # Social Media Link
+    1a8a2732-cd82-4bf7-8afe-099fb893ac20: Map # Map
+    01c953d0-561a-48ff-bc6e-6bb0d582fa7a: Footer # Footer
+    2b448a30-8f39-40b9-83d4-1742c6fc848a: 'Daily Program' # Daily Program
+    3e60a4fe-162d-43fe-b896-a46e95d1dd9b: Account # Account
+    3f6049f8-db41-426e-86a4-196457c3e028: Slug # Slug
+    5b1e8713-7a27-46ed-a407-e926769d89e2: Colour # Colour
+    5cfe211b-9f9b-4723-841e-c5927528cb46: 'GLUE History' # GLUE History
+    5d152d4b-1ee3-4f95-bca3-97ab4af05e68: 'Marker Icon' # Marker Icon
+    7c4c875d-b26b-4ca2-9e5e-3e337d3941ef: Press # Press
+    8ab109e4-3701-4901-8224-d41c805e14fc: Map # Map
+    9b440915-1a29-471d-9ebe-88c6673362e7: Map # Map
+    9cf5f394-9490-4101-bdc7-5f09654f53e7: Thumbnail # Thumbnail
+    9f819326-c617-42fe-a427-a0c843eb9312: POI # POI
+    13a8868b-e382-483f-9f64-0743e959d4b9: 'Text Field' # Text Field
+    014c7b4b-b329-42ff-ba25-1b87cfcadb60: Navigation # Navigation
+    20d23889-9805-4910-b96d-d69c5b2341ed: Route # Route
+    54d7b784-36c0-4673-ac81-61eb4fec1591: Date # Date
+    084c0ccc-2bb0-474c-bb48-a6416500c2e7: Account # Account
+    84f5e1d4-3d01-4be8-82df-2de9132f6b6b: 'Link Text' # Link Text
+    90a58fe8-93e7-4f43-a79c-f92d1076f9c0: 'Glue websites' # Glue websites
+    462e7888-6a24-4c61-b3f1-faaec6bc45ad: 'Link Destination' # Link Destination
+    00602bc8-2fab-4442-bff1-e6af501f1470: Socials # Socials
+    850d1fd6-598a-4264-a562-cf6f27d6dd5a: History # History
+    886ab749-99d6-4ed1-b111-46cdb4f09b52: Map # Map
+    8634fab2-bde5-4665-80a8-324c56cb1c35: 'Web Images' # Web Images
+    8809cf4a-41fd-49bf-9e6c-01bb347d9a21: Token # Token
+    8849fcad-9c3c-407d-be47-dc023f96bfb0: 'Social Media Image' # Social Media Image
+    30663d7d-536d-454c-99fd-820672718f4e: Routes # Routes
+    53354b75-ade8-4058-a3d9-88355797c897: Email # Email
+    696329c8-d035-43a0-96a8-a66d8626feb9: Home # Home
+    994745bc-5470-46e9-9990-b36b218f7269: Press # Press
+    5864789d-bb6c-47fa-83fa-c0669d03635a: Link # Link
+    24188079-a4ae-442c-a887-c038437ae289: 'Event Dates' # Event Dates
+    54440919-2505-4e2c-9340-533b28789fa4: 'Yearly theme colour' # Yearly theme colour
+    a1a284ed-b660-4132-9e98-a7af09a3cc32: 'Rich Text' # Rich Text
+    a77a59a7-aee7-4873-8912-740bbc7e6194: 'Nav Links' # Nav Links
+    ae91170d-e3ba-466f-92ff-05269557039f: 'Glue events' # Glue events
+    b1f75175-4aa9-41b1-bd8a-395bd08c680f: Header # Header
+    b8f74062-ae64-4520-a7ed-fe4272ee4456: 'User Avatars' # User Avatars
+    bcc4aab8-13e9-4efc-a464-78c59170a854: 'Large Text Field' # Large Text Field
+    be2ea541-5a66-4e01-a84f-f7672294ae3e: 'Daily Programs' # Daily Programs
+    c0f16670-30a8-4b0d-93c2-bc35b31ba3ee: 'Public Schema' # Public Schema
+    c5fb5f28-2f93-4a73-bcd6-9c57ee22f86f: 'Glueweb Amsterdam' # Glueweb Amsterdam
+    c8adfe4a-01be-4ef5-a6ea-1dd05dbdf07e: DateTable # DateTable
+    c700366d-c002-43b2-b7ce-f8dd82c7afa8: Participants # Participants
+    cdfc6d46-fdd1-4bdf-b53b-7f44b84230a5: Stylesheet # Stylesheet
+    ce4c8a98-5c1f-4d39-bbf0-6bfd5fd4ba32: Subtitle # Subtitle
+    d9e67970-27dd-4bd3-a5c6-a5eb6a5a6034: 'Daily Program' # Daily Program
+    e3b03628-9c11-450f-8556-1e2882e0101c: Home # Home
+    e6ea2a09-6abe-4046-8a6f-c483f1d58716: Common # Common
+    fb6694e8-a666-48f2-a5a2-adaa88241f80: 'Daily Program' # Daily Program
+plugins:
+  cp-css:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.0.0
+    settings:
+      additionalCss: "#global-sidebar {\r\n    background: black;\r\n}\r\n\r\n#system-info {\r\n    background: rgb(40, 40, 40);\r\n}"
+      cacheBusting: true
+      cssFile: ''
+  expanded-singles:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+    settings:
+      expandSingles: true
+      redirectToEntry: true
+  redactor:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.3.0
+  typedlinkfield:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.0.0
+  vite:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+system:
+  edition: pro
+  live: true
+  name: 'Glue Websites'
+  retryDuration: null
+  schemaVersion: 4.4.0.4
+  timeZone: Europe/Amsterdam

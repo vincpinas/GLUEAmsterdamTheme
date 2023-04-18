@@ -1,0 +1,33 @@
+columnSuffix: arhflwwu
+contentColumnType: text
+fieldGroup: e6ea2a09-6abe-4046-8a6f-c483f1d58716 # Common
+handle: datetable
+instructions: null
+name: DateTable
+searchable: false
+settings:
+  addRowLabel: 'Add a row'
+  columnType: text
+  columns:
+    __assoc__:
+      -
+        - col1
+        -
+          __assoc__:
+            -
+              - heading
+              - ''
+            -
+              - handle
+              - ''
+            -
+              - width
+              - ''
+            -
+              - type
+              - date
+  maxRows: null
+  minRows: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Table

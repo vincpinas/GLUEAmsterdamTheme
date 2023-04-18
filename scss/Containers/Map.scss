@@ -1,0 +1,13 @@
+#map {
+    height: 100vh;
+    width: 100%;
+}
+
+.c-map {
+    &__marker {
+        background-size: cover;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+    }
+}

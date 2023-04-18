@@ -1,0 +1,17 @@
+columnSuffix: shzchsas
+contentColumnType: datetime
+fieldGroup: e6ea2a09-6abe-4046-8a6f-c483f1d58716 # Common
+handle: date
+instructions: null
+name: Date
+searchable: false
+settings:
+  max: null
+  min: null
+  minuteIncrement: 30
+  showDate: true
+  showTime: false
+  showTimeZone: false
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Date

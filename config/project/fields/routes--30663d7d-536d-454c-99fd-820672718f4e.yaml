@@ -1,0 +1,16 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: 1a8a2732-cd82-4bf7-8afe-099fb893ac20 # Map
+handle: routes
+instructions: 'Routes based on user address information'
+name: Routes
+searchable: false
+settings:
+  contentTable: '{{%matrixcontent_routes}}'
+  maxBlocks: null
+  minBlocks: null
+  propagationKeyFormat: null
+  propagationMethod: all
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

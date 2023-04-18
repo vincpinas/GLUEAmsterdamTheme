@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta charset="utf-8"/>
+		<title>GLUEAmsterdam</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
+		<meta name="referrer" content="origin-when-cross-origin"/>
+		<link rel="stylesheet" href="{{ siteUrl }}css/style.css">
+		{% block exscripts %}
+			{# All external scripts appear here #}
+		{% endblock %}
+	</head>
+	<body>
+		{% include "components/header.twig" %}
+
+		<div class="wrapper">
+			{% block content %}
+				{# Content appears inbetween this block #}
+			{% endblock %}
+		</div>
+
+		{# {% include "components/footer.twig" %} #}
+	</body>
+	{% block jscripts %}
+		{# All scripts appear here #}
+	{% endblock %}
+</html>

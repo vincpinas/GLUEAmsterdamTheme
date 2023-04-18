@@ -1,0 +1,15 @@
+isPublic: true
+name: 'Public Schema'
+scope:
+  - 'sites.c5fb5f28-2f93-4a73-bcd6-9c57ee22f86f:read' # Glueweb Amsterdam
+  - 'elements.drafts:read'
+  - 'elements.revisions:read'
+  - 'elements.inactive:read'
+  - 'sections.b3c24923-5d42-48c6-b442-c2fff04b79c4:read'
+  - 'entrytypes.af0a6f64-a234-4d57-879c-4ba5410545a4:read'
+  - 'sections.5cfe211b-9f9b-4723-841e-c5927528cb46:read' # GLUE History
+  - 'entrytypes.850d1fd6-598a-4264-a562-cf6f27d6dd5a:read' # History
+  - 'sections.994745bc-5470-46e9-9990-b36b218f7269:read' # Press
+  - 'entrytypes.7c4c875d-b26b-4ca2-9e5e-3e337d3941ef:read' # Press
+  - 'volumes.b8f74062-ae64-4520-a7ed-fe4272ee4456:read' # User Avatars
+  - 'usergroups.everyone:read'

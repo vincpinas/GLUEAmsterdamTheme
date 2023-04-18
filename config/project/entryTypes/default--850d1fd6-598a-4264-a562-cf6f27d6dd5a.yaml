@@ -1,0 +1,55 @@
+fieldLayouts:
+  d122922d-023c-470e-adbe-c2dda2486fdc:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 3cdc67fe-584d-44d0-898e-2a517c107bfd
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: a1a284ed-b660-4132-9e98-a7af09a3cc32 # Rich Text
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b9be1f96-b961-46cb-8ddb-b84dd54a1fce
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: b4e8d645-60d9-4359-b26d-abb6c472c321
+        userCondition: null
+handle: default
+hasTitleField: true
+name: History
+section: 5cfe211b-9f9b-4723-841e-c5927528cb46 # GLUE History
+sortOrder: 1
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

@@ -1,0 +1,91 @@
+fieldLayouts:
+  61bce266-c240-4ad4-80c0-04246ccf5bf6:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 0888040e-920a-4658-b675-406e9635f4b6
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 3f6049f8-db41-426e-86a4-196457c3e028 # Slug
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: dfb3def6-b99d-4e6d-89f0-f71a63fb918c
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: a1a284ed-b660-4132-9e98-a7af09a3cc32 # Rich Text
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0eede973-2dbe-4388-8418-3945e71d967e
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 13a8868b-e382-483f-9f64-0743e959d4b9 # Text Field
+            instructions: null
+            label: 'Short description'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a2fc7c53-cf1d-4c63-bc8e-6a301e81bd9c
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 54d7b784-36c0-4673-ac81-61eb4fec1591 # Date
+            instructions: 'The day the program item will be on'
+            label: Date
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f9f2496f-1e28-481e-9ee1-1d22c3d6ca1f
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 8ac024bf-6748-4973-a4b3-d668c08d0cc6
+        userCondition: null
+handle: dailyProgram
+hasTitleField: true
+name: 'Daily Program'
+section: be2ea541-5a66-4e01-a84f-f7672294ae3e # Daily Programs
+sortOrder: 1
+titleFormat: '{section.name|raw}'
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

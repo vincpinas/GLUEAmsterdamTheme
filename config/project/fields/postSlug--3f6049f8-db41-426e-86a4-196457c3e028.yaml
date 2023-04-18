@@ -1,0 +1,19 @@
+columnSuffix: asiwdynh
+contentColumnType: text
+fieldGroup: e6ea2a09-6abe-4046-8a6f-c483f1d58716 # Common
+handle: postSlug
+instructions: 'Public link pointing towards a post or related content'
+name: Slug
+searchable: true
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  columnType: null
+  initialRows: 4
+  multiline: false
+  placeholder: 'E.g. our-new-website'
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

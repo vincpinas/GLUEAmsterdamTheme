@@ -1,0 +1,62 @@
+field: 30663d7d-536d-454c-99fd-820672718f4e # Routes
+fieldLayouts:
+  48cd0f9b-422d-4668-adae-3f0d93ea9acb:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 9f819326-c617-42fe-a427-a0c843eb9312 # POI
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 70b434f5-03d5-41ee-ab5e-22231d20cd1b
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 7c9e44e7-5d22-4316-8ba0-71b48dd8651f
+        userCondition: null
+fields:
+  9f819326-c617-42fe-a427-a0c843eb9312: # POI
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: poi
+    instructions: null
+    name: POI
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      branchLimit: null
+      localizeRelations: false
+      maintainHierarchy: false
+      maxRelations: null
+      minRelations: null
+      selectionCondition:
+        __assoc__:
+          -
+            - elementType
+            - craft\elements\User
+          -
+            - fieldContext
+            - global
+          -
+            - class
+            - craft\elements\conditions\users\UserCondition
+      selectionLabel: null
+      showSiteMenu: true
+      sources:
+        - 'group:c700366d-c002-43b2-b7ce-f8dd82c7afa8' # Participants
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Users
+handle: route
+name: Route
+sortOrder: 1

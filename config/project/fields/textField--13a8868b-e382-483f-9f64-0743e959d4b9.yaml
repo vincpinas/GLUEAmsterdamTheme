@@ -1,0 +1,19 @@
+columnSuffix: ghdjucxf
+contentColumnType: string(4000)
+fieldGroup: e6ea2a09-6abe-4046-8a6f-c483f1d58716 # Common
+handle: textField
+instructions: 'A simple text field allowing for up to 1000 characters'
+name: 'Text Field'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: 1000
+  code: false
+  columnType: null
+  initialRows: 4
+  multiline: false
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

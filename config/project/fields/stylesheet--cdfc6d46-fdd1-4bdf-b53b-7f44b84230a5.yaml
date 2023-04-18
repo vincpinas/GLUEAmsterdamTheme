@@ -1,0 +1,19 @@
+columnSuffix: dvyzdhwy
+contentColumnType: text
+fieldGroup: 1a8a2732-cd82-4bf7-8afe-099fb893ac20 # Map
+handle: stylesheet
+instructions: 'Link to the mapbox stylesheet'
+name: Stylesheet
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  columnType: null
+  initialRows: 4
+  multiline: false
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

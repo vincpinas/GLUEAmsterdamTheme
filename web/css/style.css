@@ -1,0 +1,282 @@
+.c-footer {
+  width: 100%;
+  margin-top: 5rem;
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  bottom: 0;
+  border-top: 1px solid #0525d3;
+  padding: 1rem 15rem;
+  font-family: "Lausanne";
+  font-weight: 300;
+  font-style: normal;
+}
+.c-footer__legal > a {
+  color: #0525d3;
+}
+.c-footer__legal > a:not(:last-of-type) {
+  margin-right: 2rem;
+}
+
+.c-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.25rem 15rem;
+  border-bottom: 1px solid #0525d3;
+}
+.c-header__nav > *:first-of-type() {
+  margin-right: 1rem;
+}
+.c-header__logo {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  top: 20%;
+  z-index: inherit;
+  background: white;
+}
+.c-header__logoWrapper {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  z-index: 10;
+  margin: 0;
+  margin: 0 5rem;
+}
+.c-header__fastNav ul {
+  display: flex;
+  flex-direction: row;
+}
+.c-header__fastNav ul > *:not(:last-of-type) {
+  margin-right: 1rem;
+}
+.c-header__fastNav a {
+  color: #0525d3;
+  text-transform: uppercase;
+  font-family: "Lausanne";
+  font-weight: 500;
+  font-style: normal;
+}
+
+#map {
+  height: 100vh;
+  width: 100%;
+}
+
+.c-map__marker {
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+/* Any imports required multiple times across the site will be imported here. */
+@font-face {
+  font-family: "Lausanne";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/TWKLausanne-300.woff2") format("woff2");
+}
+/* Any CSS beyond this point will be globally applied to the whole document. */
+/* CSS Reset */
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 0;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+*,
+*::before,
+*::after {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (max-width: 991px) {
+  .wrapper {
+    flex-direction: column;
+  }
+}
+
+body,
+html {
+  color: #e9e9e9;
+  position: relative;
+}
+body a,
+body button,
+body input[type=submit],
+html a,
+html button,
+html input[type=submit] {
+  text-decoration: none;
+  cursor: pointer;
+  color: #e9e9e9;
+}
+body button,
+body a,
+body input,
+html button,
+html a,
+html input {
+  font-size: 12px;
+  line-height: 20px;
+  margin-bottom: 1rem;
+}
+@media screen and (max-width: 767px) {
+  body button,
+  body a,
+  body input,
+  html button,
+  html a,
+  html input {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+body h1,
+html h1 {
+  font-size: 90px;
+  font-family: "Lausanne";
+  font-weight: 800;
+  font-style: normal;
+  line-height: 80px;
+  margin-bottom: 1.5rem;
+}
+@media screen and (max-width: 767px) {
+  body h1,
+  html h1 {
+    font-size: 30px;
+    line-height: 33px;
+  }
+}
+body h2,
+html h2 {
+  font-size: 40px;
+  font-family: "Lausanne";
+  font-weight: 800;
+  font-style: normal;
+  line-height: 44px;
+  margin-bottom: 1.5rem;
+}
+@media screen and (max-width: 767px) {
+  body h2,
+  html h2 {
+    font-size: 24px;
+    line-height: 28px;
+  }
+}
+body h3,
+html h3 {
+  font-size: 26px;
+  font-family: "Lausanne";
+  font-weight: 700;
+  font-style: normal;
+  line-height: 28px;
+  margin-bottom: 1.5rem;
+}
+@media screen and (max-width: 767px) {
+  body h3,
+  html h3 {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+body h4,
+html h4 {
+  font-size: 22px;
+  font-family: "Lausanne";
+  font-weight: 300;
+  font-style: normal;
+  line-height: 28px;
+  margin-bottom: 0.15rem;
+}
+@media screen and (max-width: 767px) {
+  body h4,
+  html h4 {
+    font-size: 12px;
+    line-height: 28px;
+  }
+}
+body h5,
+html h5 {
+  font-size: 18px;
+  font-family: "Lausanne";
+  font-weight: 300;
+  font-style: normal;
+  line-height: 20px;
+  margin-bottom: 2.5rem;
+}
+@media screen and (max-width: 767px) {
+  body h5,
+  html h5 {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+body p,
+html p {
+  font-size: 16px;
+  font-family: "Lausanne";
+  font-weight: 300;
+  font-style: normal;
+  line-height: 28px;
+  margin-bottom: 1rem;
+}
+@media screen and (max-width: 767px) {
+  body p,
+  html p {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

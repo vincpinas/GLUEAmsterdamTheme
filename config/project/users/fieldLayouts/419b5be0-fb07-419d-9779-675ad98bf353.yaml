@@ -1,0 +1,46 @@
+tabs:
+  -
+    elementCondition: null
+    elements:
+      -
+        elementCondition: null
+        fieldUid: bcc4aab8-13e9-4efc-a464-78c59170a854 # Large Text Field
+        instructions: 'Text descriptive of the participant'
+        label: 'Profile text'
+        required: false
+        tip: null
+        type: craft\fieldlayoutelements\CustomField
+        uid: 322e4784-a285-4e3f-9eeb-8e8ae5cbfee0
+        userCondition: null
+        warning: null
+        width: 100
+      -
+        elementCondition: null
+        fieldUid: 9cf5f394-9490-4101-bdc7-5f09654f53e7 # Thumbnail
+        instructions: 'This thumbnail is displayed on your public profile'
+        label: null
+        required: false
+        tip: null
+        type: craft\fieldlayoutelements\CustomField
+        uid: 32279b41-f613-4fa4-a864-9b3cf4156922
+        userCondition: null
+        warning: null
+        width: 100
+      -
+        attribute: addresses
+        elementCondition: null
+        id: null
+        instructions: null
+        label: null
+        orientation: null
+        requirable: false
+        required: false
+        tip: null
+        type: craft\fieldlayoutelements\users\AddressesField
+        uid: b15d1915-ff69-4c47-8dc8-bcfbb204a602
+        userCondition: null
+        warning: null
+        width: 100
+    name: 'User data'
+    uid: 32340a36-dfaa-4778-9860-e744f7b2d4ea
+    userCondition: null

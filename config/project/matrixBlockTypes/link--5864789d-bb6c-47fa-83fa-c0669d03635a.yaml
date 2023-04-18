@@ -1,0 +1,93 @@
+field: a77a59a7-aee7-4873-8912-740bbc7e6194 # Nav Links
+fieldLayouts:
+  e876faeb-279a-4145-afc0-c6e98b0f8ca9:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 84f5e1d4-3d01-4be8-82df-2de9132f6b6b # Link Text
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 642e5a57-334a-478e-a2fe-89309458d5c0
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 462e7888-6a24-4c61-b3f1-faaec6bc45ad # Link Destination
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: db8b9f6e-c690-4144-a8d8-09c26122e6c4
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 243feb02-6132-4f05-8910-bfd6d978c332
+        userCondition: null
+fields:
+  84f5e1d4-3d01-4be8-82df-2de9132f6b6b: # Link Text
+    columnSuffix: mcprsbnj
+    contentColumnType: text
+    fieldGroup: null
+    handle: linkText
+    instructions: null
+    name: 'Link Text'
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: false
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  462e7888-6a24-4c61-b3f1-faaec6bc45ad: # Link Destination
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: linkDestination
+    instructions: null
+    name: 'Link Destination'
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      branchLimit: null
+      localizeRelations: false
+      maintainHierarchy: false
+      maxRelations: 1
+      minRelations: null
+      selectionCondition:
+        __assoc__:
+          -
+            - elementType
+            - craft\elements\Entry
+          -
+            - fieldContext
+            - global
+          -
+            - class
+            - craft\elements\conditions\entries\EntryCondition
+      selectionLabel: 'Select an entry'
+      showSiteMenu: true
+      sources: '*'
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
+handle: link
+name: Link
+sortOrder: 1

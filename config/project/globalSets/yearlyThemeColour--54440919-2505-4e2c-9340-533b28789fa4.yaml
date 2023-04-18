@@ -1,0 +1,24 @@
+fieldLayouts:
+  c58b41f4-cf61-4ce4-ac13-e653c2e35562:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 5b1e8713-7a27-46ed-a407-e926769d89e2 # Colour
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 66cff134-9636-404a-ba1f-d60d56d8e384
+            userCondition: null
+            warning: null
+            width: 100
+        name: Fields
+        uid: acd6a274-26f0-4494-ae4f-10e2b73948a9
+        userCondition: null
+handle: yearlyThemeColour
+name: 'Yearly theme colour'
+sortOrder: 1

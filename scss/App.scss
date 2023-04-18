@@ -1,0 +1,124 @@
+@import "Variables.scss";
+@import "Mixins.scss";
+@import "Components/Footer.scss";
+@import "Components/Header.scss";
+@import "Containers/Map.scss";
+
+/* Any imports required multiple times across the site will be imported here. */
+@font-face {
+    font-family: 'Lausanne';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/TWKLausanne-300.woff2') format('woff2');
+}
+
+/* Any CSS beyond this point will be globally applied to the whole document. */
+/* CSS Reset */
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 0;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: "";
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+*,
+*::before,
+*::after {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    @media #{$tablet-down} {
+        flex-direction: column;
+    }
+}
+
+body,
+html {
+    color: $text-primary;
+    position: relative;
+
+    a,
+    button,
+    input[type="submit"] {
+        text-decoration: none;
+        cursor: pointer;
+        color: $text-primary
+    }
+
+    button,
+    a,
+    input {
+        @include input;
+    }
+
+    h1 {
+        @include h1;
+    }
+
+    h2 {
+        @include h2;
+    }
+
+    h3 {
+        @include h3;
+    }
+
+    h4 {
+        @include h4;
+    }
+
+    h5 {
+        @include h5;
+    }
+
+    p {
+        @include paragraph;
+    }
+
+}

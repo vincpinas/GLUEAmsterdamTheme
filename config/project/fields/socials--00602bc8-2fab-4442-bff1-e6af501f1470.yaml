@@ -1,0 +1,16 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: 014c7b4b-b329-42ff-ba25-1b87cfcadb60 # Navigation
+handle: socials
+instructions: null
+name: Socials
+searchable: false
+settings:
+  contentTable: '{{%matrixcontent_socials}}'
+  maxBlocks: null
+  minBlocks: null
+  propagationKeyFormat: null
+  propagationMethod: all
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

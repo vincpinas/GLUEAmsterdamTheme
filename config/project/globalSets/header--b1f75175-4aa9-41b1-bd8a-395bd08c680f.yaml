@@ -1,0 +1,24 @@
+fieldLayouts:
+  2d6530c2-ebe8-4a8b-8141-5bc5a8ea559c:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: a77a59a7-aee7-4873-8912-740bbc7e6194 # Nav Links
+            instructions: 'Small navigation link block shown on the right of the header'
+            label: 'Fast Navigation'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 783d8615-28bc-43b9-bc36-a78b37120eff
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 0c2eafbc-3536-4970-9331-eccc2a6760a7
+        userCondition: null
+handle: header
+name: Header
+sortOrder: 4
