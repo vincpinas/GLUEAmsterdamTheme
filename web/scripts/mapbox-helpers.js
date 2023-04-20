@@ -58,19 +58,10 @@ export default class MapStateMachine {
         })
     };
 
-    // Style every marker to be hidden.
-    hideMarkers = (className) => {
-        let markers = document.getElementsByClassName(className);
+    // Remove all markers from the map.
+    removeMarkers = (markers) => {
         for (let i = 0; i < markers.length; i++) {
-            markers[i].style.visibility = "hidden";
-        }
-    }
-
-    // Style every marker to be shown, to be used after using hideMarkers();
-    showMarkers = (className) => {
-        let markers = document.getElementsByClassName(className);
-        for (let i = 0; i < markers.length; i++) {
-            markers[i].style.visibility = "visible";
+            markers[i].remove()
         }
     }
 
@@ -78,21 +69,19 @@ export default class MapStateMachine {
     filterFeatures = (route) => {
         let directions = [];
 
-        setTimeout(() => {
-            route.forEach((item) => {
-                let temp = this.geoJSON.features.filter(location => location.place_name.includes(item));
-                if (temp) directions.push(temp[0].center);
-            });
-        }, 250)
-
         return new Promise((resolve, reject) => {
             setTimeout(() => {
+                route.forEach((item) => {
+                    let temp = this.geoJSON.features.filter(location => location.place_name.includes(item));
+                    if (temp) directions.push(temp[0].center);
+                });
+
                 if (directions.length === route.length) {
                     resolve(directions)
                 } else {
                     reject({ directions })
                 }
-            }, 500)
+            }, 400)
         })
     }
 
@@ -103,8 +92,8 @@ export default class MapStateMachine {
 
 
             coordinates.forEach((coordinate, index) => {
-                if (index === coordinate.length) coordinate_string += `${coordinate[0]},${coordinate[1]}`;
-                else coordinate_string += `${coordinate[0]},${coordinate[1]};`;
+                if (index === coordinates.length-1) coordinate_string += `${coordinate[0]},${coordinate[1]}`;
+                else coordinate_string += `${coordinate[0]},${coordinate[1]};`;Ÿ
             })
 
             fetch(`https://api.mapbox.com/directions/v5/mapbox/walking/${coordinate_string}?geometries=geojson&access_token=${this.token}`)
