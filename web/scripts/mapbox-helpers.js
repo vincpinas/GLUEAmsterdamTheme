@@ -59,9 +59,10 @@ export default class MapStateMachine {
     };
 
     // Remove all markers from the map.
-    removeMarkers = (markers) => {
-        for (let i = 0; i < markers.length; i++) {
-            markers[i].remove()
+    removeMarkers = () => {
+        if (this.markers.length <= 0) return;
+        for (let i = 0; i < this.markers.length; i++) {
+            this.markers[i].remove()
         }
     }
 
@@ -92,8 +93,8 @@ export default class MapStateMachine {
 
 
             coordinates.forEach((coordinate, index) => {
-                if (index === coordinates.length-1) coordinate_string += `${coordinate[0]},${coordinate[1]}`;
-                else coordinate_string += `${coordinate[0]},${coordinate[1]};`;Ÿ
+                if (index === coordinates.length - 1) coordinate_string += `${coordinate[0]},${coordinate[1]}`;
+                else coordinate_string += `${coordinate[0]},${coordinate[1]};`;
             })
 
             fetch(`https://api.mapbox.com/directions/v5/mapbox/walking/${coordinate_string}?geometries=geojson&access_token=${this.token}`)
@@ -135,8 +136,8 @@ export default class MapStateMachine {
     }
 
     removeRoute = () => {
-        if (!map.getSource('route')) return;
-        map.removeLayer('route');
-        map.removeSource('route');
+        if (!this.mapRef.getSource('route')) return;
+        this.mapRef.removeLayer('route');
+        this.mapRef.removeSource('route');
     }
 }
