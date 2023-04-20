@@ -82,6 +82,8 @@ body,
 html {
     color: $text-primary;
     position: relative;
+    display: flex;
+    flex-direction: column;
 
     a,
     button,

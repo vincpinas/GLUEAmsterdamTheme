@@ -1,0 +1,20 @@
+columnSuffix: pgyhicfq
+contentColumnType: 'decimal(3,1)'
+fieldGroup: 1a8a2732-cd82-4bf7-8afe-099fb893ac20 # Map
+handle: markerSize
+instructions: 'The size of the markers on the map in pixels'
+name: 'Marker Size'
+searchable: false
+settings:
+  decimals: 1
+  defaultValue: 25
+  max: 50
+  min: 10
+  prefix: null
+  previewCurrency: null
+  previewFormat: decimal
+  size: null
+  suffix: px
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Number

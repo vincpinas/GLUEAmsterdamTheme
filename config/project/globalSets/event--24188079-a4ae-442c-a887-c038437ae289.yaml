@@ -6,9 +6,21 @@ fieldLayouts:
         elements:
           -
             elementCondition: null
+            fieldUid: 5b1e8713-7a27-46ed-a407-e926769d89e2 # Colour
+            instructions: null
+            label: 'Yearly colour'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 50912bbe-ab77-41dc-9b5f-34db73cb9b62
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
             fieldUid: c8adfe4a-01be-4ef5-a6ea-1dd05dbdf07e # DateTable
             instructions: null
-            label: null
+            label: 'Event Dates'
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -19,6 +31,6 @@ fieldLayouts:
         name: Content
         uid: 80edcb8c-54e9-470f-bd53-7ecb17215263
         userCondition: null
-handle: eventDates
-name: 'Event Dates'
+handle: event
+name: Event
 sortOrder: 3

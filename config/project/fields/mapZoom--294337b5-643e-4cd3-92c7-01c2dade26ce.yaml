@@ -1,0 +1,20 @@
+columnSuffix: mfrypxsi
+contentColumnType: 'decimal(11,1)'
+fieldGroup: 1a8a2732-cd82-4bf7-8afe-099fb893ac20 # Map
+handle: mapZoom
+instructions: 'Default zoom distance on the map, starting 11 is local'
+name: 'Map Zoom'
+searchable: false
+settings:
+  decimals: 1
+  defaultValue: 11
+  max: null
+  min: 0
+  prefix: null
+  previewCurrency: null
+  previewFormat: decimal
+  size: null
+  suffix: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Number

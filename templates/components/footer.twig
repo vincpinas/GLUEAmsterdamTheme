@@ -1,22 +1,19 @@
-			{{ dump(footer.socials.all()) }}
 <footer class="c-footer">
-	<ul class="c-footer__socials">
-		{% for social in footer.socials.all() %}
-			{% set destination = social.linkDestination %}
-			<a href="{{ destination }}" target="_blank">
-				{# <img src="{{ social.asset.url }}" alt="Social media icon "> #}
-			</a>
-		{% endfor %}
+	<div class="c-footer__main">
+		<ul class="c-footer__socials">
+			{% for social in footer.socials.all() %}
+				{% set destination = social.linkDestination %}
+				<a class="c-footer__social" href="{{ destination }}" target="_blank">
+					<img class="c-footer__socialImg" src="{{ social.asset.one().url }}" alt="Social media icon ">
+				</a>
+			{% endfor %}
+		</ul>
+	</div>
+	<ul class="c-footer__legal">
+		<a href="#">privacy policy</a>
+		<a href="#">terms & conditions</a>
+		<a href="#">&copy
+			{{ "now"|date('Y') }}
+		</a>
 	</ul>
-	{# <ul class="c-footer__legal">
-								{% for link in footer.navLinks.all() %}
-									{% set destination = link.linkDestination.one() %}
-									<a href="{{ destination.url }}">{{ link.linkText }}</a>
-								{% endfor %}
-								<a href="#">privacy policy</a>
-								<a href="#">terms & conditions</a>
-								<a href="#">&copy
-									{{ "now"|date('Y') }}
-								</a>
-							</ul> #}
 </footer>

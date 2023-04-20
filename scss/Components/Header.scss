@@ -5,11 +5,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.25rem 15rem;
+    padding: 0 6rem;
     border-bottom: 1px solid $special-primary;
+
+    @media #{$tablet-down} {
+        padding: 2rem 0;
+        justify-content: space-around;
+    }
 
     // Ham menu & Searchbar
     &__nav {
+        &>* {
+            margin-bottom: 0;
+        }
 
         &>*:first-of-type() {
             margin-right: 1rem;
@@ -21,7 +29,7 @@
         position: absolute;
         width: inherit;
         height: inherit;
-        top: 20%;
+        top: 15%;
         z-index: inherit;
         background: white;
         
@@ -31,8 +39,11 @@
             width: 100px;
             height: 100px;
             z-index: $index-2;
-            margin: 0;
             margin: 0 5rem;
+
+            @media #{$tablet-down} {
+                display: none;
+            }
         }
     }
 

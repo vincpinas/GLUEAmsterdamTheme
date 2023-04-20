@@ -1,8 +1,7 @@
 .c-footer {
   width: 100%;
-  margin-top: 5rem;
   display: flex;
-  position: absolute;
+  margin-top: auto;
   justify-content: center;
   bottom: 0;
   border-top: 1px solid #0525d3;
@@ -17,14 +16,27 @@
 .c-footer__legal > a:not(:last-of-type) {
   margin-right: 2rem;
 }
+.c-footer__socialImg {
+  width: 20px;
+  height: 20px;
+}
 
 .c-header {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.25rem 15rem;
+  padding: 0 6rem;
   border-bottom: 1px solid #0525d3;
+}
+@media screen and (max-width: 991px) {
+  .c-header {
+    padding: 2rem 0;
+    justify-content: space-around;
+  }
+}
+.c-header__nav > * {
+  margin-bottom: 0;
 }
 .c-header__nav > *:first-of-type() {
   margin-right: 1rem;
@@ -33,7 +45,7 @@
   position: absolute;
   width: inherit;
   height: inherit;
-  top: 20%;
+  top: 15%;
   z-index: inherit;
   background: white;
 }
@@ -42,8 +54,12 @@
   width: 100px;
   height: 100px;
   z-index: 10;
-  margin: 0;
   margin: 0 5rem;
+}
+@media screen and (max-width: 991px) {
+  .c-header__logoWrapper {
+    display: none;
+  }
 }
 .c-header__fastNav ul {
   display: flex;
@@ -60,16 +76,37 @@
   font-style: normal;
 }
 
-#map {
-  height: 100vh;
-  width: 100%;
+.c-map {
+  width: 50%;
+  height: 90vh;
 }
-
+@media screen and (max-width: 991px) {
+  .c-map {
+    width: 100%;
+  }
+}
 .c-map__marker {
   background-size: cover;
-  width: 30px;
-  height: 30px;
   cursor: pointer;
+}
+.c-map__menu {
+  width: 50%;
+  height: 100%;
+}
+@media screen and (max-width: 991px) {
+  .c-map__menu {
+    width: 100%;
+    height: 50%;
+  }
+}
+.c-map__wrapper {
+  width: 100%;
+  display: flex;
+}
+@media screen and (max-width: 991px) {
+  .c-map__wrapper {
+    flex-direction: column;
+  }
 }
 
 /* Any imports required multiple times across the site will be imported here. */
@@ -150,6 +187,8 @@ body,
 html {
   color: #e9e9e9;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 body a,
 body button,

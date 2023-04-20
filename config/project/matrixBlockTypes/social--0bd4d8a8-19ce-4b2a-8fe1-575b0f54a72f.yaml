@@ -10,7 +10,7 @@ fieldLayouts:
             fieldUid: 8849fcad-9c3c-407d-be47-dc023f96bfb0 # Social Media Image
             instructions: null
             label: null
-            required: false
+            required: true
             tip: null
             type: craft\fieldlayoutelements\CustomField
             uid: 6edf0b8c-aebe-4e41-808b-6973996170fa

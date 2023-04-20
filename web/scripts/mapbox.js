@@ -1,24 +1,29 @@
-import { createGeoJSON, createMarkers, getFeatures, hideMarkers, showMarkers } from "./mapbox-helpers.js";
+import MapStateMachine from "./mapbox-helpers.js";
+import MapMenu from "./mapbox-menu.js";
 
 const mapElement = document.getElementById("map")
 
 mapboxgl.accessToken = mapElement.dataset.token;
 
-let map = new mapboxgl.Map({
+const map = new mapboxgl.Map({
     container: 'map',
     style: mapElement.dataset.styles,
     center: [
         4.897070,
         52.373956,
     ],
-    zoom: 12,
+    zoom: JSON.parse(mapElement.dataset.zoom),
 });
 
 // map.scrollZoom.disable();
 // map.dragPan.disable();
 
-getFeatures(mapElement.dataset.addresses, mapboxgl.accessToken)
-    .then(features => createGeoJSON(features))
-    .then(geojson => createMarkers(geojson, map, mapElement.dataset.markerImg))
+const mapState = new MapStateMachine(mapElement, mapboxgl.accessToken, map);
+const mapMenu = new MapMenu();
 
-console.log(mapElement.dataset)
+mapState.createGeoJSON(mapElement.dataset.addresses)
+    .then(geojson => mapState.createMarkers(geojson, map))
+
+mapState.filterFeatures(mapState.routes[0])
+    .then(result => mapState.getDirections(result))
+    .then(data => mapState.addRoute(data.routes[0].geometry))

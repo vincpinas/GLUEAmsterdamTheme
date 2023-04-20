@@ -5,6 +5,8 @@
 	<script src="https://api.mapbox.com/mapbox-gl-js/v2.14.0/mapbox-gl.js"></script>
 	<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
 	<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
+	<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.4.1/mapbox-gl-draw.js"></script>
+	<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.4.0/mapbox-gl-draw.css" type="text/css">
 {% endblock %}
 
 {% set myUserQuery = craft.users().group('participants') %}
@@ -12,42 +14,36 @@
 {% set addresses = [] %}
 {% set maproutes = [] %}
 {% set currentroute = [] %}
-{% set markericon = map.markerIcon.one().url %}
 
-{% block content %}
-	{# Generate data tags with user info for making map markers #}
-	{% for user in users %}
-		{% set address = { 
+{% set markerstyles = { icon: map.markerIcon.one().url, size: map.markerSize } %}
+
+{# Generate data tags with user info for making map markers #}
+{% for user in users %}
+	{% set address = { 
 			postalCode: user.addresses[0].postalCode,
 			name: user.username,
 			address: user.addresses[0].postalCode ~ ", " ~ user.addresses[0].addressLine1 ~ ", " ~ user.addresses[0].locality
 		} %}
-		{% set addresses = addresses|merge([address]) %}
+	{% set addresses = addresses|merge([address]) %}
+{% endfor %}
+
+{# Generate data tags with addresses for making routes #}
+{% for route in map.routes.all() %}
+	{% set pois = route.poi.all() %}
+	{% set currentroute = [] %}
+	{% for poi in pois %}
+		{% set maproute = [craft.users().id(poi.id).one().addresses[0].postalCode] %}
+		{% set currentroute = currentroute|merge(maproute) %}
 	{% endfor %}
 
-	{# Generate data tags with addresses for making routes #}
-	{% for route in map.routes.all() %}
-		{% set pois = route.poi.all() %}
-		{% set currentroute = [] %}
-		{% for poi in pois %}
-			{% set maproute = [craft.users().id(poi.id).one().addresses[0].postalCode] %}
-			{% set currentroute = currentroute|merge(maproute) %}
-		{% endfor %}
-		
-		{% set maproutes = maproutes|merge([currentroute]) %}
-	{% endfor %}
-	
-	<div
-		class="c-map"
-		id="map"
-		data-addresses="{{ addresses|json_encode }}"
-		data-token="{{ map.token }}"
-		data-styles="{{ map.stylesheet }}"
-		data-routes="{{ maproutes|json_encode }}"
-		data-marker-img="{{ markericon }}"
-	>
+	{% set maproutes = maproutes|merge([currentroute]) %}
+{% endfor %}
+
+{% block content %}
+	<div class="c-map__wrapper">
+		<ul class="c-map__menu"></ul>
+		<div class="c-map" id="map" data-addresses="{{ addresses|json_encode }}" data-token="{{ map.token }}" data-styles="{{ map.stylesheet }}" data-routes="{{ maproutes|json_encode }}" data-marker-styles="{{ markerstyles|json_encode }}" data-zoom="{{ map.mapZoom }}"></div>
 	</div>
-	<ul class="c-map__legend"
 {% endblock %}
 
 {% block jscripts %}

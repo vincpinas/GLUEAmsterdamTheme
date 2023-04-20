@@ -34,7 +34,7 @@ fields:
       branchLimit: null
       localizeRelations: false
       maintainHierarchy: false
-      maxRelations: null
+      maxRelations: 25
       minRelations: null
       selectionCondition:
         __assoc__:

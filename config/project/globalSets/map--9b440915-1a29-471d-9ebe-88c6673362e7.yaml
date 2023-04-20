@@ -30,6 +30,18 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
+            fieldUid: 294337b5-643e-4cd3-92c7-01c2dade26ce # Map Zoom
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 96ab4119-5d91-454e-922c-effdef0f1461
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
             fieldUid: 5d152d4b-1ee3-4f95-bca3-97ab4af05e68 # Marker Icon
             instructions: null
             label: null
@@ -37,6 +49,18 @@ fieldLayouts:
             tip: null
             type: craft\fieldlayoutelements\CustomField
             uid: 4b5b63da-07b3-4022-81e0-2490e542f885
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 29af6c74-049e-465f-97f6-c25132abd027 # Marker Size
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 198a86fb-63f2-4de2-8766-064062b51472
             userCondition: null
             warning: null
             width: 100

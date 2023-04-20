@@ -2,9 +2,8 @@
 
 .c-footer {
     width: 100%;
-    margin-top: 5rem;
     display: flex;
-    position: absolute;
+    margin-top: auto;
     justify-content: center;
     bottom: 0;
     border-top: 1px solid $special-primary;
@@ -19,5 +18,10 @@
         &>a:not(:last-of-type) {
             margin-right: 2rem;
         }
+    }
+
+    &__socialImg {
+        width: 20px;
+        height: 20px;
     }
 }
