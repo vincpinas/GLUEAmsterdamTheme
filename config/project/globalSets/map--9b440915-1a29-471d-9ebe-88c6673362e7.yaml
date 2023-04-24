@@ -21,7 +21,7 @@ fieldLayouts:
             fieldUid: cdfc6d46-fdd1-4bdf-b53b-7f44b84230a5 # Stylesheet
             instructions: null
             label: null
-            required: false
+            required: true
             tip: null
             type: craft\fieldlayoutelements\CustomField
             uid: b75aef1a-7521-439c-ac9e-362bd43baeb1
@@ -33,7 +33,7 @@ fieldLayouts:
             fieldUid: 294337b5-643e-4cd3-92c7-01c2dade26ce # Map Zoom
             instructions: null
             label: null
-            required: false
+            required: true
             tip: null
             type: craft\fieldlayoutelements\CustomField
             uid: 96ab4119-5d91-454e-922c-effdef0f1461
@@ -42,10 +42,34 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
+            fieldUid: 687bb273-50a1-471a-b240-7ccc88e88288 # Map Pitch
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 482f4664-2663-456f-9fb9-866fa9747723
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 22ded96b-de85-4414-a36e-ba62898a3e19 # Map Bearing
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 415a5056-9aad-43a6-a84f-27a2224b2f70
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
             fieldUid: 5d152d4b-1ee3-4f95-bca3-97ab4af05e68 # Marker Icon
             instructions: null
             label: null
-            required: false
+            required: true
             tip: null
             type: craft\fieldlayoutelements\CustomField
             uid: 4b5b63da-07b3-4022-81e0-2490e542f885
@@ -57,7 +81,7 @@ fieldLayouts:
             fieldUid: 29af6c74-049e-465f-97f6-c25132abd027 # Marker Size
             instructions: null
             label: null
-            required: false
+            required: true
             tip: null
             type: craft\fieldlayoutelements\CustomField
             uid: 198a86fb-63f2-4de2-8766-064062b51472

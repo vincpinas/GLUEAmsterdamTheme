@@ -13,17 +13,15 @@ const map = new mapboxgl.Map({
         52.373956,
     ],
     zoom: JSON.parse(mapElement.dataset.zoom),
+    pitch: JSON.parse(mapElement.dataset.pitch),
+    bearing: JSON.parse(mapElement.dataset.bearing)
 });
 
 // map.scrollZoom.disable();
 // map.dragPan.disable();
 
 const mapState = new MapStateMachine(mapElement, mapboxgl.accessToken, map);
-const mapMenu = new MapMenu();
+new MapMenu(mapState);
 
 mapState.createGeoJSON(mapElement.dataset.addresses)
-    .then(geojson => mapState.createMarkers(geojson, map))
-
-mapState.filterFeatures(mapState.routes[0])
-    .then(result => mapState.getDirections(result))
-    .then(data => mapState.addRoute(data.routes[0].geometry))
+    .then(geojson => mapState.createMarkers(geojson.features, map))

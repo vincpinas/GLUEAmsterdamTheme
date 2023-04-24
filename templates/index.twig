@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
 		<meta name="referrer" content="origin-when-cross-origin"/>
 		<link rel="stylesheet" href="{{ siteUrl }}css/style.css">
-		{% block exscripts %}
+		{% block external_scripts %}
 			{# All external scripts appear here #}
 		{% endblock %}
 	</head>
@@ -22,7 +22,7 @@
 
 		{% include "components/footer.twig" %}
 	</body>
-	{% block jscripts %}
+	{% block javascripts %}
 		{# All scripts appear here #}
 	{% endblock %}
 </html>

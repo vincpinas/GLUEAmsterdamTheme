@@ -1,0 +1,20 @@
+columnSuffix: zatyazow
+contentColumnType: smallint(3)
+fieldGroup: 1a8a2732-cd82-4bf7-8afe-099fb893ac20 # Map
+handle: mapBearing
+instructions: 'Horizontal camera rotation in degrees'
+name: 'Map Bearing'
+searchable: false
+settings:
+  decimals: 0
+  defaultValue: 130
+  max: 360
+  min: 0
+  prefix: null
+  previewCurrency: null
+  previewFormat: decimal
+  size: null
+  suffix: deg
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Number

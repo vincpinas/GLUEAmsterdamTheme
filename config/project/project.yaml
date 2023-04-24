@@ -1,4 +1,4 @@
-dateModified: 1681995819
+dateModified: 1682324921
 elementSources:
   craft\elements\Entry:
     -
@@ -21,7 +21,7 @@ elementSources:
       key: 'single:696329c8-d035-43a0-96a8-a66d8626feb9' # Home
       type: native
     -
-      key: 'single:8ab109e4-3701-4901-8224-d41c805e14fc' # Map
+      key: 'single:76b8abf5-b5a7-4316-b76f-042fd9b0e526' # Map
       type: native
     -
       defaultSort:
@@ -77,9 +77,62 @@ elementSources:
         - author
         - link
       type: native
+  craft\elements\User:
+    -
+      defaultSort:
+        - username
+        - asc
+      disabled: false
+      key: '*'
+      tableAttributes:
+        - fullName
+        - email
+        - dateCreated
+        - lastLoginDate
+      type: native
+    -
+      heading: 'Account Type'
+      type: heading
+    -
+      key: credentialed
+      type: native
+    -
+      key: inactive
+      type: native
+    -
+      heading: Groups
+      type: heading
+    -
+      defaultSort:
+        - username
+        - asc
+      disabled: false
+      key: admins
+      tableAttributes:
+        - fullName
+        - email
+        - dateCreated
+        - lastLoginDate
+      type: native
+    -
+      defaultSort:
+        - username
+        - asc
+      disabled: false
+      key: 'group:c700366d-c002-43b2-b7ce-f8dd82c7afa8' # Participants
+      tableAttributes:
+        - fullName
+        - email
+        - dateCreated
+        - lastLoginDate
+      type: native
 email:
   fromEmail: ikbengerrit92@gmail.com
-  fromName: 'Glueweb Ddev'
+  fromName: Glueweb
+  replyToEmail: null
+  template: ''
+  transportSettings:
+    command: '/usr/sbin/sendmail -bs'
   transportType: craft\mail\transportadapters\Sendmail
 fs:
   userFiles:
@@ -109,22 +162,24 @@ meta:
     5cfe211b-9f9b-4723-841e-c5927528cb46: 'GLUE History' # GLUE History
     5d152d4b-1ee3-4f95-bca3-97ab4af05e68: 'Marker Icon' # Marker Icon
     7c4c875d-b26b-4ca2-9e5e-3e337d3941ef: Press # Press
-    8ab109e4-3701-4901-8224-d41c805e14fc: Map # Map
     9b440915-1a29-471d-9ebe-88c6673362e7: Map # Map
     9cf5f394-9490-4101-bdc7-5f09654f53e7: Thumbnail # Thumbnail
     9f819326-c617-42fe-a427-a0c843eb9312: POI # POI
     13a8868b-e382-483f-9f64-0743e959d4b9: 'Text Field' # Text Field
     014c7b4b-b329-42ff-ba25-1b87cfcadb60: Navigation # Navigation
     20d23889-9805-4910-b96d-d69c5b2341ed: Route # Route
+    22ded96b-de85-4414-a36e-ba62898a3e19: 'Map Bearing' # Map Bearing
+    28df0b76-c9f0-4d20-8ca1-a15c637783ea: 'Route Name' # Route Name
     29af6c74-049e-465f-97f6-c25132abd027: 'Marker Size' # Marker Size
     54d7b784-36c0-4673-ac81-61eb4fec1591: Date # Date
+    76b8abf5-b5a7-4316-b76f-042fd9b0e526: Map # Map
     084c0ccc-2bb0-474c-bb48-a6416500c2e7: Account # Account
     84f5e1d4-3d01-4be8-82df-2de9132f6b6b: 'Link Text' # Link Text
     90a58fe8-93e7-4f43-a79c-f92d1076f9c0: 'Glue websites' # Glue websites
     462e7888-6a24-4c61-b3f1-faaec6bc45ad: 'Link Destination' # Link Destination
     00602bc8-2fab-4442-bff1-e6af501f1470: Socials # Socials
+    687bb273-50a1-471a-b240-7ccc88e88288: 'Map Pitch' # Map Pitch
     850d1fd6-598a-4264-a562-cf6f27d6dd5a: History # History
-    886ab749-99d6-4ed1-b111-46cdb4f09b52: Map # Map
     8634fab2-bde5-4665-80a8-324c56cb1c35: 'Web Images' # Web Images
     8809cf4a-41fd-49bf-9e6c-01bb347d9a21: Token # Token
     8849fcad-9c3c-407d-be47-dc023f96bfb0: 'Social Media Image' # Social Media Image
@@ -146,6 +201,7 @@ meta:
     c5fb5f28-2f93-4a73-bcd6-9c57ee22f86f: 'Glueweb Amsterdam' # Glueweb Amsterdam
     c8adfe4a-01be-4ef5-a6ea-1dd05dbdf07e: DateTable # DateTable
     c700366d-c002-43b2-b7ce-f8dd82c7afa8: Participants # Participants
+    cab00bb9-f285-41cd-9dfc-6b675f5c4817: Map # Map
     cdfc6d46-fdd1-4bdf-b53b-7f44b84230a5: Stylesheet # Stylesheet
     ce4c8a98-5c1f-4d39-bbf0-6bfd5fd4ba32: Subtitle # Subtitle
     d9e67970-27dd-4bd3-a5c6-a5eb6a5a6034: 'Daily Program' # Daily Program

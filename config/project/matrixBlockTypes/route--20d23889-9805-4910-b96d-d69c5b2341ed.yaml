@@ -7,6 +7,18 @@ fieldLayouts:
         elements:
           -
             elementCondition: null
+            fieldUid: 28df0b76-c9f0-4d20-8ca1-a15c637783ea # Route Name
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f88560a3-b3be-41e9-8529-c23d5a101f70
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
             fieldUid: 9f819326-c617-42fe-a427-a0c843eb9312 # POI
             instructions: null
             label: null
@@ -57,6 +69,26 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Users
+  28df0b76-c9f0-4d20-8ca1-a15c637783ea: # Route Name
+    columnSuffix: fcuvkzgt
+    contentColumnType: string(44)
+    fieldGroup: null
+    handle: routeName
+    instructions: 'A name to refer to the route'
+    name: 'Route Name'
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: 11
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: false
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
 handle: route
 name: Route
 sortOrder: 1

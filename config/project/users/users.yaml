@@ -1,6 +1,6 @@
 allowPublicRegistration: true
 deactivateByDefault: true
-defaultGroup: ''
+defaultGroup: c700366d-c002-43b2-b7ce-f8dd82c7afa8 # Participants
 photoSubpath: null
 photoVolumeUid: b8f74062-ae64-4520-a7ed-fe4272ee4456 # User Avatars
 requireEmailVerification: true
