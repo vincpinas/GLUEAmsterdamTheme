@@ -66,13 +66,25 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: 5d152d4b-1ee3-4f95-bca3-97ab4af05e68 # Marker Icon
+            fieldUid: 5d152d4b-1ee3-4f95-bca3-97ab4af05e68 # Route Marker Icon
             instructions: null
             label: null
             required: true
             tip: null
             type: craft\fieldlayoutelements\CustomField
             uid: 4b5b63da-07b3-4022-81e0-2490e542f885
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: e4bcb26e-0946-40a4-a3e0-1d73c3971119 # Locations Marker Icon
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 3019a8ba-8eea-4581-be19-dbd6cdfbcec2
             userCondition: null
             warning: null
             width: 100

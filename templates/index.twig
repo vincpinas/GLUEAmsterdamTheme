@@ -21,8 +21,8 @@
 		</div>
 
 		{% include "components/footer.twig" %}
+		{% block javascripts %}
+			{# All scripts appear here #}
+		{% endblock %}
 	</body>
-	{% block javascripts %}
-		{# All scripts appear here #}
-	{% endblock %}
 </html>

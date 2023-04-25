@@ -1,0 +1,9 @@
+siteUid: null
+sortOrder: 1
+template: containers/account.twig
+uriParts:
+  - account/
+  -
+    - '*'
+    - '[^\/]+'
+uriPattern: 'account/<any:[^\/]+>'

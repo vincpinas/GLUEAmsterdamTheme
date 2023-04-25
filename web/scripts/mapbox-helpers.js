@@ -41,13 +41,14 @@ export default class MapStateMachine {
                     let temp;
                     const el = document.createElement('div');
                     el.className = 'c-map__marker';
-                    el.style.backgroundImage = `url(${this.markerStyles.icon})`
                     el.style.width = `${this.markerStyles.size}px`
                     el.style.height = `${this.markerStyles.size * 1.3}px`
                     if (route) {
                         el.innerHTML = i + 1;
+                        el.style.backgroundImage = `url(${this.markerStyles.routeIcon})`
                         temp = new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).addTo(map)
                     } else {
+                        el.style.backgroundImage = `url(${this.markerStyles.locationsIcon})`
                         temp = new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).addTo(map)
                     }
 

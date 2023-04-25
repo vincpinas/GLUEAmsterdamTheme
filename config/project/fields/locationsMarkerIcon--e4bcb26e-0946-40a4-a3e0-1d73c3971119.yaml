@@ -1,9 +1,9 @@
-columnSuffix: null
+columnSuffix: bjluzhkc
 contentColumnType: string
 fieldGroup: 1a8a2732-cd82-4bf7-8afe-099fb893ac20 # Map
-handle: markerIcon
-instructions: null
-name: 'Marker Icon'
+handle: locationsMarkerIcon
+instructions: 'The marker used when displaying all the locations'
+name: 'Locations Marker Icon'
 searchable: false
 settings:
   allowSelfRelations: false
@@ -36,7 +36,7 @@ settings:
         - class
         - craft\elements\conditions\assets\AssetCondition
   selectionLabel: null
-  showSiteMenu: false
+  showSiteMenu: true
   showUnpermittedFiles: false
   showUnpermittedVolumes: false
   sources: '*'

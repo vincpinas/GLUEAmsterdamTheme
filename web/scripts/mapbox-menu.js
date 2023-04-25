@@ -56,7 +56,7 @@ export default class MapMenu {
             
             a.innerHTML = `${i + 1}. <span></span> ${poi.fullName}`;
             a.target = "_blank";
-            a.href = `/user/${poi.username}`;
+            a.href = `/account/${poi.username}`;
             googleRouteHref += `${poi.postalCode}/`
 
             li.appendChild(a);
@@ -67,7 +67,7 @@ export default class MapMenu {
         googleRouteButton.target = "_blank";
         googleRouteButton.href = googleRouteHref;
         googleRouteButton.className = "c-map__menuGoogleButton"
-        googleRouteButton.innerHTML = "Open in Google Maps";
+        googleRouteButton.innerHTML = "Open in Google maps";
         
 
         routeOverview.appendChild(routeList);
@@ -85,11 +85,27 @@ export default class MapMenu {
             this.mapState.centerMap();
         }
 
+        if(element) element.classList.add('c-map__menuTabActive')
+
         const locationsOverview = document.createElement("div");
         locationsOverview.className = `c-map__locationsOverview c-map__menuItem-${this.lastId} c-map__menuItem active`;
+        
+        const locationsTitle = document.createElement("h2");
+        locationsTitle.innerHTML = "Locations"
+        locationsOverview.appendChild(locationsTitle);
 
-        const locationsList = document.createElement("ul");
+        const locationsList = document.createElement("ol");
 
+        JSON.parse(this.mapState.mapElement.dataset.addresses).forEach((address) => {
+            const li = document.createElement("li");
+            const a = document.createElement("a");
+            a.innerHTML = `${address.fullName} <ion-icon name="chevron-forward-sharp"></ion-icon>`
+            a.href = `/account/${address.username}`;
+            a.className = "c-map__locationButton"
+
+            li.appendChild(a);
+            locationsList.appendChild(li);
+        })
         locationsOverview.appendChild(locationsList);
 
         element.insertAdjacentHTML('afterend', this.getHTML(locationsOverview, true));
@@ -100,7 +116,7 @@ export default class MapMenu {
         const activeTab = document.querySelector(".c-map__menuTabActive");
 
         if (active) active.remove();
-        if(activeTab) activeTab.classList.remove('c-map__menuTabActive')
+        if(activeTab) activeTab.classList.remove('c-map__menuTabActive');
     }
 
     getHTML = (who, deep) => {

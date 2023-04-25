@@ -34,7 +34,6 @@
 
     &__menuTab {
         cursor: pointer;
-        
     }
 
     &__menuItem {
@@ -43,10 +42,8 @@
         align-items: center;
         height: 100%;
         padding: 0 1.25rem;
-        justify-content: center;
         background: $special-primary;
         position: relative;
-
         @media #{$tablet-down} {
             padding: 0.5rem;
         }
@@ -140,11 +137,11 @@
             /* lines */
             content:"";
             position: absolute;
-            left: -6.5px; /* adjust manually */
-            border-left: 1px solid $text-primary;
+            left: -7px; /* adjust manually */
+            border-left: 2px solid $text-primary;
             height: 100%;
             width: 6px;
-            top: 10px;
+            top: 11px;
         }
         
         ul li:first-child:before {
@@ -155,6 +152,37 @@
         ul li:last-child:before {
             /* last li's line */
            height: 2px; /* shorten the line so it goes only up to the bullet. Is equal to first-child:before's top */
+        }
+    }
+
+    &__menuItem.active {
+        ol {
+            width: fit-content;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        ol li {
+            padding: 0rem 0.75rem;
+        }
+
+        ol li a {
+          display: flex;
+          align-items: center;
+        }
+
+        ol li:hover {
+            ion-icon {
+                transform: translateX(0px);
+                opacity: 1;
+            }
+        }
+
+        ion-icon {
+            transform: translateX(-20px);
+            opacity: 0;
+            transition: $transition-fast;
         }
     }
 
