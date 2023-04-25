@@ -1,0 +1,11 @@
+{% extends "index" %}
+
+{% set user = craft.users.username(any).one() %}
+
+{% block content %}
+
+<pre>
+    {{ dump(user) }}
+</pre>
+
+{% endblock %}
