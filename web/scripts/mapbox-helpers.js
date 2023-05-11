@@ -7,6 +7,9 @@ export default class MapStateMachine {
         this.token = token;
         this.mapRef = map;
         this.currentRoute = null;
+        this.currentPos = null;
+
+        this.getLocation();
     }
 
     // Save a GeoJSON object in memory for later use
@@ -37,23 +40,69 @@ export default class MapStateMachine {
             if (features.length > 0) {
                 let result = [];
 
+                if (this.currentPos) {
+                    const currentPosMarker = document.createElement('div');
+                    currentPosMarker.className = 'c-map__marker c-map__currentPos'
+                    currentPosMarker.style.width = `${this.markerStyles.size}px`
+                    currentPosMarker.style.height = `${this.markerStyles.size}px`
+                    currentPosMarker.style.background = "green"
+                    currentPosMarker.style.borderRadius = "100%"
+
+                    if (route) result.push(new mapboxgl.Marker(currentPosMarker).setLngLat(this.currentPos).addTo(map))
+                }
+
+                // Marker creation
                 features.forEach((marker, i) => {
                     let temp;
                     const el = document.createElement('div');
                     el.className = 'c-map__marker';
                     el.style.width = `${this.markerStyles.size}px`
                     el.style.height = `${this.markerStyles.size * 1.3}px`
+
                     if (route) {
                         el.innerHTML = i + 1;
                         el.style.backgroundImage = `url(${this.markerStyles.routeIcon})`
                         temp = new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).addTo(map)
                     } else {
+                        let popupInfo = JSON.parse(this.mapElement.dataset.addresses).filter(address => marker.place_name.includes(address.postalCode))[0];
                         el.style.backgroundImage = `url(${this.markerStyles.locationsIcon})`
-                        temp = new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).addTo(map)
+                        let popup = new mapboxgl.Popup({ offset: 15, maxWidth: "300px" })
+                            .setHTML(
+                                `<div class="c-map__popupImgWrapper">
+                                    <div class="c-map__popupImgTextWrapper">
+                                        <p class="c-map__popupImgText c-map__popupImgTitle">${popupInfo.fullName}</p>
+                                        <p class="c-map__popupImgText c-map__popupImgAddress">${popupInfo.address}</p>
+                                    </div>
+                                    <div class="c-map__popupImgOverlay"></div>
+                                    <img class="c-map__popupImg" src="${popupInfo.thumbnail}"></img>
+                                </div>
+                                <span class="c-map__popupLinks">
+                                    <a class="c-map__popupLink" target="_blank" href="/account/${popupInfo.username}">More Info</a>
+                                    <a class="c-map__popupLink" target="_blank" href="https://www.google.nl/maps/place/${popupInfo.address}}">Display on map</a>
+                                </span>`
+                            )
+                        temp = new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(popup).addTo(map)
+                        temp.cId = marker.text;
                     }
 
                     result.push(temp)
                 });
+
+                // Popup toggle through menu buttons and markers
+                if (!route) {
+                    document.querySelectorAll(".c-map__locationButtonWrapper").forEach(location => {
+                        let marker = result.filter(marker => marker.cId === location.dataset.postalCode)[0];
+                        marker._popup.on("close", () => { this.centerMap(); })
+
+                        location.addEventListener("click", () => {
+                            if (this.activePopUp && this.activePopUp._popup.isOpen()) this.activePopUp.togglePopup();
+                            marker.togglePopup();
+                            this.activePopUp = marker
+                            const bounds = new mapboxgl.LngLatBounds(marker._lngLat, marker._lngLat);
+                            this.mapRef.fitBounds(bounds, { padding: 250, duration: 1200, zoom: 14, offset: [0, 50] })
+                        })
+                    })
+                }
 
                 this.markers = result;
                 reslove(result)
@@ -99,7 +148,11 @@ export default class MapStateMachine {
             coordinates.forEach((coordinate, index) => {
                 coordinates_geoJSON.push({ geometry: { type: "Point", coordinates: coordinate } })
 
-                if (index === coordinates.length - 1) coordinate_string += `${coordinate[0]},${coordinate[1]}`;
+                if (index === coordinates.length - 1) {
+                    coordinate_string += `${coordinate[0]},${coordinate[1]};`;
+                    // Adds first point as last point to make sure the mapbox route ends where it started.
+                    coordinate_string += `${coordinates[0][0]},${coordinates[0][1]}`;
+                }
                 else coordinate_string += `${coordinate[0]},${coordinate[1]};`;
             })
 
@@ -175,5 +228,22 @@ export default class MapStateMachine {
             duration: 1200,
             essential: true
         });
+    }
+
+    resetMap() {
+        this.removeMarkers();
+        this.removeRoute();
+        this.createMarkers(this.geoJSON.features, this.mapRef, false);
+        this.centerMap();
+    }
+
+    getLocation = () => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                this.currentPos = { lng: position.coords.longitude, lat: position.coords.latitude }
+            });
+        } else {
+            console.error("Geolocation is not supported by this browser.")
+        }
     }
 }

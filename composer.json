@@ -6,6 +6,7 @@
     "nystudio107/craft-vite": "4.0.5",
     "sebastianlenz/linkfield": "2.1.5",
     "verbb/expanded-singles": "2.0.1",
+    "verbb/patrol": "^5.0",
     "vlucas/phpdotenv": "^5.4.0"
   },
   "require-dev": {

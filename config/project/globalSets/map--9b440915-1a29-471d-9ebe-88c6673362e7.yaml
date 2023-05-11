@@ -90,6 +90,18 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
+            fieldUid: 62bbfaa1-afe7-4d10-86d1-a4f1f257284d # Marker thumbnail placeholder
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 86231388-588f-4862-98a2-e4dcca34f100
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
             fieldUid: 29af6c74-049e-465f-97f6-c25132abd027 # Marker Size
             instructions: null
             label: null

@@ -6,7 +6,59 @@
         width: 100%;
     }
 
-    &__marker {            
+    &__popupImg {
+        width: 100%;
+
+        &Wrapper {
+            width: 100%;
+            height: fit-content;
+            position: relative;
+        }
+
+        &Overlay {
+            top: 0;
+            display: block;
+            width: 100%;
+            height: 97%;
+            position: absolute;
+            background: rgba($special-primary, 25%);
+        }
+
+        &Text {
+            margin: 0;
+            @include font--primary(600);
+        }
+
+        &TextWrapper {
+            z-index: $index-1;
+            position: absolute;
+            bottom: 0.5rem;
+            left: 0.5rem;
+        }
+    }
+
+    &__popupLink {
+        border: 2px solid $special-primary;
+        padding: 0.25rem 0.5rem;
+        @include font--primary(500);
+        color: $special-primary;
+        width: 50%;
+        text-align: center;
+
+        &:first-of-type {
+            margin-right: 1rem;
+        }
+
+        &s {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+    }
+
+    &__marker {
         background-size: cover;
         cursor: pointer;
         display: flex;
@@ -20,6 +72,7 @@
         width: 50%;
         height: 80vh;
         display: flex;
+        position: relative;
 
         @media #{$tablet-down} {
             width: 100%;
@@ -32,6 +85,60 @@
         }
     }
 
+    &__menuDirectionButton {
+        text-transform: capitalize;
+        cursor: pointer;
+    }
+
+    &__menuDirectionCloseButton {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 0.5rem;
+        background: $background-contrast;
+        z-index: $index-1;
+        outline: none;
+        border: none;
+        transition: $transition-fast;
+        justify-content: center;
+        display: flex;
+
+        ion-icon {
+            color: red;
+            font-size: 2em;
+            transition: $transition-fast;
+        }
+
+        &:hover {
+            background: darken($background-contrast, 20%);
+
+        }
+
+        &:hover ion-icon {
+            color: darken(red, 20%);
+        }
+    }
+
+    &__menuDirectionTab {
+        position: absolute;
+        transform: translateX(-100%);
+        transition: $transition-fast;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        background-color: $special-primary;
+
+        @media #{$mobile-down} {
+            max-height: 80vh;
+            flex-direction: column;
+        }
+    }
+
+    &__menuDirectionTab.active {
+        transform: translateX(0px);
+        z-index: $index-1;
+    }
+
     &__menuTab {
         cursor: pointer;
     }
@@ -40,12 +147,13 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        height: 100%;
+        justify-content: center;
         padding: 0 1.25rem;
         background: $special-primary;
         position: relative;
+
         @media #{$tablet-down} {
-            padding: 0.5rem;
+            padding: 1rem;
         }
     }
 
@@ -53,7 +161,8 @@
         display: none;
     }
 
-    &__menuItem.active {
+    &__menuItem.active,
+    &__locationsOverview {
         width: 100%;
         text-align: center;
         padding: 5rem 0;
@@ -98,9 +207,11 @@
         }
 
         ul li {
-            position:relative; /* so that pseudoelements are positioned relatively to their "li"s*/
-            /* use padding-bottom instead of margin-bottom.*/ 
-            margin-bottom: 0; /* This overrides previously specified margin-bottom */
+            position: relative;
+            /* so that pseudoelements are positioned relatively to their "li"s*/
+            /* use padding-bottom instead of margin-bottom.*/
+            margin-bottom: 0;
+            /* This overrides previously specified margin-bottom */
             padding: 0 1rem 2rem 1rem;
         }
 
@@ -108,7 +219,8 @@
             text-align: left;
         }
 
-        ul li a, ul li a span {
+        ul li a,
+        ul li a span {
             margin-left: 1rem;
             transition: 0.2s;
         }
@@ -121,7 +233,7 @@
         ul li a:hover {
             border: 2px solid $text-primary;
         }
-        
+
         ul li:after {
             /* bullets */
             content: "";
@@ -129,77 +241,97 @@
             width: 10px;
             height: 2.5px;
             position: absolute;
-            left: -6px; /*adjust manually*/
+            left: -6px;
+            /*adjust manually*/
             top: 10px;
         }
-        
+
         ul li:before {
             /* lines */
-            content:"";
+            content: "";
             position: absolute;
-            left: -7px; /* adjust manually */
+            left: -7px;
+            /* adjust manually */
             border-left: 2px solid $text-primary;
             height: 100%;
             width: 6px;
             top: 11px;
         }
-        
+
         ul li:first-child:before {
-           /* first li's line */
-           top: 2px; /* moves the line down so that it disappears under the bullet. Adjust manually */
+            /* first li's line */
+            top: 2px;
+            /* moves the line down so that it disappears under the bullet. Adjust manually */
         }
-        
+
         ul li:last-child:before {
             /* last li's line */
-           height: 2px; /* shorten the line so it goes only up to the bullet. Is equal to first-child:before's top */
+            height: 2px;
+            /* shorten the line so it goes only up to the bullet. Is equal to first-child:before's top */
         }
     }
 
-    &__menuItem.active {
+    @for $i from 1 through 5 {
+        &__menu>li:nth-of-type(#{$i + 1}) {
+            background: lighten($special-primary, $i * 5%);
+        }
+
+        &__menuDirectionTab>li:nth-of-type(#{$i + 1}) {
+            background: lighten($special-primary, $i * 5%) !important;
+        }
+
+        &__menuDirectionTab>li:nth-of-type(#{$i + 1}) + div {
+            background: lighten($special-primary, $i * 5%) !important;
+        }
+    }
+
+    &__locationsOverview {
         ol {
+            list-style: decimal;
             width: fit-content;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            @include font--primary(600);
         }
 
         ol li {
             padding: 0rem 0.75rem;
         }
 
-        ol li a {
-          display: flex;
-          align-items: center;
+        ol li button {
+            display: flex;
+            align-items: center;
+            background: none;
+            border: none;
+            outline: none;
+            @include font--primary(600);
         }
 
         ol li:hover {
             ion-icon {
-                transform: translateX(0px);
+                transform: translateX(0.4rem);
                 opacity: 1;
             }
         }
 
         ion-icon {
-            transform: translateX(-20px);
+            transform: translateX(-2rem);
             opacity: 0;
             transition: $transition-fast;
         }
     }
 
-    @for $i from 1 through 4 {
-        &__menuItem:nth-of-type(#{$i}) {
-            background: lighten($special-primary, $i * 5%);
-        }
-
-        &__menuItem-#{$i} {
-            background: lighten($special-primary, $i * 5%) !important;
-        }
-    }
-
-    &__menuRoute h2, &__menuLocations h2 {
+    &__menuRoute h2,
+    &__menuLocations h2,
+    &__menuDirectionButton h2 {
         height: 100%;
         text-align: center;
         writing-mode: vertical-rl;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
 
         @media #{$mobile-down} {
             writing-mode: initial;
@@ -211,6 +343,8 @@
         width: 100%;
         height: 100%;
         position: absolute;
+        top: 0;
+
     }
 
     &__menuGoogleButton {
@@ -228,4 +362,8 @@
             flex-direction: column;
         }
     }
+}
+
+.mapboxgl-popup-close-button {
+    display: none;
 }

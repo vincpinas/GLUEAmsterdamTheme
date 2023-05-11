@@ -14,50 +14,78 @@
 {% set addresses = [] %}
 {% set markerstyles = { routeIcon: map.routeMarkerIcon.one().url, locationsIcon: map.locationsMarkerIcon.one().url, size: map.markerSize } %}
 {% set locked = false %}
+{% set directionsArray = ["north", "east", "south", "west"] %}
 
 {# Generate data tags with user info for making map markers #}
 {% for user in users %}
+	{% set current_address = user.addresses[0] %}
 	{% set address = { 
-			postalCode: user.addresses[0].postalCode,
+			postalCode: current_address.postalCode,
+			address: current_address.addressLine1 ~ ", " ~ current_address.postalCode,
 			fullName: user.fullName,
-			username: user.username
+			username: user.username,
+			thumbnail: user.thumbnail.one() ? user.thumbnail.one().url : map.markerThumbnailPlaceholder.one().url,
 		} %}
 	{% set addresses = addresses|merge([address]) %}
 {% endfor %}
 
 {# Generate data tags with addresses for making routes #}
-
 {% block content %}
 	<div class="c-map__wrapper">
 		<ul class="c-map__menu">
-			{% for route in map.routes.all() %}
-				{% set currentroute = [] %}
-				{% for poi in route.poi.all() %}
-					{% set currentuser = craft.users().id(poi.id).one() %}
-					{% set maproute = [{
+			{% for direction in directionsArray %}
+				{% if map.routes.cardinalDirection(direction).all()|length > 0 %}
+					<div class="c-map__menuDirectionTab c-map__menuDirectionTab-{{loop.index}}">
+						<button class="c-map__menuDirectionCloseButton">
+							<ion-icon name="close-outline"></ion-icon>
+						</button>
+						{% for route in map.routes.cardinalDirection(direction).all() %}
+							{% set currentroute = [] %}
+							{% for poi in route.poi.all() %}
+								{% set currentuser = craft.users().id(poi.id).one() %}
+								{% set maproute = [{
 						fullName: currentuser.fullName,
 						postalCode: currentuser.addresses[0].postalCode,
 						username: currentuser.username,
 					}] %}
-					{% set currentroute = currentroute|merge(maproute) %}
-				{% endfor %}
-				{% set currentroute = { routeName: route.routeName, pois: currentroute } %}
-				<li class="c-map__menuItem c-map__menuTab c-map__menuRoute" data-route="{{ currentroute|json_encode }}" data-locked="{{ locked|json_encode }}">
-					{% if locked %}<span class="c-map__menuLockOverlay"></span>{% endif %}
-					<h2>Route</h2>
-				</li>
+								{% set currentroute = currentroute|merge(maproute) %}
+							{% endfor %}
+							{% set currentroute = { routeName: route.routeName, pois: currentroute } %}
+							<li class="c-map__menuItem c-map__menuTab c-map__menuRoute" data-route="{{ currentroute|json_encode }}">
+								<h2>Route</h2>
+							</li>
+						{% endfor %}
+					</div>
+				{% endif %}
 			{% endfor %}
-			<li class="c-map__menuItem c-map__menuTab c-map__menuLocations"><h2>Locations</h2></li>
+
+			{% for direction in directionsArray %}
+				{% if map.routes.cardinalDirection(direction).all()|length > 0 %}
+					<li class="c-map__menuDirectionButton c-map__menuItem" data-locked="{{ locked|json_encode }}" data-i="{{loop.index}}">
+						{% if locked %}
+							<span class="c-map__menuLockOverlay"></span>
+						{% endif %}
+						<h2>
+							{{ direction }}ern Routes
+						</h2>
+					</li>
+				{% endif %}
+			{% endfor %}
+
+			<li class="c-map__locationsOverview c-map__menuItem-{{directionsArray|length + 1}} c-map__menuItem">
+				<h2>Locations</h2>
+				<ol>
+					{% for address in addresses %}
+						<li class="c-map__locationButtonWrapper" data-postal-code="{{address.postalCode}}">
+							<button class="c-map__locationButton">{{address.fullName}}
+								<ion-icon name="chevron-forward-sharp"></ion-icon>
+							</button>
+						</li>
+					{% endfor %}
+				</ol>
+			</li>
 		</ul>
-		<div class="c-map"
-			 id="map" data-addresses="{{ addresses|json_encode }}"
-			 data-token="{{ map.token }}"
-			 data-styles="{{ map.stylesheet }}"
-			 data-marker-styles="{{ markerstyles|json_encode }}"
-			 data-zoom="{{ map.mapZoom }}"
-			 data-pitch="{{ map.mapPitch }}"
-			 data-bearing="{{ map.mapBearing }}"
-		/>
+		<div class="c-map" id="map" data-addresses="{{ addresses|json_encode }}" data-token="{{ map.token }}" data-styles="{{ map.stylesheet }}" data-marker-styles="{{ markerstyles|json_encode }}" data-zoom="{{ map.mapZoom }}" data-pitch="{{ map.mapPitch }}" data-bearing="{{ map.mapBearing }}"/>
 	</div>
 {% endblock %}
 

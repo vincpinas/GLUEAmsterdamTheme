@@ -1,4 +1,4 @@
-dateModified: 1682448383
+dateModified: 1683658684
 elementSources:
   craft\elements\Entry:
     -
@@ -171,6 +171,7 @@ meta:
     28df0b76-c9f0-4d20-8ca1-a15c637783ea: 'Route Name' # Route Name
     29af6c74-049e-465f-97f6-c25132abd027: 'Marker Size' # Marker Size
     54d7b784-36c0-4673-ac81-61eb4fec1591: Date # Date
+    62bbfaa1-afe7-4d10-86d1-a4f1f257284d: 'Marker thumbnail placeholder' # Marker thumbnail placeholder
     76b8abf5-b5a7-4316-b76f-042fd9b0e526: Map # Map
     84f5e1d4-3d01-4be8-82df-2de9132f6b6b: 'Link Text' # Link Text
     90a58fe8-93e7-4f43-a79c-f92d1076f9c0: 'Glue websites' # Glue websites
@@ -190,6 +191,7 @@ meta:
     24188079-a4ae-442c-a887-c038437ae289: Event # Event
     a1a284ed-b660-4132-9e98-a7af09a3cc32: 'Rich Text' # Rich Text
     a77a59a7-aee7-4873-8912-740bbc7e6194: 'Nav Links' # Nav Links
+    acb4d8ea-f708-4993-846b-d1e591d442ff: 'Cardinal Direction' # Cardinal Direction
     ae91170d-e3ba-466f-92ff-05269557039f: 'Glue events' # Glue events
     b1f75175-4aa9-41b1-bd8a-395bd08c680f: Header # Header
     b8f74062-ae64-4520-a7ed-fe4272ee4456: 'User Avatars' # User Avatars
@@ -223,6 +225,23 @@ plugins:
     settings:
       expandSingles: true
       redirectToEntry: true
+  patrol:
+    edition: standard
+    enabled: true
+    schemaVersion: 3.0.0
+    settings:
+      maintenanceModeAuthorizedIps:
+        - '::1'
+        - 127.0.0.1
+      maintenanceModeEnabled: false
+      maintenanceModePageUrl: /offline
+      maintenanceModeResponseStatusCode: 403
+      primaryDomain: ''
+      redirectStatusCode: 302
+      sslRoutingBaseUrl: ''
+      sslRoutingEnabled: false
+      sslRoutingRestrictedUrls:
+        - /
   redactor:
     edition: standard
     enabled: true

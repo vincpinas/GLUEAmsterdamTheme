@@ -17,8 +17,25 @@ const map = new mapboxgl.Map({
     bearing: JSON.parse(mapElement.dataset.bearing)
 });
 
-// map.scrollZoom.disable();
-// map.dragPan.disable();
+const mobile = (() => {
+    if (navigator.userAgent.match(/Android/i)
+        || navigator.userAgent.match(/webOS/i)
+        || navigator.userAgent.match(/iPhone/i)
+        || navigator.userAgent.match(/iPad/i)
+        || navigator.userAgent.match(/iPod/i)
+        || navigator.userAgent.match(/BlackBerry/i)
+        || navigator.userAgent.match(/Windows Phone/i)) {
+        return true;
+    } else {
+        return false;
+    }
+})()
+
+if (mobile) {
+    map.scrollZoom.disable();
+    map.dragPan.disable();
+}
+
 
 const mapState = new MapStateMachine(mapElement, mapboxgl.accessToken, map);
 new MapMenu(mapState);
