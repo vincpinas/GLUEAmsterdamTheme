@@ -1,4 +1,4 @@
-dateModified: 1683658684
+dateModified: 1684317184
 elementSources:
   craft\elements\Entry:
     -
@@ -163,10 +163,12 @@ meta:
     7c4c875d-b26b-4ca2-9e5e-3e337d3941ef: Press # Press
     9b440915-1a29-471d-9ebe-88c6673362e7: Map # Map
     9cf5f394-9490-4101-bdc7-5f09654f53e7: Thumbnail # Thumbnail
+    9ee4a793-9be1-424c-b7c5-3e55b24bd669: New # New
     9f819326-c617-42fe-a427-a0c843eb9312: POI # POI
     13a8868b-e382-483f-9f64-0743e959d4b9: 'Text Field' # Text Field
     014c7b4b-b329-42ff-ba25-1b87cfcadb60: Navigation # Navigation
     20d23889-9805-4910-b96d-d69c5b2341ed: Route # Route
+    21c100fa-b14d-4c5a-b30a-f1f28bc91e6d: Register # Register
     22ded96b-de85-4414-a36e-ba62898a3e19: 'Map Bearing' # Map Bearing
     28df0b76-c9f0-4d20-8ca1-a15c637783ea: 'Route Name' # Route Name
     29af6c74-049e-465f-97f6-c25132abd027: 'Marker Size' # Marker Size
@@ -175,9 +177,11 @@ meta:
     76b8abf5-b5a7-4316-b76f-042fd9b0e526: Map # Map
     84f5e1d4-3d01-4be8-82df-2de9132f6b6b: 'Link Text' # Link Text
     90a58fe8-93e7-4f43-a79c-f92d1076f9c0: 'Glue websites' # Glue websites
+    94b2ace0-9736-4772-8b51-5ad1c118ba9b: Register # Register
     462e7888-6a24-4c61-b3f1-faaec6bc45ad: 'Link Destination' # Link Destination
     00602bc8-2fab-4442-bff1-e6af501f1470: Socials # Socials
     687bb273-50a1-471a-b240-7ccc88e88288: 'Map Pitch' # Map Pitch
+    767ce7ff-b004-4bb8-a476-13d97b25fc2b: 'Contact Form' # Contact Form
     850d1fd6-598a-4264-a562-cf6f27d6dd5a: History # History
     8634fab2-bde5-4665-80a8-324c56cb1c35: 'Web Images' # Web Images
     8809cf4a-41fd-49bf-9e6c-01bb347d9a21: Token # Token
@@ -225,23 +229,11 @@ plugins:
     settings:
       expandSingles: true
       redirectToEntry: true
-  patrol:
+  formie:
     edition: standard
     enabled: true
-    schemaVersion: 3.0.0
-    settings:
-      maintenanceModeAuthorizedIps:
-        - '::1'
-        - 127.0.0.1
-      maintenanceModeEnabled: false
-      maintenanceModePageUrl: /offline
-      maintenanceModeResponseStatusCode: 403
-      primaryDomain: ''
-      redirectStatusCode: 302
-      sslRoutingBaseUrl: ''
-      sslRoutingEnabled: false
-      sslRoutingRestrictedUrls:
-        - /
+    licenseKey: ETAV36R7E2C5HDBRH633AIRO
+    schemaVersion: 2.0.10
   redactor:
     edition: standard
     enabled: true
@@ -250,10 +242,6 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 2.0.0
-  vite:
-    edition: standard
-    enabled: true
-    schemaVersion: 1.0.0
 system:
   edition: pro
   live: true

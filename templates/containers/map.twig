@@ -31,7 +31,7 @@
 
 {# Generate data tags with addresses for making routes #}
 {% block content %}
-	<div class="c-map__wrapper">
+	<main class="c-map__wrapper">
 		<ul class="c-map__menu">
 			{% for direction in directionsArray %}
 				{% if map.routes.cardinalDirection(direction).all()|length > 0 %}
@@ -86,11 +86,11 @@
 			</li>
 		</ul>
 		<div class="c-map" id="map" data-addresses="{{ addresses|json_encode }}" data-token="{{ map.token }}" data-styles="{{ map.stylesheet }}" data-marker-styles="{{ markerstyles|json_encode }}" data-zoom="{{ map.mapZoom }}" data-pitch="{{ map.mapPitch }}" data-bearing="{{ map.mapBearing }}"/>
-	</div>
+	</main>
 {% endblock %}
 
 {% block javascripts %}
-	<script src="{{ siteUrl }}scripts/mapbox.js" type="module"></script>
+	<script src="{{ siteUrl }}scripts/map/mapbox.js" type="module"></script>
 	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 {% endblock %}

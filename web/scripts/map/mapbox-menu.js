@@ -76,7 +76,7 @@ export default class MapMenu {
 
             a.innerHTML = `${i + 1}. <span></span> ${poi.fullName}`;
             a.target = "_blank";
-            a.href = `/account/${poi.username}`;
+            a.href = `/public-profile/${poi.username}`;
             googleRouteHref += `${poi.postalCode}/`
 
             li.appendChild(a);

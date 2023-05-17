@@ -1,0 +1,9 @@
+siteUid: null
+sortOrder: 2
+template: containers/register.twig
+uriParts:
+  - register/
+  -
+    - number
+    - \d+
+uriPattern: 'register/<number:\d+>'

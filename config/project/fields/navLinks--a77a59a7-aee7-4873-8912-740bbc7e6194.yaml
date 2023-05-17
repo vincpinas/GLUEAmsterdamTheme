@@ -7,7 +7,7 @@ name: 'Nav Links'
 searchable: false
 settings:
   contentTable: '{{%matrixcontent_navlinks}}'
-  maxBlocks: 3
+  maxBlocks: null
   minBlocks: null
   propagationKeyFormat: null
   propagationMethod: all

@@ -77,6 +77,7 @@
 }
 
 .c-map {
+  color: #ffffff;
   width: 50%;
   height: 80vh;
 }
@@ -165,6 +166,7 @@
 .c-map__menuDirectionButton {
   text-transform: capitalize;
   cursor: pointer;
+  color: #ffffff;
 }
 .c-map__menuDirectionCloseButton {
   position: absolute;
@@ -234,6 +236,7 @@
   text-align: center;
   padding: 5rem 0;
   overflow-y: scroll;
+  color: #ffffff;
 }
 .c-map__menuItem.active li h2, .c-map__locationsOverview li h2 {
   max-width: 15rem;
@@ -243,6 +246,7 @@
   font-family: "Lausanne";
   font-weight: 600;
   font-style: normal;
+  color: #ffffff;
 }
 .c-map__menuItem.active ul > li:first-of-type, .c-map__locationsOverview ul > li:first-of-type {
   padding: 0 2rem;
@@ -377,6 +381,7 @@
   font-family: "Lausanne";
   font-weight: 600;
   font-style: normal;
+  color: #ffffff;
 }
 .c-map__locationsOverview ol li {
   padding: 0rem 0.75rem;
@@ -390,6 +395,7 @@
   font-family: "Lausanne";
   font-weight: 600;
   font-style: normal;
+  color: #ffffff;
 }
 .c-map__locationsOverview ol li:hover ion-icon {
   transform: translateX(0.4rem);
@@ -428,6 +434,7 @@
   font-family: "Lausanne";
   font-weight: 400;
   font-style: normal;
+  color: #ffffff;
 }
 .c-map__wrapper {
   width: 100%;
@@ -441,6 +448,182 @@
 
 .mapboxgl-popup-close-button {
   display: none;
+}
+
+.c-register__title {
+  padding: 2rem 0;
+  text-align: center;
+}
+.c-register__progress {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 5rem;
+}
+.c-register__progressPoint {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  font-family: "Lausanne";
+  font-weight: 500;
+  font-style: normal;
+}
+.c-register__progressPointLine {
+  border: 2px solid #787878;
+  width: 50%;
+}
+.c-register__progressPointText {
+  position: absolute;
+  top: calc(100% + 1rem);
+  color: #787878;
+}
+.c-register__progressPointBall {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 2rem !important;
+  height: 2rem !important;
+  background: #787878;
+  border-radius: 100%;
+  color: #ffffff;
+}
+.c-register__progressPoint.active .c-register__progressPointLine:nth-of-type(1) {
+  border: 2px solid #0525d3;
+}
+.c-register__progressPoint.active .c-register__progressPointText {
+  color: #0525d3;
+}
+.c-register__progressPoint.active .c-register__progressPointBall {
+  background: #0525d3;
+}
+.c-register__progressPoint.active:has(~ .c-register__progressPoint.active) .c-register__progressPointLine {
+  border: 2px solid #0525d3;
+}
+.c-register__form {
+  display: flex;
+  padding: 2rem 10rem;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  flex-direction: column;
+}
+@media screen and (max-width: 991px) {
+  .c-register__form {
+    padding: 2rem 8rem;
+  }
+}
+@media screen and (max-width: 767px) {
+  .c-register__form {
+    padding: 2rem 5rem;
+  }
+}
+.c-register__formTitle {
+  font-family: "Lausanne";
+  font-weight: 600;
+  font-style: normal;
+}
+.c-register__formSubTitle {
+  color: #787878;
+}
+.c-register__formVAT {
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 1rem;
+}
+@media screen and (max-width: 767px) {
+  .c-register__formVAT {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+.c-register__formPagination {
+  display: flex;
+}
+.c-register__formPagination button:nth-last-of-type(1) {
+  margin-left: auto;
+}
+.c-register__formPrevious, .c-register__formContinue, .c-register__formFinish {
+  border: none;
+  width: fit-content;
+  background: #0525d3;
+  font-family: "Lausanne";
+  font-weight: 600;
+  font-style: normal;
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+}
+.c-register__formContinue.disabled {
+  opacity: 0.5;
+}
+.c-register__formPackages {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.c-register__formPackage {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  padding: 1rem;
+  position: relative;
+  width: 22rem;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+}
+.c-register__formPackage ul {
+  list-style: outside;
+  padding: 1rem 2rem;
+}
+.c-register__formPackage ul li, .c-register__formPackage span {
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 1rem;
+  font-family: "Lausanne";
+  font-weight: 500;
+  font-style: normal;
+  margin-bottom: 0.1rem;
+}
+@media screen and (max-width: 767px) {
+  .c-register__formPackage ul li, .c-register__formPackage span {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+.c-register__formPackage button {
+  border: 2px solid black;
+  padding: 0.5rem;
+  width: 100%;
+  background: none;
+  transition: 0.35s;
+  margin-top: auto;
+}
+.c-register__formPackage button:hover, .c-register__formPackage button.selected {
+  background: #000000;
+  color: #ffffff;
+}
+.c-register__formPackageHeading {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.c-register__formPackageHeading::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 95%;
+  border: 1px solid black;
+  align-self: center;
+}
+.c-register__formPackageHeading h3 {
+  margin: 0;
+}
+.c-register__formPackageHeading p {
+  color: #787878;
 }
 
 /* Any imports required multiple times across the site will be imported here. */
@@ -519,7 +702,7 @@ table {
 
 body,
 html {
-  color: #ffffff;
+  color: #000000;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -532,7 +715,7 @@ html button,
 html input[type=submit] {
   text-decoration: none;
   cursor: pointer;
-  color: #ffffff;
+  color: #000000;
 }
 body button,
 body a,

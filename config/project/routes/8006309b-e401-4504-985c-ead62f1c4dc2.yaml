@@ -2,8 +2,8 @@ siteUid: null
 sortOrder: 1
 template: containers/account.twig
 uriParts:
-  - account/
+  - public-profile/
   -
     - '*'
     - '[^\/]+'
-uriPattern: 'account/<any:[^\/]+>'
+uriPattern: 'public-profile/<any:[^\/]+>'

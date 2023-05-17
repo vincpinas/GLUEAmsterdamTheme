@@ -1,4 +1,5 @@
 .c-map {
+    color: $text-white;
     width: 50%;
     height: 80vh;
 
@@ -88,6 +89,7 @@
     &__menuDirectionButton {
         text-transform: capitalize;
         cursor: pointer;
+        color: $text-white;
     }
 
     &__menuDirectionCloseButton {
@@ -95,7 +97,7 @@
         top: 0;
         left: 0;
         padding: 0.5rem;
-        background: $background-contrast;
+        background: $background;
         z-index: $index-1;
         outline: none;
         border: none;
@@ -110,8 +112,7 @@
         }
 
         &:hover {
-            background: darken($background-contrast, 20%);
-
+            background: darken($background, 20%);
         }
 
         &:hover ion-icon {
@@ -167,6 +168,7 @@
         text-align: center;
         padding: 5rem 0;
         overflow-y: scroll;
+        color: $text-white;
 
         li h2 {
             max-width: 15rem;
@@ -175,6 +177,7 @@
 
         li a {
             @include font--primary(600);
+            color: $text-white;
         }
 
         ul>li:first-of-type {
@@ -189,7 +192,7 @@
                 width: 20px;
                 height: 20px;
                 background: none;
-                border: 2.5px solid $text-primary;
+                border: 2.5px solid $text-white;
                 left: -16px;
             }
 
@@ -231,13 +234,13 @@
         }
 
         ul li a:hover {
-            border: 2px solid $text-primary;
+            border: 2px solid $text-white;
         }
 
         ul li:after {
             /* bullets */
             content: "";
-            background: $text-primary;
+            background: $text-white;
             width: 10px;
             height: 2.5px;
             position: absolute;
@@ -252,7 +255,7 @@
             position: absolute;
             left: -7px;
             /* adjust manually */
-            border-left: 2px solid $text-primary;
+            border-left: 2px solid $text-white;
             height: 100%;
             width: 6px;
             top: 11px;
@@ -293,6 +296,7 @@
             flex-direction: column;
             justify-content: center;
             @include font--primary(600);
+            color: $text-white;
         }
 
         ol li {
@@ -306,6 +310,7 @@
             border: none;
             outline: none;
             @include font--primary(600);
+            color: $text-white;
         }
 
         ol li:hover {
@@ -350,8 +355,9 @@
     &__menuGoogleButton {
         margin-top: 2rem;
         padding: 0.5rem 1rem;
-        border: 2px solid $text-primary;
+        border: 2px solid $text-white;
         @include font--primary(400);
+        color: $text-white;
     }
 
     &__wrapper {

@@ -1,0 +1,123 @@
+{% extends "index" %}
+
+{% set progressPoints = ["Package", "Account", "Company", "Invoice details",] %}
+
+{# {% set n = craft.app.session.set("reg_progress", 4) %} #}
+{% set progress = number %}
+
+{% block content %}
+	<main class="c-register">
+		<h2 class="c-register__title">Welcome to GLUE!</h2>
+
+		<div class="c-register__progress">
+			{% for point in progressPoints %}
+				<div class="c-register__progressPoint {% if loop.index <= progress %} active {% endif %}">
+					<span class="c-register__progressPointLine"></span>
+					<span class="c-register__progressPointBall">{{ loop.index }}</span>
+					<p class="c-register__progressPointText">{{ point }}</p>
+					<span class="c-register__progressPointLine"></span>
+				</div>
+			{% endfor %}
+		</div>
+
+		{% if progress is same as("1") %}
+			<div class="c-register__form c-register__form-1">
+				<h4 class="c-register__formTitle">Select your package</h4>
+				<p class="c-register__formSubTitle">Connect and promote your location during the GLUE event</p>
+				<div class="c-register__formPackages">
+					<div class="c-register__formPackage">
+						<div class="c-register__formPackageHeading">
+							<h3>BINDER option</h3>
+							<p>One time purchase</p>
+							<h2>€850*</h2>
+						</div>
+						<ul>
+							<li>Dedicated company page</li>
+							<li>The possibility to have your presentation/program enriched and fortified</li>
+							<li>Dot on the GLUE map + part of a route</li>
+							<li>Signage during 3 days of GLUE</li>
+							<li>2 Invitaations to GLUE kick-off or after party</li>
+							<li>1 Instagram post</li>
+							<li>1 Instagram post about events organized during GLUE</li>
+							<li>Event (talk, workshop, cocktail) featured in GLUE Events program.</li>
+							<li>1 invitation to GLUE Community drinks ({{ "now"|date("Y") }})</li>
+						</ul>
+						<button class="c-register__formPackageSelect" data-package="BINDER">Select</button>
+					</div>
+					<div class="c-register__formPackage">
+						<div class="c-register__formPackageHeading">
+							<h3>CEMENT option</h3>
+							<p>One time purchase</p>
+							<h2>€1,950*</h2>
+						</div>
+						<ul>
+							<li>All BINDER features</li>
+						</ul>
+						<span>As well as:</span>
+						<ul>
+							<li>1 extra Instagram post (2 in total)</li>
+							<li>1 extra invitation to GLUE Community drinks ({{ "now"|date("Y") }})</li>
+							<li>Possibility to host a GLUE Community drink organized by GLUE*</li>
+						</ul>
+						<button class="c-register__formPackageSelect" data-package="CEMENT">Select</button>
+					</div>
+					<div class="c-register__formPackage">
+						<div class="c-register__formPackageHeading">
+							<h3>SUPER GLUE option</h3>
+							<p>One time purchase</p>
+							<h2>€4,000*</h2>
+						</div>
+						<ul>
+							<li>All CEMENT features</li>
+						</ul>
+						<span>As well as:</span>
+						<ul>
+							<li>2 extra Instagram posts (4 in total)</li>
+							<li>1 extra Instagram post about events organized during GLUE (2 in total)</li>
+						</ul>
+						<button class="c-register__formPackageSelect" data-package="SUPER GLUE">Select</button>
+					</div>
+				</div>
+				<p class="c-register__formVAT">*Excl. VAT</p>
+				<span class="c-register__formPagination">
+					<button class="c-register__formContinue">Continue</button>
+				</span>
+			</div>
+		{% endif %}
+
+		{% if progress is same as("2") %}
+			<div class="c-register__form c-register__form-2">
+
+				<span class="c-register__formPagination">
+					<button class="c-register__formPrevious">Previous</button>
+					<button class="c-register__formContinue">Continue</button>
+				</span>
+			</div>
+		{% endif %}
+
+		{% if progress is same as("3") %}
+			<div class="c-register__form c-register__form-3">
+
+				<span class="c-register__formPagination">
+					<button class="c-register__formPrevious">Previous</button>
+					<button class="c-register__formContinue">Continue</button>
+				</span>
+			</div>
+		{% endif %}
+
+		{% if progress is same as("4") %}
+			<div class="c-register__form c-register__form-4">
+
+				<span class="c-register__formPagination">
+					<button class="c-register__formPrevious">Previous</button>
+					<button class="c-register__formFinish">Finish</button>
+				</span>
+			</div>
+		{% endif %}
+
+	</main>
+{% endblock %}
+
+{% block javascripts %}
+	<script src="{{ siteUrl }}scripts/register/register.js" type="module"></script>
+{% endblock %}

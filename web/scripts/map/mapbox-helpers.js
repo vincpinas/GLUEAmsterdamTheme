@@ -77,7 +77,7 @@ export default class MapStateMachine {
                                     <img class="c-map__popupImg" src="${popupInfo.thumbnail}"></img>
                                 </div>
                                 <span class="c-map__popupLinks">
-                                    <a class="c-map__popupLink" target="_blank" href="/account/${popupInfo.username}">More Info</a>
+                                    <a class="c-map__popupLink" target="_blank" href="/public-profile/${popupInfo.username}">More Info</a>
                                     <a class="c-map__popupLink" target="_blank" href="https://www.google.nl/maps/place/${popupInfo.address}}">Display on map</a>
                                 </span>`
                             )

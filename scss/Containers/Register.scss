@@ -1,0 +1,179 @@
+.c-register {
+
+    &__title {
+        padding: 2rem 0;
+        text-align: center;
+    }
+
+    &__progress {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 5rem;
+
+        &Point {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            @include font--primary(500);
+        }
+
+        &PointLine {
+            border: 2px solid $gray;
+            width: 50%;
+        }
+
+        &PointText {
+            position: absolute;
+            top: calc(100% + 1rem);
+            color: $gray;
+        }
+
+        &PointBall {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            width: 2rem !important;
+            height: 2rem !important;
+            background: $gray;
+            border-radius: 100%;
+            color: $text-white;
+        }
+
+        &Point.active &PointLine:nth-of-type(1) {
+            border: 2px solid $special-primary;
+        }
+
+        &Point.active &PointText {
+            color: $special-primary;
+        }
+
+        &Point.active &PointBall {
+            background: $special-primary;
+        }
+
+        &Point.active:has(~ .c-register__progressPoint.active) .c-register__progressPointLine {
+            border: 2px solid $special-primary;
+        }
+    }
+
+    &__form {
+        display: flex;
+        padding: 2rem 10rem;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        flex-direction: column;
+
+        @media #{$tablet-down} {
+            padding: 2rem 8rem;
+        }
+
+        @media #{$mobile-down} {
+            padding: 2rem 5rem;
+        }
+
+        &Title {
+            @include font--primary(600)
+        }
+
+        &SubTitle {
+            color: $gray;
+        }
+
+        &VAT {
+            @include input;
+        }
+
+        &Pagination {
+            display: flex;
+        }
+
+        &Pagination button:nth-last-of-type(1) {
+            margin-left: auto;
+        }
+
+        &Previous, &Continue, &Finish {
+            border: none;
+            width: fit-content;
+            background: $special-primary;
+            @include font--primary(600);
+            color: $text-white;
+            padding: 0.75rem 1.5rem;
+        }
+
+        &Continue.disabled {
+            opacity: 0.5;
+        }
+
+        &Packages {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        &Package {
+            display: flex;
+            flex-direction: column;
+            border: 2px solid black;
+            padding: 1rem;
+            position: relative;
+            width: 22rem;
+            margin-right: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        &Package ul {
+            list-style: outside;
+            padding: 1rem 2rem;
+        }
+
+        &Package ul li, &Package span {
+            @include input;
+            @include font--primary(500);
+            margin-bottom: 0.1rem;
+        }
+
+        &Package button {
+            border: 2px solid black;
+            padding: 0.5rem;
+            width: 100%;
+            background: none;
+            transition: $transition-fast;
+            margin-top: auto;
+        }
+
+        &Package button:hover, &Package button.selected {
+            background: $background-contrast;
+            color: $background;
+        }
+
+        &PackageHeading {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        &PackageHeading::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            width: 95%;
+            border: 1px solid black;
+            align-self: center;
+        }
+
+        &PackageHeading h3 {
+            margin: 0;
+        }
+
+        &PackageHeading p {
+            color: $gray;
+        }
+    }
+}
