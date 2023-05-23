@@ -2,8 +2,8 @@ siteUid: null
 sortOrder: 2
 template: containers/register.twig
 uriParts:
-  - register/
+  - sign-up/
   -
     - number
     - \d+
-uriPattern: 'register/<number:\d+>'
+uriPattern: 'sign-up/<number:\d+>'

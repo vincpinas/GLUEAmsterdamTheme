@@ -18,7 +18,7 @@ propagationMethod: all
 siteSettings:
   c5fb5f28-2f93-4a73-bcd6-9c57ee22f86f: # Glueweb Amsterdam
     enabledByDefault: true
-    hasUrls: true
-    template: containers/home.twig
-    uriFormat: __home__
+    hasUrls: false
+    template: null
+    uriFormat: null
 type: single

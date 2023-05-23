@@ -20,5 +20,5 @@ siteSettings:
     enabledByDefault: true
     hasUrls: true
     template: containers/map.twig
-    uriFormat: map
+    uriFormat: __home__
 type: single

@@ -1,4 +1,4 @@
-dateModified: 1684867522
+dateModified: 1684885182
 elementSources:
   craft\elements\Entry:
     -
@@ -27,46 +27,7 @@ elementSources:
       key: 'single:21c100fa-b14d-4c5a-b30a-f1f28bc91e6d' # Register
       type: native
     -
-      defaultSort:
-        - title
-        - asc
-      disabled: false
-      key: 'single:2b448a30-8f39-40b9-83d4-1742c6fc848a' # Daily Program
-      tableAttributes:
-        - postDate
-        - expiryDate
-        - author
-        - link
-      type: native
-    -
-      defaultSort:
-        - title
-        - asc
-      disabled: false
-      key: 'single:994745bc-5470-46e9-9990-b36b218f7269' # Press
-      tableAttributes:
-        - postDate
-        - expiryDate
-        - author
-        - link
-      type: native
-    -
-      heading: Channels
-      type: heading
-    -
-      key: 'section:be2ea541-5a66-4e01-a84f-f7672294ae3e' # Daily Programs
-      type: native
-    -
-      defaultSort:
-        - postDate
-        - desc
-      disabled: false
-      key: 'section:5cfe211b-9f9b-4723-841e-c5927528cb46' # GLUE History
-      tableAttributes:
-        - postDate
-        - expiryDate
-        - author
-        - link
+      key: 'single:8dec35ce-7bad-4407-bbc3-56adc9cccc4a' # Login
       type: native
   craft\elements\User:
     -
@@ -146,15 +107,11 @@ meta:
     0dc72236-a5db-434e-8668-f62c38664692: 'Social Media Link' # Social Media Link
     0edc21c7-41ec-4128-97f9-48fdbc7a3f31: Instagram # Instagram
     1a8a2732-cd82-4bf7-8afe-099fb893ac20: Map # Map
-    01c953d0-561a-48ff-bc6e-6bb0d582fa7a: Footer # Footer
-    2b448a30-8f39-40b9-83d4-1742c6fc848a: 'Daily Program' # Daily Program
     3f956c2c-f1e6-4abf-abc1-517adbbd0e3d: VAT # VAT
     3f6049f8-db41-426e-86a4-196457c3e028: Slug # Slug
     5b1e8713-7a27-46ed-a407-e926769d89e2: Colour # Colour
     05b9b1df-40f9-400d-b742-ed9dbfe00f8c: Login # Login
-    5cfe211b-9f9b-4723-841e-c5927528cb46: 'GLUE History' # GLUE History
     5d152d4b-1ee3-4f95-bca3-97ab4af05e68: 'Route Marker Icon' # Route Marker Icon
-    7c4c875d-b26b-4ca2-9e5e-3e337d3941ef: Press # Press
     8dec35ce-7bad-4407-bbc3-56adc9cccc4a: Login # Login
     9b440915-1a29-471d-9ebe-88c6673362e7: Map # Map
     9cf5f394-9490-4101-bdc7-5f09654f53e7: Thumbnail # Thumbnail
@@ -181,7 +138,6 @@ meta:
     00602bc8-2fab-4442-bff1-e6af501f1470: Socials # Socials
     687bb273-50a1-471a-b240-7ccc88e88288: 'Map Pitch' # Map Pitch
     767ce7ff-b004-4bb8-a476-13d97b25fc2b: 'Contact Form' # Contact Form
-    850d1fd6-598a-4264-a562-cf6f27d6dd5a: History # History
     8634fab2-bde5-4665-80a8-324c56cb1c35: 'Web Images' # Web Images
     8809cf4a-41fd-49bf-9e6c-01bb347d9a21: Token # Token
     8849fcad-9c3c-407d-be47-dc023f96bfb0: 'Social Media Image' # Social Media Image
@@ -190,7 +146,6 @@ meta:
     294337b5-643e-4cd3-92c7-01c2dade26ce: 'Map Zoom' # Map Zoom
     696329c8-d035-43a0-96a8-a66d8626feb9: Home # Home
     830820ed-79d9-4d46-9e86-4134fc2b8d2b: Country # Country
-    994745bc-5470-46e9-9990-b36b218f7269: Press # Press
     5864789d-bb6c-47fa-83fa-c0669d03635a: Link # Link
     24188079-a4ae-442c-a887-c038437ae289: Event # Event
     a1a284ed-b660-4132-9e98-a7af09a3cc32: 'Rich Text' # Rich Text
@@ -198,10 +153,9 @@ meta:
     acb4d8ea-f708-4993-846b-d1e591d442ff: 'Cardinal Direction' # Cardinal Direction
     ae91170d-e3ba-466f-92ff-05269557039f: 'Glue events' # Glue events
     afaddf10-8b46-42cc-a4c2-3842de0d8fe2: 'Company name' # Company name
-    b1f75175-4aa9-41b1-bd8a-395bd08c680f: Header # Header
     b8f74062-ae64-4520-a7ed-fe4272ee4456: 'User Avatars' # User Avatars
     bcc4aab8-13e9-4efc-a464-78c59170a854: 'Large Text Field' # Large Text Field
-    be2ea541-5a66-4e01-a84f-f7672294ae3e: 'Daily Programs' # Daily Programs
+    bd5e2840-24bf-449d-8949-c7c8429d4018: Title # Title
     c0f16670-30a8-4b0d-93c2-bc35b31ba3ee: 'Public Schema' # Public Schema
     c5fb5f28-2f93-4a73-bcd6-9c57ee22f86f: 'Glueweb Amsterdam' # Glueweb Amsterdam
     c8adfe4a-01be-4ef5-a6ea-1dd05dbdf07e: DateTable # DateTable
@@ -210,14 +164,12 @@ meta:
     cdfc6d46-fdd1-4bdf-b53b-7f44b84230a5: Stylesheet # Stylesheet
     ce4c8a98-5c1f-4d39-bbf0-6bfd5fd4ba32: Subtitle # Subtitle
     d7f79a98-5851-4ca8-8097-74672ff95134: Facebook # Facebook
-    d9e67970-27dd-4bd3-a5c6-a5eb6a5a6034: 'Daily Program' # Daily Program
     e3b03628-9c11-450f-8556-1e2882e0101c: Home # Home
     e4bcb26e-0946-40a4-a3e0-1d73c3971119: 'Locations Marker Icon' # Locations Marker Icon
     e6ea2a09-6abe-4046-8a6f-c483f1d58716: Common # Common
     e3480c4d-8e7a-4311-af43-7a686e25d7a0: Website # Website
     f0917fc5-6089-45ec-a4e2-c442ce4726a2: Package # Package
     f46c926b-268c-4328-ad61-180b55bea62e: City # City
-    fb6694e8-a666-48f2-a5a2-adaa88241f80: 'Daily Program' # Daily Program
 plugins:
   cp-css:
     edition: standard

@@ -3,14 +3,15 @@
 {% set progressPoints = ["Package", "Account", "Company", "Invoice details",] %}
 
 {% if number is not defined or number is null %}
-	{% redirect '/register/1' %}
+	{% redirect '/sign-up/1' %}
 {% endif %}
 
 {% set progress = number %}
 
+
 {% block content %}
 	<main class="c-register">
-		<h2 class="c-register__title">Welcome to GLUE!</h2>
+		{# <h2 class="c-register__title">{{ nTitle }}</h2> #}
 
         <div class="c-register__errors">
         </div>
@@ -196,6 +197,4 @@
 
 {% block javascripts %}
 	<script src="{{ siteUrl }}scripts/register/register.js" type="module"></script>
-	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 {% endblock %}

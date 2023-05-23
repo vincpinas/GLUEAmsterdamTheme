@@ -3,6 +3,7 @@ import { createElement, getFormNumber, getSessionInfo, validateFormField } from 
 class Register {
     constructor() {
         this.formNumber = getFormNumber();
+        this.registerBaseUrl = "/sign-up"
 
         this.init();
     }
@@ -25,13 +26,13 @@ class Register {
 
         switch (formNumber) {
             case 2:
-                r && r.package ? null : location.replace(`/register/1`);
+                r && r.package ? null : location.replace(`${this.registerBaseUrl}/1`);
                 break;
             case 3:
-                r && r.package && r.email && r.password ? null : location.replace(`/register/1`);
+                r && r.package && r.email && r.password ? null : location.replace(`${this.registerBaseUrl}/1`);
                 break;
             case 4:
-                r && r.package && r.email && r.password && r.company_name ? null : location.replace(`/register/1`);
+                r && r.package && r.email && r.password && r.company_name ? null : location.replace(`${this.registerBaseUrl}/1`);
                 break;
 
             default:
@@ -44,7 +45,7 @@ class Register {
         const button = document.querySelector(".c-register__formContinue");
         if (button) button.addEventListener("click", () => {
             if (func) func();
-            location.replace(`/register/${getFormNumber() + 1}`)
+            location.replace(`${this.registerBaseUrl}/${getFormNumber() + 1}`)
         })
     }
 
@@ -53,7 +54,7 @@ class Register {
         const button = document.querySelector(".c-register__formPrevious");
         if (button) button.addEventListener("click", () => {
             if (func) func();
-            location.replace(`/register/${getFormNumber() - 1}`)
+            location.replace(`${this.registerBaseUrl}/${getFormNumber() - 1}`)
         })
     }
 

@@ -1,10 +1,8 @@
 {% set pages = craft.entries.section('pages') %}
 
 <header class="c-header">
-	<div class="c-header__nav">
-	
-	</div>
-	<a class="c-header__logoWrapper" href="{{ siteUrl }}">
-		<img class="c-header__logo" src="{{ craft.rebrand.logo.url }}" alt="">
+	<a class="c-header__return" href="{{ event.postSlug }}">
+		<ion-icon name="arrow-back-outline"></ion-icon>
+		Return
 	</a>
 </header>

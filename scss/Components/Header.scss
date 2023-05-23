@@ -3,64 +3,14 @@
 .c-header {
     width: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 0 6rem;
+    padding: 2rem;
     border-bottom: 1px solid $special-primary;
 
-    @media #{$tablet-down} {
-        padding: 2rem 0;
-        justify-content: space-around;
-    }
-
-    // Ham menu & Searchbar
-    &__nav {
-        &>* {
-            margin-bottom: 0;
-        }
-
-        &>*:first-of-type() {
-            margin-right: 1rem;
-        }
-    }
-
-    // Logo Placement
-    &__logo {
-        position: absolute;
-        width: inherit;
-        height: inherit;
-        top: 15%;
-        z-index: inherit;
-        background: white;
-        
-        
-        &Wrapper {
-            position: relative;
-            width: 100px;
-            height: 100px;
-            z-index: $index-2;
-            margin: 0 5rem;
-
-            @media #{$tablet-down} {
-                display: none;
-            }
-        }
-    }
-
-    &__fastNav {
-        ul {
-            display: flex;
-            flex-direction: row;
-        }
-
-        ul>*:not(:last-of-type) {
-            margin-right: 1rem;
-        }
-
-        a {
-            color: $special-primary;
-            text-transform: uppercase;
-            @include font--primary(500);
-        }
+    &__return {
+        display: flex;
+        align-items: center;
+        @include font--primary(500);
+        font-size: 1.2em;
     }
 }
