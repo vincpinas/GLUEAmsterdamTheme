@@ -1,0 +1,118 @@
+tabs:
+  -
+    elementCondition: null
+    elements:
+      -
+        elementCondition: null
+        fieldUid: bcc4aab8-13e9-4efc-a464-78c59170a854 # Large Text Field
+        instructions: 'Text descriptive of the participant'
+        label: 'Profile text'
+        required: false
+        tip: null
+        type: craft\fieldlayoutelements\CustomField
+        uid: 322e4784-a285-4e3f-9eeb-8e8ae5cbfee0
+        userCondition: null
+        warning: null
+        width: 100
+      -
+        elementCondition: null
+        fieldUid: 9cf5f394-9490-4101-bdc7-5f09654f53e7 # Thumbnail
+        instructions: 'This thumbnail is displayed on your public profile'
+        label: null
+        required: false
+        tip: null
+        type: craft\fieldlayoutelements\CustomField
+        uid: 32279b41-f613-4fa4-a864-9b3cf4156922
+        userCondition: null
+        warning: null
+        width: 100
+      -
+        attribute: addresses
+        elementCondition: null
+        id: null
+        instructions: null
+        label: null
+        orientation: null
+        requirable: false
+        required: false
+        tip: null
+        type: craft\fieldlayoutelements\users\AddressesField
+        uid: b15d1915-ff69-4c47-8dc8-bcfbb204a602
+        userCondition: null
+        warning: null
+        width: 100
+      -
+        elementCondition: null
+        fieldUid: 3f956c2c-f1e6-4abf-abc1-517adbbd0e3d # VAT
+        instructions: null
+        label: null
+        required: false
+        tip: null
+        type: craft\fieldlayoutelements\CustomField
+        uid: 73364d76-4a46-498c-8b12-c97fbbd70d79
+        userCondition: null
+        warning: null
+        width: 100
+      -
+        elementCondition: null
+        fieldUid: f0917fc5-6089-45ec-a4e2-c442ce4726a2 # Package
+        instructions: null
+        label: null
+        required: false
+        tip: null
+        type: craft\fieldlayoutelements\CustomField
+        uid: 04b4b1fb-5faf-4646-b192-22ca7f26a4ac
+        userCondition: null
+        warning: null
+        width: 100
+      -
+        elementCondition: null
+        fieldUid: 164bc9a4-5b57-4fb1-b7e2-9fb883aebc34 # Phone number
+        instructions: null
+        label: null
+        required: false
+        tip: null
+        type: craft\fieldlayoutelements\CustomField
+        uid: b63a9590-a68b-4988-9378-523d7f9566c1
+        userCondition: null
+        warning: null
+        width: 100
+      -
+        elementCondition: null
+        fieldUid: e3480c4d-8e7a-4311-af43-7a686e25d7a0 # Website
+        instructions: null
+        label: null
+        required: false
+        tip: null
+        type: craft\fieldlayoutelements\CustomField
+        uid: 5a563491-c5a3-491c-87b3-e7831ab83f6f
+        userCondition: null
+        warning: null
+        width: 100
+      -
+        elementCondition: null
+        fieldUid: 0edc21c7-41ec-4128-97f9-48fdbc7a3f31 # Instagram
+        instructions: null
+        label: null
+        required: false
+        tip: null
+        type: craft\fieldlayoutelements\CustomField
+        uid: 2b1b2dd9-acc7-4612-a16b-128e48b31d83
+        userCondition: null
+        warning: null
+        width: 100
+      -
+        elementCondition: null
+        fieldUid: d7f79a98-5851-4ca8-8097-74672ff95134 # Facebook
+        instructions: null
+        label: null
+        required: false
+        tip: null
+        type: craft\fieldlayoutelements\CustomField
+        uid: d2598928-7a11-4067-a1dc-e1db1470c77b
+        userCondition: null
+        warning: null
+        width: 100
+    name: 'User data'
+    uid: 32340a36-dfaa-4778-9860-e744f7b2d4ea
+    userCondition: null

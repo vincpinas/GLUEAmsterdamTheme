@@ -7,9 +7,11 @@
 	<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
 	<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.4.1/mapbox-gl-draw.js"></script>
 	<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.4.0/mapbox-gl-draw.css" type="text/css">
+	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 {% endblock %}
 
-{% set myUserQuery = craft.users().group('participants') %}
+{% set myUserQuery = craft.users().group('participants').status('active') %}
 {% set users = myUserQuery.all() %}
 {% set addresses = [] %}
 {% set markerstyles = { routeIcon: map.routeMarkerIcon.one().url, locationsIcon: map.locationsMarkerIcon.one().url, size: map.markerSize } %}
@@ -91,6 +93,4 @@
 
 {% block javascripts %}
 	<script src="{{ siteUrl }}scripts/map/mapbox.js" type="module"></script>
-	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 {% endblock %}

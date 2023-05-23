@@ -1,4 +1,4 @@
-dateModified: 1684317184
+dateModified: 1684752120
 elementSources:
   craft\elements\Entry:
     -
@@ -153,9 +153,11 @@ meta:
   __names__:
     0bd4d8a8-19ce-4b2a-8fe1-575b0f54a72f: Social # Social
     0dc72236-a5db-434e-8668-f62c38664692: 'Social Media Link' # Social Media Link
+    0edc21c7-41ec-4128-97f9-48fdbc7a3f31: Instagram # Instagram
     1a8a2732-cd82-4bf7-8afe-099fb893ac20: Map # Map
     01c953d0-561a-48ff-bc6e-6bb0d582fa7a: Footer # Footer
     2b448a30-8f39-40b9-83d4-1742c6fc848a: 'Daily Program' # Daily Program
+    3f956c2c-f1e6-4abf-abc1-517adbbd0e3d: VAT # VAT
     3f6049f8-db41-426e-86a4-196457c3e028: Slug # Slug
     5b1e8713-7a27-46ed-a407-e926769d89e2: Colour # Colour
     5cfe211b-9f9b-4723-841e-c5927528cb46: 'GLUE History' # GLUE History
@@ -174,10 +176,12 @@ meta:
     29af6c74-049e-465f-97f6-c25132abd027: 'Marker Size' # Marker Size
     54d7b784-36c0-4673-ac81-61eb4fec1591: Date # Date
     62bbfaa1-afe7-4d10-86d1-a4f1f257284d: 'Marker thumbnail placeholder' # Marker thumbnail placeholder
+    64f81d1c-c242-4549-8d9f-19d9974d28c7: User # User
     76b8abf5-b5a7-4316-b76f-042fd9b0e526: Map # Map
     84f5e1d4-3d01-4be8-82df-2de9132f6b6b: 'Link Text' # Link Text
     90a58fe8-93e7-4f43-a79c-f92d1076f9c0: 'Glue websites' # Glue websites
     94b2ace0-9736-4772-8b51-5ad1c118ba9b: Register # Register
+    164bc9a4-5b57-4fb1-b7e2-9fb883aebc34: 'Phone number' # Phone number
     462e7888-6a24-4c61-b3f1-faaec6bc45ad: 'Link Destination' # Link Destination
     00602bc8-2fab-4442-bff1-e6af501f1470: Socials # Socials
     687bb273-50a1-471a-b240-7ccc88e88288: 'Map Pitch' # Map Pitch
@@ -208,10 +212,13 @@ meta:
     cab00bb9-f285-41cd-9dfc-6b675f5c4817: Map # Map
     cdfc6d46-fdd1-4bdf-b53b-7f44b84230a5: Stylesheet # Stylesheet
     ce4c8a98-5c1f-4d39-bbf0-6bfd5fd4ba32: Subtitle # Subtitle
+    d7f79a98-5851-4ca8-8097-74672ff95134: Facebook # Facebook
     d9e67970-27dd-4bd3-a5c6-a5eb6a5a6034: 'Daily Program' # Daily Program
     e3b03628-9c11-450f-8556-1e2882e0101c: Home # Home
     e4bcb26e-0946-40a4-a3e0-1d73c3971119: 'Locations Marker Icon' # Locations Marker Icon
     e6ea2a09-6abe-4046-8a6f-c483f1d58716: Common # Common
+    e3480c4d-8e7a-4311-af43-7a686e25d7a0: Website # Website
+    f0917fc5-6089-45ec-a4e2-c442ce4726a2: Package # Package
     fb6694e8-a666-48f2-a5a2-adaa88241f80: 'Daily Program' # Daily Program
 plugins:
   cp-css:
@@ -229,11 +236,6 @@ plugins:
     settings:
       expandSingles: true
       redirectToEntry: true
-  formie:
-    edition: standard
-    enabled: true
-    licenseKey: ETAV36R7E2C5HDBRH633AIRO
-    schemaVersion: 2.0.10
   redactor:
     edition: standard
     enabled: true

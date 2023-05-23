@@ -450,6 +450,11 @@
   display: none;
 }
 
+.c-register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .c-register__title {
   padding: 2rem 0;
   text-align: center;
@@ -506,19 +511,19 @@
 .c-register__form {
   display: flex;
   padding: 2rem 10rem;
-  width: 100%;
+  width: fit-content;
   height: 100%;
   justify-content: center;
   flex-direction: column;
 }
 @media screen and (max-width: 991px) {
   .c-register__form {
-    padding: 2rem 8rem;
+    padding: 2rem 5rem;
   }
 }
 @media screen and (max-width: 767px) {
   .c-register__form {
-    padding: 2rem 5rem;
+    padding: 2rem;
   }
 }
 .c-register__formTitle {
@@ -556,7 +561,12 @@
   color: #ffffff;
   padding: 0.75rem 1.5rem;
 }
-.c-register__formContinue.disabled {
+.c-register__formPrevious {
+  background: none;
+  color: #000000;
+  padding: 0;
+}
+.c-register__formContinue.disabled, .c-register__formFinish.disabled {
   opacity: 0.5;
 }
 .c-register__formPackages {
@@ -572,8 +582,8 @@
   padding: 1rem;
   position: relative;
   width: 22rem;
-  margin-right: 2rem;
   margin-bottom: 2rem;
+  margin-right: 2rem;
 }
 .c-register__formPackage ul {
   list-style: outside;
@@ -601,6 +611,9 @@
   background: none;
   transition: 0.35s;
   margin-top: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .c-register__formPackage button:hover, .c-register__formPackage button.selected {
   background: #000000;
@@ -624,6 +637,73 @@
 }
 .c-register__formPackageHeading p {
   color: #787878;
+}
+.c-register__form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 1rem;
+  font-family: "Lausanne";
+  font-weight: 500;
+  font-style: normal;
+  position: relative;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  min-width: 25rem;
+}
+@media screen and (max-width: 767px) {
+  .c-register__form label {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+.c-register__formInput {
+  border: none;
+  border-bottom: 2px solid #000000;
+  outline: none;
+  background: none;
+  display: flex;
+  padding: 0.5rem 0;
+  width: 100%;
+}
+@media screen and (max-width: 991px) {
+  .c-register__formInput {
+    min-width: 15rem;
+  }
+}
+.c-register__formInput::placeholder {
+  color: #787878;
+}
+.c-register__formInputRow {
+  display: flex;
+}
+@media screen and (max-width: 767px) {
+  .c-register__formInputRow {
+    flex-direction: column;
+  }
+}
+.c-register__formInputRow .c-register__formLabel:not(:last-of-type) {
+  margin-right: 2rem;
+}
+@media screen and (max-width: 767px) {
+  .c-register__formInputRow .c-register__formLabel:not(:last-of-type) {
+    margin: 0;
+  }
+}
+.c-register__formError, .c-register__form .red {
+  color: red;
+}
+.c-register__formPasswordVisiblity {
+  position: absolute;
+  left: 90%;
+  font-size: 1.3em;
+  top: 1.7rem;
+  cursor: pointer;
 }
 
 /* Any imports required multiple times across the site will be imported here. */

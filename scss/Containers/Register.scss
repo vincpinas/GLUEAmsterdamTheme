@@ -1,4 +1,7 @@
 .c-register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     &__title {
         padding: 2rem 0;
@@ -64,17 +67,17 @@
     &__form {
         display: flex;
         padding: 2rem 10rem;
-        width: 100%;
+        width: fit-content;
         height: 100%;
         justify-content: center;
         flex-direction: column;
 
         @media #{$tablet-down} {
-            padding: 2rem 8rem;
+            padding: 2rem 5rem;
         }
 
         @media #{$mobile-down} {
-            padding: 2rem 5rem;
+            padding: 2rem;
         }
 
         &Title {
@@ -97,7 +100,9 @@
             margin-left: auto;
         }
 
-        &Previous, &Continue, &Finish {
+        &Previous,
+        &Continue,
+        &Finish {
             border: none;
             width: fit-content;
             background: $special-primary;
@@ -106,7 +111,14 @@
             padding: 0.75rem 1.5rem;
         }
 
-        &Continue.disabled {
+        &Previous {
+            background: none;
+            color: $text-primary;
+            padding: 0;
+        }
+
+        &Continue.disabled,
+        &Finish.disabled {
             opacity: 0.5;
         }
 
@@ -124,8 +136,8 @@
             padding: 1rem;
             position: relative;
             width: 22rem;
-            margin-right: 2rem;
             margin-bottom: 2rem;
+            margin-right: 2rem;
         }
 
         &Package ul {
@@ -133,7 +145,8 @@
             padding: 1rem 2rem;
         }
 
-        &Package ul li, &Package span {
+        &Package ul li,
+        &Package span {
             @include input;
             @include font--primary(500);
             margin-bottom: 0.1rem;
@@ -146,9 +159,14 @@
             background: none;
             transition: $transition-fast;
             margin-top: auto;
+            display: flex;
+            ;
+            justify-content: center;
+            align-items: center;
         }
 
-        &Package button:hover, &Package button.selected {
+        &Package button:hover,
+        &Package button.selected {
             background: $background-contrast;
             color: $background;
         }
@@ -174,6 +192,63 @@
 
         &PackageHeading p {
             color: $gray;
+        }
+
+        label {
+            display: flex;
+            flex-direction: column;
+            @include input;
+            @include font--primary(500);
+            position: relative;
+            @include no-select;
+            min-width: 25rem;
+        }
+
+        &Input {
+            border: none;
+            border-bottom: 2px solid $background-contrast;
+            outline: none;
+            background: none;
+            display: flex;
+            padding: 0.5rem 0;
+            width: 100%;
+
+
+            @media #{$tablet-down} {
+                min-width: 15rem;
+            }
+        }
+
+        &Input::placeholder {
+            color: $gray;
+        }
+
+        &InputRow {
+            display: flex;
+
+            @media #{$mobile-down} {
+                flex-direction: column;
+            }
+        }
+
+        &InputRow &Label:not(:last-of-type) {
+            margin-right: 2rem;
+
+            @media #{$mobile-down} {
+                margin: 0;
+            }
+        }
+
+        &Error, .red {
+            color: red;
+        }
+
+        &PasswordVisiblity {
+            position: absolute;
+            left: 90%;
+            font-size: 1.3em;
+            top: 1.7rem;
+            cursor: pointer;
         }
     }
 }

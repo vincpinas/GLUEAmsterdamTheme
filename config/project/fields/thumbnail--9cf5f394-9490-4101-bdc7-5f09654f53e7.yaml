@@ -1,6 +1,6 @@
 columnSuffix: null
 contentColumnType: string
-fieldGroup: e6ea2a09-6abe-4046-8a6f-c483f1d58716 # Common
+fieldGroup: 64f81d1c-c242-4549-8d9f-19d9974d28c7 # User
 handle: thumbnail
 instructions: null
 name: Thumbnail
@@ -35,7 +35,7 @@ settings:
         - class
         - craft\elements\conditions\assets\AssetCondition
   selectionLabel: null
-  showSiteMenu: false
+  showSiteMenu: true
   showUnpermittedFiles: false
   showUnpermittedVolumes: false
   sources: '*'

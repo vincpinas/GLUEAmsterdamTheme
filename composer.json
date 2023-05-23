@@ -15,7 +15,8 @@
   },
   "autoload": {
     "psr-4": {
-      "modules\\": "modules/"
+      "modules\\": "modules/",
+      "reghandle\\": "modules/reghandle/"
     }
   },
   "config": {
