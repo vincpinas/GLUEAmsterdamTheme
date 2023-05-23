@@ -1,0 +1,13 @@
+@mixin slide-in($duration: 1000ms, $delay: 0ms) {
+    @keyframes slide-in {
+        from {
+            transform: translateX(100%);
+        }
+        to {
+            transform: translateX(0px);
+        }
+    }
+
+    transform: translateX(100%);
+    animation: slide-in $duration $delay forwards;
+}

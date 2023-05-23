@@ -25,7 +25,7 @@ use craft\helpers\App;
 return [
     'id' => App::env('CRAFT_APP_ID') ?: 'CraftCMS',
     'modules' => [
-        'reghandle' => \reghandle\RegisterHandler::class,
+        'mapreg' => \mapreg\Module::class,
     ],
-    'bootstrap' => ['register-handler']
+    'bootstrap' => ['mapreg']
 ];

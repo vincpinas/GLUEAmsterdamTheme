@@ -41,8 +41,17 @@ const getSessionInfo = function () {
         .then(response => response.json());
 };
 
+const createElement = (type, className, html) => {
+    let temp = document.createElement(type);
+    if(className) temp.className = className;
+    if(html) temp.innerHTML = html;
+
+    return temp;
+}
+
 export {
     getFormNumber,
     validateFormField,
-    getSessionInfo
+    getSessionInfo,
+    createElement
 }

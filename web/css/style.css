@@ -79,7 +79,7 @@
 .c-map {
   color: #ffffff;
   width: 50%;
-  height: 80vh;
+  height: 90vh;
 }
 @media screen and (max-width: 991px) {
   .c-map {
@@ -147,7 +147,7 @@
 }
 .c-map__menu {
   width: 50%;
-  height: 80vh;
+  height: 90vh;
   display: flex;
   position: relative;
 }
@@ -203,7 +203,7 @@
 }
 @media screen and (max-width: 767px) {
   .c-map__menuDirectionTab {
-    max-height: 80vh;
+    max-height: 90vh;
     flex-direction: column;
   }
 }
@@ -438,6 +438,7 @@
 }
 .c-map__wrapper {
   width: 100%;
+  height: 100%;
   display: flex;
 }
 @media screen and (max-width: 991px) {
@@ -459,6 +460,64 @@
   padding: 2rem 0;
   text-align: center;
 }
+.c-register__error {
+  display: flex;
+  flex-direction: column;
+  background: #FED7D7;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  transform: translateX(100%);
+  animation: slide-in 0.35s 0ms forwards;
+}
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+.c-register__errorHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.c-register__errorMark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  background: #FF0505;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.75rem;
+  color: #ffffff;
+}
+.c-register__errorTitle, .c-register__errorMark {
+  font-family: "Lausanne";
+  font-weight: 600;
+  font-style: normal;
+}
+.c-register__errorTitle, .c-register__errorText {
+  margin-bottom: 0;
+}
+.c-register__errorClose {
+  margin-left: auto;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+.c-register__errors {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 5rem;
+  z-index: 50;
+}
+.c-register__errors > *:not(:last-of-type) {
+  margin-bottom: 1rem;
+}
 .c-register__progress {
   display: flex;
   justify-content: space-around;
@@ -477,13 +536,13 @@
   font-style: normal;
 }
 .c-register__progressPointLine {
-  border: 2px solid #787878;
+  border: 2px solid #ffffff;
   width: 50%;
 }
 .c-register__progressPointText {
   position: absolute;
   top: calc(100% + 1rem);
-  color: #787878;
+  color: #ffffff;
 }
 .c-register__progressPointBall {
   display: flex;
@@ -492,21 +551,23 @@
   position: absolute;
   width: 2rem !important;
   height: 2rem !important;
-  background: #787878;
+  background: #0525d3;
   border-radius: 100%;
+  border: 2px solid #ffffff;
   color: #ffffff;
 }
 .c-register__progressPoint.active .c-register__progressPointLine:nth-of-type(1) {
-  border: 2px solid #0525d3;
+  border: 2px solid #ffffff;
 }
 .c-register__progressPoint.active .c-register__progressPointText {
-  color: #0525d3;
+  color: #ffffff;
 }
 .c-register__progressPoint.active .c-register__progressPointBall {
-  background: #0525d3;
+  background: #ffffff;
+  color: #0525d3;
 }
 .c-register__progressPoint.active:has(~ .c-register__progressPoint.active) .c-register__progressPointLine {
-  border: 2px solid #0525d3;
+  border: 2px solid #ffffff;
 }
 .c-register__form {
   display: flex;
@@ -532,7 +593,7 @@
   font-style: normal;
 }
 .c-register__formSubTitle {
-  color: #787878;
+  color: #ffffff;
 }
 .c-register__formVAT {
   font-size: 14px;
@@ -559,12 +620,12 @@
   font-weight: 600;
   font-style: normal;
   color: #ffffff;
+  border: 1px solid #ffffff;
   padding: 0.75rem 1.5rem;
 }
 .c-register__formPrevious {
   background: none;
-  color: #000000;
-  padding: 0;
+  color: #ffffff;
 }
 .c-register__formContinue.disabled, .c-register__formFinish.disabled {
   opacity: 0.5;
@@ -578,12 +639,16 @@
 .c-register__formPackage {
   display: flex;
   flex-direction: column;
-  border: 2px solid black;
+  border: 1px solid #ffffff;
   padding: 1rem;
   position: relative;
   width: 22rem;
   margin-bottom: 2rem;
   margin-right: 2rem;
+}
+.c-register__formPackage.selected {
+  background: #ffffff;
+  color: #0525d3;
 }
 .c-register__formPackage ul {
   list-style: outside;
@@ -605,7 +670,7 @@
   }
 }
 .c-register__formPackage button {
-  border: 2px solid black;
+  border: 1px solid #ffffff;
   padding: 0.5rem;
   width: 100%;
   background: none;
@@ -616,8 +681,9 @@
   align-items: center;
 }
 .c-register__formPackage button:hover, .c-register__formPackage button.selected {
-  background: #000000;
+  background: #0525d3;
   color: #ffffff;
+  border: 1px solid #0525d3;
 }
 .c-register__formPackageHeading {
   position: relative;
@@ -629,14 +695,11 @@
   position: absolute;
   bottom: 0;
   width: 95%;
-  border: 1px solid black;
+  border: 1px solid #ffffff;
   align-self: center;
 }
 .c-register__formPackageHeading h3 {
   margin: 0;
-}
-.c-register__formPackageHeading p {
-  color: #787878;
 }
 .c-register__form label {
   display: flex;
@@ -664,12 +727,13 @@
 }
 .c-register__formInput {
   border: none;
-  border-bottom: 2px solid #000000;
+  border-bottom: 2px solid #ffffff;
   outline: none;
   background: none;
   display: flex;
   padding: 0.5rem 0;
   width: 100%;
+  color: #ffffff;
 }
 @media screen and (max-width: 991px) {
   .c-register__formInput {
@@ -677,7 +741,7 @@
   }
 }
 .c-register__formInput::placeholder {
-  color: #787878;
+  color: #ffffff;
 }
 .c-register__formInputRow {
   display: flex;
@@ -696,7 +760,7 @@
   }
 }
 .c-register__formError, .c-register__form .red {
-  color: red;
+  color: #FF0505;
 }
 .c-register__formPasswordVisiblity {
   position: absolute;
@@ -782,7 +846,8 @@ table {
 
 body,
 html {
-  color: #000000;
+  color: #ffffff;
+  background: #0525d3;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -795,7 +860,7 @@ html button,
 html input[type=submit] {
   text-decoration: none;
   cursor: pointer;
-  color: #000000;
+  color: #ffffff;
 }
 body button,
 body a,

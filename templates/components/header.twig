@@ -7,14 +7,4 @@
 	<a class="c-header__logoWrapper" href="{{ siteUrl }}">
 		<img class="c-header__logo" src="{{ craft.rebrand.logo.url }}" alt="">
 	</a>
-	<nav class="c-header__fastNav">
-		<ul>
-			{% for link in header.navLinks.all() %}
-				{% set destination = link.linkDestination.one() %}
-				<li>
-					<a href="{{ destination.url }}">{{ link.linkText }}</a>
-				</li>
-			{% endfor %}
-		</ul>
-	</nav>
 </header>

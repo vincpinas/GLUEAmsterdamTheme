@@ -1,4 +1,4 @@
-dateModified: 1684752120
+dateModified: 1684867522
 elementSources:
   craft\elements\Entry:
     -
@@ -24,23 +24,14 @@ elementSources:
       key: 'single:76b8abf5-b5a7-4316-b76f-042fd9b0e526' # Map
       type: native
     -
-      defaultSort:
-        - title
-        - asc
-      disabled: false
-      key: 'single:2b448a30-8f39-40b9-83d4-1742c6fc848a' # Daily Program
-      tableAttributes:
-        - postDate
-        - expiryDate
-        - author
-        - link
+      key: 'single:21c100fa-b14d-4c5a-b30a-f1f28bc91e6d' # Register
       type: native
     -
       defaultSort:
         - title
         - asc
       disabled: false
-      key: 'single:084c0ccc-2bb0-474c-bb48-a6416500c2e7'
+      key: 'single:2b448a30-8f39-40b9-83d4-1742c6fc848a' # Daily Program
       tableAttributes:
         - postDate
         - expiryDate
@@ -160,9 +151,11 @@ meta:
     3f956c2c-f1e6-4abf-abc1-517adbbd0e3d: VAT # VAT
     3f6049f8-db41-426e-86a4-196457c3e028: Slug # Slug
     5b1e8713-7a27-46ed-a407-e926769d89e2: Colour # Colour
+    05b9b1df-40f9-400d-b742-ed9dbfe00f8c: Login # Login
     5cfe211b-9f9b-4723-841e-c5927528cb46: 'GLUE History' # GLUE History
     5d152d4b-1ee3-4f95-bca3-97ab4af05e68: 'Route Marker Icon' # Route Marker Icon
     7c4c875d-b26b-4ca2-9e5e-3e337d3941ef: Press # Press
+    8dec35ce-7bad-4407-bbc3-56adc9cccc4a: Login # Login
     9b440915-1a29-471d-9ebe-88c6673362e7: Map # Map
     9cf5f394-9490-4101-bdc7-5f09654f53e7: Thumbnail # Thumbnail
     9ee4a793-9be1-424c-b7c5-3e55b24bd669: New # New
@@ -174,6 +167,7 @@ meta:
     22ded96b-de85-4414-a36e-ba62898a3e19: 'Map Bearing' # Map Bearing
     28df0b76-c9f0-4d20-8ca1-a15c637783ea: 'Route Name' # Route Name
     29af6c74-049e-465f-97f6-c25132abd027: 'Marker Size' # Marker Size
+    51bd5b4e-75c4-42a1-b1b5-1827613ecaef: Address # Address
     54d7b784-36c0-4673-ac81-61eb4fec1591: Date # Date
     62bbfaa1-afe7-4d10-86d1-a4f1f257284d: 'Marker thumbnail placeholder' # Marker thumbnail placeholder
     64f81d1c-c242-4549-8d9f-19d9974d28c7: User # User
@@ -182,6 +176,7 @@ meta:
     90a58fe8-93e7-4f43-a79c-f92d1076f9c0: 'Glue websites' # Glue websites
     94b2ace0-9736-4772-8b51-5ad1c118ba9b: Register # Register
     164bc9a4-5b57-4fb1-b7e2-9fb883aebc34: 'Phone number' # Phone number
+    455ecd20-d076-49c7-8fc6-57888147a961: Zip # Zip
     462e7888-6a24-4c61-b3f1-faaec6bc45ad: 'Link Destination' # Link Destination
     00602bc8-2fab-4442-bff1-e6af501f1470: Socials # Socials
     687bb273-50a1-471a-b240-7ccc88e88288: 'Map Pitch' # Map Pitch
@@ -194,6 +189,7 @@ meta:
     53354b75-ade8-4058-a3d9-88355797c897: Email # Email
     294337b5-643e-4cd3-92c7-01c2dade26ce: 'Map Zoom' # Map Zoom
     696329c8-d035-43a0-96a8-a66d8626feb9: Home # Home
+    830820ed-79d9-4d46-9e86-4134fc2b8d2b: Country # Country
     994745bc-5470-46e9-9990-b36b218f7269: Press # Press
     5864789d-bb6c-47fa-83fa-c0669d03635a: Link # Link
     24188079-a4ae-442c-a887-c038437ae289: Event # Event
@@ -201,6 +197,7 @@ meta:
     a77a59a7-aee7-4873-8912-740bbc7e6194: 'Nav Links' # Nav Links
     acb4d8ea-f708-4993-846b-d1e591d442ff: 'Cardinal Direction' # Cardinal Direction
     ae91170d-e3ba-466f-92ff-05269557039f: 'Glue events' # Glue events
+    afaddf10-8b46-42cc-a4c2-3842de0d8fe2: 'Company name' # Company name
     b1f75175-4aa9-41b1-bd8a-395bd08c680f: Header # Header
     b8f74062-ae64-4520-a7ed-fe4272ee4456: 'User Avatars' # User Avatars
     bcc4aab8-13e9-4efc-a464-78c59170a854: 'Large Text Field' # Large Text Field
@@ -219,6 +216,7 @@ meta:
     e6ea2a09-6abe-4046-8a6f-c483f1d58716: Common # Common
     e3480c4d-8e7a-4311-af43-7a686e25d7a0: Website # Website
     f0917fc5-6089-45ec-a4e2-c442ce4726a2: Package # Package
+    f46c926b-268c-4328-ad61-180b55bea62e: City # City
     fb6694e8-a666-48f2-a5a2-adaa88241f80: 'Daily Program' # Daily Program
 plugins:
   cp-css:

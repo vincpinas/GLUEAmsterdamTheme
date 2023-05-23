@@ -1,7 +1,10 @@
+// bad hack to fix the map height
+$mapheight: 90vh;
+
 .c-map {
     color: $text-white;
     width: 50%;
-    height: 80vh;
+    height: $mapheight;
 
     @media #{$tablet-down} {
         width: 100%;
@@ -71,7 +74,7 @@
 
     &__menu {
         width: 50%;
-        height: 80vh;
+        height: $mapheight;
         display: flex;
         position: relative;
 
@@ -130,7 +133,7 @@
         background-color: $special-primary;
 
         @media #{$mobile-down} {
-            max-height: 80vh;
+            max-height: $mapheight;
             flex-direction: column;
         }
     }
@@ -362,6 +365,7 @@
 
     &__wrapper {
         width: 100%;
+        height: 100%;
         display: flex;
 
         @media #{$tablet-down} {

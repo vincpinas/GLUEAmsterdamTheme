@@ -1,4 +1,4 @@
-import { getFormNumber, getSessionInfo, validateFormField } from "./register-helpers.js";
+import { createElement, getFormNumber, getSessionInfo, validateFormField } from "./register-helpers.js";
 
 class Register {
     constructor() {
@@ -31,7 +31,7 @@ class Register {
                 r && r.package && r.email && r.password ? null : location.replace(`/register/1`);
                 break;
             case 4:
-                r && r.package && r.email && r.password && r.company_name && r.location ? null : location.replace(`/register/1`);
+                r && r.package && r.email && r.password && r.company_name ? null : location.replace(`/register/1`);
                 break;
 
             default:
@@ -70,15 +70,19 @@ class Register {
                 const params = new FormData();
                 params.append("password", storage.password)
                 params.append("email", storage.email)
-                params.append("username", `@${storage.email.split("@")[0]}`)
-                params.append("fullName", storage.email.split("@")[0])
+                params.append("username", `@${storage.company_name.toLowerCase().replace(/\s/g, "")}`)
+                params.append("fullName", storage.company_name)
                 params.append("fields[package]", storage.package)
-                params.append("fields[vat]", storage.VAT)
                 params.append("fields[phoneNumber]", storage.phone)
                 params.append("fields[website]", storage.website)
                 params.append("fields[instagram]", storage.instagram)
                 params.append("fields[facebook]", storage.facebook)
-                params.append("location", storage.location)
+                params.append("fields[vat]", storage.VAT)
+                params.append("fields[invoiceCompanyName]", storage.invoice_name)
+                params.append("fields[invoiceAddress]", storage.invoice_address)
+                params.append("fields[invoiceZipCode]", storage.invoice_zip)
+                params.append("fields[invoiceCity]", storage.invoice_city)
+                params.append("fields[invoiceCountry]", storage.invoice_country)
 
                 return fetch('/actions/users/save-user', {
                     method: 'POST',
@@ -88,26 +92,47 @@ class Register {
                         'X-Requested-With': 'XMLHttpRequest',
                     },
                     body: params,
-                }).then(response => response.json()).then(result => { return { ...session, userId: result.id } })
-            }).then(end => console.log(end))
+                }).then(response => response.json()).then(result => {
+                    e.target.disabled = false;
+                    e.target.classList.remove("disabled")
 
-            // .then(session => {
-            //     const params = new FormData();
-            //     params.append("userId", session.userId)
-            //     params.append("fullName", "Map")
+                    // Handle register errors otherwise go to login page.
+                    if (result.errors) {
+                        const parent = document.querySelector(".c-register__errors")
+                        const errors = Object.values(result.errors);
+                        console.log(result, errors);
 
-            //     console.log(session, params)
+                        errors.forEach((eArray) => {
+                            eArray.forEach((e) => {
+                                let error = document.createElement("div");
+                                // error header
+                                let errorHeader = createElement("span", "c-register__errorHeader")
+                                let errorMark = createElement("figure", "c-register__errorMark", "!")
+                                errorHeader.appendChild(errorMark)
+                                let errorTitle = createElement("h5", "c-register__errorTitle", result.message)
+                                errorHeader.appendChild(errorTitle)
+                                let errorClose = createElement("ion-icon", "c-register__errorClose");
+                                errorClose.setAttribute("name", "close-outline")
+                                errorClose.addEventListener("click", () => error.remove())
+                                errorHeader.appendChild(errorClose)
 
-            //     return fetch('/actions/users/save-address', {
-            //         method: 'POST',
-            //         headers: {
-            //             'Accept': 'application/json',
-            //             'X-CSRF-Token': session.csrfTokenValue,
-            //             'X-Requested-With': 'XMLHttpRequest',
-            //         },
-            //         body: params,
-            //     }).then(response => response.json()).then(result => console.log(result))
-            // })
+                                // error message
+                                error.className = "c-register__error"
+                                let errorText = createElement("p", "c-register__errorText", e);
+
+                                error.appendChild(errorHeader)
+                                error.appendChild(errorText)
+                                parent.appendChild(error)
+                            })
+                        })
+                    } else {
+                        sessionStorage.clear();
+                        location.href = "/login"
+                    }
+
+                    return { ...session, userId: result.id }
+                })
+            })
         })
     }
 
@@ -120,14 +145,19 @@ class Register {
             // Check if there is already a package that's been selected in session storage
             if (sessionStorage.reg_obj && JSON.parse(sessionStorage.reg_obj).package === button.dataset.package) {
                 button.classList.add("selected")
+                button.parentElement.classList.add("selected")
             }
 
             // Upon clicking one of the select buttons set session storage and styling
             button.addEventListener("click", () => {
                 const selected = document.querySelector(".c-register__formPackageSelect.selected");
-                if (selected) selected.classList.remove("selected");
-                if (selected) selected.innerHTML = "Select"
+                if (selected) {
+                    selected.classList.remove("selected");
+                    selected.innerHTML = "Select"
+                    selected.parentElement.classList.remove("selected")
+                }
 
+                button.parentElement.classList.add("selected")
                 button.classList.add("selected")
                 button.innerHTML = "Selected <ion-icon name='checkmark-outline'></ion-icon>"
 
@@ -180,10 +210,10 @@ class Register {
 
             if (!firstRun) {
                 validateFormField(".c-register__formLabel[for='email']", "Please fill in a valid email", reg, email.value.length > 0)
-                validateFormField(".c-register__formLabel[for='password']", "Password has to be atleast 4 charters", password.value.length >= 4, password.value.length > 0)
+                validateFormField(".c-register__formLabel[for='password']", "Password has to be atleast 6 characters", password.value.length >= 6, password.value.length > 0)
             }
 
-            if (password.value.length >= 4 && reg) {
+            if (password.value.length >= 6 && reg) {
                 continueButton.disabled = false;
                 continueButton.classList.remove("disabled")
             } else {
@@ -211,7 +241,6 @@ class Register {
                 ...storage,
                 company_name: document.querySelector("#companyname").value.trim(),
                 phone: document.querySelector("#phone").value.trim(),
-                location: document.querySelector("#location").value.trim(),
                 instagram: document.querySelector("#instagram").value.trim(),
                 website: document.querySelector("#website").value.trim(),
                 facebook: document.querySelector("#facebook").value.trim(),
@@ -226,29 +255,25 @@ class Register {
         const storage = JSON.parse(sessionStorage.getItem("reg_obj"))
         const company_name = document.querySelector("#companyname")
         const phone = document.querySelector("#phone")
-        const location = document.querySelector("#location")
         const instagram = document.querySelector("#instagram")
         const website = document.querySelector("#website")
         const facebook = document.querySelector("#facebook")
-        const validated_fields = [company_name, location];
+        const validated_fields = [company_name];
 
         if (storage.company_name) company_name.value = storage.company_name;
         if (storage.phone) phone.value = storage.phone;
-        if (storage.location) location.value = storage.location;
         if (storage.instagram) instagram.value = storage.instagram;
         if (storage.website) website.value = storage.website;
         if (storage.facebook) facebook.value = storage.facebook;
 
         const validateContinue = (firstRun = false) => {
             const continueButton = document.querySelector(".c-register__formContinue");
-            const locationArray = location.value.split(",").map(loc => loc.trim()).filter(loc => loc !== "")
 
             if (!firstRun) {
                 validateFormField(".c-register__formLabel[for='companyname']", "Company name is required", company_name.value.length >= 1)
-                validateFormField(".c-register__formLabel[for='location']", "Please use the following format: Address, Postcode, City, Country", locationArray.length === 4, location.value.length > 0)
             }
 
-            if (company_name.value.length >= 1 && locationArray.length === 4) {
+            if (company_name.value.length >= 1) {
                 continueButton.disabled = false;
                 continueButton.classList.remove("disabled")
             } else {

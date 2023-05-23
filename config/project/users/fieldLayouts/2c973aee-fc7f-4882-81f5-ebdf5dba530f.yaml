@@ -43,18 +43,6 @@ tabs:
         width: 100
       -
         elementCondition: null
-        fieldUid: 3f956c2c-f1e6-4abf-abc1-517adbbd0e3d # VAT
-        instructions: null
-        label: null
-        required: false
-        tip: null
-        type: craft\fieldlayoutelements\CustomField
-        uid: 73364d76-4a46-498c-8b12-c97fbbd70d79
-        userCondition: null
-        warning: null
-        width: 100
-      -
-        elementCondition: null
         fieldUid: f0917fc5-6089-45ec-a4e2-c442ce4726a2 # Package
         instructions: null
         label: null
@@ -115,4 +103,82 @@ tabs:
         width: 100
     name: 'User data'
     uid: 32340a36-dfaa-4778-9860-e744f7b2d4ea
+    userCondition: null
+  -
+    elementCondition: null
+    elements:
+      -
+        elementCondition: null
+        fieldUid: afaddf10-8b46-42cc-a4c2-3842de0d8fe2 # Company name
+        instructions: null
+        label: null
+        required: false
+        tip: null
+        type: craft\fieldlayoutelements\CustomField
+        uid: f3144e38-695e-4971-8256-18f344f1569a
+        userCondition: null
+        warning: null
+        width: 100
+      -
+        elementCondition: null
+        fieldUid: 455ecd20-d076-49c7-8fc6-57888147a961 # Zip
+        instructions: null
+        label: null
+        required: false
+        tip: null
+        type: craft\fieldlayoutelements\CustomField
+        uid: 5f1d11ed-b46c-4148-85c8-ba0fca07ea57
+        userCondition: null
+        warning: null
+        width: 100
+      -
+        elementCondition: null
+        fieldUid: 51bd5b4e-75c4-42a1-b1b5-1827613ecaef # Address
+        instructions: null
+        label: null
+        required: false
+        tip: null
+        type: craft\fieldlayoutelements\CustomField
+        uid: 899d7f40-da2d-4c9a-83be-f6d693b15bf8
+        userCondition: null
+        warning: null
+        width: 100
+      -
+        elementCondition: null
+        fieldUid: 830820ed-79d9-4d46-9e86-4134fc2b8d2b # Country
+        instructions: null
+        label: null
+        required: false
+        tip: null
+        type: craft\fieldlayoutelements\CustomField
+        uid: 56fb3815-2096-4c88-812c-f0052c24e031
+        userCondition: null
+        warning: null
+        width: 100
+      -
+        elementCondition: null
+        fieldUid: f46c926b-268c-4328-ad61-180b55bea62e # City
+        instructions: null
+        label: null
+        required: false
+        tip: null
+        type: craft\fieldlayoutelements\CustomField
+        uid: aebfe23c-913a-4177-aaa3-aaf162670f31
+        userCondition: null
+        warning: null
+        width: 100
+      -
+        elementCondition: null
+        fieldUid: 3f956c2c-f1e6-4abf-abc1-517adbbd0e3d # VAT
+        instructions: null
+        label: null
+        required: false
+        tip: null
+        type: craft\fieldlayoutelements\CustomField
+        uid: 73364d76-4a46-498c-8b12-c97fbbd70d79
+        userCondition: null
+        warning: null
+        width: 100
+    name: Invoice
+    uid: dbf34a49-7644-4313-9395-9067e2f03ccf
     userCondition: null

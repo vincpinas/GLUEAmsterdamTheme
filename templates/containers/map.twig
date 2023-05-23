@@ -20,15 +20,17 @@
 
 {# Generate data tags with user info for making map markers #}
 {% for user in users %}
-	{% set current_address = user.addresses[0] %}
-	{% set address = { 
+	{% if user.addresses[0] is defined %}
+		{% set current_address = user.addresses[0] %}
+		{% set address = { 
 			postalCode: current_address.postalCode,
 			address: current_address.addressLine1 ~ ", " ~ current_address.postalCode,
 			fullName: user.fullName,
 			username: user.username,
 			thumbnail: user.thumbnail.one() ? user.thumbnail.one().url : map.markerThumbnailPlaceholder.one().url,
 		} %}
-	{% set addresses = addresses|merge([address]) %}
+		{% set addresses = addresses|merge([address]) %}
+	{% endif %}
 {% endfor %}
 
 {# Generate data tags with addresses for making routes #}

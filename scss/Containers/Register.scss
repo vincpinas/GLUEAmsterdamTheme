@@ -8,6 +8,62 @@
         text-align: center;
     }
 
+    &__error {
+        display: flex;
+        flex-direction: column;
+        background: $light-red;
+        justify-content: center;
+        padding: 0.5rem 1rem;
+        @include slide-in($transition-fast);
+        // max-width: 25rem;
+
+        &Header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        &Mark {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 100%;
+            background: $red;
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-right: 0.75rem;
+            color: $text-primary;
+        }
+
+        &Title, &Mark {
+            @include font--primary(600);
+        }
+
+        &Title, &Text {
+            margin-bottom: 0;
+        }
+
+        &Close {
+            margin-left: auto;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        &s {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem 5rem;
+            z-index: $index-3;
+        }
+    }
+
+    &__errors > *:not(:last-of-type) {
+        margin-bottom: 1rem;
+    }
+
     &__progress {
         display: flex;
         justify-content: space-around;
@@ -25,14 +81,14 @@
         }
 
         &PointLine {
-            border: 2px solid $gray;
+            border: 2px solid $text-primary;
             width: 50%;
         }
 
         &PointText {
             position: absolute;
             top: calc(100% + 1rem);
-            color: $gray;
+            color: $text-primary;
         }
 
         &PointBall {
@@ -42,25 +98,27 @@
             position: absolute;
             width: 2rem !important;
             height: 2rem !important;
-            background: $gray;
+            background: $special-primary;
             border-radius: 100%;
-            color: $text-white;
+            border: 2px solid $text-primary;
+            color: $text-primary;
         }
 
         &Point.active &PointLine:nth-of-type(1) {
-            border: 2px solid $special-primary;
+            border: 2px solid $text-primary;
         }
 
         &Point.active &PointText {
-            color: $special-primary;
+            color: $text-primary;
         }
 
         &Point.active &PointBall {
-            background: $special-primary;
+            background: $text-primary;
+            color: $special-primary;
         }
 
         &Point.active:has(~ .c-register__progressPoint.active) .c-register__progressPointLine {
-            border: 2px solid $special-primary;
+            border: 2px solid $text-primary;
         }
     }
 
@@ -85,7 +143,7 @@
         }
 
         &SubTitle {
-            color: $gray;
+            color: $text-primary;
         }
 
         &VAT {
@@ -107,14 +165,14 @@
             width: fit-content;
             background: $special-primary;
             @include font--primary(600);
-            color: $text-white;
+            color: $text-primary;
+            border: 1px solid $text-primary;
             padding: 0.75rem 1.5rem;
         }
 
         &Previous {
             background: none;
             color: $text-primary;
-            padding: 0;
         }
 
         &Continue.disabled,
@@ -132,12 +190,17 @@
         &Package {
             display: flex;
             flex-direction: column;
-            border: 2px solid black;
+            border: 1px solid $text-primary;
             padding: 1rem;
             position: relative;
             width: 22rem;
             margin-bottom: 2rem;
             margin-right: 2rem;
+        }
+
+        &Package.selected {
+            background: $text-primary;
+            color: $special-primary;
         }
 
         &Package ul {
@@ -153,22 +216,22 @@
         }
 
         &Package button {
-            border: 2px solid black;
+            border: 1px solid $text-primary;
             padding: 0.5rem;
             width: 100%;
             background: none;
             transition: $transition-fast;
             margin-top: auto;
             display: flex;
-            ;
             justify-content: center;
             align-items: center;
         }
 
         &Package button:hover,
         &Package button.selected {
-            background: $background-contrast;
+            background: $special-primary;
             color: $background;
+            border: 1px solid $special-primary;
         }
 
         &PackageHeading {
@@ -182,7 +245,7 @@
             position: absolute;
             bottom: 0;
             width: 95%;
-            border: 1px solid black;
+            border: 1px solid $text-primary;
             align-self: center;
         }
 
@@ -190,9 +253,6 @@
             margin: 0;
         }
 
-        &PackageHeading p {
-            color: $gray;
-        }
 
         label {
             display: flex;
@@ -206,13 +266,13 @@
 
         &Input {
             border: none;
-            border-bottom: 2px solid $background-contrast;
+            border-bottom: 2px solid $text-primary;
             outline: none;
             background: none;
             display: flex;
             padding: 0.5rem 0;
             width: 100%;
-
+            color: $text-primary;
 
             @media #{$tablet-down} {
                 min-width: 15rem;
@@ -220,7 +280,7 @@
         }
 
         &Input::placeholder {
-            color: $gray;
+            color: $text-primary;
         }
 
         &InputRow {
@@ -240,7 +300,7 @@
         }
 
         &Error, .red {
-            color: red;
+            color: $red;
         }
 
         &PasswordVisiblity {
