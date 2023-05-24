@@ -15,7 +15,7 @@
         justify-content: center;
         padding: 0.5rem 1rem;
         @include slide-in($transition-fast);
-        // max-width: 25rem;
+        color: $text-contrast;
 
         &Header {
             display: flex;
@@ -55,7 +55,7 @@
             right: 0;
             display: flex;
             flex-direction: column;
-            padding: 2rem 5rem;
+            padding: 2rem;
             z-index: $index-3;
         }
     }
@@ -230,7 +230,7 @@
         &Package button:hover,
         &Package button.selected {
             background: $special-primary;
-            color: $background;
+            color: $text-primary;
             border: 1px solid $special-primary;
         }
 

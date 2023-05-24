@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   padding: 2rem;
-  border-bottom: 1px solid #0525d3;
+  border-bottom: 1px solid #10069F;
 }
 .c-header__return {
   display: flex;
@@ -38,7 +38,7 @@
   width: 100%;
   height: 97%;
   position: absolute;
-  background: rgba(5, 37, 211, 0.25);
+  background: rgba(16, 6, 159, 0.25);
 }
 .c-map__popupImgText {
   margin: 0;
@@ -53,12 +53,12 @@
   left: 0.5rem;
 }
 .c-map__popupLink {
-  border: 2px solid #0525d3;
+  border: 2px solid #10069F;
   padding: 0.25rem 0.5rem;
   font-family: "Lausanne";
   font-weight: 500;
   font-style: normal;
-  color: #0525d3;
+  color: #10069F;
   width: 50%;
   text-align: center;
 }
@@ -137,7 +137,7 @@
   width: 100%;
   height: 100%;
   display: flex;
-  background-color: #0525d3;
+  background-color: #10069F;
 }
 @media screen and (max-width: 767px) {
   .c-map__menuDirectionTab {
@@ -158,7 +158,7 @@
   align-items: center;
   justify-content: center;
   padding: 0 1.25rem;
-  background: #0525d3;
+  background: #10069F;
   position: relative;
 }
 @media screen and (max-width: 991px) {
@@ -266,49 +266,49 @@
   /* shorten the line so it goes only up to the bullet. Is equal to first-child:before's top */
 }
 .c-map__menu > li:nth-of-type(2) {
-  background: #0629ec;
+  background: #1207b8;
 }
 .c-map__menuDirectionTab > li:nth-of-type(2) {
-  background: #0629ec !important;
+  background: #1207b8 !important;
 }
 .c-map__menuDirectionTab > li:nth-of-type(2) + div {
-  background: #0629ec !important;
+  background: #1207b8 !important;
 }
 .c-map__menu > li:nth-of-type(3) {
-  background: #1236f9;
+  background: #1508d0;
 }
 .c-map__menuDirectionTab > li:nth-of-type(3) {
-  background: #1236f9 !important;
+  background: #1508d0 !important;
 }
 .c-map__menuDirectionTab > li:nth-of-type(3) + div {
-  background: #1236f9 !important;
+  background: #1508d0 !important;
 }
 .c-map__menu > li:nth-of-type(4) {
-  background: #2b4bfa;
+  background: #1709e9;
 }
 .c-map__menuDirectionTab > li:nth-of-type(4) {
-  background: #2b4bfa !important;
+  background: #1709e9 !important;
 }
 .c-map__menuDirectionTab > li:nth-of-type(4) + div {
-  background: #2b4bfa !important;
+  background: #1709e9 !important;
 }
 .c-map__menu > li:nth-of-type(5) {
-  background: #4360fb;
+  background: #2415f6;
 }
 .c-map__menuDirectionTab > li:nth-of-type(5) {
-  background: #4360fb !important;
+  background: #2415f6 !important;
 }
 .c-map__menuDirectionTab > li:nth-of-type(5) + div {
-  background: #4360fb !important;
+  background: #2415f6 !important;
 }
 .c-map__menu > li:nth-of-type(6) {
-  background: #5c75fb;
+  background: #3b2df7;
 }
 .c-map__menuDirectionTab > li:nth-of-type(6) {
-  background: #5c75fb !important;
+  background: #3b2df7 !important;
 }
 .c-map__menuDirectionTab > li:nth-of-type(6) + div {
-  background: #5c75fb !important;
+  background: #3b2df7 !important;
 }
 .c-map__locationsOverview ol {
   list-style: decimal;
@@ -406,6 +406,7 @@
   padding: 0.5rem 1rem;
   transform: translateX(100%);
   animation: slide-in 0.35s 0ms forwards;
+  color: #000000;
 }
 @keyframes slide-in {
   from {
@@ -450,7 +451,7 @@
   right: 0;
   display: flex;
   flex-direction: column;
-  padding: 2rem 5rem;
+  padding: 2rem;
   z-index: 50;
 }
 .c-register__errors > *:not(:last-of-type) {
@@ -489,7 +490,7 @@
   position: absolute;
   width: 2rem !important;
   height: 2rem !important;
-  background: #0525d3;
+  background: #10069F;
   border-radius: 100%;
   border: 2px solid #ffffff;
   color: #ffffff;
@@ -502,7 +503,7 @@
 }
 .c-register__progressPoint.active .c-register__progressPointBall {
   background: #ffffff;
-  color: #0525d3;
+  color: #10069F;
 }
 .c-register__progressPoint.active:has(~ .c-register__progressPoint.active) .c-register__progressPointLine {
   border: 2px solid #ffffff;
@@ -553,7 +554,7 @@
 .c-register__formPrevious, .c-register__formContinue, .c-register__formFinish {
   border: none;
   width: fit-content;
-  background: #0525d3;
+  background: #10069F;
   font-family: "Lausanne";
   font-weight: 600;
   font-style: normal;
@@ -586,7 +587,7 @@
 }
 .c-register__formPackage.selected {
   background: #ffffff;
-  color: #0525d3;
+  color: #10069F;
 }
 .c-register__formPackage ul {
   list-style: outside;
@@ -619,9 +620,9 @@
   align-items: center;
 }
 .c-register__formPackage button:hover, .c-register__formPackage button.selected {
-  background: #0525d3;
+  background: #10069F;
   color: #ffffff;
-  border: 1px solid #0525d3;
+  border: 1px solid #10069F;
 }
 .c-register__formPackageHeading {
   position: relative;
@@ -708,6 +709,102 @@
   cursor: pointer;
 }
 
+.c-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: fit-content;
+}
+.c-login form {
+  display: flex;
+  flex-direction: column;
+  font-family: "Lausanne";
+  font-weight: 500;
+  font-style: normal;
+  width: 100%;
+}
+.c-login form label {
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 1rem;
+}
+@media screen and (max-width: 767px) {
+  .c-login form label {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+.c-login form input {
+  border: none;
+  border-bottom: 1px solid #ffffff;
+  color: #ffffff;
+  background: none;
+  outline: none;
+}
+.c-login__submit {
+  padding: 0.25rem;
+  background: none;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+}
+.c-login__error {
+  display: flex;
+  flex-direction: column;
+  background: #FED7D7;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  transform: translateX(100%);
+  animation: slide-in 0.35s 0ms forwards;
+}
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+.c-login__errorHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.c-login__errorMark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  background: #FF0505;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.75rem;
+  color: #ffffff;
+}
+.c-login__errorTitle, .c-login__errorMark {
+  font-family: "Lausanne";
+  font-weight: 600;
+  font-style: normal;
+}
+.c-login__errorTitle, .c-login__errorMessage {
+  margin-bottom: 0;
+}
+.c-login__errorClose {
+  margin-left: auto;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+.c-login__errors {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  z-index: 50;
+}
+
 /* Any imports required multiple times across the site will be imported here. */
 @font-face {
   font-family: "Lausanne";
@@ -785,7 +882,7 @@ table {
 body,
 html {
   color: #ffffff;
-  background: #0525d3;
+  background: #10069F;
   position: relative;
   display: flex;
   flex-direction: column;

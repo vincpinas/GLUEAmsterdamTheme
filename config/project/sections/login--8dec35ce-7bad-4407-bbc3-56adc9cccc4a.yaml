@@ -20,5 +20,5 @@ siteSettings:
     enabledByDefault: true
     hasUrls: true
     template: containers/login.twig
-    uriFormat: public-login
+    uriFormat: login
 type: single

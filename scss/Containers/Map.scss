@@ -2,7 +2,7 @@
 $mapheight: 90vh;
 
 .c-map {
-    color: $text-white;
+    color: $text-primary;
     width: 50%;
     height: $mapheight;
 
@@ -92,7 +92,7 @@ $mapheight: 90vh;
     &__menuDirectionButton {
         text-transform: capitalize;
         cursor: pointer;
-        color: $text-white;
+        color: $text-primary;
     }
 
     &__menuDirectionCloseButton {
@@ -100,7 +100,7 @@ $mapheight: 90vh;
         top: 0;
         left: 0;
         padding: 0.5rem;
-        background: $background;
+        background: $white;
         z-index: $index-1;
         outline: none;
         border: none;
@@ -115,7 +115,7 @@ $mapheight: 90vh;
         }
 
         &:hover {
-            background: darken($background, 20%);
+            background: darken($white, 20%);
         }
 
         &:hover ion-icon {
@@ -171,7 +171,7 @@ $mapheight: 90vh;
         text-align: center;
         padding: 5rem 0;
         overflow-y: scroll;
-        color: $text-white;
+        color: $text-primary;
 
         li h2 {
             max-width: 15rem;
@@ -180,7 +180,7 @@ $mapheight: 90vh;
 
         li a {
             @include font--primary(600);
-            color: $text-white;
+            color: $text-primary;
         }
 
         ul>li:first-of-type {
@@ -195,7 +195,7 @@ $mapheight: 90vh;
                 width: 20px;
                 height: 20px;
                 background: none;
-                border: 2.5px solid $text-white;
+                border: 2.5px solid $text-primary;
                 left: -16px;
             }
 
@@ -237,13 +237,13 @@ $mapheight: 90vh;
         }
 
         ul li a:hover {
-            border: 2px solid $text-white;
+            border: 2px solid $text-primary;
         }
 
         ul li:after {
             /* bullets */
             content: "";
-            background: $text-white;
+            background: $text-primary;
             width: 10px;
             height: 2.5px;
             position: absolute;
@@ -258,7 +258,7 @@ $mapheight: 90vh;
             position: absolute;
             left: -7px;
             /* adjust manually */
-            border-left: 2px solid $text-white;
+            border-left: 2px solid $text-primary;
             height: 100%;
             width: 6px;
             top: 11px;
@@ -299,7 +299,7 @@ $mapheight: 90vh;
             flex-direction: column;
             justify-content: center;
             @include font--primary(600);
-            color: $text-white;
+            color: $text-primary;
         }
 
         ol li {
@@ -313,7 +313,7 @@ $mapheight: 90vh;
             border: none;
             outline: none;
             @include font--primary(600);
-            color: $text-white;
+            color: $text-primary;
         }
 
         ol li:hover {
@@ -358,9 +358,9 @@ $mapheight: 90vh;
     &__menuGoogleButton {
         margin-top: 2rem;
         padding: 0.5rem 1rem;
-        border: 2px solid $text-white;
+        border: 2px solid $text-primary;
         @include font--primary(400);
-        color: $text-white;
+        color: $text-primary;
     }
 
     &__wrapper {

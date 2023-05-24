@@ -25,4 +25,5 @@ return GeneralConfig::create()
     // Disallow robots
     ->disallowRobots(App::env('DISALLOW_ROBOTS') ?? false)
     ->enableGql(true)
+    ->useEmailAsUsername(true)
 ;

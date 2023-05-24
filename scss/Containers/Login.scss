@@ -1,0 +1,87 @@
+.c-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: fit-content;
+    
+
+    form {
+        display: flex;
+        flex-direction: column;
+        @include font--primary(500);
+        width: 100%;
+    }
+
+    form label {
+        @include input;
+    }
+
+    form input {
+        border: none;
+        border-bottom: 1px solid $text-primary;
+        color: $text-primary;
+        background: none;
+        outline: none;
+    }
+
+    &__submit {
+        padding: 0.25rem;
+        background: none;
+        border: 1px solid $text-primary;
+        color: $text-primary;
+    }
+
+    &__error {
+        display: flex;
+        flex-direction: column;
+        background: $light-red;
+        justify-content: center;
+        padding: 0.5rem 1rem;
+        @include slide-in($transition-fast);
+        // max-width: 25rem;
+
+        &Header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        &Mark {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 100%;
+            background: $red;
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-right: 0.75rem;
+            color: $text-primary;
+        }
+
+        &Title, &Mark {
+            @include font--primary(600);
+        }
+
+        &Title, &Message {
+            margin-bottom: 0;
+        }
+
+        &Close {
+            margin-left: auto;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        &s {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            z-index: $index-3;
+        }
+    }
+}

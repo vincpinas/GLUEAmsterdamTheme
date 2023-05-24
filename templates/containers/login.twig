@@ -1,0 +1,75 @@
+{% extends "index" %}
+
+{% block styles %}
+	<style>
+		body,
+		html {
+			height: 100%;
+		}
+		.wrapper {
+			align-items: center;
+		}
+	</style>
+{% endblock %}
+
+{% block content %}
+	<main class="c-login">
+		<div class="c-login__errors">
+        	 {% if errorMessage is defined and errorCode is defined %}
+             <div class="c-login__error">
+                <span class="c-login__errorHeader">
+                    <figure class="c-login__errorMark">!</figure>
+                    <h5 class="c-login__errorTitle">{{ errorCode }}</h5>
+                    <ion-icon name="close-outline" class="c-login__errorClose"></ion-icon>
+                </span>
+				<p class="c-login__errorMessage">{{ errorMessage }}</p>
+             </div>
+			{% endif %}
+        </div>
+
+		<h2>Log into your account</h2>
+		<form method="post" accept-charset="UTF-8">
+			{{ csrfInput() }}
+			{{ actionInput('users/login') }}
+			{{ redirectInput('/') }}
+
+			<label for="loginName">Email</label>
+			{{ input('text', 'loginName', craft.app.user.rememberedUsername, { id: 'loginName', autocomplete: 'username' }) }}
+
+			<label for="password">Password</label>
+			{{ input('password', 'password', null, { id: 'password', }) }}
+
+			<label>
+				{{ input('checkbox', 'rememberMe', '1') }}
+				Remember me
+			</label>
+
+			<button class="c-login__submit">Login</button>
+		</form>
+
+		<p>
+			<a href="{{ url('reset-password') }}">Forgot your password?</a>
+		</p>
+	</main>
+
+{% endblock %}
+
+
+{% block javascripts %}
+    <script>
+        const error = document.querySelector(".c-login__error");
+        const close = document.querySelector(".c-login__errorClose")
+        const title = document.querySelector(".c-login__errorTitle")
+
+        title.innerHTML = title.innerHTML.charAt(0).toUpperCase() + title.innerHTML.slice(1).replace("_"," ")
+
+        close.addEventListener("click", () => { error.remove() })
+    </script>
+
+    {% if rememberMe %}
+        <script>
+            document.querySelector("input[name='rememberMe']").checked = true;
+        </script>
+    {% endif %}
+    
+{% endblock %}
