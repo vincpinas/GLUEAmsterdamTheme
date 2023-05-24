@@ -66,7 +66,7 @@
         close.addEventListener("click", () => { error.remove() })
     </script>
 
-    {% if rememberMe %}
+    {% if rememberMe is defined and rememberMe %}
         <script>
             document.querySelector("input[name='rememberMe']").checked = true;
         </script>
