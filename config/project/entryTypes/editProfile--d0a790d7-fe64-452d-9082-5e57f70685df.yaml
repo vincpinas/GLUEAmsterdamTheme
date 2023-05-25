@@ -1,5 +1,5 @@
 fieldLayouts:
-  21271ca7-9a0f-434a-87cd-b027805fa612:
+  49731a0b-e69c-4f08-ba86-bff881ab99c2:
     tabs:
       -
         elementCondition: null
@@ -26,17 +26,17 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\entries\EntryTitleField
-            uid: 31b3aa26-a584-4afe-b875-c2983a5a9159
+            uid: 2a3ae702-da84-48d2-af60-456e55aeecc7
             userCondition: null
             warning: null
             width: 100
         name: Content
-        uid: d08264d1-74de-4290-8319-6d84a386b368
+        uid: 1a9f97f9-f026-4cd7-8172-24bc9092c2ad
         userCondition: null
-handle: register
+handle: editProfile
 hasTitleField: false
-name: Register
-section: 21c100fa-b14d-4c5a-b30a-f1f28bc91e6d # Register
+name: 'Edit profile'
+section: cb9b4037-71ad-4f2d-b47e-a020160c2a5c # Edit profile
 sortOrder: 1
 titleFormat: '{section.name|raw}'
 titleTranslationKeyFormat: null

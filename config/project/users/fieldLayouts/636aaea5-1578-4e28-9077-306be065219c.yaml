@@ -182,3 +182,33 @@ tabs:
     name: Invoice
     uid: dbf34a49-7644-4313-9395-9067e2f03ccf
     userCondition: null
+  -
+    elementCondition: null
+    elements:
+      -
+        elementCondition: null
+        fieldUid: cd1f3a93-b4a0-445b-97ab-b378129dbb74 # Map Address
+        instructions: null
+        label: null
+        required: false
+        tip: null
+        type: craft\fieldlayoutelements\CustomField
+        uid: d9b395a1-1357-490d-9300-df63a5efec4c
+        userCondition: null
+        warning: null
+        width: 100
+      -
+        elementCondition: null
+        fieldUid: 49d0005e-81de-4029-985b-30b90f013162 # Map PostalCode
+        instructions: null
+        label: null
+        required: false
+        tip: null
+        type: craft\fieldlayoutelements\CustomField
+        uid: 0cecc847-db93-4add-a98e-3857e677db41
+        userCondition: null
+        warning: null
+        width: 100
+    name: Map
+    uid: c8a2f6ab-4e6a-4ffa-ba86-615076156a41
+    userCondition: null

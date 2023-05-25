@@ -28,18 +28,23 @@
         </div>
 
 		<h2>Log into your account</h2>
-		<form method="post" accept-charset="UTF-8">
+		<form method="post" accept-charset="UTF-8" class="c-login__form">
 			{{ csrfInput() }}
 			{{ actionInput('users/login') }}
 			{{ redirectInput('/') }}
 
-			<label for="loginName">Email</label>
-			{{ input('text', 'loginName', craft.app.user.rememberedUsername, { id: 'loginName', autocomplete: 'username' }) }}
+			<label for="loginName" class="c-login__formLabel">
+				Email
+				{{ input('text', 'loginName', craft.app.user.rememberedUsername, { id: 'loginName', autocomplete: 'username' }) }}
+			</label>
 
-			<label for="password">Password</label>
-			{{ input('password', 'password', null, { id: 'password', }) }}
+			<label for="password" class="c-login__formLabel">
+				Password
+				<ion-icon name="eye-off-outline" class="c-login__passwordVisiblity"></ion-icon>
+				{{ input('password', 'password', null, { id: 'password', }) }}
+			</label>
 
-			<label>
+			<label class="c-login__remember">
 				{{ input('checkbox', 'rememberMe', '1') }}
 				Remember me
 			</label>
@@ -61,9 +66,21 @@
         const close = document.querySelector(".c-login__errorClose")
         const title = document.querySelector(".c-login__errorTitle")
 
-        title.innerHTML = title.innerHTML.charAt(0).toUpperCase() + title.innerHTML.slice(1).replace("_"," ")
+        if(title) title.innerHTML = title.innerHTML.charAt(0).toUpperCase() + title.innerHTML.slice(1).replace("_"," ")
 
-        close.addEventListener("click", () => { error.remove() })
+        if(close) close.addEventListener("click", () => { error.remove() })
+
+		const password = document.querySelector("label[for='password'] input")
+		const passwordVisiblity = document.querySelector(".c-login__passwordVisiblity")
+
+		if(password && passwordVisiblity) {
+			passwordVisiblity.addEventListener('click', () => {
+				const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+				const name = passwordVisiblity.getAttribute('name') === 'eye-off-outline' ? 'eye-outline' : 'eye-off-outline'
+				password.setAttribute('type', type);
+				passwordVisiblity.setAttribute('name', name)
+			});
+		}
     </script>
 
     {% if rememberMe is defined and rememberMe %}

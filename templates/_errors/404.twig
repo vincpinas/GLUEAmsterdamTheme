@@ -13,24 +13,33 @@
 		<link rel="stylesheet" href="{{ siteUrl }}css/style.css">
 		<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 		<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-		{% block external_scripts %}
-			{# All external scripts appear here #}
-		{% endblock %}
-		{% block styles %}
-			{# Template specific styles can be applied here #}
-		{% endblock %}
+		<style>
+			body,
+			html {
+				height: 100%;
+			}
+			.wrapper {
+				align-items: center;
+				justify-content: center;
+			}
+		</style>
 	</head>
 	<body>
-		{% include "components/header.twig" %}
-
 		<div class="wrapper">
-			{% block content %}
-				{# Content appears inbetween this block #}
-			{% endblock %}
+			<main class="c-404">
+				<h3 class="c-404__title">404 - page not found</h3>
+				<p class="c-404__message">
+					the page you’re looking for might have been removed,
+					<br/>
+					had its name changed or is temporarily unavailable.
+				</p>
+				<span class="c-404__buttons">
+					<a class="c-404__button" href="{{ event.postSlug }}">go to homepage</a>
+					{% if craft.app.request.url not in craft.app.request.referrer %}
+						<a class="c-404__button" href="{{ craft.app.request.referrer }}">go to previous page</a>
+					{% endif %}
+				</span>
+			</main>
 		</div>
-
-		{% block javascripts %}
-			{# All scripts appear here #}
-		{% endblock %}
 	</body>
 </html>

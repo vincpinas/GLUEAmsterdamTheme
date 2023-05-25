@@ -26,4 +26,5 @@ return GeneralConfig::create()
     ->disallowRobots(App::env('DISALLOW_ROBOTS') ?? false)
     ->enableGql(true)
     ->useEmailAsUsername(true)
+    ->errorTemplatePrefix('_errors/')
 ;

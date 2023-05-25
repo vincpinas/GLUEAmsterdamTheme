@@ -1,6 +1,6 @@
 {% extends "index" %}
 
-{% set progressPoints = ["Package", "Account", "Company", "Invoice details",] %}
+{% set progressPoints = ["Package", "Account", "Company", "Map", "Invoice details",] %}
 
 {% if number is not defined or number is null %}
 	{% redirect '/sign-up/1' %}
@@ -8,6 +8,9 @@
 
 {% set progress = number %}
 
+{% if currentUser %}
+    {% redirect "/public-profile/" ~ currentUser.username %}
+{% endif %}
 
 {% block content %}
 	<main class="c-register">
@@ -152,6 +155,28 @@
 
 		{% if progress is same as("4") %}
 			<div class="c-register__form c-register__form-4">
+				<h4 class="c-register__formTitle">GLUE Map location</h4>
+				<p class="c-register__formSubTitle">Please provide the location of your GLUE Exposition</p>
+				<span class="c-register__formInputRow">
+					<label for="mapaddress" class="c-register__formLabel">
+						Address*
+						<input type="text" class="c-register__formInput" name="mapaddress" id="mapaddress" placeholder="E.g. Adamstraat 1">
+					</label>
+					<label for="mappostalcode" class="c-register__formLabel">
+						ZIP/Postal Code*
+						<input type="text" class="c-register__formInput" name="mappostalcode" id="mappostalcode" placeholder="E.g. 2000 AB">
+					</label>
+				</span>
+
+				<span class="c-register__formPagination">
+					<button class="c-register__formPrevious">Previous</button>
+					<button class="c-register__formContinue disabled" disabled>Continue</button>
+				</span>
+			</div>
+		{% endif %}
+
+		{% if progress is same as("5") %}
+			<div class="c-register__form c-register__form-5">
 				<h4 class="c-register__formTitle">Invoice details</h4>
 				<p class="c-register__formSubTitle">Please submit your billing information</p>
 				<span class="c-register__formInputRow">

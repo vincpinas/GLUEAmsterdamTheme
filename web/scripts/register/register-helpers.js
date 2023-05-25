@@ -1,7 +1,7 @@
 const getFormNumber = () => {
     let temp = null;
 
-    for (let i = 1; i <= 4; i++) {
+    for (let i = 1; i <= 5; i++) {
         const form = document.querySelector(`.c-register__form-${i}`);
         if (form) temp = i;
     }
@@ -43,15 +43,42 @@ const getSessionInfo = function () {
 
 const createElement = (type, className, html) => {
     let temp = document.createElement(type);
-    if(className) temp.className = className;
-    if(html) temp.innerHTML = html;
+    if (className) temp.className = className;
+    if (html) temp.innerHTML = html;
 
     return temp;
+}
+
+const handleErrorMessage = (errors, parent) => {
+    errors.forEach((eArray) => {
+        eArray.forEach((e) => {
+            let error = document.createElement("div");
+            // error header
+            let errorHeader = createElement("span", "c-register__errorHeader")
+            let errorMark = createElement("figure", "c-register__errorMark", "!")
+            errorHeader.appendChild(errorMark)
+            let errorTitle = createElement("h5", "c-register__errorTitle", result.message)
+            errorHeader.appendChild(errorTitle)
+            let errorClose = createElement("ion-icon", "c-register__errorClose");
+            errorClose.setAttribute("name", "close-outline")
+            errorClose.addEventListener("click", () => error.remove())
+            errorHeader.appendChild(errorClose)
+
+            // error message
+            error.className = "c-register__error"
+            let errorText = createElement("p", "c-register__errorText", e);
+
+            error.appendChild(errorHeader)
+            error.appendChild(errorText)
+            parent.appendChild(error)
+        })
+    })
 }
 
 export {
     getFormNumber,
     validateFormField,
     getSessionInfo,
-    createElement
+    createElement,
+    handleErrorMessage,
 }

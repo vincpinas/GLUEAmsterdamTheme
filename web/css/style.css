@@ -680,7 +680,7 @@
   }
 }
 .c-register__formInput::placeholder {
-  color: #ffffff;
+  color: #bfbfbf;
 }
 .c-register__formInputRow {
   display: flex;
@@ -717,7 +717,7 @@
   height: 100%;
   width: fit-content;
 }
-.c-login form {
+.c-login__form {
   display: flex;
   flex-direction: column;
   font-family: "Lausanne";
@@ -725,23 +725,36 @@
   font-style: normal;
   width: 100%;
 }
-.c-login form label {
+.c-login__formLabel {
+  display: flex;
+  flex-direction: column;
   font-size: 14px;
   line-height: 20px;
   margin-bottom: 1rem;
+  position: relative;
 }
 @media screen and (max-width: 767px) {
-  .c-login form label {
+  .c-login__formLabel {
     font-size: 14px;
     line-height: 18px;
   }
 }
-.c-login form input {
+.c-login__formLabel input {
   border: none;
   border-bottom: 1px solid #ffffff;
   color: #ffffff;
   background: none;
   outline: none;
+}
+.c-login__passwordVisiblity {
+  position: absolute;
+  left: 90%;
+  font-size: 1.3em;
+  top: 0.7rem;
+  cursor: pointer;
+}
+.c-login__remember input {
+  margin-right: 0.5rem;
 }
 .c-login__submit {
   padding: 0.25rem;
@@ -755,8 +768,10 @@
   background: #FED7D7;
   justify-content: center;
   padding: 0.5rem 1rem;
+  color: #000000;
   transform: translateX(100%);
   animation: slide-in 0.35s 0ms forwards;
+  max-width: 25rem;
 }
 @keyframes slide-in {
   from {
@@ -805,12 +820,40 @@
   z-index: 50;
 }
 
+.c-404 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.c-404__title {
+  font-family: "Lausanne";
+  font-weight: 500;
+  font-style: normal;
+}
+.c-404__buttons {
+  margin-top: 0.5rem;
+}
+.c-404__button {
+  border: 1px solid #ffffff;
+  padding: 0.5rem 1.5rem;
+  font-family: "Lausanne";
+  font-weight: 500;
+  font-style: normal;
+}
+
 /* Any imports required multiple times across the site will be imported here. */
+@font-face {
+  font-family: "TWKLausanne";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/TWKLausanne-300.woff2") format("woff2");
+}
 @font-face {
   font-family: "Lausanne";
   font-style: normal;
   font-weight: 400;
-  src: url("../fonts/TWKLausanne-300.woff2") format("woff2");
+  src: url("../fonts/Lausanne-300.woff2") format("woff2");
 }
 /* Any CSS beyond this point will be globally applied to the whole document. */
 /* CSS Reset */

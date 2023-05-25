@@ -18,11 +18,10 @@
 
 {# Generate data tags with user info for making map markers #}
 {% for user in users %}
-	{% if user.addresses[0] is defined %}
-		{% set current_address = user.addresses[0] %}
+	{% if user.mapAddress|length > 0 and user.mapPostalCode|length > 0 %}
 		{% set address = { 
-			postalCode: current_address.postalCode,
-			address: current_address.addressLine1 ~ ", " ~ current_address.postalCode,
+			postalCode: user.mapPostalCode,
+			address: user.mapAddress ~ ", " ~ user.mapPostalCode,
 			fullName: user.fullName,
 			username: user.username,
 			thumbnail: user.thumbnail.one() ? user.thumbnail.one().url : map.markerThumbnailPlaceholder.one().url,
@@ -47,7 +46,7 @@
 								{% set currentuser = craft.users().id(poi.id).one() %}
 								{% set maproute = [{
 						fullName: currentuser.fullName,
-						postalCode: currentuser.addresses[0].postalCode,
+						postalCode: currentuser.mapPostalCode,
 						username: currentuser.username,
 					}] %}
 								{% set currentroute = currentroute|merge(maproute) %}

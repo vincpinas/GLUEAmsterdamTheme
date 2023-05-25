@@ -1,4 +1,4 @@
-import { createElement, getFormNumber, getSessionInfo, validateFormField } from "./register-helpers.js";
+import { createElement, getFormNumber, getSessionInfo, handleErrorMessage, validateFormField } from "./register-helpers.js";
 
 class Register {
     constructor() {
@@ -15,6 +15,7 @@ class Register {
             case 2: this.formTwo(); break;
             case 3: this.formThree(); break;
             case 4: this.formFour(); break;
+            case 5: this.formFive(); break;
             default: break;
         }
     }
@@ -33,6 +34,9 @@ class Register {
                 break;
             case 4:
                 r && r.package && r.email && r.password && r.company_name ? null : location.replace(`${this.registerBaseUrl}/1`);
+                break;
+            case 5:
+                r && r.package && r.email && r.password && r.company_name && r.map_address && r.map_postalCode ? null : location.replace(`${this.registerBaseUrl}/1`);
                 break;
 
             default:
@@ -71,7 +75,6 @@ class Register {
                 const params = new FormData();
                 params.append("password", storage.password)
                 params.append("email", storage.email)
-                params.append("username", `@${storage.company_name.toLowerCase().replace(/\s/g, "")}`)
                 params.append("fullName", storage.company_name)
                 params.append("fields[package]", storage.package)
                 params.append("fields[phoneNumber]", storage.phone)
@@ -84,6 +87,8 @@ class Register {
                 params.append("fields[invoiceZipCode]", storage.invoice_zip)
                 params.append("fields[invoiceCity]", storage.invoice_city)
                 params.append("fields[invoiceCountry]", storage.invoice_country)
+                params.append("fields[mapAddress]", storage.map_address)
+                params.append("fields[mapPostalCode]", storage.map_postalCode)
 
                 return fetch('/actions/users/save-user', {
                     method: 'POST',
@@ -99,33 +104,7 @@ class Register {
 
                     // Handle register errors otherwise go to login page.
                     if (result.errors) {
-                        const parent = document.querySelector(".c-register__errors")
-                        const errors = Object.values(result.errors);
-                        console.log(result, errors);
-
-                        errors.forEach((eArray) => {
-                            eArray.forEach((e) => {
-                                let error = document.createElement("div");
-                                // error header
-                                let errorHeader = createElement("span", "c-register__errorHeader")
-                                let errorMark = createElement("figure", "c-register__errorMark", "!")
-                                errorHeader.appendChild(errorMark)
-                                let errorTitle = createElement("h5", "c-register__errorTitle", result.message)
-                                errorHeader.appendChild(errorTitle)
-                                let errorClose = createElement("ion-icon", "c-register__errorClose");
-                                errorClose.setAttribute("name", "close-outline")
-                                errorClose.addEventListener("click", () => error.remove())
-                                errorHeader.appendChild(errorClose)
-
-                                // error message
-                                error.className = "c-register__error"
-                                let errorText = createElement("p", "c-register__errorText", e);
-
-                                error.appendChild(errorHeader)
-                                error.appendChild(errorText)
-                                parent.appendChild(error)
-                            })
-                        })
+                        handleErrorMessage(Object.values(result.errors), document.querySelector(".c-register__errors"))
                     } else {
                         sessionStorage.clear();
                         location.href = "/login"
@@ -292,6 +271,50 @@ class Register {
             const storage = JSON.parse(sessionStorage.getItem("reg_obj"))
             const reg_obj = {
                 ...storage,
+                map_address: document.querySelector("#mapaddress").value.trim(),
+                map_postalCode: document.querySelector("#mappostalcode").value.trim()
+            }
+            sessionStorage.setItem("reg_obj", JSON.stringify(reg_obj))
+        }
+
+        this.previousButton(save_form);
+        this.continueButton(save_form);
+        this.validate(4);
+
+        const storage = JSON.parse(sessionStorage.getItem("reg_obj"))
+        const address = document.querySelector("#mapaddress")
+        const postalCode = document.querySelector("#mappostalcode")
+        const validated_fields = [address, postalCode];
+
+        if (storage.map_address) address.value = storage.map_address;
+        if (storage.map_postalCode) postalCode.value = storage.map_postalCode;
+
+        const validateContinue = (firstRun = false) => {
+            const continueButton = document.querySelector(".c-register__formContinue");
+
+            if (!firstRun) {
+                validateFormField(".c-register__formLabel[for='mapaddress']", "Valid address is required", address.value.length > 2, address.value.length > 0)
+                validateFormField(".c-register__formLabel[for='mappostalcode']", "Valid Dutch postal code is required", /\d{4}[ ]?[A-Z]{2}/g.test(postalCode.value), postalCode.value.length > 0)
+            }
+
+            if (address.value.length > 2 && postalCode.value.length >= 1) {
+                continueButton.disabled = false;
+                continueButton.classList.remove("disabled")
+            } else {
+                continueButton.disabled = true;
+                if (!continueButton.classList.contains("disabled")) continueButton.classList.add("disabled")
+            }
+        }
+
+        validated_fields.forEach(field => field.addEventListener("keyup", () => validateContinue(false)));
+        validateContinue(true);
+    }
+
+    formFive = () => {
+        const save_form = () => {
+            const storage = JSON.parse(sessionStorage.getItem("reg_obj"))
+            const reg_obj = {
+                ...storage,
                 invoice_name: document.querySelector("#invoicename").value.trim(),
                 invoice_zip: document.querySelector("#invoicezip").value.trim(),
                 invoice_address: document.querySelector("#invoiceaddress").value.trim(),
@@ -304,7 +327,7 @@ class Register {
 
         this.previousButton(save_form);
         this.finishButton(save_form);
-        this.validate(4);
+        this.validate(5);
 
         const storage = JSON.parse(sessionStorage.getItem("reg_obj"))
         const name = document.querySelector("#invoicename")

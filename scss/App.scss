@@ -5,13 +5,21 @@
 @import "Containers/Map.scss";
 @import "Containers/Register.scss";
 @import "Containers/Login.scss";
+@import "Containers/404.scss";
 
 /* Any imports required multiple times across the site will be imported here. */
+@font-face {
+    font-family: 'TWKLausanne';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/TWKLausanne-300.woff2') format('woff2');
+}
+
 @font-face {
     font-family: 'Lausanne';
     font-style: normal;
     font-weight: 400;
-    src: url('../fonts/TWKLausanne-300.woff2') format('woff2');
+    src: url('../fonts/Lausanne-300.woff2') format('woff2');
 }
 
 /* Any CSS beyond this point will be globally applied to the whole document. */
