@@ -49,7 +49,8 @@ const createElement = (type, className, html) => {
     return temp;
 }
 
-const handleErrorMessage = (errors, parent) => {
+const handleErrorMessage = (errors, parent, message) => {
+    console.log(errors)
     errors.forEach((eArray) => {
         eArray.forEach((e) => {
             let error = document.createElement("div");
@@ -57,7 +58,7 @@ const handleErrorMessage = (errors, parent) => {
             let errorHeader = createElement("span", "c-register__errorHeader")
             let errorMark = createElement("figure", "c-register__errorMark", "!")
             errorHeader.appendChild(errorMark)
-            let errorTitle = createElement("h5", "c-register__errorTitle", result.message)
+            let errorTitle = createElement("h5", "c-register__errorTitle", message)
             errorHeader.appendChild(errorTitle)
             let errorClose = createElement("ion-icon", "c-register__errorClose");
             errorClose.setAttribute("name", "close-outline")

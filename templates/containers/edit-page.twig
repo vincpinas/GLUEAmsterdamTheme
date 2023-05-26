@@ -63,7 +63,7 @@
 					</label>
 					<label for="mapPostalCode" class="c-edit__formLabel">
 						Map Postal Code
-						{{ input('text', 'fields[mapPostalCode]', user.mapPostalCode, { id: 'mapPostalCode' }) }}
+						{{ input('text', 'fields[mapPostalCode]', user.mapPostalCode, { id: 'mapPostalCode', autocomplete: 'off' }) }}
 					</label>
 				</span>
 
@@ -132,7 +132,7 @@
 
 				<span class="c-edit__formInputRow options">
 					<a>Quick Preview</a>
-					<button type="submit" class="c-edit__formSubmit">Save changes</button>
+					<button type="submit" class="c-edit__formSubmit disabled" disabled>Save changes</button>
 				</span>
 			</form>
 		</div>
@@ -195,11 +195,14 @@
 
 		const submit = document.querySelector("button[type=submit]")
 		const postalCode = document.querySelector("#mapPostalCode")
+		const postalRegex = /(\d{4})([ ])([A-Z]{2})/;
 
-		postalCode.addEventListener("keyup", () => {
-			validateFormField(".c-edit__formLabel[for='mapPostalCode']", "Valid Dutch postal code is required", /(\d{4}[ ]+)?[A-Z]{2}/g.test(postalCode.value) && postalCode.value.length === 7, postalCode.value.length > 0)
+		postalCode.addEventListener("input", () => {
+			validateFormField(".c-edit__formLabel[for='mapPostalCode']", "Valid Dutch postal code is required", postalRegex.test(postalCode.value) && postalCode.value.length === 7, postalCode.value.length > 0)
 
-			if(/(\d{4}[ ]+)?[A-Z]{2}/g.test(postalCode.value) && postalCode.value.length === 7) {
+			postalRegex.test(postalCode.value)
+
+			if(postalRegex.test(postalCode.value) && postalCode.value.length === 7) {
 				submit.disabled = false;
 				submit.classList.remove("disabled")
 			} else {
@@ -207,6 +210,15 @@
 				submit.classList.add("disabled")
 			}
 		})
+		
+		validateFormField(".c-edit__formLabel[for='mapPostalCode']", "Valid Dutch postal code is required", postalRegex.test(postalCode.value) && postalCode.value.length === 7, postalCode.value.length > 0)
+		if(postalRegex.test(postalCode.value) && postalCode.value.length === 7) {
+			submit.disabled = false;
+			submit.classList.remove("disabled")
+		} else {
+			submit.disabled = true
+			submit.classList.add("disabled")
+		}
 		
 	</script>
 {% endblock %}

@@ -4,11 +4,10 @@
 
 {% block content %}
 
-<pre>
-    {{ dump(user) }}
-</pre>
-
-{% if user %}{% endif %}
-
+	{% if user %}
+		<pre>{{ dump(user) }}</pre>
+	{% else %}
+		{% redirect "/" %}
+	{% endif %}
 
 {% endblock %}

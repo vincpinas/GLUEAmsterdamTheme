@@ -104,7 +104,7 @@ class Register {
 
                     // Handle register errors otherwise go to login page.
                     if (result.errors) {
-                        handleErrorMessage(Object.values(result.errors), document.querySelector(".c-register__errors"))
+                        handleErrorMessage(Object.values(result.errors), document.querySelector(".c-register__errors"), result.message)
                     } else {
                         sessionStorage.clear();
                         location.href = "/login"
@@ -291,13 +291,14 @@ class Register {
 
         const validateContinue = (firstRun = false) => {
             const continueButton = document.querySelector(".c-register__formContinue");
+            const regex = /(\d{4})([ ])([A-Z]{2})/
 
             if (!firstRun) {
                 validateFormField(".c-register__formLabel[for='mapaddress']", "Valid address is required", address.value.length > 2, address.value.length > 0)
-                validateFormField(".c-register__formLabel[for='mappostalcode']", "Valid Dutch postal code is required", /(\d{4}[ ]+)?[A-Z]{2}/g.test(postalCode.value) && postalCode.value.length === 7, postalCode.value.length > 0)
+                validateFormField(".c-register__formLabel[for='mappostalcode']", "Valid Dutch postal code is required", regex.test(postalCode.value) && postalCode.value.length === 7, postalCode.value.length > 0)
             }
 
-            if (address.value.length > 2 && postalCode.value.length >= 1) {
+            if (address.value.length > 2 && regex.test(postalCode.value)) {
                 continueButton.disabled = false;
                 continueButton.classList.remove("disabled")
             } else {
@@ -306,7 +307,7 @@ class Register {
             }
         }
 
-        validated_fields.forEach(field => field.addEventListener("keyup", () => validateContinue(false)));
+        validated_fields.forEach(field => field.addEventListener("input", () => validateContinue(false)));
         validateContinue(true);
     }
 
