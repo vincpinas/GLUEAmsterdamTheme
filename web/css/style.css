@@ -889,6 +889,7 @@
 .c-edit__form label {
   display: flex;
   flex-direction: column;
+  position: relative;
   font-size: 14px;
   line-height: 20px;
   margin-bottom: 1rem;
@@ -918,6 +919,11 @@
   color: #ffffff;
   outline: none;
   margin-top: 0.5rem;
+}
+.c-edit__formError {
+  position: absolute;
+  bottom: -1rem;
+  color: #FF0505;
 }
 .c-edit__formLabelRow {
   display: flex;
@@ -1049,6 +1055,9 @@
   outline: none;
   background: none;
   color: #ffffff;
+}
+.c-edit button.disabled {
+  border: 1px solid #787878;
 }
 .c-edit .disabled {
   cursor: not-allowed;
