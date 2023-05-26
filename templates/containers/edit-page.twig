@@ -34,7 +34,9 @@
 				<label class="c-edit__formLabel">
 					Featured image
 					<span class="c-edit__featuredImageContainer">
-						<div class="c-edit__featuredImageOverlay"></div>
+						<span class="c-edit__featuredImageOverlay">
+							<ion-icon name="pencil"></ion-icon>
+						</span>
 						{{ input('file', 'fields[thumbnail][]', null, { id: 'thumbnail', accept: 'image/png,image/jpeg', }) }}
 						{% if user.thumbnail.one() %}
 							<img src="{{ user.thumbnail.one().url }}" alt="User">

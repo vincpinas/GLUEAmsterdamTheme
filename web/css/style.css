@@ -967,6 +967,26 @@
   font-weight: 500;
   font-style: normal;
 }
+.c-edit__featuredImageContainer:hover .c-edit__featuredImageOverlay {
+  opacity: 1;
+}
+.c-edit__featuredImageOverlay {
+  transition: 0.35s;
+  opacity: 0;
+  background: rgba(16, 6, 159, 0.75);
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  pointer-events: none;
+  display: flex;
+  visibility: hidden;
+}
+.c-edit__featuredImageOverlay:has(~ img:not([src=""])) {
+  visibility: visible;
+}
 .c-edit__featuredImageContainer {
   margin-top: 0.5rem;
   position: relative;
