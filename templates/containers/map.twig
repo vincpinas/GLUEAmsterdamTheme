@@ -14,7 +14,7 @@
 {% set addresses = [] %}
 {% set markerstyles = { routeIcon: map.routeMarkerIcon.one().url, locationsIcon: map.locationsMarkerIcon.one().url, size: map.markerSize } %}
 {% set locked = false %}
-{% set directionsArray = ["north", "east", "south", "west"] %}
+{% set directionsArray = ["one", "two", "three", "four"] %}
 
 {# Generate data tags with user info for making map markers #}
 {% for user in users %}
@@ -53,7 +53,7 @@
 							{% endfor %}
 							{% set currentroute = { routeName: route.routeName, pois: currentroute } %}
 							<li class="c-map__menuItem c-map__menuTab c-map__menuRoute" data-route="{{ currentroute|json_encode }}">
-								<h2>Route</h2>
+								<h2>{{ route.routeName }}</h2>
 							</li>
 						{% endfor %}
 					</div>
@@ -67,7 +67,15 @@
 							<span class="c-map__menuLockOverlay"></span>
 						{% endif %}
 						<h2>
-							{{ direction }}ern Routes
+							{% if loop.index == 1 %}
+								{{ map.groupOneHandle }}
+							{% elseif loop.index == 2 %}
+								{{ map.groupTwoHandle }}
+							{% elseif loop.index == 3 %}
+								{{ map.groupThreeHandle }}
+							{% elseif loop.index == 4 %}
+								{{ map.groupFourHandle }}
+							{% endif %}
 						</h2>
 					</li>
 				{% endif %}

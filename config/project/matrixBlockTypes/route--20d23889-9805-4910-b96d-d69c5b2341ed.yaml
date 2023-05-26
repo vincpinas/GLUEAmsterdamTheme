@@ -115,10 +115,10 @@ fields:
           __assoc__:
             -
               - label
-              - North
+              - 'Group One'
             -
               - value
-              - north
+              - one
             -
               - default
               - ''
@@ -126,10 +126,10 @@ fields:
           __assoc__:
             -
               - label
-              - East
+              - 'Group Two'
             -
               - value
-              - east
+              - two
             -
               - default
               - ''
@@ -137,10 +137,10 @@ fields:
           __assoc__:
             -
               - label
-              - South
+              - 'Group Three'
             -
               - value
-              - south
+              - three
             -
               - default
               - ''
@@ -148,10 +148,10 @@ fields:
           __assoc__:
             -
               - label
-              - West
+              - 'Group Four'
             -
               - value
-              - west
+              - four
             -
               - default
               - ''

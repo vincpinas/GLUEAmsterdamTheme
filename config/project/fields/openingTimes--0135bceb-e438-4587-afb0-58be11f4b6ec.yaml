@@ -1,0 +1,82 @@
+columnSuffix: vrlkjshm
+contentColumnType: text
+fieldGroup: 64f81d1c-c242-4549-8d9f-19d9974d28c7 # User
+handle: openingTimes
+instructions: null
+name: 'Opening Times'
+searchable: false
+settings:
+  addRowLabel: 'Add a row'
+  columnType: text
+  columns:
+    __assoc__:
+      -
+        - col1
+        -
+          __assoc__:
+            -
+              - heading
+              - Start
+            -
+              - handle
+              - start
+            -
+              - width
+              - ''
+            -
+              - type
+              - singleline
+      -
+        - col2
+        -
+          __assoc__:
+            -
+              - heading
+              - End
+            -
+              - handle
+              - end
+            -
+              - width
+              - ''
+            -
+              - type
+              - singleline
+  defaults:
+    -
+      __assoc__:
+        -
+          - col1
+          - '00:00'
+        -
+          - col2
+          - '00:00'
+    -
+      __assoc__:
+        -
+          - col1
+          - '00:00'
+        -
+          - col2
+          - '00:00'
+    -
+      __assoc__:
+        -
+          - col1
+          - '00:00'
+        -
+          - col2
+          - '00:00'
+    -
+      __assoc__:
+        -
+          - col1
+          - '00:00'
+        -
+          - col2
+          - '00:00'
+  maxRows: null
+  minRows: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Table

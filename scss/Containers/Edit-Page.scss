@@ -1,0 +1,191 @@
+.c-edit {
+    display: flex;
+    width: 100%;
+
+    @media #{$tablet-down} {
+        flex-direction: column;
+    }
+
+
+    &__formWrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 0rem 20% 0rem 15%;
+
+        @media #{$tablet-down} {
+            margin-top: 2rem;
+            padding: 0 3rem;
+        }
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    &__formHeader {
+        margin-top: 1rem;
+    }
+
+    &__form label {
+        display: flex;
+        flex-direction: column;
+
+        @include label;
+        @include font--primary(500);
+    }
+
+    &__form button {
+        @include gbutton;
+    }
+
+    &__formLabel input,
+    &__formLabel textarea {
+        @include font--primary(500);
+        border: 1px solid $text-primary;
+        background: none;
+        padding: 0.75rem 1.25rem;
+        color: $text-primary;
+        outline: none;
+        margin-top: 0.5rem;
+    }
+
+    &__formLabelRow {
+        display: flex;
+
+        &>p:last-of-type {
+            margin-left: auto;
+        }
+
+        p {
+            @include label;
+        }
+    }
+
+    &__formInputRow {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        &>.c-edit__formLabel {
+            width: 100%;
+        }
+
+        &>*:not(:last-child) {
+            margin-right: 1rem;
+        }
+
+        &.options {
+            margin-top: 2rem;
+        }
+
+        &.options *:first-child {
+            margin-left: auto;
+            @include gbutton;
+            border: none;
+            @include font--primary(500)
+        }
+    }
+
+    &__featuredImageContainer {
+        margin-top: 0.5rem;
+        position: relative;
+        border: 1px solid $text-primary;
+        height: 20rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        z-index: 1;
+        overflow: hidden;
+
+        ion-icon {
+            font-size: 2em;
+        }
+
+        img,
+        input {
+            position: absolute;
+        }
+
+        input {
+            width: 100%;
+            height: 100%;
+        }
+
+        img {
+            z-index: $index-2;
+            width: 100%;
+        }
+
+        img[src=""] {
+            visibility: hidden;
+        }
+
+        input {
+            cursor: pointer;
+            opacity: 0;
+            z-index: $index-3;
+            pointer-events: all;
+        }
+    }
+
+    &__formDateTable {
+        display: flex;
+        flex-direction: column;
+
+        li {
+            @include paragraph;
+            @include gbutton;
+            display: flex;
+            align-items: center;
+        }
+
+        li> :first-child {
+            margin-left: auto;
+        }
+    }
+
+
+    &__formTimeRow {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        * {
+            margin-bottom: 0;
+        }
+
+
+        span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        span:not(:last-of-type) {
+            margin-right: 1rem;
+        }
+
+        p {
+            margin-right: 1rem;
+        }
+
+        select {
+            @include gbutton;
+            color: $text-primary;
+        }
+    }
+
+    .disabled {
+        cursor: not-allowed;
+        color: $gray;
+    }
+
+    .red {
+        color: $red;
+    }
+}

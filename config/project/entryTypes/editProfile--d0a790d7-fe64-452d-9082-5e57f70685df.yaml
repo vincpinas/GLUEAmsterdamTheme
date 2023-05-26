@@ -35,8 +35,8 @@ fieldLayouts:
         userCondition: null
 handle: editProfile
 hasTitleField: false
-name: 'Edit profile'
-section: cb9b4037-71ad-4f2d-b47e-a020160c2a5c # Edit profile
+name: 'Edit page'
+section: cb9b4037-71ad-4f2d-b47e-a020160c2a5c # Edit page
 sortOrder: 1
 titleFormat: '{section.name|raw}'
 titleTranslationKeyFormat: null

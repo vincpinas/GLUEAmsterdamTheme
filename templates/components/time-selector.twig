@@ -1,0 +1,35 @@
+{% set increment = 15 %}
+{% set hour = 0 %}
+{% set hourstring = "" %}
+{% set minutestring = "" %}
+{% set minutes = 0 %}
+{% set value = null %}
+{% set timestring = null %}
+
+{# <input type="time" name="fields[openingTimes][{{row}}][col{{col}}]"></input> #}
+<select name="fields[openingTimes][{{row}}][col{{col}}]">
+	{% for i in 0..95 %}
+		{% if minutes == 45 %}
+			{% set hour = hour + 1 %}
+			{% set minutes = 0 %}
+		{% elseif loop.index == 1 %}
+			{% set minutes = 0 %}
+		{% else %}
+			{% set minutes = minutes + increment %}
+		{% endif %}
+		{% if hour > 10 %}
+			{% set hourstring = hour %}
+		{% else %}
+			{% set hourstring = "0" ~ hour %}
+		{% endif %}
+		{% if minutes == 0 %}
+			{% set minutestring = "00" %}
+		{% else %}
+			{% set minutestring = minutes %}
+		{% endif %}
+		{% set timestring = hourstring ~ ":" ~ minutestring %}
+		<option value="{{timestring}}" {% if user.openingTimes[row] is defined and timestring == user.openingTimes[row]["col" ~ col] %}selected=true{% endif %}>
+			{{timestring}}
+		</option>
+	{% endfor %}
+</select>

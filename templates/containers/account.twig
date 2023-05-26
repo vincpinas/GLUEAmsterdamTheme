@@ -1,11 +1,14 @@
 {% extends "index" %}
 
-{% set user = craft.users.username(any).one() %}
+{% set user = craft.users.username(slug).group('participants').one() %}
 
 {% block content %}
 
 <pre>
     {{ dump(user) }}
 </pre>
+
+{% if user %}{% endif %}
+
 
 {% endblock %}

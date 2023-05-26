@@ -1,0 +1,14 @@
+.c-editMenu {
+    @include font--primary(500);
+    padding-left: 10%;
+
+    & li:not(:last-of-type) {
+        margin-bottom: 1rem;
+    }
+
+    &__link {
+        display: flex;
+        align-items: center;
+        width: 10rem;
+    }
+}

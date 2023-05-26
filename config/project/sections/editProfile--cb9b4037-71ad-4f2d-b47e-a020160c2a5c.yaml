@@ -1,7 +1,7 @@
 defaultPlacement: end
 enableVersioning: true
 handle: editProfile
-name: 'Edit profile'
+name: 'Edit page'
 previewTargets:
   -
     __assoc__:
@@ -19,6 +19,6 @@ siteSettings:
   c5fb5f28-2f93-4a73-bcd6-9c57ee22f86f: # Glueweb Amsterdam
     enabledByDefault: true
     hasUrls: true
-    template: containers/edit-profile.twig
-    uriFormat: edit-profile
+    template: containers/edit-page.twig
+    uriFormat: edit-page
 type: single

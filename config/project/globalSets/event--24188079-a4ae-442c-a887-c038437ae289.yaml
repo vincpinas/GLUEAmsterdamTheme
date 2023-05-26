@@ -31,12 +31,24 @@ fieldLayouts:
           -
             elementCondition: null
             fieldUid: 3f6049f8-db41-426e-86a4-196457c3e028 # Slug
-            instructions: 'A link pointing towards the home page'
-            label: 'Home Link'
+            instructions: 'A link pointing towards a page (usually home) always shown in the header'
+            label: 'Return Link'
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
             uid: a0480ac6-1192-4436-91d3-187a12402861
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: d3712c0e-7898-4805-8cee-c9b619cf6a46 # One Word
+            instructions: 'The text that''s be shown in the return link'
+            label: 'Return name'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: fbac7a58-b356-4277-bbb5-783933bf3018
             userCondition: null
             warning: null
             width: 100

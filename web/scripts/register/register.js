@@ -294,7 +294,7 @@ class Register {
 
             if (!firstRun) {
                 validateFormField(".c-register__formLabel[for='mapaddress']", "Valid address is required", address.value.length > 2, address.value.length > 0)
-                validateFormField(".c-register__formLabel[for='mappostalcode']", "Valid Dutch postal code is required", /\d{4}[ ]?[A-Z]{2}/g.test(postalCode.value), postalCode.value.length > 0)
+                validateFormField(".c-register__formLabel[for='mappostalcode']", "Valid Dutch postal code is required", /(\d{4}[ ]+)?[A-Z]{2}/g.test(postalCode.value) && postalCode.value.length === 7, postalCode.value.length > 0)
             }
 
             if (address.value.length > 2 && postalCode.value.length >= 1) {

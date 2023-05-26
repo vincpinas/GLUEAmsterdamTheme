@@ -1,13 +1,13 @@
-columnSuffix: ytnhzofx
-contentColumnType: string(200)
-fieldGroup: e6ea2a09-6abe-4046-8a6f-c483f1d58716 # Common
-handle: nTitle
+columnSuffix: rbbykyer
+contentColumnType: text
+fieldGroup: 1a8a2732-cd82-4bf7-8afe-099fb893ac20 # Map
+handle: groupThreeHandle
 instructions: null
-name: Title
+name: 'Group Three Handle'
 searchable: false
 settings:
   byteLimit: null
-  charLimit: 50
+  charLimit: null
   code: false
   columnType: null
   initialRows: 4

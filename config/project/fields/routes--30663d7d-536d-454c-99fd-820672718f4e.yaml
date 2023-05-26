@@ -7,7 +7,7 @@ name: Routes
 searchable: false
 settings:
   contentTable: '{{%matrixcontent_routes}}'
-  maxBlocks: 3
+  maxBlocks: null
   minBlocks: null
   propagationKeyFormat: null
   propagationMethod: all

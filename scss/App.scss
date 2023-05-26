@@ -2,10 +2,12 @@
 @import "Mixins.scss";
 @import "Animations.scss";
 @import "Components/Header.scss";
+@import "Components/Edit-Menu.scss";
 @import "Containers/Map.scss";
 @import "Containers/Register.scss";
 @import "Containers/Login.scss";
 @import "Containers/404.scss";
+@import "Containers/Edit-Page.scss";
 
 /* Any imports required multiple times across the site will be imported here. */
 @font-face {
@@ -132,6 +134,10 @@ html {
 
     p {
         @include paragraph;
+    }
+
+    label {
+        @include label;
     }
 
 }

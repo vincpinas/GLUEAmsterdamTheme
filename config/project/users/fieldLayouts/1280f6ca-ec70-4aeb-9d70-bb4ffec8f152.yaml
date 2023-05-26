@@ -4,45 +4,6 @@ tabs:
     elements:
       -
         elementCondition: null
-        fieldUid: bcc4aab8-13e9-4efc-a464-78c59170a854 # Large Text Field
-        instructions: 'Text descriptive of the participant'
-        label: 'Profile text'
-        required: false
-        tip: null
-        type: craft\fieldlayoutelements\CustomField
-        uid: 322e4784-a285-4e3f-9eeb-8e8ae5cbfee0
-        userCondition: null
-        warning: null
-        width: 100
-      -
-        elementCondition: null
-        fieldUid: 9cf5f394-9490-4101-bdc7-5f09654f53e7 # Thumbnail
-        instructions: 'This thumbnail is displayed on your public profile'
-        label: null
-        required: false
-        tip: null
-        type: craft\fieldlayoutelements\CustomField
-        uid: 32279b41-f613-4fa4-a864-9b3cf4156922
-        userCondition: null
-        warning: null
-        width: 100
-      -
-        attribute: addresses
-        elementCondition: null
-        id: null
-        instructions: null
-        label: null
-        orientation: null
-        requirable: false
-        required: false
-        tip: null
-        type: craft\fieldlayoutelements\users\AddressesField
-        uid: b15d1915-ff69-4c47-8dc8-bcfbb204a602
-        userCondition: null
-        warning: null
-        width: 100
-      -
-        elementCondition: null
         fieldUid: f0917fc5-6089-45ec-a4e2-c442ce4726a2 # Package
         instructions: null
         label: null
@@ -101,8 +62,116 @@ tabs:
         userCondition: null
         warning: null
         width: 100
+      -
+        elementCondition: null
+        fieldUid: 623f54ba-640b-4690-bb9d-fffae8471ed9 # Twitter
+        instructions: null
+        label: null
+        required: false
+        tip: null
+        type: craft\fieldlayoutelements\CustomField
+        uid: fdc4dc39-7709-42b0-8dd9-2f7225a4014a
+        userCondition: null
+        warning: null
+        width: 100
+      -
+        elementCondition: null
+        fieldUid: 85b7a402-007c-4598-b380-2ed317ce08bc # LinkedIn
+        instructions: null
+        label: null
+        required: false
+        tip: null
+        type: craft\fieldlayoutelements\CustomField
+        uid: 5868ba23-0e26-416e-bbd5-bb34c71d6381
+        userCondition: null
+        warning: null
+        width: 100
     name: 'User data'
     uid: 32340a36-dfaa-4778-9860-e744f7b2d4ea
+    userCondition: null
+  -
+    elementCondition: null
+    elements:
+      -
+        elementCondition: null
+        fieldUid: 9cf5f394-9490-4101-bdc7-5f09654f53e7 # Thumbnail
+        instructions: 'Thumbnail for the user displayed on both their public profile and the map'
+        label: null
+        required: false
+        tip: null
+        type: craft\fieldlayoutelements\CustomField
+        uid: 32279b41-f613-4fa4-a864-9b3cf4156922
+        userCondition: null
+        warning: null
+        width: 100
+      -
+        elementCondition: null
+        fieldUid: bd5e2840-24bf-449d-8949-c7c8429d4018 # Title
+        instructions: null
+        label: null
+        required: false
+        tip: null
+        type: craft\fieldlayoutelements\CustomField
+        uid: 39f86a9b-6052-4c84-a9a1-22ddf694f461
+        userCondition: null
+        warning: null
+        width: 100
+      -
+        elementCondition: null
+        fieldUid: bcc4aab8-13e9-4efc-a464-78c59170a854 # Large Text Field
+        instructions: 'Text descriptive of the participant'
+        label: 'Profile text'
+        required: false
+        tip: null
+        type: craft\fieldlayoutelements\CustomField
+        uid: 322e4784-a285-4e3f-9eeb-8e8ae5cbfee0
+        userCondition: null
+        warning: null
+        width: 100
+      -
+        elementCondition: null
+        fieldUid: 0135bceb-e438-4587-afb0-58be11f4b6ec # Opening Times
+        instructions: null
+        label: null
+        required: false
+        tip: null
+        type: craft\fieldlayoutelements\CustomField
+        uid: 1f033d97-b46e-49aa-83ff-31f1167b7b6f
+        userCondition: null
+        warning: null
+        width: 100
+    name: 'Public Page'
+    uid: 67eb68ad-ecb9-460f-a867-f554aec646bb
+    userCondition: null
+  -
+    elementCondition: null
+    elements:
+      -
+        elementCondition: null
+        fieldUid: cd1f3a93-b4a0-445b-97ab-b378129dbb74 # Map Address
+        instructions: null
+        label: null
+        required: false
+        tip: null
+        type: craft\fieldlayoutelements\CustomField
+        uid: d9b395a1-1357-490d-9300-df63a5efec4c
+        userCondition: null
+        warning: null
+        width: 100
+      -
+        elementCondition: null
+        fieldUid: 49d0005e-81de-4029-985b-30b90f013162 # Map PostalCode
+        instructions: null
+        label: null
+        required: false
+        tip: null
+        type: craft\fieldlayoutelements\CustomField
+        uid: 0cecc847-db93-4add-a98e-3857e677db41
+        userCondition: null
+        warning: null
+        width: 100
+    name: Map
+    uid: c8a2f6ab-4e6a-4ffa-ba86-615076156a41
     userCondition: null
   -
     elementCondition: null
@@ -181,34 +250,4 @@ tabs:
         width: 100
     name: Invoice
     uid: dbf34a49-7644-4313-9395-9067e2f03ccf
-    userCondition: null
-  -
-    elementCondition: null
-    elements:
-      -
-        elementCondition: null
-        fieldUid: cd1f3a93-b4a0-445b-97ab-b378129dbb74 # Map Address
-        instructions: null
-        label: null
-        required: false
-        tip: null
-        type: craft\fieldlayoutelements\CustomField
-        uid: d9b395a1-1357-490d-9300-df63a5efec4c
-        userCondition: null
-        warning: null
-        width: 100
-      -
-        elementCondition: null
-        fieldUid: 49d0005e-81de-4029-985b-30b90f013162 # Map PostalCode
-        instructions: null
-        label: null
-        required: false
-        tip: null
-        type: craft\fieldlayoutelements\CustomField
-        uid: 0cecc847-db93-4add-a98e-3857e677db41
-        userCondition: null
-        warning: null
-        width: 100
-    name: Map
-    uid: c8a2f6ab-4e6a-4ffa-ba86-615076156a41
     userCondition: null

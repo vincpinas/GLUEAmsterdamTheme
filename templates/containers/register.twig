@@ -9,7 +9,7 @@
 {% set progress = number %}
 
 {% if currentUser %}
-    {% redirect "/public-profile/" ~ currentUser.username %}
+    {% redirect "/public-page/" ~ currentUser.username %}
 {% endif %}
 
 {% block content %}

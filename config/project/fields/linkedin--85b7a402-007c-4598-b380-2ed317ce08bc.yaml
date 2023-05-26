@@ -1,13 +1,13 @@
-columnSuffix: ytnhzofx
-contentColumnType: string(200)
-fieldGroup: e6ea2a09-6abe-4046-8a6f-c483f1d58716 # Common
-handle: nTitle
+columnSuffix: vstvkqiy
+contentColumnType: text
+fieldGroup: 64f81d1c-c242-4549-8d9f-19d9974d28c7 # User
+handle: linkedin
 instructions: null
-name: Title
+name: LinkedIn
 searchable: false
 settings:
   byteLimit: null
-  charLimit: 50
+  charLimit: null
   code: false
   columnType: null
   initialRows: 4

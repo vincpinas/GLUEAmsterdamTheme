@@ -76,7 +76,7 @@ export default class MapMenu {
 
             a.innerHTML = `${i + 1}. <span></span> ${poi.fullName}`;
             a.target = "_blank";
-            a.href = `/public-profile/${poi.username}`;
+            a.href = `/public-page/${poi.username}`;
             googleRouteHref += `${poi.postalCode}/`
 
             li.appendChild(a);
@@ -106,7 +106,7 @@ export default class MapMenu {
 
         if (active) active.remove();
         if (activeTab) activeTab.classList.remove('c-map__menuTabActive');
-    }
+    } 
 
     closeDirectionTab = () => {
         const activeTab = document.querySelector(".c-map__menuDirectionTab.active")

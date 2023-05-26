@@ -1,4 +1,4 @@
-dateModified: 1685034329
+dateModified: 1685135670
 elementSources:
   craft\elements\Entry:
     -
@@ -29,6 +29,21 @@ elementSources:
     -
       key: 'single:8dec35ce-7bad-4407-bbc3-56adc9cccc4a' # Login
       type: native
+    -
+      defaultSort:
+        - title
+        - asc
+      disabled: false
+      key: 'single:cb9b4037-71ad-4f2d-b47e-a020160c2a5c' # Edit page
+      tableAttributes:
+        - postDate
+        - expiryDate
+        - author
+        - link
+      type: native
+    -
+      heading: ''
+      type: heading
   craft\elements\User:
     -
       defaultSort:
@@ -126,9 +141,11 @@ meta:
     1a8a2732-cd82-4bf7-8afe-099fb893ac20: Map # Map
     3f956c2c-f1e6-4abf-abc1-517adbbd0e3d: VAT # VAT
     3f6049f8-db41-426e-86a4-196457c3e028: Slug # Slug
+    3fc5f4d1-e130-417e-8f41-29bb276bfbb2: 'Group Three Handle' # Group Three Handle
     5b1e8713-7a27-46ed-a407-e926769d89e2: Colour # Colour
     05b9b1df-40f9-400d-b742-ed9dbfe00f8c: Login # Login
     5d152d4b-1ee3-4f95-bca3-97ab4af05e68: 'Route Marker Icon' # Route Marker Icon
+    5da67f8c-ab63-473a-8a06-56f08001fc9c: 'Group Four Handle' # Group Four Handle
     8dec35ce-7bad-4407-bbc3-56adc9cccc4a: Login # Login
     9b440915-1a29-471d-9ebe-88c6673362e7: Map # Map
     9cf5f394-9490-4101-bdc7-5f09654f53e7: Thumbnail # Thumbnail
@@ -147,12 +164,16 @@ meta:
     64f81d1c-c242-4549-8d9f-19d9974d28c7: User # User
     76b8abf5-b5a7-4316-b76f-042fd9b0e526: Map # Map
     84f5e1d4-3d01-4be8-82df-2de9132f6b6b: 'Link Text' # Link Text
+    85b7a402-007c-4598-b380-2ed317ce08bc: LinkedIn # LinkedIn
     90a58fe8-93e7-4f43-a79c-f92d1076f9c0: 'Glue websites' # Glue websites
     94b2ace0-9736-4772-8b51-5ad1c118ba9b: Register # Register
+    0135bceb-e438-4587-afb0-58be11f4b6ec: 'Opening Times' # Opening Times
     164bc9a4-5b57-4fb1-b7e2-9fb883aebc34: 'Phone number' # Phone number
     455ecd20-d076-49c7-8fc6-57888147a961: Zip # Zip
     462e7888-6a24-4c61-b3f1-faaec6bc45ad: 'Link Destination' # Link Destination
+    623f54ba-640b-4690-bb9d-fffae8471ed9: Twitter # Twitter
     687bb273-50a1-471a-b240-7ccc88e88288: 'Map Pitch' # Map Pitch
+    730ad796-ff23-490f-8887-4f2390c57f97: 'Group Two Handle' # Group Two Handle
     767ce7ff-b004-4bb8-a476-13d97b25fc2b: 'Contact Form' # Contact Form
     8634fab2-bde5-4665-80a8-324c56cb1c35: 'Web Images' # Web Images
     8809cf4a-41fd-49bf-9e6c-01bb347d9a21: Token # Token
@@ -175,16 +196,18 @@ meta:
     c8adfe4a-01be-4ef5-a6ea-1dd05dbdf07e: DateTable # DateTable
     c700366d-c002-43b2-b7ce-f8dd82c7afa8: Participants # Participants
     cab00bb9-f285-41cd-9dfc-6b675f5c4817: Map # Map
-    cb9b4037-71ad-4f2d-b47e-a020160c2a5c: 'Edit profile' # Edit profile
+    cb9b4037-71ad-4f2d-b47e-a020160c2a5c: 'Edit page' # Edit page
     cd1f3a93-b4a0-445b-97ab-b378129dbb74: 'Map Address' # Map Address
     cdfc6d46-fdd1-4bdf-b53b-7f44b84230a5: Stylesheet # Stylesheet
     ce4c8a98-5c1f-4d39-bbf0-6bfd5fd4ba32: Subtitle # Subtitle
-    d0a790d7-fe64-452d-9082-5e57f70685df: 'Edit profile' # Edit profile
+    d0a790d7-fe64-452d-9082-5e57f70685df: 'Edit page' # Edit page
     d7f79a98-5851-4ca8-8097-74672ff95134: Facebook # Facebook
+    d3712c0e-7898-4805-8cee-c9b619cf6a46: 'One Word' # One Word
     e3b03628-9c11-450f-8556-1e2882e0101c: Home # Home
     e4bcb26e-0946-40a4-a3e0-1d73c3971119: 'Locations Marker Icon' # Locations Marker Icon
     e6ea2a09-6abe-4046-8a6f-c483f1d58716: Common # Common
     e3480c4d-8e7a-4311-af43-7a686e25d7a0: Website # Website
+    ecf5bd66-ad84-4640-b9b2-cf4172f1b84d: 'Group One Handle' # Group One Handle
     f0917fc5-6089-45ec-a4e2-c442ce4726a2: Package # Package
     f46c926b-268c-4328-ad61-180b55bea62e: City # City
 plugins:

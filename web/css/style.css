@@ -14,6 +14,21 @@
   font-size: 1.2em;
 }
 
+.c-editMenu {
+  font-family: "Lausanne";
+  font-weight: 500;
+  font-style: normal;
+  padding-left: 10%;
+}
+.c-editMenu li:not(:last-of-type) {
+  margin-bottom: 1rem;
+}
+.c-editMenu__link {
+  display: flex;
+  align-items: center;
+  width: 10rem;
+}
+
 .c-map {
   color: #ffffff;
   width: 50%;
@@ -842,6 +857,207 @@
   font-style: normal;
 }
 
+.c-edit {
+  display: flex;
+  width: 100%;
+}
+@media screen and (max-width: 991px) {
+  .c-edit {
+    flex-direction: column;
+  }
+}
+.c-edit__formWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0rem 20% 0rem 15%;
+}
+@media screen and (max-width: 991px) {
+  .c-edit__formWrapper {
+    margin-top: 2rem;
+    padding: 0 3rem;
+  }
+}
+.c-edit__form {
+  display: flex;
+  flex-direction: column;
+}
+.c-edit__formHeader {
+  margin-top: 1rem;
+}
+.c-edit__form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 1rem;
+  font-family: "Lausanne";
+  font-weight: 500;
+  font-style: normal;
+}
+@media screen and (max-width: 767px) {
+  .c-edit__form label {
+    font-size: 10px;
+    line-height: 16px;
+  }
+}
+.c-edit__form button {
+  border: 1px solid #ffffff;
+  padding: 0.75rem 1.25rem;
+  outline: none;
+  background: none;
+}
+.c-edit__formLabel input, .c-edit__formLabel textarea {
+  font-family: "Lausanne";
+  font-weight: 500;
+  font-style: normal;
+  border: 1px solid #ffffff;
+  background: none;
+  padding: 0.75rem 1.25rem;
+  color: #ffffff;
+  outline: none;
+  margin-top: 0.5rem;
+}
+.c-edit__formLabelRow {
+  display: flex;
+}
+.c-edit__formLabelRow > p:last-of-type {
+  margin-left: auto;
+}
+.c-edit__formLabelRow p {
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 1rem;
+}
+@media screen and (max-width: 767px) {
+  .c-edit__formLabelRow p {
+    font-size: 10px;
+    line-height: 16px;
+  }
+}
+.c-edit__formInputRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.c-edit__formInputRow > .c-edit__formLabel {
+  width: 100%;
+}
+.c-edit__formInputRow > *:not(:last-child) {
+  margin-right: 1rem;
+}
+.c-edit__formInputRow.options {
+  margin-top: 2rem;
+}
+.c-edit__formInputRow.options *:first-child {
+  margin-left: auto;
+  border: 1px solid #ffffff;
+  padding: 0.75rem 1.25rem;
+  outline: none;
+  background: none;
+  border: none;
+  font-family: "Lausanne";
+  font-weight: 500;
+  font-style: normal;
+}
+.c-edit__featuredImageContainer {
+  margin-top: 0.5rem;
+  position: relative;
+  border: 1px solid #ffffff;
+  height: 20rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 1;
+  overflow: hidden;
+}
+.c-edit__featuredImageContainer ion-icon {
+  font-size: 2em;
+}
+.c-edit__featuredImageContainer img,
+.c-edit__featuredImageContainer input {
+  position: absolute;
+}
+.c-edit__featuredImageContainer input {
+  width: 100%;
+  height: 100%;
+}
+.c-edit__featuredImageContainer img {
+  z-index: 10;
+  width: 100%;
+}
+.c-edit__featuredImageContainer img[src=""] {
+  visibility: hidden;
+}
+.c-edit__featuredImageContainer input {
+  cursor: pointer;
+  opacity: 0;
+  z-index: 50;
+  pointer-events: all;
+}
+.c-edit__formDateTable {
+  display: flex;
+  flex-direction: column;
+}
+.c-edit__formDateTable li {
+  font-size: 16px;
+  font-family: "Lausanne";
+  font-weight: 300;
+  font-style: normal;
+  line-height: 28px;
+  margin-bottom: 1rem;
+  border: 1px solid #ffffff;
+  padding: 0.75rem 1.25rem;
+  outline: none;
+  background: none;
+  display: flex;
+  align-items: center;
+}
+@media screen and (max-width: 767px) {
+  .c-edit__formDateTable li {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+.c-edit__formDateTable li > :first-child {
+  margin-left: auto;
+}
+.c-edit__formTimeRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.c-edit__formTimeRow * {
+  margin-bottom: 0;
+}
+.c-edit__formTimeRow span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.c-edit__formTimeRow span:not(:last-of-type) {
+  margin-right: 1rem;
+}
+.c-edit__formTimeRow p {
+  margin-right: 1rem;
+}
+.c-edit__formTimeRow select {
+  border: 1px solid #ffffff;
+  padding: 0.75rem 1.25rem;
+  outline: none;
+  background: none;
+  color: #ffffff;
+}
+.c-edit .disabled {
+  cursor: not-allowed;
+  color: #787878;
+}
+.c-edit .red {
+  color: #FF0505;
+}
+
 /* Any imports required multiple times across the site will be imported here. */
 @font-face {
   font-family: "TWKLausanne";
@@ -1055,6 +1271,19 @@ html p {
   html p {
     font-size: 14px;
     line-height: 18px;
+  }
+}
+body label,
+html label {
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 1rem;
+}
+@media screen and (max-width: 767px) {
+  body label,
+  html label {
+    font-size: 10px;
+    line-height: 16px;
   }
 }
 

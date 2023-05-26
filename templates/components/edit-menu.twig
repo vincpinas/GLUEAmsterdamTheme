@@ -1,0 +1,21 @@
+<ul class="c-editMenu">
+    <li><a class="c-editMenu__link" href="edit-page">Public page</a></li>
+    <li><a class="c-editMenu__link disabled" href="account-settings">Account settings</a></li>
+    <li><a class="c-editMenu__link disabled" href="upgrade-package">Upgrade package</a></li>
+</ul>
+
+{% block javascripts %}
+
+<script>
+    document.querySelectorAll(".disabled").forEach(disabled => {
+        disabled.addEventListener("click", (e) => { e.preventDefault(); })
+    })
+
+    document.querySelectorAll(".c-editMenu__link").forEach(link => {
+        if(window.location.href.includes(link.href)) {
+            link.innerHTML = "<ion-icon name='caret-forward-outline'></ion-icon>" + link.innerHTML
+        }
+    })
+</script>
+
+{% endblock %}

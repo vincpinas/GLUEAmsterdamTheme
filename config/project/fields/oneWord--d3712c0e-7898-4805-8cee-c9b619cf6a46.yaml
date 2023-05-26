@@ -1,17 +1,17 @@
-columnSuffix: noblvuhh
-contentColumnType: string(2000)
+columnSuffix: slugptvz
+contentColumnType: string(80)
 fieldGroup: e6ea2a09-6abe-4046-8a6f-c483f1d58716 # Common
-handle: largeTextField
-instructions: 'An increased text field allowing for up to 4000 characters'
-name: 'Large Text Field'
+handle: oneWord
+instructions: null
+name: 'One Word'
 searchable: false
 settings:
   byteLimit: null
-  charLimit: 500
+  charLimit: 20
   code: false
   columnType: null
   initialRows: 4
-  multiline: true
+  multiline: false
   placeholder: null
   uiMode: normal
 translationKeyFormat: null

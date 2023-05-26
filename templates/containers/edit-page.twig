@@ -1,0 +1,179 @@
+{% extends "index" %}
+
+{% requireLogin %}
+
+{% block content %}
+
+	<main class="c-edit">
+
+		{% include "components/edit-menu.twig" %}
+
+		{% macro errorList(errors) %}
+			{% if errors %}
+				{{ ul(errors, {class: 'errors'}) }}
+			{% endif %}
+		{% endmacro %}
+
+		{% set user = user ?? currentUser %}
+
+		{% if user.hasErrors() %}
+			<p>Unable to save your profile.</p>
+		{% endif %}
+
+		<div class="c-edit__formWrapper">
+			<form method="post" accept-charset="UTF-8" enctype="multipart/form-data" class="c-edit__form">
+				<h2>Public page</h2>
+				<p>Any changes you make here will appear on your dedicated page</p>
+
+				<h3>Basic info</h3>
+				{{ csrfInput() }}
+				{{ actionInput('users/save-user') }}
+				{{ hiddenInput('userId', user.id) }}
+
+				{# Featured Image #}
+				<label class="c-edit__formLabel">
+					Featured image
+					<span class="c-edit__featuredImageContainer">
+						<div class="c-edit__featuredImageOverlay"></div>
+						{{ input('file', 'fields[thumbnail][]', null, { id: 'thumbnail', accept: 'image/png,image/jpeg', }) }}
+						{% if user.thumbnail.one() %}
+							<img src="{{ user.thumbnail.one().url }}" alt="User">
+						{% else %}
+							<img src="" alt="User">
+						{% endif %}
+						<p>
+							<ion-icon name="cloud-upload"></ion-icon><br>
+							Drag a file here or
+							<u>Browse</u>
+						</p>
+					</span>
+				</label>
+
+				{# Company Name #}
+				<label for="full-name" class="c-edit__formLabel">
+					Company Name
+					{{ input('text', 'fullName', user.fullName, { id: 'full-name', autocomplete: 'name', }) }}
+				</label>
+
+				{# Map Information #}
+				<span class="c-edit__formInputRow">
+					<label for="fields[mapAddress]" class="c-edit__formLabel">
+						Map Address
+						{{ input('text', 'fields[mapAddress]', user.mapAddress, { id: 'mapAddress' }) }}
+					</label>
+					<label for="mapPostalCode" class="c-edit__formLabel">
+						Map Postal Code
+						{{ input('text', 'fields[mapPostalCode]', user.mapPostalCode, { id: 'mapPostalCode' }) }}
+					</label>
+				</span>
+
+				<h3>About the company</h3>
+				<label for="fields[nTitle]" class="c-edit__formLabel">
+					<span class="c-edit__formLabelRow">
+						<p>About title</p>
+						<p id="titleMaxCharacters">Max. 50 characters</p>
+					</span>
+					{{ input('text', 'fields[nTitle]', user.nTitle, { id: 'title' }) }}
+				</label>
+				<label for="fields[largeTextField]" class="c-edit__formLabel">
+					<span class="c-edit__formLabelRow">
+						<p>About</p>
+						<p id="bioMaxCharacters">Max. 500 characters</p>
+					</span>
+					{{ tag('textarea', { text: user.largeTextField, id: 'profileText', name: 'fields[largeTextField]', rows: 10, }) }}
+				</label>
+
+				<h3 class="c-edit__formHeader">Opening hours</h3>
+				<ul class="c-edit__formDateTable">
+					<li>Thursday
+						{% include "_partials/edit-time-selector.twig" with { row: 0} %}</li>
+					<li>Friday
+						{% include "_partials/edit-time-selector.twig" with { row: 1} %}</li>
+					<li>Saturday
+						{% include "_partials/edit-time-selector.twig" with { row: 2} %}</li>
+					<li>Wednesday
+						{% include "_partials/edit-time-selector.twig" with { row: 3} %}</li>
+				</ul>
+
+				<h3 class="c-edit__formHeader">Contact</h3>
+				<span class="c-edit__formInputRow">
+					<label for="fields[phoneNumber]" class="c-edit__formLabel">
+						Phone number
+						{{ input('text', 'fields[phoneNumber]', user.phoneNumber, { id: 'phoneNumber' }) }}
+					</label>
+					<label for="email" class="c-edit__formLabel">
+						Email address
+						{{ input('text', 'email', user.email, { id: 'email' }) }}
+					</label>
+				</span>
+				<span class="c-edit__formInputRow">
+					<label for="fields[instagram]" class="c-edit__formLabel">
+						Instagram
+						{{ input('text', 'fields[instagram]', user.instagram, { id: 'instagram' }) }}
+					</label>
+					<label for="fields[twitter]" class="c-edit__formLabel">
+						Twitter
+						{{ input('text', 'fields[twitter]', user.twitter, { id: 'twitter' }) }}
+					</label>
+				</span>
+				<span class="c-edit__formInputRow">
+					<label for="fields[facebook]" class="c-edit__formLabel">
+						Facebook
+						{{ input('text', 'fields[facebook]', user.facebook, { id: 'facebook' }) }}
+					</label>
+					<label for="fields[linkedin]" class="c-edit__formLabel">
+						LinkedIn
+						{{ input('text', 'fields[linkedin]', user.linkedin, { id: 'linkedin' }) }}
+					</label>
+				</span>
+				<label for="fields[website]" class="c-edit__formLabel">
+					Website
+					{{ input('text', 'fields[website]', user.website, { id: 'website' }) }}
+				</label>
+
+
+				<span class="c-edit__formInputRow options">
+					<a>Quick Preview</a>
+					<button type="submit" class="c-edit__formSubmit">Save changes</button>
+				</span>
+			</form>
+		</div>
+
+
+	</main>
+
+{% endblock %}
+
+{% block javascripts %}
+	<script>
+		const featuredImageInput = document.querySelector("input[type='file']");
+		const featuredImage = document.querySelector(".c-edit__featuredImageContainer img");
+
+		featuredImageInput.addEventListener("change", (e) => {
+			const file = e.target.files[0]
+			featuredImage.src = URL.createObjectURL(file)
+		})
+
+		const setCharacterCount = (counter, character_count, max_count, suffix) => {
+			if (character_count > max_count) counter.innerHTML = `<span class="red">${character_count} / ${suffix}</span>`;
+			else counter.innerHTML = `${character_count} / ${suffix}`;
+		}
+
+		const bioInput = document.querySelector("#profileText")
+		const bioMaxCharacters = document.querySelector("#bioMaxCharacters");
+
+		bioInput.addEventListener("keyup", (e) => {
+			setCharacterCount(bioMaxCharacters, bioInput.value.length, 500, "500 characters")
+		})
+		setCharacterCount(bioMaxCharacters, bioInput.value.length, 500, "500 characters")
+
+		const titleInput = document.querySelector("#title")
+		const titleMaxCharacters = document.querySelector("#titleMaxCharacters");
+		titleInput.addEventListener("keyup", (e) => {
+			setCharacterCount(titleMaxCharacters, titleInput.value.length, 50, "50 characters")
+		})
+		setCharacterCount(titleMaxCharacters, titleInput.value.length, 50, "50 characters")
+
+		
+	</script>
+{% endblock %}
