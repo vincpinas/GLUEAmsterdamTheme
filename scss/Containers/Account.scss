@@ -65,11 +65,4 @@
     &__thumbnailContainer:has(:not(.c-publicPage__thumbnail)) {
         min-height: 100vh;
     }
-
-    // If there is no thumbnail, still properly fill up the container
-    &__thumbnailOverlay:has(:not(~ img)) {
-        height: auto;
-        width: 100%;
-        padding: 0;
-    }
 }

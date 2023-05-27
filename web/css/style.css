@@ -367,6 +367,11 @@
   opacity: 0;
   transition: 0.35s;
 }
+@media screen and (max-width: 767px) {
+  .c-map__routeOverview {
+    padding-top: 2rem;
+  }
+}
 .c-map__menuRoute h2, .c-map__menuLocations h2, .c-map__menuDirectionButton h2 {
   height: 100%;
   text-align: center;
@@ -1189,6 +1194,7 @@
 .c-publicPage__thumbnailContainer:has(:not(.c-publicPage__thumbnail)) {
   min-height: 100vh;
 }
+
 /* Any imports required multiple times across the site will be imported here. */
 @font-face {
   font-family: "TWKLausanne";
