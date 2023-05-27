@@ -28,42 +28,6 @@ fieldLayouts:
             userCondition: null
             warning: null
             width: 100
-          -
-            elementCondition: null
-            fieldUid: 3f6049f8-db41-426e-86a4-196457c3e028 # Slug
-            instructions: 'A link pointing towards a page (usually home) always shown in the header'
-            label: 'Return Link'
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: a0480ac6-1192-4436-91d3-187a12402861
-            userCondition: null
-            warning: null
-            width: 100
-          -
-            elementCondition: null
-            fieldUid: d3712c0e-7898-4805-8cee-c9b619cf6a46 # One Word
-            instructions: 'The text that''s be shown in the return link'
-            label: 'Return name'
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: fbac7a58-b356-4277-bbb5-783933bf3018
-            userCondition: null
-            warning: null
-            width: 100
-          -
-            elementCondition: null
-            fieldUid: bd5e2840-24bf-449d-8949-c7c8429d4018 # Title
-            instructions: 'Title shown in the browser tab'
-            label: 'Site title'
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: a6122ad1-a9fe-46fb-8f5f-d4d7323f3861
-            userCondition: null
-            warning: null
-            width: 100
         name: Content
         uid: 80edcb8c-54e9-470f-bd53-7ecb17215263
         userCondition: null

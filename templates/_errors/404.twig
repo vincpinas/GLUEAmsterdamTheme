@@ -3,8 +3,8 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta charset="utf-8"/>
-		{% if event.nTitle and event.nTitle|length > 0 %}
-			<title>{{ event.nTitle }}</title>
+		{% if general.nTitle and general.nTitle|length > 0 %}
+			<title>{{ general.nTitle }}</title>
 		{% else %}
 			<title>GLUEAmsterdam</title>
 		{% endif %}
@@ -34,7 +34,7 @@
 					had its name changed or is temporarily unavailable.
 				</p>
 				<span class="c-404__buttons">
-					<a class="c-404__button" href="{{ event.postSlug }}">go to homepage</a>
+					<a class="c-404__button" href="{{ general.postSlug }}">go to homepage</a>
 					{% if craft.app.request.url not in craft.app.request.referrer %}
 						<a class="c-404__button" href="{{ craft.app.request.referrer }}">go to previous page</a>
 					{% endif %}

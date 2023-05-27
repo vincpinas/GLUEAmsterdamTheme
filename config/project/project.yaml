@@ -1,4 +1,4 @@
-dateModified: 1685135670
+dateModified: 1685203277
 elementSources:
   craft\elements\Entry:
     -
@@ -136,6 +136,7 @@ fs:
     url: '@web/images/uploads/web'
 meta:
   __names__:
+    0b32d131-99b5-4a85-8221-f63acc57f704: 'Single Asset' # Single Asset
     0dc72236-a5db-434e-8668-f62c38664692: 'Social Media Link' # Social Media Link
     0edc21c7-41ec-4128-97f9-48fdbc7a3f31: Instagram # Instagram
     1a8a2732-cd82-4bf7-8afe-099fb893ac20: Map # Map
@@ -182,6 +183,7 @@ meta:
     53354b75-ade8-4058-a3d9-88355797c897: Email # Email
     294337b5-643e-4cd3-92c7-01c2dade26ce: 'Map Zoom' # Map Zoom
     696329c8-d035-43a0-96a8-a66d8626feb9: Home # Home
+    803445eb-0364-48f9-9808-cf5c51985216: General # General
     830820ed-79d9-4d46-9e86-4134fc2b8d2b: Country # Country
     24188079-a4ae-442c-a887-c038437ae289: Event # Event
     a1a284ed-b660-4132-9e98-a7af09a3cc32: 'Rich Text' # Rich Text

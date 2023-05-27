@@ -11,7 +11,19 @@
   font-family: "Lausanne";
   font-weight: 500;
   font-style: normal;
+  margin: 0;
+}
+.c-header__return, .c-header__links a {
   font-size: 1.2em;
+}
+.c-header__links {
+  font-family: "Lausanne";
+  font-weight: 500;
+  font-style: normal;
+  margin-left: auto;
+}
+.c-header__links > a:not(:last-child) {
+  margin-right: 1rem;
 }
 
 .c-editMenu {
@@ -44,16 +56,17 @@
 }
 .c-map__popupImgWrapper {
   width: 100%;
-  height: fit-content;
+  height: 10rem;
   position: relative;
+  overflow: hidden;
 }
 .c-map__popupImgOverlay {
   top: 0;
   display: block;
   width: 100%;
-  height: 97%;
+  height: 100%;
   position: absolute;
-  background: rgba(16, 6, 159, 0.25);
+  background: rgba(16, 6, 159, 0.4);
 }
 .c-map__popupImgText {
   margin: 0;
@@ -125,25 +138,20 @@
   position: absolute;
   top: 0;
   left: 0;
-  padding: 0.5rem;
-  background: #ffffff;
+  padding: 1rem;
   z-index: 1;
   outline: none;
   border: none;
   transition: 0.35s;
   justify-content: center;
   display: flex;
+  align-items: center;
+  font-size: 1.2em;
+  background: #10069F;
 }
 .c-map__menuDirectionCloseButton ion-icon {
-  color: red;
-  font-size: 2em;
   transition: 0.35s;
-}
-.c-map__menuDirectionCloseButton:hover {
-  background: #cccccc;
-}
-.c-map__menuDirectionCloseButton:hover ion-icon {
-  color: #990000;
+  margin-right: 0.25rem;
 }
 .c-map__menuDirectionTab {
   position: absolute;
@@ -281,49 +289,49 @@
   /* shorten the line so it goes only up to the bullet. Is equal to first-child:before's top */
 }
 .c-map__menu > li:nth-of-type(2) {
-  background: #1207b8;
+  background: #1407c4;
 }
 .c-map__menuDirectionTab > li:nth-of-type(2) {
-  background: #1207b8 !important;
+  background: #1407c4 !important;
 }
 .c-map__menuDirectionTab > li:nth-of-type(2) + div {
-  background: #1207b8 !important;
+  background: #1407c4 !important;
 }
 .c-map__menu > li:nth-of-type(3) {
-  background: #1508d0;
-}
-.c-map__menuDirectionTab > li:nth-of-type(3) {
-  background: #1508d0 !important;
-}
-.c-map__menuDirectionTab > li:nth-of-type(3) + div {
-  background: #1508d0 !important;
-}
-.c-map__menu > li:nth-of-type(4) {
   background: #1709e9;
 }
-.c-map__menuDirectionTab > li:nth-of-type(4) {
+.c-map__menuDirectionTab > li:nth-of-type(3) {
   background: #1709e9 !important;
+}
+.c-map__menuDirectionTab > li:nth-of-type(3) + div {
+  background: #1709e9 !important;
+}
+.c-map__menu > li:nth-of-type(4) {
+  background: #2f21f7;
+}
+.c-map__menuDirectionTab > li:nth-of-type(4) {
+  background: #2f21f7 !important;
 }
 .c-map__menuDirectionTab > li:nth-of-type(4) + div {
-  background: #1709e9 !important;
+  background: #2f21f7 !important;
 }
 .c-map__menu > li:nth-of-type(5) {
-  background: #2415f6;
+  background: #5246f8;
 }
 .c-map__menuDirectionTab > li:nth-of-type(5) {
-  background: #2415f6 !important;
+  background: #5246f8 !important;
 }
 .c-map__menuDirectionTab > li:nth-of-type(5) + div {
-  background: #2415f6 !important;
+  background: #5246f8 !important;
 }
 .c-map__menu > li:nth-of-type(6) {
-  background: #3b2df7;
+  background: #746bf9;
 }
 .c-map__menuDirectionTab > li:nth-of-type(6) {
-  background: #3b2df7 !important;
+  background: #746bf9 !important;
 }
 .c-map__menuDirectionTab > li:nth-of-type(6) + div {
-  background: #3b2df7 !important;
+  background: #746bf9 !important;
 }
 .c-map__locationsOverview ol {
   list-style: decimal;
@@ -947,6 +955,17 @@
   flex-direction: row;
   align-items: center;
 }
+@media screen and (max-width: 991px) {
+  .c-edit__formInputRow {
+    flex-direction: column;
+  }
+  .c-edit__formInputRow > *:not(:last-child) {
+    margin: 0 !important;
+  }
+  .c-edit__formInputRow.options {
+    flex-direction: row;
+  }
+}
 .c-edit__formInputRow > .c-edit__formLabel {
   width: 100%;
 }
@@ -1055,6 +1074,15 @@
   justify-content: center;
   align-items: center;
 }
+@media screen and (max-width: 991px) {
+  .c-edit__formTimeRow {
+    flex-direction: column;
+  }
+  .c-edit__formTimeRow span:not(:last-of-type) {
+    margin-bottom: 1rem;
+    margin-right: 0;
+  }
+}
 .c-edit__formTimeRow * {
   margin-bottom: 0;
 }
@@ -1087,6 +1115,80 @@
   color: #FF0505;
 }
 
+.c-publicPage {
+  display: flex;
+  width: 100%;
+}
+@media screen and (max-width: 991px) {
+  .c-publicPage {
+    flex-direction: column;
+  }
+}
+.c-publicPage__thumbnailContainer {
+  width: 50%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 991px) {
+  .c-publicPage__thumbnailContainer {
+    width: 100%;
+  }
+}
+.c-publicPage__thumbnailOverlay {
+  position: absolute;
+  height: 100%;
+  padding: 3rem;
+}
+@media screen and (max-width: 767px) {
+  .c-publicPage__thumbnailOverlay {
+    padding: 7rem;
+  }
+}
+.c-publicPage__thumbnail {
+  width: 100%;
+  position: absolute;
+}
+.c-publicPage__overview {
+  padding: 4rem;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (max-width: 991px) {
+  .c-publicPage__overview {
+    width: 100%;
+    padding: 0 2rem;
+  }
+}
+.c-publicPage__overview h3 {
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+}
+.c-publicPage__overviewOpeningTimes {
+  margin-bottom: 1rem;
+}
+.c-publicPage__overviewOpeningTimes li {
+  font-size: 16px;
+  font-family: "Lausanne";
+  font-weight: 300;
+  font-style: normal;
+  line-height: 28px;
+  margin-bottom: 1rem;
+  margin: 0;
+}
+@media screen and (max-width: 767px) {
+  .c-publicPage__overviewOpeningTimes li {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+.c-publicPage__thumbnailContainer:has(:not(.c-publicPage__thumbnail)) {
+  min-height: 100vh;
+}
 /* Any imports required multiple times across the site will be imported here. */
 @font-face {
   font-family: "TWKLausanne";
@@ -1208,11 +1310,11 @@ html input {
 }
 body h1,
 html h1 {
-  font-size: 90px;
+  font-size: 42px;
   font-family: "Lausanne";
   font-weight: 800;
   font-style: normal;
-  line-height: 80px;
+  line-height: 48px;
   margin-bottom: 1.5rem;
 }
 @media screen and (max-width: 767px) {

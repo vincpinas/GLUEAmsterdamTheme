@@ -5,7 +5,85 @@
 {% block content %}
 
 	{% if user %}
-		<pre>{{ dump(user) }}</pre>
+		<main class="c-publicPage">
+			<div class="c-publicPage__thumbnailContainer">
+				{% if user.thumbnail.one() %}
+					<img src="{{ user.thumbnail.one().url }}" alt="" class="c-publicPage__thumbnail">
+				{% endif %}
+				{% if general.singleAsset.one() %}
+					<img src="{{ general.singleAsset.one().url }}" alt="GLUE overlay" class="c-publicPage__thumbnailOverlay"/>
+				{% endif %}
+
+			</div>
+			<div class="c-publicPage__overview">
+				<h2>{{ user.fullName }}</h2>
+
+				{% if user.nTitle|length > 0 %}
+					<h3>{{ user.nTitle }}</h3>
+				{% endif %}
+
+				{% if user.largeTextField|length > 0 %}
+					<p>{{ user.largeTextField}}</p>
+				{% endif %}
+
+				{% if user.mapAddress|length > 0 and user.mapPostalCode|length > 0 %}
+					<h3>Address</h3>
+					<p>{{ user.mapAddress }},
+						{{ user.mapPostalCode }}
+						Amsterdam</p>
+				{% endif %}
+
+				{% if user.openingTimes and event.datetable %}
+					<h3>Opening Times</h3>
+					<ul class="c-publicPage__overviewOpeningTimes">
+						{% for date in event.datetable %}
+							<li>
+								{{ date["col1"]|date("l") }}:
+								{{ user.openingTimes[loop.index - 1]["start"] }}
+								-
+								{{ user.openingTimes[loop.index - 1]["end"] }}
+							</li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+
+				{% if user.phoneNumber|length > 0 %}
+					<h3>Phone number</h3>
+					<p>{{ user.phoneNumber}}</p>
+				{% endif %}
+
+				{% if user.email|length > 0 %}
+					<h3>Email</h3>
+					<p>{{ user.email}}</p>
+				{% endif %}
+
+				{% if user.website|length > 0 %}
+					<h3>Website</h3>
+					<p>{{ user.website}}</p>
+				{% endif %}
+
+				{# {% if user.instagram|length > 0 %}
+					<h3>Instagram</h3>
+					<p>{{ user.instagram}}</p>
+				{% endif %}
+
+				{% if user.facebook|length > 0 %}
+					<h3>Facebook</h3>
+					<p>{{ user.facebook}}</p>
+				{% endif %}
+
+				{% if user.twitter|length > 0 %}
+					<h3>Twitter</h3>
+					<p>{{ user.twitter}}</p>
+				{% endif %}
+
+				{% if user.linkedin|length > 0 %}
+					<h3>LinkedIn</h3>
+					<p>{{ user.linkedin}}</p>
+				{% endif %} #}
+
+			</div>
+		</main>
 	{% else %}
 		{% redirect "/" %}
 	{% endif %}

@@ -1,0 +1,60 @@
+fieldLayouts:
+  0eba3caf-d547-465f-9016-1fb2a10f5a8f:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 0b32d131-99b5-4a85-8221-f63acc57f704 # Single Asset
+            instructions: 'this image is overlayed on images like a users public page thumbnail'
+            label: 'GLUE image overlay'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 12945a61-adda-4006-8455-288b5954eec9
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 3f6049f8-db41-426e-86a4-196457c3e028 # Slug
+            instructions: 'A link pointing towards a page (usually home) always shown in the header'
+            label: 'Return Link'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 176257dd-df8e-4657-9155-dab9f5a9deee
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: d3712c0e-7898-4805-8cee-c9b619cf6a46 # One Word
+            instructions: 'The text displayed in the return link'
+            label: 'Return name'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ae37be2e-195d-467c-9ef6-11b5ee15f0fe
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: bd5e2840-24bf-449d-8949-c7c8429d4018 # Title
+            instructions: 'Title shown in the browser tab'
+            label: 'Site title'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a20ecb03-1732-4977-ad53-cfad15de2368
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 21763697-a3f0-46a2-882a-36dec94da38e
+        userCondition: null
+handle: general
+name: General
+sortOrder: 7

@@ -15,17 +15,18 @@ $mapheight: 90vh;
 
         &Wrapper {
             width: 100%;
-            height: fit-content;
+            height: 10rem;
             position: relative;
+            overflow: hidden;
         }
 
         &Overlay {
             top: 0;
             display: block;
             width: 100%;
-            height: 97%;
+            height: 100%;
             position: absolute;
-            background: rgba($special-primary, 25%);
+            background: rgba($special-primary, 40%);
         }
 
         &Text {
@@ -99,27 +100,21 @@ $mapheight: 90vh;
         position: absolute;
         top: 0;
         left: 0;
-        padding: 0.5rem;
-        background: $white;
+        padding: 1rem;
         z-index: $index-1;
         outline: none;
         border: none;
         transition: $transition-fast;
         justify-content: center;
         display: flex;
+        align-items: center;
+        font-size: 1.2em;
+        // @include gbutton;
+        background: $special-primary;
 
         ion-icon {
-            color: red;
-            font-size: 2em;
             transition: $transition-fast;
-        }
-
-        &:hover {
-            background: darken($white, 20%);
-        }
-
-        &:hover ion-icon {
-            color: darken(red, 20%);
+            margin-right: 0.25rem;
         }
     }
 
@@ -278,16 +273,17 @@ $mapheight: 90vh;
     }
 
     @for $i from 1 through 5 {
+        $lighten: 7.5%;
         &__menu>li:nth-of-type(#{$i + 1}) {
-            background: lighten($special-primary, $i * 5%);
+            background: lighten($special-primary, $i * $lighten);
         }
 
         &__menuDirectionTab>li:nth-of-type(#{$i + 1}) {
-            background: lighten($special-primary, $i * 5%) !important;
+            background: lighten($special-primary, $i * $lighten) !important;
         }
 
         &__menuDirectionTab>li:nth-of-type(#{$i + 1}) + div {
-            background: lighten($special-primary, $i * 5%) !important;
+            background: lighten($special-primary, $i * $lighten) !important;
         }
     }
 

@@ -77,6 +77,18 @@
         flex-direction: row;
         align-items: center;
 
+        @media #{$tablet-down} {
+            flex-direction: column;
+
+            &>*:not(:last-child) {
+                margin: 0 !important;
+            }
+
+            &.options {
+                flex-direction: row;
+            }
+        }
+
         &>.c-edit__formLabel {
             width: 100%;
         }
@@ -184,6 +196,15 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
+        @media #{$tablet-down} {
+            flex-direction: column;
+
+            span:not(:last-of-type) {
+                margin-bottom: 1rem;
+                margin-right: 0;
+            }
+        }
 
         * {
             margin-bottom: 0;

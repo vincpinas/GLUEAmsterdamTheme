@@ -1,8 +1,16 @@
 {% set pages = craft.entries.section('pages') %}
 
 <header class="c-header">
-	<a class="c-header__return" href="{{ event.postSlug }}">
+	<a class="c-header__return" href="{{ general.postSlug }}">
 		<ion-icon name="arrow-back-outline"></ion-icon>
-		{{ event.oneWord }}
+		{{ general.oneWord }}
 	</a>
+
+	{% if currentUser %}
+		<span class="c-header__links">
+			<a href="/edit-page">Account</a>
+			<a href="/logout">Logout</a>
+		</span>
+	{% endif %}
+
 </header>
