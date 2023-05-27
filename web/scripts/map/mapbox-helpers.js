@@ -83,6 +83,7 @@ export default class MapStateMachine {
                             )
                         temp = new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(popup).addTo(map)
                         temp.cId = marker.text;
+                        temp.cLngLat = marker.geometry.coordinates
                     }
 
                     result.push(temp)
@@ -98,8 +99,10 @@ export default class MapStateMachine {
                             if (this.activePopUp && this.activePopUp._popup.isOpen()) this.activePopUp.togglePopup();
                             marker.togglePopup();
                             this.activePopUp = marker
-                            const bounds = new mapboxgl.LngLatBounds(marker._lngLat, marker._lngLat);
-                            this.mapRef.fitBounds(bounds, { padding: 250, duration: 1200, zoom: 14, offset: [0, 50] })
+                            const lngLat = marker.cLngLat
+                            console.log(lngLat)
+                            const bounds = new mapboxgl.LngLatBounds(lngLat, lngLat);
+                            this.mapRef.fitBounds(bounds, { padding: 50, duration: 1200, zoom: 14, offset: [0, 50] })
                         })
                     })
                 }

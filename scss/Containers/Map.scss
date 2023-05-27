@@ -105,12 +105,19 @@ $mapheight: 90vh;
         outline: none;
         border: none;
         transition: $transition-fast;
-        justify-content: center;
         display: flex;
         align-items: center;
         font-size: 1.2em;
-        // @include gbutton;
         background: $special-primary;
+
+        @media #{$mobile-down} {
+            padding: 0;
+            margin: 0;
+            background: none;
+            margin-left: auto;
+            height: fit-content;
+            margin-left: 2rem;
+        }
 
         ion-icon {
             transition: $transition-fast;
@@ -160,13 +167,18 @@ $mapheight: 90vh;
         display: none;
     }
 
+    &__locationsOverview {
+        padding: 5rem 0;
+    }
+
     &__menuItem.active,
     &__locationsOverview {
         width: 100%;
         text-align: center;
-        padding: 5rem 0;
         overflow-y: scroll;
         color: $text-primary;
+        padding: 8rem 0;
+        
 
         li h2 {
             max-width: 15rem;
@@ -274,6 +286,7 @@ $mapheight: 90vh;
 
     @for $i from 1 through 5 {
         $lighten: 7.5%;
+
         &__menu>li:nth-of-type(#{$i + 1}) {
             background: lighten($special-primary, $i * $lighten);
         }
@@ -282,7 +295,7 @@ $mapheight: 90vh;
             background: lighten($special-primary, $i * $lighten) !important;
         }
 
-        &__menuDirectionTab>li:nth-of-type(#{$i + 1}) + div {
+        &__menuDirectionTab>li:nth-of-type(#{$i + 1})+div {
             background: lighten($special-primary, $i * $lighten) !important;
         }
     }
@@ -372,4 +385,10 @@ $mapheight: 90vh;
 
 .mapboxgl-popup-close-button {
     display: none;
+}
+
+.mapboxgl-popup {
+    @media #{$mobile-down} {
+        max-width: 16rem !important;
+    }
 }

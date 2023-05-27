@@ -143,11 +143,20 @@
   outline: none;
   border: none;
   transition: 0.35s;
-  justify-content: center;
   display: flex;
   align-items: center;
   font-size: 1.2em;
   background: #10069F;
+}
+@media screen and (max-width: 767px) {
+  .c-map__menuDirectionCloseButton {
+    padding: 0;
+    margin: 0;
+    background: none;
+    margin-left: auto;
+    height: fit-content;
+    margin-left: 2rem;
+  }
 }
 .c-map__menuDirectionCloseButton ion-icon {
   transition: 0.35s;
@@ -192,12 +201,15 @@
 .c-map__menuTabActive {
   display: none;
 }
+.c-map__locationsOverview {
+  padding: 5rem 0;
+}
 .c-map__menuItem.active, .c-map__locationsOverview {
   width: 100%;
   text-align: center;
-  padding: 5rem 0;
   overflow-y: scroll;
   color: #ffffff;
+  padding: 8rem 0;
 }
 .c-map__menuItem.active li h2, .c-map__locationsOverview li h2 {
   max-width: 15rem;
@@ -367,11 +379,6 @@
   opacity: 0;
   transition: 0.35s;
 }
-@media screen and (max-width: 767px) {
-  .c-map__routeOverview {
-    padding-top: 2rem;
-  }
-}
 .c-map__menuRoute h2, .c-map__menuLocations h2, .c-map__menuDirectionButton h2 {
   height: 100%;
   text-align: center;
@@ -415,6 +422,12 @@
 
 .mapboxgl-popup-close-button {
   display: none;
+}
+
+@media screen and (max-width: 767px) {
+  .mapboxgl-popup {
+    max-width: 16rem !important;
+  }
 }
 
 .c-register {
