@@ -616,13 +616,18 @@
   flex-wrap: wrap;
   margin-bottom: 1rem;
 }
+@media screen and (max-width: 991px) {
+  .c-register__formPackages {
+    align-items: center;
+  }
+}
 .c-register__formPackage {
   display: flex;
   flex-direction: column;
   border: 1px solid #ffffff;
   padding: 1rem;
   position: relative;
-  width: 22rem;
+  max-width: 22rem;
   margin-bottom: 2rem;
   margin-right: 2rem;
 }
@@ -703,6 +708,12 @@
   .c-register__form label {
     font-size: 14px;
     line-height: 18px;
+  }
+}
+@media screen and (max-width: 991px) {
+  .c-register__form label {
+    max-width: 25rem;
+    min-width: initial;
   }
 }
 .c-register__formInput {
@@ -874,6 +885,15 @@
 }
 .c-404__buttons {
   margin-top: 0.5rem;
+  display: flex;
+}
+@media screen and (max-width: 991px) {
+  .c-404__buttons {
+    flex-direction: column;
+  }
+}
+.c-404__button:not(:last-of-type) {
+  margin-right: 0.5rem;
 }
 .c-404__button {
   border: 1px solid #ffffff;
@@ -881,6 +901,11 @@
   font-family: "Lausanne";
   font-weight: 500;
   font-style: normal;
+}
+@media screen and (max-width: 991px) {
+  .c-404 {
+    padding: 2rem;
+  }
 }
 
 .c-edit {

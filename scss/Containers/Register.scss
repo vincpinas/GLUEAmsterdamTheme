@@ -185,6 +185,10 @@
             justify-content: center;
             flex-wrap: wrap;
             margin-bottom: 1rem;
+
+            @media #{$tablet-down} {
+                align-items: center;
+            }
         }
 
         &Package {
@@ -193,7 +197,7 @@
             border: 1px solid $text-primary;
             padding: 1rem;
             position: relative;
-            width: 22rem;
+            max-width: 22rem;
             margin-bottom: 2rem;
             margin-right: 2rem;
         }
@@ -262,6 +266,11 @@
             position: relative;
             @include no-select;
             min-width: 25rem;
+
+            @media #{$tablet-down} {
+                max-width: 25rem;
+                min-width: initial;
+            }
         }
 
         &Input {
