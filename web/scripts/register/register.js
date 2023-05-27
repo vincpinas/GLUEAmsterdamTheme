@@ -351,7 +351,7 @@ class Register {
 
             if (!firstRun) {
                 validateFormField(".c-register__formLabel[for='invoicename']", "Company name is required", name.value.length >= 1)
-                validateFormField(".c-register__formLabel[for='invoicezip']", "Valid zip code is required", zip.value.length >= 4, zip.value.length > 0)
+                validateFormField(".c-register__formLabel[for='invoicezip']", "Valid zip code is required", zip.value.length >= 2, zip.value.length > 0)
                 validateFormField(".c-register__formLabel[for='invoiceaddress']", "Address is required", address.value.length > 1, address.value.length > 0)
                 validateFormField(".c-register__formLabel[for='invoicecountry']", "Country is required", country.value.length > 1, country.value.length > 0)
                 validateFormField(".c-register__formLabel[for='invoicecity']", "City is required", city.value.length > 1, city.value.length > 0)
