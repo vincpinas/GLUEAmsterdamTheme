@@ -23,24 +23,20 @@ class Module extends \yii\base\Module
 
         parent::init();
 
-        // Event::on(\craft\services\Elements::class, \craft\services\Elements::EVENT_AFTER_SAVE_ELEMENT, function(Event $event) {
-        //     $request = Craft::$app->getRequest();
-        //     $location = $request->getBodyParams()["location"];
+        // Remove old image before uploading new image for user thumbnail
+        Event::on(\craft\services\Elements::class, \craft\services\Elements::EVENT_BEFORE_SAVE_ELEMENT, function(Event $event) {
+            $request = Craft::$app->getRequest();
+            $location = $request->getBodyParams();
 
-        //     if ($event->element instanceof \craft\elements\User) {
-        //         $userId = $event->element->id;
+            if ($event->element instanceof \craft\elements\User) {
+                $userId = $event->element->id;
+                $asset = Craft::$app->getUser()->getIdentity()->getFieldValue('thumbnail')->one();
 
-        //         $controller = new \craft\controllers\UsersController('users', Craft::$app);
-        //         $action = 'save-address';
+                if($asset === null) return;
 
-        //         $params = [
-        //             'userId' => $userId,
-        //             'fullName' => 'Map',
-        //         ];
-
-        //         $result = $controller->run($action, $params);
-        //     }
-        // });
+                Craft::$app->elements->deleteElementById($asset->id);
+            }
+        });
     }
 
 }
