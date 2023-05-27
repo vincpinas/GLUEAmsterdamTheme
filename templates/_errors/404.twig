@@ -35,7 +35,7 @@
 				</p>
 				<span class="c-404__buttons">
 					<a class="c-404__button" href="{{ general.postSlug }}">go to homepage</a>
-					{% if craft.app.request.url not in craft.app.request.referrer %}
+					{% if craft.app.request.url not in craft.app.request.referrer and craft.app.request.referrer %}
 						<a class="c-404__button" href="{{ craft.app.request.referrer }}">go to previous page</a>
 					{% endif %}
 				</span>
