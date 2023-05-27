@@ -100,7 +100,6 @@ export default class MapStateMachine {
                             marker.togglePopup();
                             this.activePopUp = marker
                             const lngLat = marker.cLngLat
-                            console.log(lngLat)
                             const bounds = new mapboxgl.LngLatBounds(lngLat, lngLat);
                             this.mapRef.fitBounds(bounds, { padding: 50, duration: 1200, zoom: 14, offset: [0, 50] })
                         })
