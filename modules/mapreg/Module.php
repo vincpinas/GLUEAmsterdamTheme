@@ -25,16 +25,19 @@ class Module extends \yii\base\Module
 
         // Remove old image before uploading new image for user thumbnail
         Event::on(\craft\services\Elements::class, \craft\services\Elements::EVENT_BEFORE_SAVE_ELEMENT, function(Event $event) {
-            $request = Craft::$app->getRequest();
-            $location = $request->getBodyParams();
-
+            // only execute code if element is of type user.
             if ($event->element instanceof \craft\elements\User) {
                 $userId = $event->element->id;
-                $asset = Craft::$app->getUser()->getIdentity()->getFieldValue('thumbnail')->one();
+                $potentionalOldAsset = Craft::$app->getUser()->getIdentity()->getFieldValue('thumbnail')->one();
+                // Access uploaded files in post request to check if image was uploaded
+                $uploadedAsset = $_FILES["fields"]["name"]["thumbnail"][0];
 
-                if($asset === null) return;
+                // If there is no asset in this field yet stop function from running
+                if($potentionalOldAsset === null) return;
+                // If there is no new uploaded image stop function from running
+                if($uploadedAsset === "") return;
 
-                Craft::$app->elements->deleteElementById($asset->id);
+                Craft::$app->elements->deleteElementById($potentionalOldAsset->id);
             }
         });
     }
