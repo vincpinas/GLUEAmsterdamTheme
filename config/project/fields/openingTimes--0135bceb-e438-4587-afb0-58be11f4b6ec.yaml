@@ -42,39 +42,7 @@ settings:
             -
               - type
               - singleline
-  defaults:
-    -
-      __assoc__:
-        -
-          - col1
-          - '00:00'
-        -
-          - col2
-          - '00:00'
-    -
-      __assoc__:
-        -
-          - col1
-          - '00:00'
-        -
-          - col2
-          - '00:00'
-    -
-      __assoc__:
-        -
-          - col1
-          - '00:00'
-        -
-          - col2
-          - '00:00'
-    -
-      __assoc__:
-        -
-          - col1
-          - '00:00'
-        -
-          - col2
-          - '00:00'
+  defaults: null
   maxRows: null
   minRows: null
 translationKeyFormat: null

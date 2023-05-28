@@ -21,8 +21,13 @@
 
     &__thumbnailOverlay {
         position: absolute;
-        height: 100%;
-        padding: 3rem;
+        max-width: 100%;
+        padding: 1rem;
+
+        @media #{$tablet-down} {
+            height: 100%;
+            max-width: unset;
+        }
 
         @media #{$mobile-down} {
             padding: 7rem;
@@ -30,8 +35,13 @@
     }
 
     &__thumbnail {
-        width: 100%;
+        height: 100%;
         position: absolute;
+
+        @media #{$tablet-down} {
+            height: auto;
+            width: 100%;
+        }
     }
 
     &__overview {
@@ -42,7 +52,7 @@
 
         @media #{$tablet-down} {
             width: 100%;
-            padding: 0 2rem;
+            padding: 2rem;
         }
     }
 
@@ -64,5 +74,9 @@
     // If there is no thumbnail, still properly fill up the container
     &__thumbnailContainer:has(:not(.c-publicPage__thumbnail)) {
         min-height: 100vh;
+
+        .c-publicPage__thumbnailOverlay {
+            height: 100%;
+        }
     }
 }

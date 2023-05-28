@@ -1,6 +1,6 @@
 {% extends "index" %}
 
-{% set user = craft.users.username(slug).group('participants').one() %}
+{% set user = craft.users.username(slug).one() %}
 
 {% block content %}
 
@@ -8,12 +8,11 @@
 		<main class="c-publicPage">
 			<div class="c-publicPage__thumbnailContainer">
 				{% if user.thumbnail.one() %}
-					<img src="{{ user.thumbnail.one().url }}" alt="" class="c-publicPage__thumbnail">
+					<img src="{{ user.thumbnail.one().url }}" alt="User thumbnail" class="c-publicPage__thumbnail">
 				{% endif %}
 				{% if general.singleAsset.one() %}
 					<img src="{{ general.singleAsset.one().url }}" alt="GLUE overlay" class="c-publicPage__thumbnailOverlay"/>
 				{% endif %}
-
 			</div>
 			<div class="c-publicPage__overview">
 				<h2>{{ user.fullName }}</h2>
@@ -33,19 +32,17 @@
 						Amsterdam</p>
 				{% endif %}
 
-				{% if user.openingTimes and event.datetable %}
-					<h3>Opening Times</h3>
-					<ul class="c-publicPage__overviewOpeningTimes">
-						{% for date in event.datetable %}
-							<li>
-								{{ date["col1"]|date("l") }}:
-								{{ user.openingTimes[loop.index - 1]["start"] }}
-								-
-								{{ user.openingTimes[loop.index - 1]["end"] }}
-							</li>
-						{% endfor %}
-					</ul>
-				{% endif %}
+				<h3>Opening Times</h3>
+				<ul class="c-publicPage__overviewOpeningTimes">
+					{% for date in event.datetable %}
+						<li>
+							{{ date["col1"]|date("l") }}:
+							{{ user.openingTimes[loop.index - 1]["start"] }}
+							-
+							{{ user.openingTimes[loop.index - 1]["end"] }}
+						</li>
+					{% endfor %}
+				</ul>
 
 				{% if user.phoneNumber|length > 0 %}
 					<h3>Phone number</h3>
@@ -62,7 +59,7 @@
 					<p>{{ user.website}}</p>
 				{% endif %}
 
-				{# {% if user.instagram|length > 0 %}
+				{% if user.instagram|length > 0 %}
 					<h3>Instagram</h3>
 					<p>{{ user.instagram}}</p>
 				{% endif %}
@@ -80,7 +77,7 @@
 				{% if user.linkedin|length > 0 %}
 					<h3>LinkedIn</h3>
 					<p>{{ user.linkedin}}</p>
-				{% endif %} #}
+				{% endif %}
 
 			</div>
 		</main>

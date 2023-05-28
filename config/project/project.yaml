@@ -1,4 +1,4 @@
-dateModified: 1685203277
+dateModified: 1685277415
 elementSources:
   craft\elements\Entry:
     -
@@ -221,6 +221,10 @@ plugins:
       additionalCss: "#global-sidebar {\r\n    background: black;\r\n}\r\n\r\n#system-info {\r\n    background: rgb(40, 40, 40);\r\n}"
       cacheBusting: true
       cssFile: ''
+  cp-field-inspect:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
   expanded-singles:
     edition: standard
     enabled: true
