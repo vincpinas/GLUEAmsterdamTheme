@@ -189,12 +189,13 @@ export default class MapStateMachine {
             },
             'layout': {
                 'line-join': 'round',
-                'line-cap': 'round'
+                'line-cap': 'square'
             },
             'paint': {
                 'line-color': '#0525d3',
                 'line-width': 4,
-                'line-opacity': 1
+                'line-opacity': 1,
+                'line-dasharray': [2, 2],
             }
         });
 
