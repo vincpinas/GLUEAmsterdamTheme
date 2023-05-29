@@ -32,17 +32,28 @@
 						Amsterdam</p>
 				{% endif %}
 
-				<h3>Opening Times</h3>
-				<ul class="c-publicPage__overviewOpeningTimes">
-					{% for date in event.datetable %}
-						<li>
-							{{ date["col1"]|date("l") }}:
-							{{ user.openingTimes[loop.index - 1]["start"] }}
-							-
-							{{ user.openingTimes[loop.index - 1]["end"] }}
-						</li>
-					{% endfor %}
-				</ul>
+				{% if user.openingTimes %}
+					<h3>Opening Times</h3>
+					<ul class="c-publicPage__overviewOpeningTimes">
+						{% for date in event.datetable %}
+							<li>
+								{{ date["col1"]|date("l") }}:
+								{{ user.openingTimes[loop.index - 1]["start"] }}
+								-
+								{{ user.openingTimes[loop.index - 1]["end"] }}
+							</li>
+						{% endfor %}
+					</ul>
+				{% else %}
+					<h3>Opening Times</h3>
+					<ul class="c-publicPage__overviewOpeningTimes">
+						{% for date in event.datetable %}
+							<li>
+								{{ date["col1"]|date("l") }}: -
+							</li>
+						{% endfor %}
+					</ul>
+				{% endif %}
 
 				{% if user.phoneNumber|length > 0 %}
 					<h3>Phone number</h3>
