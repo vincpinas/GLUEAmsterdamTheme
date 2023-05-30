@@ -5,8 +5,9 @@
 {% set minutes = 0 %}
 {% set value = null %}
 {% set timestring = null %}
+{% set min_time = value %}
+{% set max_time = value %}
 
-{# <input type="time" name="fields[openingTimes][{{row}}][col{{col}}]"></input> #}
 <select name="fields[openingTimes][{{row}}][col{{col}}]">
 	{% for i in 0..(1440 / increment) - 1 %}
 		{% if minutes == 60 - increment %}
@@ -28,8 +29,19 @@
 			{% set minutestring = "0" ~ minutes %}
 		{% endif %}
 		{% set timestring = hourstring ~ ":" ~ minutestring %}
-		<option value="{{timestring}}" {% if user.openingTimes[row] is defined and timestring == user.openingTimes[row]["col" ~ col] %}selected=true{% endif %}>
+
+		<option 
+			value="{{timestring}}" 
+			{% if user.openingTimes[row] is defined and timestring == user.openingTimes[row]["col" ~ col] %} 
+				selected="true"
+			{% elseif selector_type == "from" and hour == 9 and minutes == 0 %}
+				selected="true"
+			{% elseif selector_type == "to" and hour == 18 and minutes == 0  %}
+				selected="true"
+			{% endif %}
+		>
 			{{timestring}}
 		</option>
+
 	{% endfor %}
 </select>

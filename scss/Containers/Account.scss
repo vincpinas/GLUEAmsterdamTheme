@@ -25,12 +25,13 @@
         padding: 1rem;
 
         @media #{$tablet-down} {
-            height: 100%;
-            max-width: unset;
+            height: 80%;
+            width: 100%;
         }
 
         @media #{$mobile-down} {
-            padding: 7rem;
+            aspect-ratio: 1;
+            width: 100%;
         }
     }
 
@@ -41,6 +42,11 @@
         @media #{$tablet-down} {
             height: auto;
             width: 100%;
+        }
+
+        @media #{$mobile-down} {
+            height: 100%;
+            width: auto;
         }
     }
 

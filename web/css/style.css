@@ -31,14 +31,21 @@
   font-weight: 500;
   font-style: normal;
   padding-left: 10%;
+  display: flex;
+  flex-direction: column;
+  overflow-x: scroll;
 }
-.c-editMenu li:not(:last-of-type) {
-  margin-bottom: 1rem;
+@media screen and (max-width: 991px) {
+  .c-editMenu {
+    flex-direction: row;
+  }
 }
 .c-editMenu__link {
   display: flex;
   align-items: center;
-  width: 10rem;
+  width: 7.5rem;
+  justify-content: center;
+  align-items: center;
 }
 
 .c-map {
@@ -950,7 +957,7 @@
 }
 @media screen and (max-width: 767px) {
   .c-edit__form label {
-    font-size: 10px;
+    font-size: 12px;
     line-height: 16px;
   }
 }
@@ -989,7 +996,7 @@
 }
 @media screen and (max-width: 767px) {
   .c-edit__formLabelRow p {
-    font-size: 10px;
+    font-size: 12px;
     line-height: 16px;
   }
 }
@@ -1007,6 +1014,7 @@
   }
   .c-edit__formInputRow.options {
     flex-direction: row;
+    margin-left: auto;
   }
 }
 .c-edit__formInputRow > .c-edit__formLabel {
@@ -1090,12 +1098,12 @@
   flex-direction: column;
 }
 .c-edit__formDateTable li {
-  font-size: 16px;
-  font-family: "Lausanne";
-  font-weight: 300;
-  font-style: normal;
-  line-height: 28px;
+  font-size: 14px;
+  line-height: 20px;
   margin-bottom: 1rem;
+  font-family: "Lausanne";
+  font-weight: 500;
+  font-style: normal;
   border: 1px solid #ffffff;
   padding: 0.75rem 1.25rem;
   outline: none;
@@ -1105,8 +1113,8 @@
 }
 @media screen and (max-width: 767px) {
   .c-edit__formDateTable li {
-    font-size: 14px;
-    line-height: 18px;
+    font-size: 12px;
+    line-height: 16px;
   }
 }
 .c-edit__formDateTable li > :first-child {
@@ -1138,7 +1146,17 @@
   margin-right: 1rem;
 }
 .c-edit__formTimeRow p {
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 1rem;
+  margin-bottom: 0;
   margin-right: 1rem;
+}
+@media screen and (max-width: 767px) {
+  .c-edit__formTimeRow p {
+    font-size: 12px;
+    line-height: 16px;
+  }
 }
 .c-edit__formTimeRow select {
   border: 1px solid #ffffff;
@@ -1146,6 +1164,7 @@
   outline: none;
   background: none;
   color: #ffffff;
+  padding: 0.5rem;
 }
 .c-edit button.disabled {
   border: 1px solid #787878;
@@ -1187,13 +1206,14 @@
 }
 @media screen and (max-width: 991px) {
   .c-publicPage__thumbnailOverlay {
-    height: 100%;
-    max-width: unset;
+    height: 80%;
+    width: 100%;
   }
 }
 @media screen and (max-width: 767px) {
   .c-publicPage__thumbnailOverlay {
-    padding: 7rem;
+    aspect-ratio: 1;
+    width: 100%;
   }
 }
 .c-publicPage__thumbnail {
@@ -1204,6 +1224,12 @@
   .c-publicPage__thumbnail {
     height: auto;
     width: 100%;
+  }
+}
+@media screen and (max-width: 767px) {
+  .c-publicPage__thumbnail {
+    height: 100%;
+    width: auto;
   }
 }
 .c-publicPage__overview {
@@ -1472,7 +1498,7 @@ html label {
 @media screen and (max-width: 767px) {
   body label,
   html label {
-    font-size: 10px;
+    font-size: 12px;
     line-height: 16px;
   }
 }

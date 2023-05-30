@@ -22,17 +22,17 @@
 
 		<div class="c-edit__formWrapper">
 			<form method="post" accept-charset="UTF-8" enctype="multipart/form-data" class="c-edit__form">
-				<h2>Public page</h2>
+				<h2>public page</h2>
 				<p>Any changes you make here will appear on your dedicated page</p>
 
-				<h3>Basic info</h3>
 				{{ csrfInput() }}
 				{{ actionInput('users/save-user') }}
 				{{ hiddenInput('userId', user.id) }}
 
 				{# Featured Image #}
+				<h3>basic info</h3>
 				<label class="c-edit__formLabel">
-					Featured image
+					featured image
 					<span class="c-edit__featuredImageContainer">
 						<span class="c-edit__featuredImageOverlay">
 							<ion-icon name="pencil"></ion-icon>
@@ -53,39 +53,39 @@
 
 				{# Company Name #}
 				<label for="full-name" class="c-edit__formLabel">
-					Company Name
+					company name
 					{{ input('text', 'fullName', user.fullName, { id: 'full-name', autocomplete: 'name', }) }}
 				</label>
 
 				{# Map Information #}
 				<span class="c-edit__formInputRow">
 					<label for="fields[mapAddress]" class="c-edit__formLabel">
-						Map Address
+						map address
 						{{ input('text', 'fields[mapAddress]', user.mapAddress, { id: 'mapAddress' }) }}
 					</label>
 					<label for="mapPostalCode" class="c-edit__formLabel">
-						Map Postal Code
+						map postal code
 						{{ input('text', 'fields[mapPostalCode]', user.mapPostalCode, { id: 'mapPostalCode', autocomplete: 'off' }) }}
 					</label>
 				</span>
 
-				<h3>About the company</h3>
+				<h3>about the company</h3>
 				<label for="fields[nTitle]" class="c-edit__formLabel">
 					<span class="c-edit__formLabelRow">
-						<p>About title</p>
-						<p id="titleMaxCharacters">Max. 50 characters</p>
+						<p>about title</p>
+						<p id="titleMaxCharacters">max. 50 characters</p>
 					</span>
 					{{ input('text', 'fields[nTitle]', user.nTitle, { id: 'title' }) }}
 				</label>
 				<label for="fields[largeTextField]" class="c-edit__formLabel">
 					<span class="c-edit__formLabelRow">
 						<p>About</p>
-						<p id="bioMaxCharacters">Max. 500 characters</p>
+						<p id="bioMaxCharacters">max. 500 characters</p>
 					</span>
 					{{ tag('textarea', { text: user.largeTextField, id: 'profileText', name: 'fields[largeTextField]', rows: 10, }) }}
 				</label>
 
-				<h3 class="c-edit__formHeader">Opening hours</h3>
+				<h3 class="c-edit__formHeader">visiting hours</h3>
 				<ul class="c-edit__formDateTable">
 					{% for date in event.datetable %}
 						<li>
@@ -95,39 +95,39 @@
 					{% endfor %}
 				</ul>
 
-				<h3 class="c-edit__formHeader">Contact</h3>
+				<h3 class="c-edit__formHeader">contact</h3>
 				<span class="c-edit__formInputRow">
 					<label for="fields[phoneNumber]" class="c-edit__formLabel">
-						Phone number
+						phone number
 						{{ input('text', 'fields[phoneNumber]', user.phoneNumber, { id: 'phoneNumber' }) }}
 					</label>
 					<label for="email" class="c-edit__formLabel">
-						Email address
+						email address
 						{{ input('text', 'email', user.email, { id: 'email' }) }}
 					</label>
 				</span>
 				<span class="c-edit__formInputRow">
 					<label for="fields[instagram]" class="c-edit__formLabel">
-						Instagram
+						instagram
 						{{ input('text', 'fields[instagram]', user.instagram, { id: 'instagram' }) }}
 					</label>
 					<label for="fields[twitter]" class="c-edit__formLabel">
-						Twitter
+						twitter
 						{{ input('text', 'fields[twitter]', user.twitter, { id: 'twitter' }) }}
 					</label>
 				</span>
 				<span class="c-edit__formInputRow">
 					<label for="fields[facebook]" class="c-edit__formLabel">
-						Facebook
+						facebook
 						{{ input('text', 'fields[facebook]', user.facebook, { id: 'facebook' }) }}
 					</label>
 					<label for="fields[linkedin]" class="c-edit__formLabel">
-						LinkedIn
+						linkedin
 						{{ input('text', 'fields[linkedin]', user.linkedin, { id: 'linkedin' }) }}
 					</label>
 				</span>
 				<label for="fields[website]" class="c-edit__formLabel">
-					Website
+					website
 					{{ input('text', 'fields[website]', user.website, { id: 'website' }) }}
 				</label>
 

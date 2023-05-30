@@ -86,6 +86,7 @@
 
             &.options {
                 flex-direction: row;
+                margin-left: auto;
             }
         }
 
@@ -180,7 +181,8 @@
         flex-direction: column;
 
         li {
-            @include paragraph;
+            @include label;
+            @include font--primary(500);
             @include gbutton;
             display: flex;
             align-items: center;
@@ -222,12 +224,15 @@
         }
 
         p {
+            @include label;
+            margin-bottom: 0;
             margin-right: 1rem;
         }
 
         select {
             @include gbutton;
             color: $text-primary;
+            padding: 0.5rem;
         }
     }
 
