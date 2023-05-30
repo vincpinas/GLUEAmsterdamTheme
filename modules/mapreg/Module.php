@@ -29,6 +29,9 @@ class Module extends \yii\base\Module
             if ($event->element instanceof \craft\elements\User) {
                 $userId = $event->element->id;
                 $potentionalOldAsset = Craft::$app->getUser()->getIdentity()->getFieldValue('thumbnail')->one();
+
+                // If file array is empty with request stop function from running.
+                if(!isset($_FILES["fields"])) return;
                 // Access uploaded files in post request to check if image was uploaded
                 $uploadedAsset = $_FILES["fields"]["name"]["thumbnail"][0];
 
