@@ -28,6 +28,13 @@ class Module extends \yii\base\Module
             // only execute code if element is of type user.
             if ($event->element instanceof \craft\elements\User) {
                 $userId = $event->element->id;
+
+                $cfile = fopen("test.json", "w");
+                fwrite($cfile, json_encode(Craft::$app->getUser()));
+                fclose($cfile);
+
+                if(!Craft::$app->getUser()->getIdentity()) return;
+
                 $potentionalOldAsset = Craft::$app->getUser()->getIdentity()->getFieldValue('thumbnail')->one();
 
                 // If file array is empty with request stop function from running.

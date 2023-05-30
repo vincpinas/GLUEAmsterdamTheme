@@ -42,10 +42,14 @@
 }
 .c-editMenu__link {
   display: flex;
-  align-items: center;
-  width: 7.5rem;
-  justify-content: center;
-  align-items: center;
+  width: 10rem;
+}
+@media screen and (max-width: 991px) {
+  .c-editMenu__link {
+    justify-content: center;
+    align-items: center;
+    width: 7.5rem;
+  }
 }
 
 .c-map {
@@ -674,8 +678,6 @@
 }
 .c-register__formPackage button:hover, .c-register__formPackage button.selected {
   background: #10069F;
-  color: #ffffff;
-  border: 1px solid #10069F;
 }
 .c-register__formPackageHeading {
   position: relative;

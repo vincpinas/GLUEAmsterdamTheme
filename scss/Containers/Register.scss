@@ -234,8 +234,6 @@
         &Package button:hover,
         &Package button.selected {
             background: $special-primary;
-            color: $text-primary;
-            border: 1px solid $special-primary;
         }
 
         &PackageHeading {

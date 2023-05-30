@@ -69,7 +69,6 @@ class Register {
             e.target.disabled = true;
             e.target.classList.add("disabled")
             const storage = JSON.parse(sessionStorage.getItem("reg_obj"))
-            console.log(storage)
 
             getSessionInfo().then(session => {
                 const params = new FormData();
@@ -105,9 +104,6 @@ class Register {
                     // Handle register errors otherwise go to login page.
                     if (result.errors) {
                         handleErrorMessage(Object.values(result.errors), document.querySelector(".c-register__errors"), result.message)
-                    } else {
-                        sessionStorage.clear();
-                        location.href = "/login"
                     }
 
                     return { ...session, userId: result.id }
@@ -128,8 +124,7 @@ class Register {
                 button.parentElement.classList.add("selected")
             }
 
-            // Upon clicking one of the select buttons set session storage and styling
-            button.addEventListener("click", () => {
+            const clickHandle = () => {
                 const selected = document.querySelector(".c-register__formPackageSelect.selected");
                 if (selected) {
                     selected.classList.remove("selected");
@@ -152,7 +147,11 @@ class Register {
 
                 continueButton.disabled = false
                 if (continueButton.classList.contains("disabled")) continueButton.classList.remove("disabled")
-            })
+            }
+
+            // Upon clicking one of the select buttons set session storage and styling
+            button.addEventListener("click", clickHandle)
+            button.parentElement.addEventListener("click", clickHandle)
         })
 
         // Validation for continue button
