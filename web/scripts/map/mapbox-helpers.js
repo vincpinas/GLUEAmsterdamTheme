@@ -65,6 +65,7 @@ export default class MapStateMachine {
                         temp = new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).addTo(map)
                     } else {
                         let popupInfo = JSON.parse(this.mapElement.dataset.addresses).filter(address => marker.place_name.includes(address.postalCode))[0];
+                        if (!popupInfo) return;
                         el.style.backgroundImage = `url(${this.markerStyles.locationsIcon})`
                         let popup = new mapboxgl.Popup({ offset: 15, maxWidth: "300px" })
                             .setHTML(
@@ -93,6 +94,9 @@ export default class MapStateMachine {
                 if (!route) {
                     document.querySelectorAll(".c-map__locationButtonWrapper").forEach(location => {
                         let marker = result.filter(marker => marker.cId === location.dataset.postalCode)[0];
+
+                        if(!marker) return;
+                        
                         marker._popup.on("close", () => { this.centerMap(); })
 
                         location.addEventListener("click", () => {
