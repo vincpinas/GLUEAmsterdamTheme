@@ -54,13 +54,42 @@
 
 .c-map {
   color: #ffffff;
-  width: 50%;
+  width: 100%;
   height: 90vh;
+  grid-area: map;
 }
 @media screen and (max-width: 991px) {
   .c-map {
     width: 100%;
   }
+}
+.c-map__headers {
+  width: 100%;
+  z-index: 10;
+  grid-area: header;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.c-map__headers li {
+  width: 100%;
+  height: 100%;
+}
+.c-map__headers li:nth-of-type(1) {
+  background: #10069F;
+}
+@media screen and (max-width: 991px) {
+  .c-map__headers li:nth-of-type(1) {
+    text-align: left;
+  }
+}
+.c-map__headers li:nth-of-type(2) {
+  background: #aea8fc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Lausanne";
+  font-weight: 600;
+  font-style: normal;
 }
 .c-map__popupImg {
   width: 100%;
@@ -123,10 +152,11 @@
   font-style: normal;
 }
 .c-map__menu {
-  width: 50%;
+  width: 100%;
   height: 90vh;
   display: flex;
   position: relative;
+  grid-area: menu;
 }
 @media screen and (max-width: 991px) {
   .c-map__menu {
@@ -146,10 +176,8 @@
   color: #ffffff;
 }
 .c-map__menuDirectionCloseButton {
-  position: absolute;
   top: 0;
   left: 0;
-  padding: 1rem;
   z-index: 1;
   outline: none;
   border: none;
@@ -157,17 +185,8 @@
   display: flex;
   align-items: center;
   font-size: 1.2em;
-  background: #10069F;
-}
-@media screen and (max-width: 767px) {
-  .c-map__menuDirectionCloseButton {
-    padding: 0;
-    margin: 0;
-    background: none;
-    margin-left: auto;
-    height: fit-content;
-    margin-left: 2rem;
-  }
+  background: none;
+  margin-left: 2rem;
 }
 .c-map__menuDirectionCloseButton ion-icon {
   transition: 0.35s;
@@ -184,7 +203,7 @@
 }
 @media screen and (max-width: 767px) {
   .c-map__menuDirectionTab {
-    max-height: 90vh;
+    max-height: 100%;
     flex-direction: column;
   }
 }
@@ -217,10 +236,11 @@
 }
 .c-map__menuItem.active, .c-map__locationsOverview {
   width: 100%;
+  height: 100%;
   text-align: center;
   overflow-y: scroll;
   color: #ffffff;
-  padding: 8rem 0;
+  padding: 4rem 0;
 }
 .c-map__menuItem.active li h2, .c-map__locationsOverview li h2 {
   max-width: 15rem;
@@ -423,11 +443,14 @@
 .c-map__wrapper {
   width: 100%;
   height: 100%;
-  display: flex;
+  display: grid;
+  grid-template-areas: "header header" "menu map";
+  grid-template-columns: 1fr 1fr;
 }
 @media screen and (max-width: 991px) {
   .c-map__wrapper {
-    flex-direction: column;
+    grid-template-areas: "header" "menu" "map";
+    grid-template-columns: 1fr;
   }
 }
 

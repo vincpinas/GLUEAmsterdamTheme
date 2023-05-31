@@ -33,14 +33,19 @@
 {# Generate data tags with addresses for making routes #}
 {% block content %}
 	<main class="c-map__wrapper">
+		<ul class="c-map__headers">
+			<li class="c-map__headersClose">
+				<button class="c-map__menuDirectionCloseButton">
+					<ion-icon name="arrow-back-outline"></ion-icon>
+					Close
+				</button>
+			</li>
+			<li class="c-map__headersGroup"></li>
+		</ul>
 		<ul class="c-map__menu">
 			{% for direction in directionsArray %}
 				{% if map.routes.cardinalDirection(direction).all()|length > 0 %}
 					<div class="c-map__menuDirectionTab c-map__menuDirectionTab-{{loop.index}}">
-						<button class="c-map__menuDirectionCloseButton">
-							<ion-icon name="arrow-back-outline"></ion-icon>
-							Close
-						</button>
 						{% for route in map.routes.cardinalDirection(direction).all() %}
 							{% set currentroute = [] %}
 							{% for poi in route.poi.all() %}
@@ -63,21 +68,21 @@
 
 			{% for direction in directionsArray %}
 				{% if map.routes.cardinalDirection(direction).all()|length > 0 %}
-					<li class="c-map__menuDirectionButton c-map__menuItem" data-locked="{{ locked|json_encode }}" data-i="{{loop.index}}">
+					{% if loop.index == 1 %}
+						{% set groupHandle = map.groupOneHandle %}
+					{% elseif loop.index == 2 %}
+						{% set groupHandle = map.groupTwoHandle %}
+					{% elseif loop.index == 3 %}
+						{% set groupHandle = map.groupThreeHandle %}
+					{% elseif loop.index == 4 %}
+						{% set groupHandle = map.groupFourHandle %}
+					{% endif %}
+
+					<li class="c-map__menuDirectionButton c-map__menuItem" data-locked="{{ locked|json_encode }}" data-i="{{loop.index}}" data-group="{{groupHandle}}">
 						{% if locked %}
 							<span class="c-map__menuLockOverlay"></span>
 						{% endif %}
-						<h2>
-							{% if loop.index == 1 %}
-								{{ map.groupOneHandle }}
-							{% elseif loop.index == 2 %}
-								{{ map.groupTwoHandle }}
-							{% elseif loop.index == 3 %}
-								{{ map.groupThreeHandle }}
-							{% elseif loop.index == 4 %}
-								{{ map.groupFourHandle }}
-							{% endif %}
-						</h2>
+						<h2>{{groupHandle}}</h2>
 					</li>
 				{% endif %}
 			{% endfor %}

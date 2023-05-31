@@ -17,18 +17,23 @@ export default class MapMenu {
         this.menuRoutes = routes;
 
         directionButtons.forEach((button) => {
-            button.addEventListener("click", () => this.openDirectionTab(button, button.dataset.i));
+            button.addEventListener("click", () => {
+                this.openDirectionTab(button, button.dataset.i)
+                document.querySelector(".c-map__headersGroup").innerHTML = ` Routes - ${button.dataset.group}`
+            });
         })
 
         directionCloseButtons.forEach((button, i) => {
             button.addEventListener("click", () => this.closeDirectionTab());
         })
 
+        document.querySelector(".c-map__headers").style.display = "none"
+
         routes.forEach((route, i) => {
             route.dataset.i = i + 1
             route.addEventListener("click", () => this.openRoute(JSON.parse(route.dataset.route), route, i + 1));
         });
-        
+
 
     }
 
@@ -41,10 +46,11 @@ export default class MapMenu {
             relatedTab.classList.add("active");
 
             this.openRoute(
-                JSON.parse(relatedTab.firstElementChild.nextElementSibling.dataset.route),
-                relatedTab.firstElementChild.nextElementSibling,
-                JSON.parse(relatedTab.firstElementChild.nextElementSibling.dataset.i)
+                JSON.parse(relatedTab.firstElementChild.dataset.route),
+                relatedTab.firstElementChild,
+                JSON.parse(relatedTab.firstElementChild.dataset.i)
             );
+            document.querySelector(".c-map__headers").style.display = "grid"
         }
     }
 
@@ -106,10 +112,11 @@ export default class MapMenu {
 
         if (active) active.remove();
         if (activeTab) activeTab.classList.remove('c-map__menuTabActive');
-    } 
+    }
 
     closeDirectionTab = () => {
         const activeTab = document.querySelector(".c-map__menuDirectionTab.active")
+        document.querySelector(".c-map__headers").style.display = "none"
 
         if (activeTab) activeTab.classList.remove("active");
         this.mapState.resetMap();

@@ -29,10 +29,6 @@ class Module extends \yii\base\Module
             if ($event->element instanceof \craft\elements\User) {
                 $userId = $event->element->id;
 
-                $cfile = fopen("test.json", "w");
-                fwrite($cfile, json_encode(Craft::$app->getUser()));
-                fclose($cfile);
-
                 if(!Craft::$app->getUser()->getIdentity()) return;
 
                 $potentionalOldAsset = Craft::$app->getUser()->getIdentity()->getFieldValue('thumbnail')->one();

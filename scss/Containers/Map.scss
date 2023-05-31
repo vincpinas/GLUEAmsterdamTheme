@@ -3,11 +3,41 @@ $mapheight: 90vh;
 
 .c-map {
     color: $text-primary;
-    width: 50%;
+    width: 100%;
     height: $mapheight;
+    grid-area: map;
 
     @media #{$tablet-down} {
         width: 100%;
+    }
+
+    &__headers {
+        width: 100%;
+        z-index: $index-2;
+        grid-area: header;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        li {
+            width: 100%;
+            height: 100%;
+        }
+        
+        li:nth-of-type(1) {
+            background: $special-primary;
+
+            @media #{$tablet-down} {
+                text-align: left;
+            }
+        }
+
+        li:nth-of-type(2) {
+            background: lighten($special-primary, 50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            @include font--primary(600);
+        }
     }
 
     &__popupImg {
@@ -74,10 +104,11 @@ $mapheight: 90vh;
     }
 
     &__menu {
-        width: 50%;
+        width: 100%;
         height: $mapheight;
         display: flex;
         position: relative;
+        grid-area: menu;
 
         @media #{$tablet-down} {
             width: 100%;
@@ -97,10 +128,8 @@ $mapheight: 90vh;
     }
 
     &__menuDirectionCloseButton {
-        position: absolute;
         top: 0;
         left: 0;
-        padding: 1rem;
         z-index: $index-1;
         outline: none;
         border: none;
@@ -108,16 +137,8 @@ $mapheight: 90vh;
         display: flex;
         align-items: center;
         font-size: 1.2em;
-        background: $special-primary;
-
-        @media #{$mobile-down} {
-            padding: 0;
-            margin: 0;
-            background: none;
-            margin-left: auto;
-            height: fit-content;
-            margin-left: 2rem;
-        }
+        background: none;
+        margin-left: 2rem;
 
         ion-icon {
             transition: $transition-fast;
@@ -135,7 +156,7 @@ $mapheight: 90vh;
         background-color: $special-primary;
 
         @media #{$mobile-down} {
-            max-height: $mapheight;
+            max-height: 100%;
             flex-direction: column;
         }
     }
@@ -174,12 +195,12 @@ $mapheight: 90vh;
     &__menuItem.active,
     &__locationsOverview {
         width: 100%;
+        height: 100%;
         text-align: center;
         overflow-y: scroll;
         color: $text-primary;
-        padding: 8rem 0;
+        padding: 4rem 0;
         
-
         li h2 {
             max-width: 15rem;
             margin: 0;
@@ -375,10 +396,16 @@ $mapheight: 90vh;
     &__wrapper {
         width: 100%;
         height: 100%;
-        display: flex;
+        display: grid;
+        grid-template-areas: "header header"
+                             "menu map";
+        grid-template-columns: 1fr 1fr;
 
         @media #{$tablet-down} {
-            flex-direction: column;
+            grid-template-areas: "header"
+                                 "menu"
+                                 "map";
+            grid-template-columns: 1fr;
         }
     }
 }
