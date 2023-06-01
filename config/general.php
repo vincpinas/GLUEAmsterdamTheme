@@ -11,7 +11,7 @@
 use craft\config\GeneralConfig;
 use craft\helpers\App;
 
-return GeneralConfig::create()
+$config = GeneralConfig::create()
     // Set the default week start day for date pickers (0 = Sunday, 1 = Monday, etc.)
     ->defaultWeekStartDay(1)
     // Prevent generated URLs from including "index.php"
@@ -27,4 +27,10 @@ return GeneralConfig::create()
     ->enableGql(true)
     ->useEmailAsUsername(true)
     ->errorTemplatePrefix('_errors/')
+    ->aliases([
+        '@stylesheets' => App::env('CRAFT_ENVIRONMENT') == "production" ? '/web/css' : '/css',
+        '@cscripts' => App::env('CRAFT_ENVIRONMENT') == "production" ? '/web/scripts' : '/scripts'
+    ])
 ;
+
+return $config;

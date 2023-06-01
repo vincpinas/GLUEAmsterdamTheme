@@ -32,7 +32,7 @@
 
 {# Generate data tags with addresses for making routes #}
 {% block content %}
-	<main class="c-map__wrapper" style="{% if addresses|length == 0 %}  grid-template-columns: 1fr; grid-template-areas: 'map'; {% endif %}">
+	<main class="c-map__wrapper" style="{% if addresses|length == 0 %} grid-template-columns: 1fr; grid-template-areas: 'map'; {% endif %}">
 		<ul class="c-map__headers">
 			<li class="c-map__headersClose">
 				<button class="c-map__menuDirectionCloseButton">
@@ -105,5 +105,5 @@
 {% endblock %}
 
 {% block javascripts %}
-	<script src="{{ siteUrl }}scripts/map/mapbox.js" type="module"></script>
+	<script src="{{ alias('@cscripts') }}/map/mapbox.js" type="module"></script>
 {% endblock %}

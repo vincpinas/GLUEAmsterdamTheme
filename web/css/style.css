@@ -943,6 +943,42 @@
   }
 }
 
+.c-503 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.c-503__title {
+  font-family: "Lausanne";
+  font-weight: 500;
+  font-style: normal;
+}
+.c-503__buttons {
+  margin-top: 0.5rem;
+  display: flex;
+}
+@media screen and (max-width: 991px) {
+  .c-503__buttons {
+    flex-direction: column;
+  }
+}
+.c-503__button:not(:last-of-type) {
+  margin-right: 0.5rem;
+}
+.c-503__button {
+  border: 1px solid #ffffff;
+  padding: 0.5rem 1.5rem;
+  font-family: "Lausanne";
+  font-weight: 500;
+  font-style: normal;
+}
+@media screen and (max-width: 991px) {
+  .c-503 {
+    padding: 2rem;
+  }
+}
+
 .c-edit {
   display: flex;
   width: 100%;
