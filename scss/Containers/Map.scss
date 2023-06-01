@@ -196,12 +196,15 @@ $mapheight: 90vh;
         padding: 5rem 0;
     }
 
+    &__menuItem.active {
+        overflow-y: scroll;
+    }
+
     &__menuItem.active,
     &__locationsOverview {
         width: 100%;
         height: 100%;
         text-align: center;
-        overflow-y: scroll;
         color: $text-primary;
         padding: 4rem 0;
         
