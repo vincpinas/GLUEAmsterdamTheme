@@ -1,4 +1,4 @@
-dateModified: 1685277415
+dateModified: 1685616448
 elementSources:
   craft\elements\Entry:
     -
@@ -67,9 +67,7 @@ elementSources:
       disabled: false
       key: credentialed
       tableAttributes:
-        - fullName
         - email
-        - dateCreated
         - lastLoginDate
       type: native
     -
@@ -94,9 +92,7 @@ elementSources:
       disabled: false
       key: admins
       tableAttributes:
-        - fullName
         - email
-        - dateCreated
         - lastLoginDate
       type: native
     -
@@ -106,13 +102,13 @@ elementSources:
       disabled: false
       key: 'group:c700366d-c002-43b2-b7ce-f8dd82c7afa8' # Participants
       tableAttributes:
-        - fullName
         - email
         - dateCreated
-        - lastLoginDate
+        - 'field:164bc9a4-5b57-4fb1-b7e2-9fb883aebc34' # Phone number
+        - 'field:51bd5b4e-75c4-42a1-b1b5-1827613ecaef' # Address
       type: native
 email:
-  fromEmail: ikbengerrit92@gmail.com
+  fromEmail: david@glue.amsterdam
   fromName: Glueweb
   replyToEmail: null
   template: ''

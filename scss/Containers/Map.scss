@@ -7,6 +7,10 @@ $mapheight: 90vh;
     height: $mapheight;
     grid-area: map;
 
+    canvas {
+        width: 100% !important;
+    }
+
     @media #{$tablet-down} {
         width: 100%;
     }

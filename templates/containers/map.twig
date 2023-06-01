@@ -32,7 +32,7 @@
 
 {# Generate data tags with addresses for making routes #}
 {% block content %}
-	<main class="c-map__wrapper">
+	<main class="c-map__wrapper" style="{% if addresses|length == 0 %}  grid-template-columns: 1fr; grid-template-areas: 'map'; {% endif %}">
 		<ul class="c-map__headers">
 			<li class="c-map__headersClose">
 				<button class="c-map__menuDirectionCloseButton">
@@ -42,7 +42,7 @@
 			</li>
 			<li class="c-map__headersGroup"></li>
 		</ul>
-		<ul class="c-map__menu">
+		<ul class="c-map__menu" style="{% if addresses|length == 0 %} display:none; {% endif %}">
 			{% for direction in directionsArray %}
 				{% if map.routes.cardinalDirection(direction).all()|length > 0 %}
 					<div class="c-map__menuDirectionTab c-map__menuDirectionTab-{{loop.index}}">

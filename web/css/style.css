@@ -58,6 +58,9 @@
   height: 90vh;
   grid-area: map;
 }
+.c-map canvas {
+  width: 100% !important;
+}
 @media screen and (max-width: 991px) {
   .c-map {
     width: 100%;
