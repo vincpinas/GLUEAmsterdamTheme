@@ -106,6 +106,8 @@ class Register {
                         handleErrorMessage(Object.values(result.errors), document.querySelector(".c-register__errors"), result.message)
                     }
 
+                    location.href = "/sign-up/confirmation"
+
                     return { ...session, userId: result.id }
                 })
             })

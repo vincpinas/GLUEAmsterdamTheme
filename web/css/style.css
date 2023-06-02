@@ -55,7 +55,7 @@
 .c-map {
   color: #ffffff;
   width: 100%;
-  height: 90vh;
+  height: calc(100% - 5.5rem);
   grid-area: map;
 }
 .c-map canvas {
@@ -156,7 +156,7 @@
 }
 .c-map__menu {
   width: 100%;
-  height: 90vh;
+  height: calc(100% - 5.5rem);
   display: flex;
   position: relative;
   grid-area: menu;
@@ -447,7 +447,7 @@
 }
 .c-map__wrapper {
   width: 100%;
-  height: 100%;
+  height: calc(100% - 5.5rem);
   display: grid;
   grid-template-areas: "header header" "menu map";
   grid-template-columns: 1fr 1fr;
@@ -796,6 +796,15 @@
   font-size: 1.3em;
   top: 1.7rem;
   cursor: pointer;
+}
+
+.c-registerConfirm {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .c-login {
@@ -1283,14 +1292,10 @@
   }
 }
 .c-publicPage__thumbnail {
-  height: 100%;
+  height: auto;
+  width: 100%;
   position: absolute;
-}
-@media screen and (max-width: 991px) {
-  .c-publicPage__thumbnail {
-    height: auto;
-    width: 100%;
-  }
+  image-orientation: from-image;
 }
 @media screen and (max-width: 767px) {
   .c-publicPage__thumbnail {

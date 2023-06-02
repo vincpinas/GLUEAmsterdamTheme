@@ -1,5 +1,5 @@
 // bad hack to fix the map height
-$mapheight: 90vh;
+$mapheight: calc(100% - 5.5rem);
 
 .c-map {
     color: $text-primary;
@@ -402,7 +402,7 @@ $mapheight: 90vh;
 
     &__wrapper {
         width: 100%;
-        height: 100%;
+        height: $mapheight;
         display: grid;
         grid-template-areas: "header header"
                              "menu map";

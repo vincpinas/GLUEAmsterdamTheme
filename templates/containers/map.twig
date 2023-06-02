@@ -1,5 +1,14 @@
 {% extends "index" %}
 
+{% block styles %}
+	<style>
+		body,
+		html {
+			height: calc(100% - 10rem);
+		}
+	</style>
+{% endblock %}
+
 {% block external_scripts %}
 	<link href="https://api.mapbox.com/mapbox-gl-js/v2.14.0/mapbox-gl.css" rel="stylesheet">
 	<script src="https://api.mapbox.com/mapbox-gl-js/v2.14.0/mapbox-gl.js"></script>
