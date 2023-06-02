@@ -55,7 +55,7 @@
 .c-map {
   color: #ffffff;
   width: 100%;
-  height: calc(100% - 5.5rem);
+  height: calc(100vh - 5.5rem);
   grid-area: map;
 }
 .c-map canvas {
@@ -156,7 +156,7 @@
 }
 .c-map__menu {
   width: 100%;
-  height: calc(100% - 5.5rem);
+  height: calc(100vh - 5.5rem);
   display: flex;
   position: relative;
   grid-area: menu;
@@ -447,7 +447,7 @@
 }
 .c-map__wrapper {
   width: 100%;
-  height: calc(100% - 5.5rem);
+  height: calc(100vh - 5.5rem);
   display: grid;
   grid-template-areas: "header header" "menu map";
   grid-template-columns: 1fr 1fr;
