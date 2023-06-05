@@ -420,6 +420,7 @@
 }
 .c-map__menuRoute h2, .c-map__menuLocations h2, .c-map__menuDirectionButton h2 {
   height: 100%;
+  white-space: nowrap;
   text-align: center;
   writing-mode: vertical-rl;
   display: flex;
