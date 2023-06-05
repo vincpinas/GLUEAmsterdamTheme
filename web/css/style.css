@@ -102,6 +102,9 @@
   height: 10rem;
   position: relative;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .c-map__popupImgOverlay {
   top: 0;
