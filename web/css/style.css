@@ -240,9 +240,6 @@
 .c-map__locationsOverview {
   padding: 5rem 0;
 }
-.c-map__menuItem.active {
-  overflow-y: scroll;
-}
 .c-map__menuItem.active, .c-map__locationsOverview {
   width: 100%;
   height: 100%;

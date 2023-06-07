@@ -199,10 +199,6 @@ $mapheight: calc(100vh - 5.5rem);
         padding: 5rem 0;
     }
 
-    &__menuItem.active {
-        overflow-y: scroll;
-    }
-
     &__menuItem.active,
     &__locationsOverview {
         width: 100%;
