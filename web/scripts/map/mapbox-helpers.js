@@ -18,7 +18,7 @@ export default class MapStateMachine {
         let features = [];
 
         data.forEach((item) => {
-            let search_string = encodeURIComponent(item.postalCode.toLowerCase());
+            let search_string = encodeURIComponent(item.postalCode.toUpperCase());
             const fetchPromise = fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${search_string}.json?access_token=${this.token}`);
             fetchPromise.then(response => { return response.json() }).then(data => features.push(data.features[0]))
         });
@@ -64,7 +64,7 @@ export default class MapStateMachine {
                         el.style.backgroundImage = `url(${this.markerStyles.routeIcon})`
                         temp = new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).addTo(map)
                     } else {
-                        let popupInfo = JSON.parse(this.mapElement.dataset.addresses).filter(address => marker.place_name.includes(address.postalCode))[0];
+                        let popupInfo = JSON.parse(this.mapElement.dataset.addresses).filter(address => marker.place_name.includes(address.postalCode.toUpperCase()))[0];
                         if (!popupInfo) return;
                         el.style.backgroundImage = `url(${this.markerStyles.locationsIcon})`
                         let popup = new mapboxgl.Popup({ offset: 15, maxWidth: "300px" })
@@ -93,7 +93,7 @@ export default class MapStateMachine {
                 // Popup toggle through menu buttons and markers
                 if (!route) {
                     document.querySelectorAll(".c-map__locationButtonWrapper").forEach(location => {
-                        let marker = result.filter(marker => marker.cId === location.dataset.postalCode)[0];
+                        let marker = result.filter(marker => marker.cId === location.dataset.postalCode.toUpperCase())[0];
 
                         if(!marker) return;
                         
@@ -133,7 +133,7 @@ export default class MapStateMachine {
 
         return new Promise((resolve, reject) => {
             route.forEach((item) => {
-                let temp = this.geoJSON.features.filter(location => location.place_name.includes(item.postalCode));
+                let temp = this.geoJSON.features.filter(location => location.place_name.includes(item.postalCode.toUpperCase()));
                 if (temp) directions.push(temp[0].center);
             });
 
