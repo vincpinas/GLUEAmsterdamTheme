@@ -238,7 +238,22 @@
   display: none;
 }
 .c-map__locationsOverview {
-  padding: 5rem 0;
+  overflow-y: scroll;
+  padding-top: 8rem;
+  padding-bottom: 2rem;
+}
+@media screen and (max-width: 767px) {
+  .c-map__locationsOverview {
+    max-height: 60vh;
+  }
+}
+.c-map__locationsOverview > h2 {
+  margin-top: 20rem;
+}
+@media screen and (max-width: 767px) {
+  .c-map__locationsOverview > h2 {
+    margin-top: 30rem;
+  }
 }
 .c-map__menuItem.active, .c-map__locationsOverview {
   width: 100%;
@@ -1294,13 +1309,19 @@
 }
 .c-publicPage__thumbnail {
   height: auto;
-  width: 100%;
+  height: 100%;
   position: absolute;
   image-orientation: from-image;
 }
+@media screen and (max-width: 991px) {
+  .c-publicPage__thumbnail {
+    width: 100%;
+    height: auto;
+  }
+}
 @media screen and (max-width: 767px) {
   .c-publicPage__thumbnail {
-    height: 100%;
+    height: 150%;
     width: auto;
   }
 }

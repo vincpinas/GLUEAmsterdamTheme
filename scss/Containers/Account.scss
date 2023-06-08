@@ -37,12 +37,17 @@
 
     &__thumbnail {
         height: auto;
-        width: 100%;
+        height: 100%;
         position: absolute;
         image-orientation: from-image;
 
+        @media #{$tablet-down} {
+            width: 100%;
+            height: auto;
+        }
+
         @media #{$mobile-down} {
-            height: 100%;
+            height: 150%;
             width: auto;
         }
     }

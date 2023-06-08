@@ -187,7 +187,7 @@ class Register {
 
         // Validate form fields before making continue button available
         const validateContinue = (firstRun = false) => {
-            const reg = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g).test(email.value)
+            const reg = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,10}$/g).test(email.value)
 
             if (!firstRun) {
                 validateFormField(".c-register__formLabel[for='email']", "Please fill in a valid email", reg, email.value.length > 0)

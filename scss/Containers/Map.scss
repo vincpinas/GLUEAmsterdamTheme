@@ -196,7 +196,21 @@ $mapheight: calc(100vh - 5.5rem);
     }
 
     &__locationsOverview {
-        padding: 5rem 0;
+        overflow-y: scroll;
+        padding-top: 8rem;
+        padding-bottom: 2rem;
+
+        @media #{$mobile-down} {
+            max-height: 60vh;
+        }
+        
+        & > h2 {
+            margin-top: 20rem;
+
+            @media #{$mobile-down} {
+                margin-top: 30rem;
+            }
+        }
     }
 
     &__menuItem.active,
