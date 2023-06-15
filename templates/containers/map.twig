@@ -109,7 +109,6 @@
 	{% endif %}
 {% endfor %}
 
-{# Generate data tags with addresses for making routes #}
 {% block content %}
 	<main class="c-map__wrapper" style="{% if addresses|length == 0 %} grid-template-columns: 1fr; grid-template-areas: 'map'; {% endif %}">
 		<ul class="c-map__headers">
@@ -181,20 +180,21 @@
 							{% endif %}
 						{% endfor %}
 
-						{% if address.id in hubIDs and not countedHubIDs %}
-							{% set countedHubIDs = countedHubIDs|merge([address.id]) %}
-							<li class="c-map__locationButtonWrapper" data-postal-code="{{address.postalCode}}" data-c-id="{{address.id}}">
-								<button class="c-map__locationButton">
-									{% if currentHubName and currentHubName|length > 0 %}
-										{{ currentHubName }}
-									{% else %}
-										{{ address.fullName }}
-									{% endif %}
-
-									- HUB
-									<ion-icon name="chevron-forward-sharp"></ion-icon>
-								</button>
-							</li>
+						{% if address.id in hubIDs %}
+							{% if address.id not in countedHubIDs %}
+								{% set countedHubIDs = countedHubIDs|merge([address.id]) %}
+								<li class="c-map__locationButtonWrapper" data-postal-code="{{address.postalCode}}" data-c-id="{{address.id}}">
+									<button class="c-map__locationButton">
+										{% if currentHubName and currentHubName|length > 0 %}
+											{{ currentHubName }}
+										{% else %}
+											{{ address.fullName }}
+										{% endif %}
+										- HUB
+										<ion-icon name="chevron-forward-sharp"></ion-icon>
+									</button>
+								</li>
+							{% endif %}
 						{% endif %}
 					{% endfor %}
 					{% for address in addresses %}
