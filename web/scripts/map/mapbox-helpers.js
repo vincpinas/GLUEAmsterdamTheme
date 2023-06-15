@@ -20,10 +20,10 @@ export default class MapStateMachine {
 
     // Save a GeoJSON object in memory for later use
     createGeoJSON = async (dataset) => {
-        const data = JSON.parse(dataset);
+        const datasetParse = JSON.parse(dataset);
         let features = [];
 
-        data.forEach((item) => {
+        datasetParse.forEach((item) => {
             let search_string = encodeURIComponent(item.postalCode.toUpperCase());
             const fetchPromise = fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${search_string}.json?access_token=${this.token}`);
             fetchPromise.then(response => { return response.json() }).then(data => features.push(data.features[0]))
@@ -31,7 +31,7 @@ export default class MapStateMachine {
 
         return new Promise((resolve, reject) => {
             let interval = setInterval(() => {
-                if (data.length === features.length) {
+                if (datasetParse.length === features.length) {
                     this.geoJSON = { "features": features, "type": "FeatureCollection" };
                     resolve(this.geoJSON);
                     clearInterval(interval);
@@ -69,7 +69,6 @@ export default class MapStateMachine {
                     duplicates.forEach(
                         duplicate => {
                             const temp = this.filterFeaturesUsingPost(features, duplicate)
-                            temp.forEach(i => features.splice(features.indexOf(i), 1))
                             this.hubsCollection.push(temp)
                         }
                     )
@@ -93,6 +92,13 @@ export default class MapStateMachine {
                         )[0]
 
                         if (!popupInfo) return;
+
+                        // Check if marker is a hub to prevent a double marker from being made.
+                        let inHub = false;
+                        this.hubsCollection.forEach((hub) => {
+                            hub.indexOf(marker) > -1 ? inHub = true : false
+                        })
+                        if(inHub) return;
                         
                         if(popupInfo.founder) el.style.backgroundImage = `url(${this.markerStyles.founderIcon})`;
                         else if(popupInfo.specialProgram) el.style.backgroundImage = `url(${this.markerStyles.specialProgramIcon})`;
