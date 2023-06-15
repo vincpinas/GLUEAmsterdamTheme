@@ -27,7 +27,8 @@ export default class MapMenu {
             button.addEventListener("click", () => this.closeDirectionTab());
         })
 
-        document.querySelector(".c-map__headers").style.display = "none"
+        document.querySelector(".c-map__headers").style.opacity = "0"
+        document.querySelector(".c-map__headersClose button").style.pointerEvents = "none"
 
         routes.forEach((route, i) => {
             route.dataset.i = i + 1
@@ -50,7 +51,8 @@ export default class MapMenu {
                 relatedTab.firstElementChild,
                 JSON.parse(relatedTab.firstElementChild.dataset.i)
             );
-            document.querySelector(".c-map__headers").style.display = "grid"
+            document.querySelector(".c-map__headers").style.opacity = "1"
+            document.querySelector(".c-map__headersClose button").style.pointerEvents = "all"
         }
     }
 
@@ -82,7 +84,7 @@ export default class MapMenu {
 
             a.innerHTML = `${i + 1}. <span></span> ${poi.fullName}`;
             a.target = "_blank";
-            a.href = `/public-page/${poi.username}`;
+            a.href = `/${poi.fullName.replace(/\s/g, "-")}`;
             googleRouteHref += `${poi.postalCode}/`
 
             li.appendChild(a);
@@ -116,7 +118,8 @@ export default class MapMenu {
 
     closeDirectionTab = () => {
         const activeTab = document.querySelector(".c-map__menuDirectionTab.active")
-        document.querySelector(".c-map__headers").style.display = "none"
+        document.querySelector(".c-map__headers").style.opacity = "0"
+        document.querySelector(".c-map__headersClose button").style.pointerEvents = "none"
 
         if (activeTab) activeTab.classList.remove("active");
         this.mapState.resetMap();

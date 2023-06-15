@@ -31,6 +31,10 @@ $config = GeneralConfig::create()
         '@stylesheets' => App::env('CRAFT_ENVIRONMENT') == "production" ? '/web/css' : '/css',
         '@cscripts' => App::env('CRAFT_ENVIRONMENT') == "production" ? '/web/scripts' : '/scripts'
     ])
+    ->activateAccountSuccessPath('/login')
+    ->invalidUserTokenPath('/')
+    ->setPasswordPath('/reset-password')
+    ->setPasswordSuccessPath('/login')
 ;
 
 return $config;

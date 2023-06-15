@@ -1,7 +1,7 @@
 isPublic: true
 name: 'Public Schema'
 scope:
-  - 'sites.c5fb5f28-2f93-4a73-bcd6-9c57ee22f86f:read' # Glueweb Amsterdam
+  - 'sites.c5fb5f28-2f93-4a73-bcd6-9c57ee22f86f:read' # $SITE_NAME
   - 'elements.drafts:read'
   - 'elements.revisions:read'
   - 'elements.inactive:read'

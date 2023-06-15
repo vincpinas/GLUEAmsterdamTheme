@@ -9,7 +9,8 @@
 {% set progress = number %}
 
 {% if currentUser %}
-    {% redirect "/public-page/" ~ currentUser.username %}
+	{% set urlstr = currentUser.fullName|replace({' ': "-"}) %}
+    {% redirect "/" ~ urlstr %}
 {% endif %}
 
 {% block content %}

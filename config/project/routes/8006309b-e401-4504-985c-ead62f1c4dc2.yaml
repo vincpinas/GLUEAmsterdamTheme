@@ -2,8 +2,7 @@ siteUid: null
 sortOrder: 1
 template: containers/account.twig
 uriParts:
-  - public-page/
-  -
+  1:
     - slug
     - '[^\/]+'
-uriPattern: 'public-page/<slug:[^\/]+>'
+uriPattern: '<slug:[^\/]+>'

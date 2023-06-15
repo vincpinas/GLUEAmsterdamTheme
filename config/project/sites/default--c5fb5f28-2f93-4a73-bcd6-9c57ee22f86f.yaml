@@ -3,7 +3,7 @@ enabled: true
 handle: default
 hasUrls: true
 language: en-US
-name: 'Glueweb Amsterdam'
+name: $SITE_NAME
 primary: true
 siteGroup: 90a58fe8-93e7-4f43-a79c-f92d1076f9c0 # Glue websites
 sortOrder: 1

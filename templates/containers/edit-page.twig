@@ -133,7 +133,7 @@
 
 
 				<span class="c-edit__formInputRow options">
-					<a href="/public-page/{{ user.username }}">View page</a>
+					<a href="/{{ user.fullName|replace({' ': "-"}) }}">View page</a>
 					<button type="submit" class="c-edit__formSubmit disabled" disabled>Save changes</button>
 				</span>
 			</form>

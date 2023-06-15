@@ -11,3 +11,17 @@
     transform: translateX(100%);
     animation: slide-in $duration $delay forwards;
 }
+
+@mixin slide-in-top($duration: 1000ms, $delay: 0ms) {
+    @keyframes slide-in-top {
+        from {
+            transform: translateY(-100%);
+        }
+        to {
+            transform: translateY(0px);
+        }
+    }
+
+    transform: translateY(-100%);
+    animation: slide-in-top $duration ease-out $delay forwards;
+}

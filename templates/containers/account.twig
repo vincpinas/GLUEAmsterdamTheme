@@ -1,6 +1,7 @@
 {% extends "index" %}
 
-{% set user = craft.users.username(slug).one() %}
+{% set urlstr = craft.app.request.segments[0]|replace({'-': " "}) %}
+{% set user = craft.users.fullName(urlstr).one() %}
 
 {% block content %}
 
@@ -27,21 +28,23 @@
 
 				{% if user.mapAddress|length > 0 and user.mapPostalCode|length > 0 %}
 					<h3>Address</h3>
-					<p>{{ user.mapAddress }},
-						{{ user.mapPostalCode }}
-						Amsterdam</p>
+					<p>{{ user.mapAddress }}, {{ user.mapPostalCode }}</p>
 				{% endif %}
 
 				{% if user.openingTimes %}
 					<h3>Visiting Hours</h3>
 					<ul class="c-publicPage__overviewOpeningTimes">
 						{% for date in event.datetable %}
-							<li>
-								{{ date["col1"]|date("l") }}:
-								{{ user.openingTimes[loop.index - 1]["start"] }}
-								-
-								{{ user.openingTimes[loop.index - 1]["end"] }}
-							</li>
+							{% if user.openingTimes[loop.index - 1] is defined %}
+								<li>
+									{{ date["col1"]|date("l") }}:
+									{{ user.openingTimes[loop.index - 1]["start"] }}
+									-
+									{{ user.openingTimes[loop.index - 1]["end"] }}
+								</li>
+							{% else %}
+								<li>{{ date["col1"]|date("l") }}: - </li>
+							{% endif %}
 						{% endfor %}
 					</ul>
 				{% else %}
@@ -57,37 +60,51 @@
 
 				{% if user.phoneNumber|length > 0 %}
 					<h3>Phone number</h3>
-					<p><a href="tel:{{user.phoneNumber}}">{{ user.phoneNumber}}</a></p>
+					<p>
+						<a href="tel:{{user.phoneNumber}}">{{ user.phoneNumber}}</a>
+					</p>
 				{% endif %}
 
 				{% if user.email|length > 0 %}
 					<h3>Email</h3>
-					<p><a href="mailto:{{user.email}}">{{ user.email}}</a></p>
+					<p>
+						<a href="mailto:{{user.email}}">{{ user.email}}</a>
+					</p>
 				{% endif %}
 
 				{% if user.website|length > 0 %}
 					<h3>Website</h3>
-					<p><a href="{{user.website}}" target="_blank">{{ user.website}}</a></p>
+					<p>
+						<a href="{{user.website}}" target="_blank">{{ user.website}}</a>
+					</p>
 				{% endif %}
 
 				{% if user.instagram|length > 0 %}
 					<h3>Instagram</h3>
-					<p><a href="{{user.instagram}}" target="_blank">{{ user.instagram}}</a></p>
+					<p>
+						<a href="{{user.instagram}}" target="_blank">{{ user.instagram}}</a>
+					</p>
 				{% endif %}
 
 				{% if user.facebook|length > 0 %}
 					<h3>Facebook</h3>
-					<p><a href="{{user.facebook}}" target="_blank">{{ user.facebook}}</a></p>
+					<p>
+						<a href="{{user.facebook}}" target="_blank">{{ user.facebook}}</a>
+					</p>
 				{% endif %}
 
 				{% if user.twitter|length > 0 %}
 					<h3>Twitter</h3>
-					<p><a href="{{user.twitter}}" target="_blank">{{ user.twitter}}</a></p>
+					<p>
+						<a href="{{user.twitter}}" target="_blank">{{ user.twitter}}</a>
+					</p>
 				{% endif %}
 
 				{% if user.linkedin|length > 0 %}
 					<h3>LinkedIn</h3>
-					<p><a href="{{user.linkedin}}" target="_blank">{{ user.linkedin}}</a></p>
+					<p>
+						<a href="{{user.linkedin}}" target="_blank">{{ user.linkedin}}</a>
+					</p>
 				{% endif %}
 
 			</div>

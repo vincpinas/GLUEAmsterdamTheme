@@ -1,4 +1,4 @@
-dateModified: 1686141691
+dateModified: 1686844057
 elementSources:
   craft\elements\Entry:
     -
@@ -42,7 +42,7 @@ elementSources:
         - link
       type: native
     -
-      heading: ''
+      heading: Channels
       type: heading
   craft\elements\User:
     -
@@ -105,14 +105,45 @@ elementSources:
         - dateCreated
         - lastLoginDate
       type: native
+    -
+      key: 'group:51c71de1-cd5f-45b5-8c0f-406dc42a9945' # Founders
+      type: native
+    -
+      defaultSort:
+        - email
+        - asc
+      disabled: false
+      key: 'group:b7b0394d-62fe-4e1d-9214-0026ddff54bd' # Special Program
+      tableAttributes:
+        - fullName
+        - email
+        - dateCreated
+        - lastLoginDate
+      type: native
+    -
+      defaultSort:
+        - email
+        - asc
+      disabled: false
+      key: 'group:d5fda0ac-6099-4e3c-8804-1a5fb5178809' # Hub
+      tableAttributes:
+        - fullName
+        - email
+        - dateCreated
+        - lastLoginDate
+      type: native
 email:
-  fromEmail: david@glue.amsterdam
-  fromName: Glueweb
-  replyToEmail: null
+  fromEmail: $SMTP_EMAIL
+  fromName: $SMTP_SENDER_NAME
+  replyToEmail: $SMTP_EMAIL
   template: ''
   transportSettings:
-    command: '/usr/sbin/sendmail -bs'
-  transportType: craft\mail\transportadapters\Sendmail
+    host: $SMTP_HOST
+    password: $SMTP_PASSWORD
+    port: $SMTP_PORT
+    useAuthentication: '1'
+    username: $SMTP_EMAIL
+  transportType: craft\mail\transportadapters\Smtp
 fs:
   userFiles:
     hasUrls: true
@@ -139,8 +170,9 @@ meta:
     3fc5f4d1-e130-417e-8f41-29bb276bfbb2: 'Group Three Handle' # Group Three Handle
     5b1e8713-7a27-46ed-a407-e926769d89e2: Colour # Colour
     05b9b1df-40f9-400d-b742-ed9dbfe00f8c: Login # Login
-    5d152d4b-1ee3-4f95-bca3-97ab4af05e68: 'Route Marker Icon' # Route Marker Icon
     5da67f8c-ab63-473a-8a06-56f08001fc9c: 'Group Four Handle' # Group Four Handle
+    6c53837c-f9da-43a9-8b85-6b133dce6995: Asset # Asset
+    7c6ffd50-236d-41ef-b9b0-ed933128ead8: Locations # Locations
     8dec35ce-7bad-4407-bbc3-56adc9cccc4a: Login # Login
     9b440915-1a29-471d-9ebe-88c6673362e7: Map # Map
     9cf5f394-9490-4101-bdc7-5f09654f53e7: Thumbnail # Thumbnail
@@ -154,6 +186,7 @@ meta:
     29af6c74-049e-465f-97f6-c25132abd027: 'Marker Size' # Marker Size
     49d0005e-81de-4029-985b-30b90f013162: 'Map PostalCode' # Map PostalCode
     51bd5b4e-75c4-42a1-b1b5-1827613ecaef: Address # Address
+    51c71de1-cd5f-45b5-8c0f-406dc42a9945: Founders # Founders
     54d7b784-36c0-4673-ac81-61eb4fec1591: Date # Date
     62bbfaa1-afe7-4d10-86d1-a4f1f257284d: 'Marker thumbnail placeholder' # Marker thumbnail placeholder
     64f81d1c-c242-4549-8d9f-19d9974d28c7: User # User
@@ -164,12 +197,17 @@ meta:
     94b2ace0-9736-4772-8b51-5ad1c118ba9b: Register # Register
     0135bceb-e438-4587-afb0-58be11f4b6ec: 'Opening Times' # Opening Times
     164bc9a4-5b57-4fb1-b7e2-9fb883aebc34: 'Phone number' # Phone number
+    224d134b-3e57-4e94-a6b0-97108c266b94: Hub # Hub
     455ecd20-d076-49c7-8fc6-57888147a961: Zip # Zip
     462e7888-6a24-4c61-b3f1-faaec6bc45ad: 'Link Destination' # Link Destination
     623f54ba-640b-4690-bb9d-fffae8471ed9: Twitter # Twitter
     687bb273-50a1-471a-b240-7ccc88e88288: 'Map Pitch' # Map Pitch
     730ad796-ff23-490f-8887-4f2390c57f97: 'Group Two Handle' # Group Two Handle
     767ce7ff-b004-4bb8-a476-13d97b25fc2b: 'Contact Form' # Contact Form
+    2603f45d-35b6-49c5-8c18-392fc415f0ab: 'Marker Matrix' # Marker Matrix
+    3991b82d-f96d-4096-979e-357725ad6db4: Asset # Asset
+    5415fc47-c06d-49ba-b50c-902b3db86c4b: Default # Default
+    6476a883-533b-45e3-8d3d-0dd262e7c5b5: Markers # Markers
     8634fab2-bde5-4665-80a8-324c56cb1c35: 'Web Images' # Web Images
     8809cf4a-41fd-49bf-9e6c-01bb347d9a21: Token # Token
     8849fcad-9c3c-407d-be47-dc023f96bfb0: 'Social Media Image' # Social Media Image
@@ -184,28 +222,35 @@ meta:
     acb4d8ea-f708-4993-846b-d1e591d442ff: 'Route Group' # Route Group
     ae91170d-e3ba-466f-92ff-05269557039f: 'Glue events' # Glue events
     afaddf10-8b46-42cc-a4c2-3842de0d8fe2: 'Company name' # Company name
+    b7b0394d-62fe-4e1d-9214-0026ddff54bd: 'Special Program' # Special Program
     b8f74062-ae64-4520-a7ed-fe4272ee4456: 'User Avatars' # User Avatars
+    b293ae54-2bba-485d-814f-af219d5fc776: 'HUB slide duration' # HUB slide duration
+    bab14c41-889d-40ef-bed6-cb4f4fc062ac: Route # Route
     bcc4aab8-13e9-4efc-a464-78c59170a854: 'Large Text Field' # Large Text Field
     bd5e2840-24bf-449d-8949-c7c8429d4018: Title # Title
     c0f16670-30a8-4b0d-93c2-bc35b31ba3ee: 'Public Schema' # Public Schema
-    c5fb5f28-2f93-4a73-bcd6-9c57ee22f86f: 'Glueweb Amsterdam' # Glueweb Amsterdam
+    c5fb5f28-2f93-4a73-bcd6-9c57ee22f86f: $SITE_NAME # $SITE_NAME
     c8adfe4a-01be-4ef5-a6ea-1dd05dbdf07e: DateTable # DateTable
     c700366d-c002-43b2-b7ce-f8dd82c7afa8: Participants # Participants
+    c2872290-8524-4632-b215-9fe238402822: Asset # Asset
     cab00bb9-f285-41cd-9dfc-6b675f5c4817: Map # Map
     cb9b4037-71ad-4f2d-b47e-a020160c2a5c: 'Edit page' # Edit page
     cd1f3a93-b4a0-445b-97ab-b378129dbb74: 'Map Address' # Map Address
     cdfc6d46-fdd1-4bdf-b53b-7f44b84230a5: Stylesheet # Stylesheet
     ce4c8a98-5c1f-4d39-bbf0-6bfd5fd4ba32: Subtitle # Subtitle
     d0a790d7-fe64-452d-9082-5e57f70685df: 'Edit page' # Edit page
+    d5fda0ac-6099-4e3c-8804-1a5fb5178809: Hub # Hub
     d7f79a98-5851-4ca8-8097-74672ff95134: Facebook # Facebook
     d3712c0e-7898-4805-8cee-c9b619cf6a46: 'One Word' # One Word
     e3b03628-9c11-450f-8556-1e2882e0101c: Home # Home
-    e4bcb26e-0946-40a4-a3e0-1d73c3971119: 'Locations Marker Icon' # Locations Marker Icon
+    e4e090a3-6fa6-47ce-a91b-8171b1a84a58: 'Special Program' # Special Program
     e6ea2a09-6abe-4046-8a6f-c483f1d58716: Common # Common
     e3480c4d-8e7a-4311-af43-7a686e25d7a0: Website # Website
+    e49004dc-97e1-4069-852d-2b53e7f5b8a1: Founder # Founder
     ecf5bd66-ad84-4640-b9b2-cf4172f1b84d: 'Group One Handle' # Group One Handle
     f0917fc5-6089-45ec-a4e2-c442ce4726a2: Package # Package
     f46c926b-268c-4328-ad61-180b55bea62e: City # City
+    fa5f1e79-50ce-45ec-9e91-44a272e11387: Asset # Asset
 plugins:
   cp-css:
     edition: standard
@@ -237,7 +282,7 @@ plugins:
 system:
   edition: pro
   live: true
-  name: 'Glue Websites'
+  name: $SITE_NAME
   retryDuration: null
   schemaVersion: 4.4.0.4
   timeZone: Europe/Amsterdam

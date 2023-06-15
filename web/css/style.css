@@ -71,7 +71,10 @@
   z-index: 10;
   grid-area: header;
   display: grid;
+  opacity: 1;
   grid-template-columns: 1fr 1fr;
+  transition: 0.35s;
+  opacity: 0;
 }
 .c-map__headers li {
   width: 100%;
@@ -93,6 +96,41 @@
   font-family: "Lausanne";
   font-weight: 600;
   font-style: normal;
+}
+.c-map__popupSlider {
+  position: relative;
+  min-width: 100%;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+.c-map__popupSliderTrack {
+  height: 100%;
+  list-style-type: none;
+  display: flex;
+  transition: transform 0.8s;
+}
+.c-map__popupSliderDot {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: #10069F;
+  transition: 0.35s;
+}
+.c-map__popupSliderDot:not(:last-of-type) {
+  margin-right: 0.5rem;
+}
+.c-map__popupSliderDot.active {
+  height: 0.5rem;
+  width: 1rem;
+}
+.c-map__popupSliderDots {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.c-map__popupSlide {
+  min-width: 20.75rem;
 }
 .c-map__popupImg {
   width: 100%;
@@ -196,7 +234,6 @@
 }
 .c-map__menuDirectionCloseButton ion-icon {
   transition: 0.35s;
-  margin-right: 0.25rem;
 }
 .c-map__menuDirectionTab {
   position: absolute;
@@ -241,18 +278,11 @@
   overflow-y: scroll;
   padding-top: 8rem;
   padding-bottom: 2rem;
+  justify-content: unset;
 }
 @media screen and (max-width: 767px) {
   .c-map__locationsOverview {
     max-height: 60vh;
-  }
-}
-.c-map__locationsOverview > h2 {
-  margin-top: 20rem;
-}
-@media screen and (max-width: 767px) {
-  .c-map__locationsOverview > h2 {
-    margin-top: 30rem;
   }
 }
 .c-map__menuItem.active, .c-map__locationsOverview {
@@ -406,6 +436,7 @@
   font-weight: 600;
   font-style: normal;
   color: #ffffff;
+  max-width: 20rem;
 }
 .c-map__locationsOverview ol li {
   padding: 0rem 0.75rem;
@@ -479,10 +510,18 @@
   display: none;
 }
 
+.mapboxgl-popup {
+  width: 22rem !important;
+  max-width: unset !important;
+}
 @media screen and (max-width: 767px) {
   .mapboxgl-popup {
-    max-width: 16rem !important;
+    max-width: 18rem !important;
   }
+}
+
+.mapboxgl-popup-content {
+  overflow: hidden;
 }
 
 .c-register {

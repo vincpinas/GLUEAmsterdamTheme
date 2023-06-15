@@ -1,0 +1,319 @@
+field: 2603f45d-35b6-49c5-8c18-392fc415f0ab # Marker Matrix
+fieldLayouts:
+  feb74658-f02e-4103-b8bd-f488379bf952:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: bab14c41-889d-40ef-bed6-cb4f4fc062ac # Route
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 78a2bd34-1485-4f9c-8d84-e4c304307bb5
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 7c6ffd50-236d-41ef-b9b0-ed933128ead8 # Locations
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f2425f23-9112-45a5-b4ce-0a86ddae3118
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 224d134b-3e57-4e94-a6b0-97108c266b94 # Hub
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: c2030f34-2c75-4f14-a824-6644e1240d53
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: e49004dc-97e1-4069-852d-2b53e7f5b8a1 # Founder
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 78622b16-5a3d-4726-b4b1-8de0169952e9
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: e4e090a3-6fa6-47ce-a91b-8171b1a84a58 # Special Program
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 070d5d41-b1e2-4251-af0c-3463347652bf
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 4e3a81d5-3419-4fe2-8e69-2d8c2818800e
+        userCondition: null
+fields:
+  7c6ffd50-236d-41ef-b9b0-ed933128ead8: # Locations
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: locations
+    instructions: 'Marker used when displaying normal members on the map'
+    name: Locations
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      allowSubfolders: false
+      allowUploads: true
+      allowedKinds:
+        - image
+      branchLimit: null
+      defaultUploadLocationSource: 'volume:b8f74062-ae64-4520-a7ed-fe4272ee4456' # User Avatars
+      defaultUploadLocationSubpath: null
+      localizeRelations: false
+      maintainHierarchy: false
+      maxRelations: 1
+      minRelations: null
+      previewMode: full
+      restrictFiles: true
+      restrictLocation: true
+      restrictedDefaultUploadSubpath: null
+      restrictedLocationSource: 'volume:8634fab2-bde5-4665-80a8-324c56cb1c35' # Web Images
+      restrictedLocationSubpath: null
+      selectionCondition:
+        __assoc__:
+          -
+            - elementType
+            - craft\elements\Asset
+          -
+            - fieldContext
+            - global
+          -
+            - class
+            - craft\elements\conditions\assets\AssetCondition
+      selectionLabel: 'Add marker asset'
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      sources: '*'
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  224d134b-3e57-4e94-a6b0-97108c266b94: # Hub
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: hub
+    instructions: 'Marker used when displaying a hub (a collection of expositions on the same postalcode)'
+    name: Hub
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      allowSubfolders: false
+      allowUploads: true
+      allowedKinds:
+        - image
+      branchLimit: null
+      defaultUploadLocationSource: 'volume:b8f74062-ae64-4520-a7ed-fe4272ee4456' # User Avatars
+      defaultUploadLocationSubpath: null
+      localizeRelations: false
+      maintainHierarchy: false
+      maxRelations: 1
+      minRelations: null
+      previewMode: full
+      restrictFiles: true
+      restrictLocation: true
+      restrictedDefaultUploadSubpath: null
+      restrictedLocationSource: 'volume:8634fab2-bde5-4665-80a8-324c56cb1c35' # Web Images
+      restrictedLocationSubpath: null
+      selectionCondition:
+        __assoc__:
+          -
+            - elementType
+            - craft\elements\Asset
+          -
+            - fieldContext
+            - global
+          -
+            - class
+            - craft\elements\conditions\assets\AssetCondition
+      selectionLabel: 'Add marker asset'
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      sources: '*'
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  bab14c41-889d-40ef-bed6-cb4f4fc062ac: # Route
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: route
+    instructions: 'The marker used when displaying stops in a route'
+    name: Route
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      allowSubfolders: false
+      allowUploads: true
+      allowedKinds:
+        - image
+      branchLimit: null
+      defaultUploadLocationSource: 'volume:b8f74062-ae64-4520-a7ed-fe4272ee4456' # User Avatars
+      defaultUploadLocationSubpath: null
+      localizeRelations: false
+      maintainHierarchy: false
+      maxRelations: 1
+      minRelations: null
+      previewMode: full
+      restrictFiles: true
+      restrictLocation: true
+      restrictedDefaultUploadSubpath: null
+      restrictedLocationSource: 'volume:8634fab2-bde5-4665-80a8-324c56cb1c35' # Web Images
+      restrictedLocationSubpath: null
+      selectionCondition:
+        __assoc__:
+          -
+            - elementType
+            - craft\elements\Asset
+          -
+            - fieldContext
+            - global
+          -
+            - class
+            - craft\elements\conditions\assets\AssetCondition
+      selectionLabel: 'Add marker asset'
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      sources: '*'
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  e4e090a3-6fa6-47ce-a91b-8171b1a84a58: # Special Program
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: specialProgram
+    instructions: 'Marker used when displaying a participant with a special program'
+    name: 'Special Program'
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      allowSubfolders: false
+      allowUploads: true
+      allowedKinds:
+        - image
+      branchLimit: null
+      defaultUploadLocationSource: 'volume:b8f74062-ae64-4520-a7ed-fe4272ee4456' # User Avatars
+      defaultUploadLocationSubpath: null
+      localizeRelations: false
+      maintainHierarchy: false
+      maxRelations: 1
+      minRelations: null
+      previewMode: full
+      restrictFiles: true
+      restrictLocation: true
+      restrictedDefaultUploadSubpath: null
+      restrictedLocationSource: 'volume:8634fab2-bde5-4665-80a8-324c56cb1c35' # Web Images
+      restrictedLocationSubpath: null
+      selectionCondition:
+        __assoc__:
+          -
+            - elementType
+            - craft\elements\Asset
+          -
+            - fieldContext
+            - global
+          -
+            - class
+            - craft\elements\conditions\assets\AssetCondition
+      selectionLabel: 'Add marker asset'
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      sources: '*'
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  e49004dc-97e1-4069-852d-2b53e7f5b8a1: # Founder
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: founder
+    instructions: 'Marker used when displaying a founding participant'
+    name: Founder
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      allowSubfolders: false
+      allowUploads: true
+      allowedKinds:
+        - image
+      branchLimit: null
+      defaultUploadLocationSource: 'volume:b8f74062-ae64-4520-a7ed-fe4272ee4456' # User Avatars
+      defaultUploadLocationSubpath: null
+      localizeRelations: false
+      maintainHierarchy: false
+      maxRelations: 1
+      minRelations: null
+      previewMode: full
+      restrictFiles: true
+      restrictLocation: true
+      restrictedDefaultUploadSubpath: null
+      restrictedLocationSource: 'volume:8634fab2-bde5-4665-80a8-324c56cb1c35' # Web Images
+      restrictedLocationSubpath: null
+      selectionCondition:
+        __assoc__:
+          -
+            - elementType
+            - craft\elements\Asset
+          -
+            - fieldContext
+            - global
+          -
+            - class
+            - craft\elements\conditions\assets\AssetCondition
+      selectionLabel: 'Add marker asset'
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      sources: '*'
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+handle: markers
+name: Markers
+sortOrder: 1

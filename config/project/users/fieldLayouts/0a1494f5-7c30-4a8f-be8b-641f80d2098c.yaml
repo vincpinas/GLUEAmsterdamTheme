@@ -1,6 +1,14 @@
 tabs:
   -
-    elementCondition: null
+    elementCondition:
+      class: craft\elements\conditions\users\UserCondition
+      conditionRules:
+        -
+          class: craft\elements\conditions\users\AdminConditionRule
+          uid: d535829e-d266-43ec-8cb2-daa3319fd59b
+          value: false
+      elementType: craft\elements\User
+      fieldContext: global
     elements:
       -
         elementCondition: null
@@ -90,7 +98,15 @@ tabs:
     uid: 32340a36-dfaa-4778-9860-e744f7b2d4ea
     userCondition: null
   -
-    elementCondition: null
+    elementCondition:
+      class: craft\elements\conditions\users\UserCondition
+      conditionRules:
+        -
+          class: craft\elements\conditions\users\AdminConditionRule
+          uid: 4c12fe86-33ee-4670-b09d-fed2b16c3794
+          value: false
+      elementType: craft\elements\User
+      fieldContext: global
     elements:
       -
         elementCondition: null
@@ -144,7 +160,15 @@ tabs:
     uid: 67eb68ad-ecb9-460f-a867-f554aec646bb
     userCondition: null
   -
-    elementCondition: null
+    elementCondition:
+      class: craft\elements\conditions\users\UserCondition
+      conditionRules:
+        -
+          class: craft\elements\conditions\users\AdminConditionRule
+          uid: b9022c45-8130-4a25-9a71-951bf76046cf
+          value: false
+      elementType: craft\elements\User
+      fieldContext: global
     elements:
       -
         elementCondition: null
@@ -174,7 +198,15 @@ tabs:
     uid: c8a2f6ab-4e6a-4ffa-ba86-615076156a41
     userCondition: null
   -
-    elementCondition: null
+    elementCondition:
+      class: craft\elements\conditions\users\UserCondition
+      conditionRules:
+        -
+          class: craft\elements\conditions\users\AdminConditionRule
+          uid: 1c09f290-a7ac-45e4-96e9-af6812253cd0
+          value: false
+      elementType: craft\elements\User
+      fieldContext: global
     elements:
       -
         elementCondition: null

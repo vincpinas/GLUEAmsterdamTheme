@@ -66,25 +66,13 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: 5d152d4b-1ee3-4f95-bca3-97ab4af05e68 # Route Marker Icon
+            fieldUid: 2603f45d-35b6-49c5-8c18-392fc415f0ab # Marker Matrix
             instructions: null
             label: null
-            required: true
+            required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 4b5b63da-07b3-4022-81e0-2490e542f885
-            userCondition: null
-            warning: null
-            width: 100
-          -
-            elementCondition: null
-            fieldUid: e4bcb26e-0946-40a4-a3e0-1d73c3971119 # Locations Marker Icon
-            instructions: null
-            label: null
-            required: true
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: 3019a8ba-8eea-4581-be19-dbd6cdfbcec2
+            uid: 6ce3c127-cd74-4280-b660-4266f4b7e578
             userCondition: null
             warning: null
             width: 100
@@ -109,6 +97,18 @@ fieldLayouts:
             tip: null
             type: craft\fieldlayoutelements\CustomField
             uid: 198a86fb-63f2-4de2-8766-064062b51472
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: b293ae54-2bba-485d-814f-af219d5fc776 # HUB slide duration
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f27b5259-116b-488c-a0e7-97ccc82dbbee
             userCondition: null
             warning: null
             width: 100

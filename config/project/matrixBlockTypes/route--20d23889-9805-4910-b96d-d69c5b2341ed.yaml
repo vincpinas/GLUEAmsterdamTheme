@@ -83,7 +83,7 @@ fields:
     type: craft\fields\Users
   28df0b76-c9f0-4d20-8ca1-a15c637783ea: # Route Name
     columnSuffix: fcuvkzgt
-    contentColumnType: string(44)
+    contentColumnType: text
     fieldGroup: null
     handle: routeName
     instructions: 'A name to refer to the route'
@@ -91,7 +91,7 @@ fields:
     searchable: false
     settings:
       byteLimit: null
-      charLimit: 11
+      charLimit: null
       code: false
       columnType: null
       initialRows: 4
