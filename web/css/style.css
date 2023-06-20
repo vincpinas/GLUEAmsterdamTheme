@@ -1405,6 +1405,10 @@
 .c-publicPage__thumbnailContainer:has(:not(.c-publicPage__thumbnail)) .c-publicPage__thumbnailOverlay {
   height: 100%;
 }
+.c-publicPage__bio {
+  max-width: 100%;
+  word-wrap: break-word;
+}
 
 /* Any imports required multiple times across the site will be imported here. */
 @font-face {

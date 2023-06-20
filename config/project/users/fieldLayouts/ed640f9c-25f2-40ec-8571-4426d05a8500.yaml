@@ -4,9 +4,11 @@ tabs:
       class: craft\elements\conditions\users\UserCondition
       conditionRules:
         -
-          class: craft\elements\conditions\users\AdminConditionRule
-          uid: d535829e-d266-43ec-8cb2-daa3319fd59b
-          value: false
+          class: craft\elements\conditions\users\GroupConditionRule
+          operator: in
+          uid: 4979d50b-6427-4a34-af1b-1feaa503923c
+          values:
+            - c700366d-c002-43b2-b7ce-f8dd82c7afa8 # Participants
       elementType: craft\elements\User
       fieldContext: global
     elements:
@@ -102,9 +104,11 @@ tabs:
       class: craft\elements\conditions\users\UserCondition
       conditionRules:
         -
-          class: craft\elements\conditions\users\AdminConditionRule
-          uid: 4c12fe86-33ee-4670-b09d-fed2b16c3794
-          value: false
+          class: craft\elements\conditions\users\GroupConditionRule
+          operator: in
+          uid: 968f0bc8-c9b1-4569-9a39-901c6b7f54a4
+          values:
+            - c700366d-c002-43b2-b7ce-f8dd82c7afa8 # Participants
       elementType: craft\elements\User
       fieldContext: global
     elements:
@@ -117,18 +121,6 @@ tabs:
         tip: null
         type: craft\fieldlayoutelements\CustomField
         uid: 32279b41-f613-4fa4-a864-9b3cf4156922
-        userCondition: null
-        warning: null
-        width: 100
-      -
-        elementCondition: null
-        fieldUid: bd5e2840-24bf-449d-8949-c7c8429d4018 # Title
-        instructions: null
-        label: null
-        required: false
-        tip: null
-        type: craft\fieldlayoutelements\CustomField
-        uid: 39f86a9b-6052-4c84-a9a1-22ddf694f461
         userCondition: null
         warning: null
         width: 100
@@ -164,12 +156,26 @@ tabs:
       class: craft\elements\conditions\users\UserCondition
       conditionRules:
         -
-          class: craft\elements\conditions\users\AdminConditionRule
-          uid: b9022c45-8130-4a25-9a71-951bf76046cf
-          value: false
+          class: craft\elements\conditions\users\GroupConditionRule
+          operator: in
+          uid: c43e401d-b92d-4377-8cdf-226c37e3d511
+          values:
+            - c700366d-c002-43b2-b7ce-f8dd82c7afa8 # Participants
       elementType: craft\elements\User
       fieldContext: global
     elements:
+      -
+        elementCondition: null
+        fieldUid: 20650a18-d4f6-482d-8d9e-6e0c30e087a7 # Venue
+        instructions: null
+        label: null
+        required: false
+        tip: null
+        type: craft\fieldlayoutelements\CustomField
+        uid: 1067c969-e43e-490d-804b-82510dfa3aa8
+        userCondition: null
+        warning: null
+        width: 100
       -
         elementCondition: null
         fieldUid: cd1f3a93-b4a0-445b-97ab-b378129dbb74 # Map Address
@@ -202,9 +208,11 @@ tabs:
       class: craft\elements\conditions\users\UserCondition
       conditionRules:
         -
-          class: craft\elements\conditions\users\AdminConditionRule
-          uid: 1c09f290-a7ac-45e4-96e9-af6812253cd0
-          value: false
+          class: craft\elements\conditions\users\GroupConditionRule
+          operator: in
+          uid: 8aa656da-65d2-4fca-b598-9687b08a543b
+          values:
+            - c700366d-c002-43b2-b7ce-f8dd82c7afa8 # Participants
       elementType: craft\elements\User
       fieldContext: global
     elements:

@@ -16,6 +16,8 @@
 
 		{% set user = user ?? currentUser %}
 
+		{% set user_thumbnails = user.thumbnail.all() %}
+
 		{% if user.hasErrors() %}
 			<p>Unable to save your profile.</p>
 		{% endif %}
@@ -38,8 +40,8 @@
 							<ion-icon name="pencil"></ion-icon>
 						</span>
 						{{ input('file', 'fields[thumbnail][]', null, { id: 'thumbnail', accept: 'image/png,image/jpeg', }) }}
-						{% if user.thumbnail.one() %}
-							<img src="{{ user.thumbnail.one().url }}" alt="User">
+						{% if user_thumbnails and user_thumbnails[0] %}
+							<img src="{{ user_thumbnails[0].url }}" alt="User">
 						{% else %}
 							<img src="" alt="User">
 						{% endif %}
@@ -49,6 +51,8 @@
 							<u>Browse</u>
 						</p>
 					</span>
+					<div class="c-edit__featuredImageList">
+					</div>
 				</label>
 
 				{# Company Name #}
@@ -59,6 +63,10 @@
 
 				{# Map Information #}
 				<span class="c-edit__formInputRow">
+					<label for="fields[venue]" class="c-edit__formLabel">
+						venue
+						{{ input('text', 'fields[venue]', user.venue, { id: 'mapAddress' }) }}
+					</label>
 					<label for="fields[mapAddress]" class="c-edit__formLabel">
 						map address
 						{{ input('text', 'fields[mapAddress]', user.mapAddress, { id: 'mapAddress' }) }}
@@ -70,13 +78,6 @@
 				</span>
 
 				<h3>about the company</h3>
-				<label for="fields[nTitle]" class="c-edit__formLabel">
-					<span class="c-edit__formLabelRow">
-						<p>about title</p>
-						<p id="titleMaxCharacters">max. 50 characters</p>
-					</span>
-					{{ input('text', 'fields[nTitle]', user.nTitle, { id: 'title' }) }}
-				</label>
 				<label for="fields[largeTextField]" class="c-edit__formLabel">
 					<span class="c-edit__formLabelRow">
 						<p>About</p>
@@ -146,8 +147,9 @@
 
 {% block javascripts %}
 	<script>
-		const featuredImageInput = document.querySelector("input[type='file']");
-const featuredImage = document.querySelector(".c-edit__featuredImageContainer img");
+	const submit = document.querySelector("button[type=submit]")
+	const featuredImageInput = document.querySelector("input[type='file']");
+	const featuredImage = document.querySelector(".c-edit__featuredImageContainer img");
 
 featuredImageInput.addEventListener("change", (e) => {
 const file = e.target.files[0]
@@ -155,10 +157,15 @@ featuredImage.src = URL.createObjectURL(file)
 })
 
 const setCharacterCount = (counter, character_count, max_count, suffix) => {
-if (character_count > max_count) 
-counter.innerHTML = `<span class="red">${character_count} / ${suffix}</span>`;
- else 
-counter.innerHTML = `${character_count} / ${suffix}`;
+if (character_count.length > max_count) {
+	counter.innerHTML = `<span class="red">${character_count.length} / ${suffix}</span>`;
+	submit.disabled = true;
+	submit.classList.add("disabled")
+} else {
+	counter.innerHTML = `${character_count.length} / ${suffix}`;
+	submit.disabled = false;
+	submit.classList.remove("disabled")
+}
 
 }
 
@@ -166,16 +173,9 @@ const bioInput = document.querySelector("#profileText")
 const bioMaxCharacters = document.querySelector("#bioMaxCharacters");
 
 bioInput.addEventListener("keyup", (e) => {
-setCharacterCount(bioMaxCharacters, bioInput.value.length, 500, "500 characters")
+setCharacterCount(bioMaxCharacters, bioInput.value, 500, "500 characters")
 })
-setCharacterCount(bioMaxCharacters, bioInput.value.length, 500, "500 characters")
-
-const titleInput = document.querySelector("#title")
-const titleMaxCharacters = document.querySelector("#titleMaxCharacters");
-titleInput.addEventListener("keyup", (e) => {
-setCharacterCount(titleMaxCharacters, titleInput.value.length, 50, "50 characters")
-})
-setCharacterCount(titleMaxCharacters, titleInput.value.length, 50, "50 characters")
+setCharacterCount(bioMaxCharacters, bioInput.value, 500, "500 characters")
 
 const validateFormField = (labelSelector, errorMessage, condition, checkCondition = undefined) => {
 if (typeof checkCondition !== "undefined" && !checkCondition) 
@@ -204,7 +204,6 @@ return false;
 return true;
 }
 
-const submit = document.querySelector("button[type=submit]")
 const postalCode = document.querySelector("#mapPostalCode")
 const postalRegex = /(\d{4})([ ])([A-Z]{2})/;
 

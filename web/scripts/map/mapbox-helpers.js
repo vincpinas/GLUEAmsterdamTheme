@@ -11,6 +11,7 @@ export default class MapStateMachine {
         this.sliderTimer = null;
         this.sliderTimeOut = this.markerStyles.hubSlideDuration
         this.hubsCollection = [];
+        this.hubMinimumCount = JSON.parse(mapElement.dataset.hubMinimumCount)
 
         this.getLocation();
     }
@@ -142,7 +143,8 @@ export default class MapStateMachine {
                         el.className = 'c-map__marker';
                         el.style.width = `${this.markerStyles.size}px`
                         el.style.height = `${this.markerStyles.size * 1.3}px`
-                        el.style.backgroundImage = `url(${this.markerStyles.hubIcon})`
+                        if(hub.length < this.hubMinimumCount) el.style.backgroundImage = `url(${this.markerStyles.collectiveIcon})`
+                        else el.style.backgroundImage = `url(${this.markerStyles.hubIcon})`;
                         currentMarker = new mapboxgl.Marker(el);
                         currentMarker.cLngLat = hub[0].geometry.coordinates
                         currentMarker.hub = true;
@@ -153,7 +155,10 @@ export default class MapStateMachine {
                             let popupInfo = popupFilter[count]
                             if (!popupInfo) return;
                             currentMarker.cId = popupInfo.id;
-                            popupSlides += this.createPopupSlide(popupInfo)
+
+                            if(popupInfo.isHub) popupSlides = this.createPopupSlide(popupInfo) + popupSlides;
+                            else popupSlides += this.createPopupSlide(popupInfo);
+
                             popupDots += `<figure class='c-map__popupSliderDot' data-index=${count}></figure>`
                             count++
                         })
@@ -243,7 +248,6 @@ export default class MapStateMachine {
         let i;
         
         const createInterval = (dur) => {
-            i = 0
             return setInterval(() => {
                 if(i === dots.length-1) i = 0
                 else i++

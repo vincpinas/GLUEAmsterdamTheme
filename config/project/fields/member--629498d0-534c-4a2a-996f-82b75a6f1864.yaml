@@ -1,0 +1,35 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: e6ea2a09-6abe-4046-8a6f-c483f1d58716 # Common
+handle: member
+instructions: null
+name: Member
+searchable: false
+settings:
+  allowSelfRelations: false
+  branchLimit: null
+  localizeRelations: false
+  maintainHierarchy: false
+  maxRelations: null
+  minRelations: null
+  selectionCondition:
+    __assoc__:
+      -
+        - elementType
+        - craft\elements\User
+      -
+        - fieldContext
+        - global
+      -
+        - class
+        - craft\elements\conditions\users\UserCondition
+  selectionLabel: null
+  showSiteMenu: false
+  sources:
+    - 'group:c700366d-c002-43b2-b7ce-f8dd82c7afa8' # Participants
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Users

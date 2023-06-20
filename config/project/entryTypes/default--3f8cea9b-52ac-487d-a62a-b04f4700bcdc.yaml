@@ -1,0 +1,103 @@
+fieldLayouts:
+  1ea675ec-b27a-48d8-8b95-fb85c30293b6:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: b1eecb82-4671-43f9-971b-fad5a28ad41c
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 1972499d-a514-4921-81a0-426f9e57f7b2 # Program Type
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: bc5f1406-2170-496a-91fc-d3886eb22784
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 629498d0-534c-4a2a-996f-82b75a6f1864 # Member
+            instructions: 'The member(s) organising / leading the program'
+            label: Organizer(s)
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: dd20f805-6a4a-4b8a-82df-33ad6956e51b
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 54d7b784-36c0-4673-ac81-61eb4fec1591 # Date
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 79c1bf1c-18e1-4fb2-8688-47f72833a28c
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 777e0919-b16b-490f-a586-9bc96baf546d # Time
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b122c559-cdbc-4575-bec6-adeaefb8496b
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 6f166b0f-35de-422d-b4b1-66441ce46253 # Rsvp
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 7d849ef8-d291-40ed-9a9d-1d0d5f5385a8
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 2f26fe76-9697-41f5-9b6e-470769a106ea
+        userCondition: null
+handle: default
+hasTitleField: true
+name: Default
+section: 87f7652e-5125-4528-800a-97b215b156ec # Program
+sortOrder: 1
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

@@ -102,10 +102,46 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: b293ae54-2bba-485d-814f-af219d5fc776 # HUB slide duration
+            fieldUid: fe460ddb-f48c-4b81-bf14-1bb2e54c4e72 # Hub Minimum Count
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 231004de-76d9-4eca-9a4f-2f1c178b0250
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 97d0a464-bcc8-4a07-bcfc-f91437d0d73d # Hub Suffix
             instructions: null
             label: null
             required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: fb021815-2cb1-49d0-b8d7-6470c680cb65
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: d441938f-e95b-4f5f-8661-9c03238e51e7 # Collective Suffix
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b4a43ab7-c8a7-448a-9be3-119c393a75c5
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: b293ae54-2bba-485d-814f-af219d5fc776 # HUB slide duration
+            instructions: null
+            label: null
+            required: true
             tip: null
             type: craft\fieldlayoutelements\CustomField
             uid: f27b5259-116b-488c-a0e7-97ccc82dbbee

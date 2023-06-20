@@ -24,16 +24,22 @@
 {% set hubIDs = [] %}
 {% set countedHubIDs = [] %}
 {% set currentHubID = null %}
+{% set collectiveIDs = [] %}
+{% set countedCollectiveIDs = [] %}
+{% set currentCollectiveID = null %}
+{% set currentCollectiveName = "" %}
+{% set hubLengthCount = [] %}
 {% set founder = false %}
 {% set isHub = false %}
 {% set specialProgram = false %}
 {% set markerMatrix = map.markerMatrix.one() %}
 {% set markerstyles = { 
-	routeIcon: markerMatrix.route.one().url,
-	hubIcon: markerMatrix.hub.one().url,
-	specialProgramIcon: markerMatrix.specialProgram.one().url,
-	founderIcon: markerMatrix.founder.one().url,
-	locationsIcon: markerMatrix.locations.one().url,
+	routeIcon: markerMatrix.route.one() ? markerMatrix.route.one().url : "",
+	hubIcon: markerMatrix.hub.one() ? markerMatrix.hub.one().url : "",
+	collectiveIcon: markerMatrix.collective.one() ? markerMatrix.collective.one().url : "",
+	specialProgramIcon: markerMatrix.specialProgram.one() ? markerMatrix.specialProgram.one().url : "",
+	founderIcon: markerMatrix.founder.one() ? markerMatrix.founder.one().url : "",
+	locationsIcon: markerMatrix.locations.one() ? markerMatrix.locations.one().url : "",
 	hubSlideDuration: map.hubSlideDuration,
 	size: map.markerSize,
 } %}
@@ -168,6 +174,7 @@
 			<li class="c-map__locationsOverview c-map__menuItem-{{directionsArray|length + 1}} c-map__menuItem">
 				<h2>Locations</h2>
 				<ol>
+					{# HUBS #}
 					{% for address in addresses %}
 						{% if address.id in hubIDs and currentHubID != address.id  %}
 							{% set currentHubID = address.id %}
@@ -183,20 +190,71 @@
 						{% if address.id in hubIDs %}
 							{% if address.id not in countedHubIDs %}
 								{% set countedHubIDs = countedHubIDs|merge([address.id]) %}
+
+								{% for id in hubIDs %}
+									{%  if id == address.id  %}
+										{% set hubLengthCount = hubLengthCount|merge([address.id]) %}
+									{% endif %}
+								{% endfor %}
+								{% set hubLengthCount = hubLengthCount|merge([address.id]) %}
+
+								{% if hubLengthCount|length < map.hubMinimumCount %}
+									{% set collectiveIDs = collectiveIDs|merge([address.id]) %}
+								{% else %}
+									<li class="c-map__locationButtonWrapper" data-postal-code="{{address.postalCode}}" data-c-id="{{address.id}}">
+										<button class="c-map__locationButton">
+
+											{% if currentHubName and currentHubName|length > 0 %}
+												{{ currentHubName }}
+											{% else %}
+												{{ address.fullName }}
+											{% endif %}
+
+											{{ map.hubSuffix }}
+
+											<ion-icon name="chevron-forward-sharp"></ion-icon>
+
+										</button>
+									</li>
+								{% endif %}
+								{% set hubLengthCount = [] %}
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+
+					{# COLLECTIVES #}
+					{% for address in addresses %}
+						{% if address.id in collectiveIDs and currentCollectiveID != address.id  %}
+							{% set currentCollectiveID = address.id %}
+							{% set currentCollectiveName = "" %}
+						{% endif %}
+
+						{% for address in addresses %}
+							{% if currentCollectiveID == address.id and address.isHub %}
+								{% set currentCollectiveName = address.fullName %}
+							{% endif %}
+						{% endfor %}
+
+						{% if address.id in collectiveIDs %}
+							{% if address.id not in countedCollectiveIDs %}
+								{% set countedCollectiveIDs = countedCollectiveIDs|merge([address.id]) %}
 								<li class="c-map__locationButtonWrapper" data-postal-code="{{address.postalCode}}" data-c-id="{{address.id}}">
 									<button class="c-map__locationButton">
-										{% if currentHubName and currentHubName|length > 0 %}
-											{{ currentHubName }}
+										{% if currentCollectiveName and currentCollectiveName|length > 0 %}
+											{{ currentCollectiveName }}
 										{% else %}
 											{{ address.fullName }}
 										{% endif %}
-										- HUB
+
+										{{ map.collectiveSuffix }}
 										<ion-icon name="chevron-forward-sharp"></ion-icon>
 									</button>
 								</li>
 							{% endif %}
 						{% endif %}
 					{% endfor %}
+
+					{# LOCATIONS #}
 					{% for address in addresses %}
 						{% if address.id not in hubIDs %}
 							<li class="c-map__locationButtonWrapper" data-postal-code="{{address.postalCode}}" data-c-id="{{address.id}}">
@@ -209,7 +267,7 @@
 				</ol>
 			</li>
 		</ul>
-		<div class="c-map" id="map" data-addresses="{{ addresses|json_encode }}" data-token="{{ map.token }}" data-styles="{{ map.stylesheet }}" data-marker-styles="{{ markerstyles|json_encode }}" data-zoom="{{ map.mapZoom }}" data-pitch="{{ map.mapPitch }}" data-bearing="{{ map.mapBearing }}"/>
+		<div class="c-map" id="map" data-addresses="{{ addresses|json_encode }}" data-token="{{ map.token }}" data-styles="{{ map.stylesheet }}" data-marker-styles="{{ markerstyles|json_encode }}" data-zoom="{{ map.mapZoom }}" data-pitch="{{ map.mapPitch }}" data-bearing="{{ map.mapBearing }}" data-hub-minimum-count="{{ map.hubMinimumCount }}"/>
 	</main>
 {% endblock %}
 
