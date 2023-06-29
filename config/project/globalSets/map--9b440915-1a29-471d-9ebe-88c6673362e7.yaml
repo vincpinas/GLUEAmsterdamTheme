@@ -6,6 +6,18 @@ fieldLayouts:
         elements:
           -
             elementCondition: null
+            fieldUid: 2e1ecccd-c3ca-4249-b239-5faa3edb6606 # City
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 7498566d-c72d-409a-99e8-6b93dbb319f1
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
             fieldUid: 8809cf4a-41fd-49bf-9e6c-01bb347d9a21 # Token
             instructions: 'Public mapbox API token'
             label: null

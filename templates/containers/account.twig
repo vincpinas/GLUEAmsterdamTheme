@@ -1,6 +1,6 @@
 {% extends "index" %}
 
-{% set urlstr = craft.app.request.segments[0]|replace({'-': " "}) %}
+{% set urlstr = craft.app.request.url|replace({'-': ' '})|trim('/') %}
 {% set user = craft.users.fullName(urlstr).one() %}
 
 {% block content %}
@@ -12,7 +12,9 @@
 					<img src="{{ user.thumbnail.one().url }}" alt="User thumbnail" class="c-publicPage__thumbnail">
 				{% endif %}
 				{% if general.singleAsset.one() %}
-					<img src="{{ general.singleAsset.one().url }}" alt="GLUE overlay" class="c-publicPage__thumbnailOverlay"/>
+					{{ svg(general.singleAsset.one()) }}
+
+					{# <img src="{{ general.singleAsset.one().url }}" alt="GLUE overlay" class="c-publicPage__thumbnailOverlay"/> #}
 				{% endif %}
 			</div>
 			<div class="c-publicPage__overview">
@@ -109,7 +111,37 @@
 			</div>
 		</main>
 	{% else %}
-		<script>window.close();</script>
+		<main class="c-publicPage">
+
+		</main>
 	{% endif %}
 
+{% endblock %}
+
+{% block javascripts %}
+	<script>
+		const container = document.querySelector(".c-publicPage__thumbnailContainer");
+		let type = null;
+		const overlay = (() => {
+			if(document.querySelector(".c-publicPage__thumbnailContainer svg")) {
+				type = "svg"
+				return document.querySelector(".c-publicPage__thumbnailContainer svg");
+			} else {
+				type = "img"
+				return document.querySelector(".c-publicPage__thumbnailContainer img")
+			}
+		})();
+
+		const setSVG = (overlay, width, height) => { 
+			overlay.style.width = `${width - 50}px`
+			overlay.style.height = `${height - 50}px`
+		}
+
+		if(type == "svg") overlay.setAttributeNS(null, "perserveAspectRatio", "xMidYMid meet");
+		setSVG(overlay, container.offsetWidth, container.offsetHeight)
+
+		window.addEventListener("resize", () => {
+			setSVG(overlay, container.offsetWidth, container.offsetHeight)
+		})
+	</script>
 {% endblock %}

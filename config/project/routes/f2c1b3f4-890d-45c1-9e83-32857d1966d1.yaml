@@ -1,5 +1,5 @@
 siteUid: null
-sortOrder: 2
+sortOrder: 1
 template: containers/register.twig
 uriParts:
   - sign-up/

@@ -7,22 +7,25 @@
     padding: 2rem;
     border-bottom: 1px solid $special-primary;
 
-    &__return {
-        display: flex;
-        align-items: center;
+    a {
         @include font--primary(500);
+        font-size: 1.2em;
+    }
+
+    & > a {
         margin: 0;
     }
 
-    &__return, &__links a {
-        font-size: 1.2em;
+    &__return {
+        display: flex;
+        align-items: center;
+        margin-right: 0.5rem !important;
     }
     
     &__links {
-        @include font--primary(500);
         margin-left: auto;
     }
-
+±
     &__links > a:not(:last-child) {
         margin-right: 1rem;
     }

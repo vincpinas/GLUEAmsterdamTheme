@@ -12,8 +12,7 @@ export default class MapStateMachine {
         this.sliderTimeOut = this.markerStyles.hubSlideDuration
         this.hubsCollection = [];
         this.hubMinimumCount = JSON.parse(mapElement.dataset.hubMinimumCount)
-
-        this.getLocation();
+        this.city = mapElement.dataset.city
     }
 
 
@@ -25,9 +24,9 @@ export default class MapStateMachine {
         let features = [];
 
         datasetParse.forEach((item) => {
-            let search_string = encodeURIComponent(item.postalCode.toUpperCase());
+            let search_string = encodeURIComponent(`${item.postalCode.toUpperCase()}, ${this.city}`);
             const fetchPromise = fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${search_string}.json?access_token=${this.token}`);
-            fetchPromise.then(response => { return response.json() }).then(data => features.push(data.features[0]))
+            fetchPromise.then(response => { return response.json() }).then(data => { features.push(data.features[0]) })
         });
 
         return new Promise((resolve, reject) => {
@@ -319,10 +318,10 @@ export default class MapStateMachine {
         return new Promise((resolve, reject) => {
             route.forEach((item) => {
                 let temp = this.geoJSON.features.filter(location => location.place_name.includes(item.postalCode.toUpperCase()));
-                if (temp) directions.push(temp[0].center);
+                if (temp && temp.length > 0) directions.push(temp[0].center);
             });
 
-            if (directions.length === route.length) {
+            if (directions.length > 0) {
                 resolve(directions)
             } else {
                 reject({ directions })

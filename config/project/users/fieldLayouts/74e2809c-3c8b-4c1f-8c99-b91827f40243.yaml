@@ -4,11 +4,9 @@ tabs:
       class: craft\elements\conditions\users\UserCondition
       conditionRules:
         -
-          class: craft\elements\conditions\users\GroupConditionRule
-          operator: in
-          uid: 4979d50b-6427-4a34-af1b-1feaa503923c
-          values:
-            - c700366d-c002-43b2-b7ce-f8dd82c7afa8 # Participants
+          class: craft\elements\conditions\users\AdminConditionRule
+          uid: 40d3b661-89be-4403-9a73-91bb7d085594
+          value: false
       elementType: craft\elements\User
       fieldContext: global
     elements:
@@ -104,11 +102,9 @@ tabs:
       class: craft\elements\conditions\users\UserCondition
       conditionRules:
         -
-          class: craft\elements\conditions\users\GroupConditionRule
-          operator: in
-          uid: 968f0bc8-c9b1-4569-9a39-901c6b7f54a4
-          values:
-            - c700366d-c002-43b2-b7ce-f8dd82c7afa8 # Participants
+          class: craft\elements\conditions\users\AdminConditionRule
+          uid: 25a96d09-cd0c-48be-a8fa-241ba6102083
+          value: false
       elementType: craft\elements\User
       fieldContext: global
     elements:
@@ -156,11 +152,9 @@ tabs:
       class: craft\elements\conditions\users\UserCondition
       conditionRules:
         -
-          class: craft\elements\conditions\users\GroupConditionRule
-          operator: in
-          uid: c43e401d-b92d-4377-8cdf-226c37e3d511
-          values:
-            - c700366d-c002-43b2-b7ce-f8dd82c7afa8 # Participants
+          class: craft\elements\conditions\users\AdminConditionRule
+          uid: 901390e1-3de7-427a-bd7f-ff00abf46d63
+          value: false
       elementType: craft\elements\User
       fieldContext: global
     elements:
@@ -208,11 +202,9 @@ tabs:
       class: craft\elements\conditions\users\UserCondition
       conditionRules:
         -
-          class: craft\elements\conditions\users\GroupConditionRule
-          operator: in
+          class: craft\elements\conditions\users\AdminConditionRule
           uid: 8aa656da-65d2-4fca-b598-9687b08a543b
-          values:
-            - c700366d-c002-43b2-b7ce-f8dd82c7afa8 # Participants
+          value: false
       elementType: craft\elements\User
       fieldContext: global
     elements:

@@ -33,8 +33,9 @@ $config = GeneralConfig::create()
     ])
     ->activateAccountSuccessPath('/login')
     ->invalidUserTokenPath('/')
-    ->setPasswordPath('/reset-password')
+    ->setPasswordPath('/password-reset')
     ->setPasswordSuccessPath('/login')
+    ->enableTemplateCaching(App::env('CRAFT_ENVIRONMENT') == "production" ? false : true)
 ;
 
 return $config;

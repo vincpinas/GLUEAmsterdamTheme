@@ -1,0 +1,28 @@
+isPublic: false
+name: 'GLUE Live Headless'
+scope:
+  - 'sites.c5fb5f28-2f93-4a73-bcd6-9c57ee22f86f:read' # $SITE_NAME
+  - 'elements.drafts:read'
+  - 'elements.revisions:read'
+  - 'sections.cb9b4037-71ad-4f2d-b47e-a020160c2a5c:read' # Edit page
+  - 'entrytypes.d0a790d7-fe64-452d-9082-5e57f70685df:read' # Edit page
+  - 'sections.696329c8-d035-43a0-96a8-a66d8626feb9:read' # Home
+  - 'entrytypes.e3b03628-9c11-450f-8556-1e2882e0101c:read' # Home
+  - 'sections.8dec35ce-7bad-4407-bbc3-56adc9cccc4a:read' # Login
+  - 'entrytypes.05b9b1df-40f9-400d-b742-ed9dbfe00f8c:read' # Login
+  - 'sections.76b8abf5-b5a7-4316-b76f-042fd9b0e526:read' # Map
+  - 'entrytypes.cab00bb9-f285-41cd-9dfc-6b675f5c4817:read' # Map
+  - 'sections.87f7652e-5125-4528-800a-97b215b156ec:read' # Program
+  - 'entrytypes.3f8cea9b-52ac-487d-a62a-b04f4700bcdc:read' # Default
+  - 'sections.21c100fa-b14d-4c5a-b30a-f1f28bc91e6d:read' # Register
+  - 'entrytypes.94b2ace0-9736-4772-8b51-5ad1c118ba9b:read' # Register
+  - 'volumes.b8f74062-ae64-4520-a7ed-fe4272ee4456:read' # User Avatars
+  - 'volumes.8634fab2-bde5-4665-80a8-324c56cb1c35:read' # Web Images
+  - 'globalsets.24188079-a4ae-442c-a887-c038437ae289:read' # Event
+  - 'globalsets.9b440915-1a29-471d-9ebe-88c6673362e7:read' # Map
+  - 'globalsets.803445eb-0364-48f9-9808-cf5c51985216:read' # General
+  - 'usergroups.everyone:read'
+  - 'usergroups.51c71de1-cd5f-45b5-8c0f-406dc42a9945:read' # Founders
+  - 'usergroups.d5fda0ac-6099-4e3c-8804-1a5fb5178809:read' # Hub
+  - 'usergroups.c700366d-c002-43b2-b7ce-f8dd82c7afa8:read' # Participants
+  - 'usergroups.b7b0394d-62fe-4e1d-9214-0026ddff54bd:read' # Special Program

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .c-header {
   width: 100%;
   display: flex;
@@ -5,24 +6,24 @@
   padding: 2rem;
   border-bottom: 1px solid #10069F;
 }
+.c-header a {
+  font-family: "Lausanne";
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1.2em;
+}
+.c-header > a {
+  margin: 0;
+}
 .c-header__return {
   display: flex;
   align-items: center;
-  font-family: "Lausanne";
-  font-weight: 500;
-  font-style: normal;
-  margin: 0;
-}
-.c-header__return, .c-header__links a {
-  font-size: 1.2em;
+  margin-right: 0.5rem !important;
 }
 .c-header__links {
-  font-family: "Lausanne";
-  font-weight: 500;
-  font-style: normal;
   margin-left: auto;
 }
-.c-header__links > a:not(:last-child) {
+± .c-header__links > a:not(:last-child) {
   margin-right: 1rem;
 }
 
@@ -279,6 +280,7 @@
   padding-top: 8rem;
   padding-bottom: 2rem;
   justify-content: unset;
+  position: relative;
 }
 @media screen and (max-width: 767px) {
   .c-map__locationsOverview {
@@ -504,6 +506,81 @@
     grid-template-areas: "header" "menu" "map";
     grid-template-columns: 1fr;
   }
+}
+.c-map__legendButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: none;
+  border: none;
+  outline: none;
+  padding: 0.5rem 1rem;
+  border-left: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+  transition: 0.35s;
+}
+.c-map__legendButton:hover {
+  color: #cccccc;
+  border-left: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+}
+.c-map__legend {
+  padding: 0.5rem 1rem;
+  z-index: 999;
+  position: absolute;
+  background: #ffffff;
+  color: #000000;
+  transition: 0.55s;
+  max-width: 15rem;
+  transform: translateX(-100%);
+}
+.c-map__legend.active {
+  transform: translateX(0px);
+}
+.c-map__legend li:not(:last-of-type) {
+  margin-bottom: 1rem;
+}
+.c-map__legend li {
+  font-family: "Lausanne";
+  font-weight: 500;
+  font-style: normal;
+  display: flex;
+  align-items: center;
+}
+.c-map__legend li h5 {
+  font-size: 16px;
+  font-family: "Lausanne";
+  font-weight: 300;
+  font-style: normal;
+  line-height: 28px;
+  margin-bottom: 1rem;
+  margin: 0;
+  font-family: "Lausanne";
+  font-weight: 600;
+  font-style: normal;
+}
+@media screen and (max-width: 767px) {
+  .c-map__legend li h5 {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+.c-map__legend li p {
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 1rem;
+  margin: 0;
+}
+@media screen and (max-width: 767px) {
+  .c-map__legend li p {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+.c-map__legend li img {
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-right: 0.5rem;
 }
 
 .mapboxgl-popup-close-button {
@@ -1329,25 +1406,10 @@
     width: 100%;
   }
 }
-.c-publicPage__thumbnailOverlay {
+.c-publicPage__thumbnailContainer svg {
   position: absolute;
-  max-width: 100%;
-  padding: 1rem;
-}
-@media screen and (max-width: 991px) {
-  .c-publicPage__thumbnailOverlay {
-    height: 80%;
-    width: 100%;
-  }
-}
-@media screen and (max-width: 767px) {
-  .c-publicPage__thumbnailOverlay {
-    aspect-ratio: 1;
-    width: 100%;
-  }
 }
 .c-publicPage__thumbnail {
-  height: auto;
   height: 100%;
   position: absolute;
   image-orientation: from-image;
@@ -1355,13 +1417,7 @@
 @media screen and (max-width: 991px) {
   .c-publicPage__thumbnail {
     width: 100%;
-    height: auto;
-  }
-}
-@media screen and (max-width: 767px) {
-  .c-publicPage__thumbnail {
-    height: 150%;
-    width: auto;
+    height: 100%;
   }
 }
 .c-publicPage__overview {
@@ -1400,7 +1456,7 @@
   }
 }
 .c-publicPage__thumbnailContainer:has(:not(.c-publicPage__thumbnail)) {
-  min-height: 100vh;
+  min-height: 110vh;
 }
 .c-publicPage__thumbnailContainer:has(:not(.c-publicPage__thumbnail)) .c-publicPage__thumbnailOverlay {
   height: 100%;
@@ -1408,6 +1464,150 @@
 .c-publicPage__bio {
   max-width: 100%;
   word-wrap: break-word;
+}
+
+.c-reset {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.c-reset input {
+  border: none;
+  width: fit-content;
+  background: #10069F;
+  font-family: "Lausanne";
+  font-weight: 600;
+  font-style: normal;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  padding: 0.75rem 1.5rem;
+}
+.c-reset__label {
+  position: relative;
+  display: block;
+  font-family: "Lausanne";
+  font-weight: 600;
+  font-style: normal;
+}
+.c-reset__passwordWrapper .c-reset__input {
+  min-width: 17rem;
+}
+.c-reset__passwordWrapper {
+  position: relative;
+}
+.c-reset__passwordVisiblity {
+  position: absolute;
+  left: 85%;
+  font-size: 1.3em;
+  top: 0rem;
+  cursor: pointer;
+}
+.c-reset .errors {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+.c-reset .errors li {
+  display: flex;
+  flex-direction: column;
+  background: #FED7D7;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  color: #000000;
+  transform: translateX(100%);
+  animation: slide-in 0.35s 0ms forwards;
+  max-width: 25rem;
+  font-family: "Lausanne";
+  font-weight: 500;
+  font-style: normal;
+  font-size: 16px;
+  font-family: "Lausanne";
+  font-weight: 300;
+  font-style: normal;
+  line-height: 28px;
+  margin-bottom: 1rem;
+}
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+@media screen and (max-width: 767px) {
+  .c-reset .errors li {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+
+.c-forget {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.c-forget input, .c-forget button {
+  border: none;
+  width: fit-content;
+  background: #10069F;
+  font-family: "Lausanne";
+  font-weight: 600;
+  font-style: normal;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  padding: 0.75rem 1.5rem;
+}
+.c-forget__label {
+  position: relative;
+  display: block;
+  font-family: "Lausanne";
+  font-weight: 600;
+  font-style: normal;
+}
+.c-forget__input {
+  min-width: 17rem;
+}
+.c-forget .errors {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+.c-forget .errors li {
+  display: flex;
+  flex-direction: column;
+  background: #FED7D7;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  color: #000000;
+  transform: translateX(100%);
+  animation: slide-in 0.35s 0ms forwards;
+  max-width: 25rem;
+  font-family: "Lausanne";
+  font-weight: 500;
+  font-style: normal;
+  font-size: 16px;
+  font-family: "Lausanne";
+  font-weight: 300;
+  font-style: normal;
+  line-height: 28px;
+  margin-bottom: 1rem;
+}
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+@media screen and (max-width: 767px) {
+  .c-forget .errors li {
+    font-size: 14px;
+    line-height: 18px;
+  }
 }
 
 /* Any imports required multiple times across the site will be imported here. */

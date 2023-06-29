@@ -20,6 +20,10 @@ export default class MapMenu {
             button.addEventListener("click", () => {
                 this.openDirectionTab(button, button.dataset.i)
                 document.querySelector(".c-map__headersGroup").innerHTML = ` Routes - ${button.dataset.group}`
+
+                const legend = document.querySelector(".c-map__legend")
+
+                if (legend && legend.classList.contains('active')) legend.classList.remove('active')
             });
         })
 

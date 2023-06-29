@@ -244,6 +244,7 @@ $mapheight: calc(100vh - 5.5rem);
         padding-top: 8rem;
         padding-bottom: 2rem;
         justify-content: unset;
+        position: relative;
 
         @media #{$mobile-down} {
             max-height: 60vh;
@@ -465,6 +466,68 @@ $mapheight: calc(100vh - 5.5rem);
                                  "menu"
                                  "map";
             grid-template-columns: 1fr;
+        }
+    }
+
+    &__legendButton {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: none;
+        border: none;
+        outline: none;
+        padding: 0.5rem 1rem;
+        border-left: 1px solid $text-primary;
+        border-bottom: 1px solid $text-primary;
+        transition: $transition-fast;
+
+        &:hover {
+            color: darken($text-primary, 20%);
+            border-left: 1px solid darken($text-primary, 20%);
+            border-bottom: 1px solid darken($text-primary, 20%);
+        }
+    }
+
+    &__legend {
+        padding: 0.5rem 1rem;
+        z-index: $index-top;
+        position: absolute;
+        background: $text-primary;
+        color: $text-contrast;
+        transition: $transition-normal;
+        max-width: 15rem;
+        transform: translateX(-100%);
+
+        &.active {
+            transform: translateX(0px);
+        }
+
+        li:not(:last-of-type) {
+            margin-bottom: 1rem;
+        }
+
+        li {
+            @include font--primary(500);
+            display: flex;
+            align-items: center;
+
+        }
+
+        li h5 {
+            @include paragraph;
+            margin: 0;
+            @include font--primary(600);
+        }
+
+        li p {
+            @include label;
+            margin: 0;
+        }
+
+        li img {
+            width: 1.75rem;
+            height: 1.75rem;
+            margin-right: 0.5rem;
         }
     }
 }

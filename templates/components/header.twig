@@ -5,7 +5,11 @@
 		<ion-icon name="arrow-back-outline"></ion-icon>
 		{{ general.oneWord }}
 	</a>
-
+	{% if craft.app.request.url != "/" %}
+		<a class="c-header__map" href="/">Map</a>
+	{% endif %}
+	
+	
 	{% if currentUser %}
 		<span class="c-header__links">
 			<a href="/edit-page">Account</a>

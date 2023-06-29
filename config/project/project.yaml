@@ -1,4 +1,4 @@
-dateModified: 1687256159
+dateModified: 1688043531
 elementSources:
   craft\elements\Entry:
     -
@@ -168,6 +168,8 @@ meta:
     0dc72236-a5db-434e-8668-f62c38664692: 'Social Media Link' # Social Media Link
     0edc21c7-41ec-4128-97f9-48fdbc7a3f31: Instagram # Instagram
     1a8a2732-cd82-4bf7-8afe-099fb893ac20: Map # Map
+    2acb2572-e11c-42ed-ab36-a86081a1c3e2: 'GLUE Live Headless' # GLUE Live Headless
+    2e1ecccd-c3ca-4249-b239-5faa3edb6606: City # City
     3f8cea9b-52ac-487d-a62a-b04f4700bcdc: Default # Default
     3f956c2c-f1e6-4abf-abc1-517adbbd0e3d: VAT # VAT
     3f6049f8-db41-426e-86a4-196457c3e028: Slug # Slug
