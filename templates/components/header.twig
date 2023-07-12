@@ -10,7 +10,7 @@
 	{% endif %}
 	
 	
-	{% if currentUser %}
+	{% if currentUser and currentUser.isInGroup('participants') %}
 		<span class="c-header__links">
 			<a href="/edit-page">Account</a>
 			<a href="/logout">Logout</a>

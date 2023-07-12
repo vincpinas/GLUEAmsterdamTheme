@@ -46,6 +46,63 @@ class Module extends \yii\base\Module
                 Craft::$app->elements->deleteElementById($potentionalOldAsset->id);
             }
         });
+
+        Event::on(\craft\services\Elements::class, \craft\services\Elements::EVENT_AFTER_SAVE_ELEMENT, function(Event $event) {
+            // only execute code if element is of type user and guest.
+            $guest_reg = Craft::$app->request->getBodyParam("guestRegister");
+
+            if ($event->element instanceof \craft\elements\User && $guest_reg) {
+                return;
+            }
+
+            function getParticipantsGroup() {
+                foreach ( Craft::$app->userGroups->allGroups as $group ) {
+                    if ( "participants" == $group->handle ) {
+                        return $group;
+                    }
+                }
+            };
+
+            $participants_group = getParticipantsGroup()->id;
+            Craft::$app->users->assignUserToGroups($event->element->id, [$participants_group]);
+        });
+
+        Event::on(\craft\services\Elements::class, \craft\services\Elements::EVENT_AFTER_SAVE_ELEMENT, function(Event $event) {
+            // only execute code if element is of type user and guest.
+            $guest_reg = Craft::$app->request->getBodyParam("guestRegister");
+            $user = $event->element;
+            $requestBody = Craft::$app->request->getBodyParams();
+
+            if ($user instanceof \craft\elements\User && $guest_reg) {
+                // Activate user before assignment to group
+                if($user->active) return;
+                Craft::$app->users->activateUser($user);
+
+                // get guest group with handle
+                function getGuestGroup() {
+                    foreach ( Craft::$app->userGroups->allGroups as $group ) {
+                        if ( "guests" == $group->handle ) {
+                            return $group;
+                        }
+                    }
+                };
+
+                $guest_group = getGuestGroup()->id;
+                Craft::$app->users->assignUserToGroups($user->id, [$guest_group]);
+
+                Craft::$app->request->getCsrfToken();
+                $user = User::find()->id($user->id)->one();
+                $user->setFieldValue('profession', $requestBody["fields"]["profession"]);
+                $user->setFieldValue('ageGroup', $requestBody["fields"]["ageGroup"]);
+                $user->setFieldValue('marketingPermissions', $requestBody["fields"]["marketingPermissions"]);
+                
+                if(Craft::$app->elements->saveElement($user)) {
+                    return $user;
+                } else {
+                    throw new \Exception("Couldn't save user: " . print_r($user->getErrors(), true));
+                }
+            }
+        });
     }
 
 }

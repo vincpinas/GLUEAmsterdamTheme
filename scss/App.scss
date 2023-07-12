@@ -113,7 +113,8 @@ html {
 
     button,
     a,
-    input {
+    input,
+    select {
         @include input;
     }
 

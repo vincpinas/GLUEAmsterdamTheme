@@ -215,6 +215,56 @@
     height: fit-content;
   }
 }
+.c-map__menuLock {
+  width: 21rem;
+  height: 6rem;
+  position: absolute;
+  z-index: 50;
+  margin-top: 2.5rem;
+  pointer-events: none;
+}
+.c-map__menuPopup {
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transform: translateY(-50%);
+}
+.c-map__menuPopup ion-icon {
+  margin-left: auto;
+  font-size: 2em;
+  cursor: pointer;
+  transform: translateX(2rem);
+}
+.c-map__menuPopupWrapper {
+  width: fit-content;
+  background: #10069F;
+  padding: 1.5rem 4rem;
+  display: flex;
+  flex-direction: column;
+}
+.c-map__menuPopupWrapper button {
+  border: 1px solid #ffffff;
+  padding: 0.75rem 1.25rem;
+  outline: none;
+  background: none;
+  margin-left: auto;
+}
+.c-map__menuPopupWrapper input, .c-map__menuPopup select {
+  background: none;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  padding: 0.25rem;
+}
+.c-map__menuPopupWrapper > div {
+  display: flex;
+  flex-direction: column;
+}
 .c-map__menuDirectionButton {
   text-transform: capitalize;
   cursor: pointer;
@@ -463,6 +513,10 @@
   opacity: 0;
   transition: 0.35s;
 }
+.c-map__routeOverview {
+  overflow-y: scroll;
+  justify-content: start;
+}
 .c-map__menuRoute h2, .c-map__menuLocations h2, .c-map__menuDirectionButton h2 {
   height: 100%;
   white-space: nowrap;
@@ -577,10 +631,12 @@
     line-height: 16px;
   }
 }
-.c-map__legend li img {
-  width: 1.75rem;
-  height: 1.75rem;
+.c-map__legendIcon {
+  height: 2rem;
+  width: 2rem;
   margin-right: 0.5rem;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .mapboxgl-popup-close-button {
@@ -1711,9 +1767,11 @@ html input[type=submit] {
 body button,
 body a,
 body input,
+body select,
 html button,
 html a,
-html input {
+html input,
+html select {
   font-size: 14px;
   line-height: 20px;
   margin-bottom: 1rem;
@@ -1722,9 +1780,11 @@ html input {
   body button,
   body a,
   body input,
+  body select,
   html button,
   html a,
-  html input {
+  html input,
+  html select {
     font-size: 14px;
     line-height: 18px;
   }

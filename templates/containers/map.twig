@@ -17,6 +17,8 @@
 	</style>
 {% endblock %}
 
+{% set locked = true %}
+{% set break = false %}
 {% set myUserQuery = craft.users().group('participants').status('active') %}
 {% set users = myUserQuery.all() %}
 {% set addresses = [] %}
@@ -43,9 +45,11 @@
 	hubSlideDuration: map.hubSlideDuration,
 	size: map.markerSize,
 } %}
-{% set locked = false %}
 {% set directionsArray = ["one", "two", "three", "four"] %}
-{% set break = false %}
+
+{% if currentUser %}
+	{% set locked = false %}
+{% endif %}
 
 {# Generate data tags with user info for making map markers #}
 {% for user in users %}
@@ -116,6 +120,10 @@
 {% endfor %}
 
 {% block content %}
+  {% if errorMessage is defined %}
+    <p>{{ errorMessage }}</p>
+  {% endif %}
+
 	<main class="c-map__wrapper" style="{% if addresses|length == 0 %} grid-template-columns: 1fr; grid-template-areas: 'map'; {% endif %}">
 		<ul class="c-map__headers">
 			<li class="c-map__headersClose">
@@ -126,7 +134,11 @@
 			</li>
 			<li class="c-map__headersGroup"></li>
 		</ul>
-		<ul class="c-map__menu" style="{% if addresses|length == 0 %} display:none; {% endif %}">
+		<ul class="c-map__menu" style="{% if addresses|length == 0 %} display:none; {% endif %}" data-locked="{{ locked|json_encode }}">
+			{% if locked %}
+				<ion-icon name="lock-closed-outline" class="c-map__menuLock"></ion-icon>
+			{% endif %}
+
 			{% for direction in directionsArray %}
 				{% if map.routes.cardinalDirection(direction).all()|length > 0 %}
 					<div class="c-map__menuDirectionTab c-map__menuDirectionTab-{{loop.index}}">
@@ -162,11 +174,13 @@
 						{% set groupHandle = map.groupFourHandle %}
 					{% endif %}
 
-					<li class="c-map__menuDirectionButton c-map__menuItem" data-locked="{{ locked|json_encode }}" data-i="{{loop.index}}" data-group="{{groupHandle}}">
+					<li class="c-map__menuDirectionButton c-map__menuItem" data-i="{{loop.index}}" data-group="{{groupHandle}}">
 						{% if locked %}
 							<span class="c-map__menuLockOverlay"></span>
 						{% endif %}
-						<h2>{{groupHandle}}</h2>
+						<h2>
+							{{groupHandle}}
+						</h2>
 					</li>
 				{% endif %}
 			{% endfor %}
@@ -272,42 +286,43 @@
 		<div class="c-map" id="map" data-addresses="{{ addresses|json_encode }}" data-token="{{ map.token }}" data-styles="{{ map.stylesheet }}" data-marker-styles="{{ markerstyles|json_encode }}" data-zoom="{{ map.mapZoom }}" data-pitch="{{ map.mapPitch }}" data-bearing="{{ map.mapBearing }}" data-hub-minimum-count="{{ map.hubMinimumCount }}" data-city="{{ map.city }}">
 			<ul class="c-map__legend">
 				<li>
-					<img src="{{ markerstyles.routeIcon }}" alt="route icon">
+					<div class="c-map__legendIcon" style="background-image:url({{ markerstyles.routeIcon }});"></div>
 					<div>
 						<h5>Route</h5>
 						<p>Icon displayed for each point in a route</p>
 					</div>
 				</li>
 				<li>
-					<img src="{{ markerstyles.hubIcon }}" alt="route icon">
+					<div class="c-map__legendIcon" style="background-image:url({{ markerstyles.hubIcon }});"></div>
 					<div>
 						<h5>Hub</h5>
-						<p>Location containing {{ map.hubMinimumCount }}+ expositions</p>
+						<p>Location containing
+							{{ map.hubMinimumCount }}+ expositions</p>
 					</div>
 				</li>
 				<li>
-					<img src="{{ markerstyles.collectiveIcon }}" alt="route icon">
+					<div class="c-map__legendIcon" style="background-image:url({{ markerstyles.collectiveIcon }});"></div>
 					<div>
 						<h5>Collective</h5>
 						<p>Location containing multiple expositions</p>
 					</div>
 				</li>
 				<li>
-					<img src="{{ markerstyles.specialProgramIcon }}" alt="route icon">
+					<div class="c-map__legendIcon" style="background-image:url({{ markerstyles.specialProgramIcon }});"></div>
 					<div>
 						<h5>Special Program</h5>
 						<p>Exposition with a special program</p>
 					</div>
 				</li>
 				<li>
-					<img src="{{ markerstyles.founderIcon }}" alt="route icon">
+					<div class="c-map__legendIcon" style="background-image:url({{ markerstyles.founderIcon }});"></div>
 					<div>
 						<h5>Founder</h5>
 						<p>Founding member of GLUE</p>
 					</div>
 				</li>
 				<li>
-					<img src="{{ markerstyles.locationsIcon }}" alt="route icon">
+					<div class="c-map__legendIcon" style="background-image:url({{ markerstyles.locationsIcon }});"></div>
 					<div>
 						<h5>Location</h5>
 						<p>Normal GLUE member</p>
@@ -319,13 +334,5 @@
 {% endblock %}
 
 {% block javascripts %}
-	<script src="{{ alias('@cscripts') }}/map/mapbox.js" type="module"></script>
-	<script>
-		const legendButton = document.querySelector(".c-map__legendButton")
-const legend = document.querySelector(".c-map__legend")
-
-legendButton.addEventListener("click", () => {
-legend.classList.toggle("active")
-})
-	</script>
+	<script src="{{ alias('@cscripts') }}/map/mapbox.js" type="module" defer></script>
 {% endblock %}

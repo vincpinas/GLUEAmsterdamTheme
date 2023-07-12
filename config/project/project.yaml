@@ -1,4 +1,4 @@
-dateModified: 1688043531
+dateModified: 1689119969
 elementSources:
   craft\elements\Entry:
     -
@@ -135,6 +135,9 @@ elementSources:
         - dateCreated
         - lastLoginDate
       type: native
+    -
+      key: 'group:c6635e8d-466b-4c83-a690-b8d9596ed2ee' # Guests
+      type: native
 email:
   fromEmail: $SMTP_EMAIL
   fromName: $SMTP_SENDER_NAME
@@ -205,8 +208,10 @@ meta:
     94b2ace0-9736-4772-8b51-5ad1c118ba9b: Register # Register
     97d0a464-bcc8-4a07-bcfc-f91437d0d73d: 'Hub Suffix' # Hub Suffix
     0135bceb-e438-4587-afb0-58be11f4b6ec: 'Opening Times' # Opening Times
+    143e2045-0511-4445-8b26-cda06d142159: 'Age Group' # Age Group
     164bc9a4-5b57-4fb1-b7e2-9fb883aebc34: 'Phone number' # Phone number
     224d134b-3e57-4e94-a6b0-97108c266b94: Hub # Hub
+    425e9499-b42c-4458-b1a8-07a316d4e328: Profession # Profession
     455ecd20-d076-49c7-8fc6-57888147a961: Zip # Zip
     462e7888-6a24-4c61-b3f1-faaec6bc45ad: 'Link Destination' # Link Destination
     623f54ba-640b-4690-bb9d-fffae8471ed9: Twitter # Twitter
@@ -232,6 +237,7 @@ meta:
     830820ed-79d9-4d46-9e86-4134fc2b8d2b: Country # Country
     1972499d-a514-4921-81a0-426f9e57f7b2: 'Program Type' # Program Type
     24188079-a4ae-442c-a887-c038437ae289: Event # Event
+    a048000e-e0dc-476a-b101-76110a53ebe6: 'Marketing Permissions' # Marketing Permissions
     a1a284ed-b660-4132-9e98-a7af09a3cc32: 'Rich Text' # Rich Text
     acb4d8ea-f708-4993-846b-d1e591d442ff: 'Route Group' # Route Group
     ae91170d-e3ba-466f-92ff-05269557039f: 'Glue events' # Glue events
@@ -245,6 +251,7 @@ meta:
     c0f16670-30a8-4b0d-93c2-bc35b31ba3ee: 'Public Schema' # Public Schema
     c5fb5f28-2f93-4a73-bcd6-9c57ee22f86f: $SITE_NAME # $SITE_NAME
     c8adfe4a-01be-4ef5-a6ea-1dd05dbdf07e: DateTable # DateTable
+    c6635e8d-466b-4c83-a690-b8d9596ed2ee: Guests # Guests
     c700366d-c002-43b2-b7ce-f8dd82c7afa8: Participants # Participants
     c2872290-8524-4632-b215-9fe238402822: Asset # Asset
     cab00bb9-f285-41cd-9dfc-6b675f5c4817: Map # Map
