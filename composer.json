@@ -1,12 +1,12 @@
 {
   "require": {
-    "craftcms/cms": "^4.4.0",
+    "craftcms/cms": "4.4.15",
     "craftcms/redactor": "^3.0",
     "doublesecretagency/craft-cpcss": "2.6.0",
     "mmikkel/cp-field-inspect": "^1.4",
     "sebastianlenz/linkfield": "2.1.5",
     "utakka/redactor-anchors": "^1.4",
-    "verbb/expanded-singles": "2.0.1",
+    "verbb/expanded-singles": "2.0.2",
     "verbb/patrol": "^5.0",
     "vlucas/phpdotenv": "^5.4.0"
   },
