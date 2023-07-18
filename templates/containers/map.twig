@@ -47,6 +47,13 @@
 } %}
 {% set directionsArray = ["one", "two", "three", "four"] %}
 
+{% if craft.app.user.rememberedUsername is defined and craft.app.user.rememberedUsername %}
+	{% set remembered = craft.app.user.rememberedUsername %}
+{% else %}
+	{% set remembered = "" %}
+{% endif %}
+
+
 {% if currentUser %}
 	{% set locked = false %}
 {% endif %}
@@ -120,9 +127,9 @@
 {% endfor %}
 
 {% block content %}
-  {% if errorMessage is defined %}
-    <p>{{ errorMessage }}</p>
-  {% endif %}
+	{% if errorMessage is defined %}
+		<p>{{ errorMessage }}</p>
+	{% endif %}
 
 	<main class="c-map__wrapper" style="{% if addresses|length == 0 %} grid-template-columns: 1fr; grid-template-areas: 'map'; {% endif %}">
 		<ul class="c-map__headers">
@@ -134,7 +141,7 @@
 			</li>
 			<li class="c-map__headersGroup"></li>
 		</ul>
-		<ul class="c-map__menu" style="{% if addresses|length == 0 %} display:none; {% endif %}" data-locked="{{ locked|json_encode }}">
+		<ul class="c-map__menu" style="{% if addresses|length == 0 %} display:none; {% endif %}" data-locked="{{ locked|json_encode }}" data-csrf='{{ csrfInput() }}' data-remembered-user='{{ remembered }}'>
 			{% if locked %}
 				<ion-icon name="lock-closed-outline" class="c-map__menuLock"></ion-icon>
 			{% endif %}
@@ -186,6 +193,52 @@
 			{% endfor %}
 
 			<li class="c-map__locationsOverview c-map__menuItem-{{directionsArray|length + 1}} c-map__menuItem">
+				<ul class="c-map__legend">
+					<li>
+						<div class="c-map__legendIcon" style="background-image:url({{ markerstyles.routeIcon }});"></div>
+						<div>
+							<h5>Route</h5>
+							<p>Icon displayed for each point in a route</p>
+						</div>
+					</li>
+					<li>
+						<div class="c-map__legendIcon" style="background-image:url({{ markerstyles.hubIcon }});"></div>
+						<div>
+							<h5>Hub</h5>
+							<p>Location containing
+								{{ map.hubMinimumCount }}+ expositions</p>
+						</div>
+					</li>
+					<li>
+						<div class="c-map__legendIcon" style="background-image:url({{ markerstyles.collectiveIcon }});"></div>
+						<div>
+							<h5>Collective</h5>
+							<p>Location containing multiple expositions</p>
+						</div>
+					</li>
+					<li>
+						<div class="c-map__legendIcon" style="background-image:url({{ markerstyles.specialProgramIcon }});"></div>
+						<div>
+							<h5>Special Program</h5>
+							<p>Exposition with a special program</p>
+						</div>
+					</li>
+					<li>
+						<div class="c-map__legendIcon" style="background-image:url({{ markerstyles.founderIcon }});"></div>
+						<div>
+							<h5>Founder</h5>
+							<p>Founding member of GLUE</p>
+						</div>
+					</li>
+					<li>
+						<div class="c-map__legendIcon" style="background-image:url({{ markerstyles.locationsIcon }});"></div>
+						<div>
+							<h5>Location</h5>
+							<p>Normal GLUE member</p>
+						</div>
+					</li>
+				</ul>
+
 				<button class="c-map__legendButton">Symbols on the map</button>
 
 				<h2>Locations</h2>
@@ -283,53 +336,7 @@
 				</ol>
 			</li>
 		</ul>
-		<div class="c-map" id="map" data-addresses="{{ addresses|json_encode }}" data-token="{{ map.token }}" data-styles="{{ map.stylesheet }}" data-marker-styles="{{ markerstyles|json_encode }}" data-zoom="{{ map.mapZoom }}" data-pitch="{{ map.mapPitch }}" data-bearing="{{ map.mapBearing }}" data-hub-minimum-count="{{ map.hubMinimumCount }}" data-city="{{ map.city }}">
-			<ul class="c-map__legend">
-				<li>
-					<div class="c-map__legendIcon" style="background-image:url({{ markerstyles.routeIcon }});"></div>
-					<div>
-						<h5>Route</h5>
-						<p>Icon displayed for each point in a route</p>
-					</div>
-				</li>
-				<li>
-					<div class="c-map__legendIcon" style="background-image:url({{ markerstyles.hubIcon }});"></div>
-					<div>
-						<h5>Hub</h5>
-						<p>Location containing
-							{{ map.hubMinimumCount }}+ expositions</p>
-					</div>
-				</li>
-				<li>
-					<div class="c-map__legendIcon" style="background-image:url({{ markerstyles.collectiveIcon }});"></div>
-					<div>
-						<h5>Collective</h5>
-						<p>Location containing multiple expositions</p>
-					</div>
-				</li>
-				<li>
-					<div class="c-map__legendIcon" style="background-image:url({{ markerstyles.specialProgramIcon }});"></div>
-					<div>
-						<h5>Special Program</h5>
-						<p>Exposition with a special program</p>
-					</div>
-				</li>
-				<li>
-					<div class="c-map__legendIcon" style="background-image:url({{ markerstyles.founderIcon }});"></div>
-					<div>
-						<h5>Founder</h5>
-						<p>Founding member of GLUE</p>
-					</div>
-				</li>
-				<li>
-					<div class="c-map__legendIcon" style="background-image:url({{ markerstyles.locationsIcon }});"></div>
-					<div>
-						<h5>Location</h5>
-						<p>Normal GLUE member</p>
-					</div>
-				</li>
-			</ul>
-		</div>
+		<div class="c-map" id="map" data-addresses="{{ addresses|json_encode }}" data-token="{{ map.token }}" data-styles="{{ map.stylesheet }}" data-marker-styles="{{ markerstyles|json_encode }}" data-zoom="{{ map.mapZoom }}" data-pitch="{{ map.mapPitch }}" data-bearing="{{ map.mapBearing }}" data-hub-minimum-count="{{ map.hubMinimumCount }}" data-city="{{ map.city }}"></div>
 	</main>
 {% endblock %}
 

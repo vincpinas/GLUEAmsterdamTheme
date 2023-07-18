@@ -4,7 +4,7 @@ namespace mapreg;
 use Craft;
 use yii\base\Event;
 use craft\elements\User;
-use craft\events\ModelEvent;
+use craft\services\Elements;
 
 
 class Module extends \yii\base\Module
@@ -24,40 +24,45 @@ class Module extends \yii\base\Module
         parent::init();
 
         // Remove old image before uploading new image for user thumbnail
-        Event::on(\craft\services\Elements::class, \craft\services\Elements::EVENT_BEFORE_SAVE_ELEMENT, function(Event $event) {
+        Event::on(\Elements::class, Elements::EVENT_BEFORE_SAVE_ELEMENT, function (Event $event) {
             // only execute code if element is of type user.
-            if ($event->element instanceof \craft\elements\User) {
+            if ($event->element instanceof User) {
                 $userId = $event->element->id;
 
-                if(!Craft::$app->getUser()->getIdentity()) return;
+                if (!Craft::$app->getUser()->getIdentity())
+                    return;
 
                 $potentionalOldAsset = Craft::$app->getUser()->getIdentity()->getFieldValue('thumbnail')->one();
 
                 // If file array is empty with request stop function from running.
-                if(!isset($_FILES["fields"])) return;
+                if (!isset($_FILES["fields"]))
+                    return;
                 // Access uploaded files in post request to check if image was uploaded
                 $uploadedAsset = $_FILES["fields"]["name"]["thumbnail"][0];
 
                 // If there is no asset in this field yet stop function from running
-                if($potentionalOldAsset === null) return;
+                if ($potentionalOldAsset === null)
+                    return;
                 // If there is no new uploaded image stop function from running
-                if($uploadedAsset === "") return;
+                if ($uploadedAsset === "")
+                    return;
 
                 Craft::$app->elements->deleteElementById($potentionalOldAsset->id);
             }
         });
 
-        Event::on(\craft\services\Elements::class, \craft\services\Elements::EVENT_AFTER_SAVE_ELEMENT, function(Event $event) {
+        Event::on(Elements::class, Elements::EVENT_AFTER_SAVE_ELEMENT, function (Event $event) {
             // only execute code if element is of type user and guest.
             $guest_reg = Craft::$app->request->getBodyParam("guestRegister");
 
-            if ($event->element instanceof \craft\elements\User && $guest_reg) {
+            if (!$event->element instanceof User || !$guest_reg) {
                 return;
             }
 
-            function getParticipantsGroup() {
-                foreach ( Craft::$app->userGroups->allGroups as $group ) {
-                    if ( "participants" == $group->handle ) {
+            function getParticipantsGroup()
+            {
+                foreach (Craft::$app->userGroups->allGroups as $group) {
+                    if ("participants" == $group->handle) {
                         return $group;
                     }
                 }
@@ -67,41 +72,46 @@ class Module extends \yii\base\Module
             Craft::$app->users->assignUserToGroups($event->element->id, [$participants_group]);
         });
 
-        Event::on(\craft\services\Elements::class, \craft\services\Elements::EVENT_AFTER_SAVE_ELEMENT, function(Event $event) {
+        Event::on(Elements::class, Elements::EVENT_AFTER_SAVE_ELEMENT, function (Event $event) {
             // only execute code if element is of type user and guest.
             $guest_reg = Craft::$app->request->getBodyParam("guestRegister");
             $user = $event->element;
             $requestBody = Craft::$app->request->getBodyParams();
 
-            if ($user instanceof \craft\elements\User && $guest_reg) {
-                // Activate user before assignment to group
-                if($user->active) return;
-                Craft::$app->users->activateUser($user);
-
-                // get guest group with handle
-                function getGuestGroup() {
-                    foreach ( Craft::$app->userGroups->allGroups as $group ) {
-                        if ( "guests" == $group->handle ) {
-                            return $group;
-                        }
-                    }
-                };
-
-                $guest_group = getGuestGroup()->id;
-                Craft::$app->users->assignUserToGroups($user->id, [$guest_group]);
-
-                Craft::$app->request->getCsrfToken();
-                $user = User::find()->id($user->id)->one();
-                $user->setFieldValue('profession', $requestBody["fields"]["profession"]);
-                $user->setFieldValue('ageGroup', $requestBody["fields"]["ageGroup"]);
-                $user->setFieldValue('marketingPermissions', $requestBody["fields"]["marketingPermissions"]);
-                
-                if(Craft::$app->elements->saveElement($user)) {
-                    return $user;
-                } else {
-                    throw new \Exception("Couldn't save user: " . print_r($user->getErrors(), true));
-                }
+            if (!$event->element instanceof User || !$guest_reg) {
+                return;
             }
+
+            // Activate user before assignment to group
+            if ($user->active)
+                return;
+            Craft::$app->users->activateUser($user);
+
+            // get guest group with handle
+            function getGuestGroup()
+            {
+                foreach (Craft::$app->userGroups->allGroups as $group) {
+                    if ("guests" == $group->handle) {
+                        return $group;
+                    }
+                }
+            };
+
+            $guest_group = getGuestGroup()->id;
+            Craft::$app->users->assignUserToGroups($user->id, [$guest_group]);
+
+            Craft::$app->request->getCsrfToken();
+            $user = User::find()->id($user->id)->one();
+            $user->setFieldValue('profession', $requestBody["fields"]["profession"]);
+            $user->setFieldValue('ageGroup', $requestBody["fields"]["ageGroup"]);
+            $user->setFieldValue('marketingPermissions', $requestBody["fields"]["marketingPermissions"]);
+
+            if (Craft::$app->elements->saveElement($user)) {
+                return $user;
+            } else {
+                throw new \Exception("Couldn't save user: " . print_r($user->getErrors(), true));
+            }
+
         });
     }
 

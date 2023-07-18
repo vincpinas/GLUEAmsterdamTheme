@@ -174,13 +174,33 @@ $mapheight: calc(100vh - 5.5rem);
     }
 
     &__menuLock {
-        width: 21rem;
+        width: 6rem;
         height: 6rem;
         position: absolute;
         z-index: $index-3;
         margin-top: 2.5rem;
         pointer-events: none;
+        margin-left: 7.5rem;
+
+        @media #{$tablet-down} {
+            margin-left: 6.5rem;
+        }
+
+        @media #{$mobile-down} {
+            margin-left: 0;
+            left: 50%;
+            transform: translate(-50%,0%);
+        }
     }
+
+    &__menuLockOverlay {
+        background: rgba(#000000, 0.5);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+    }
+
     
     &__menuPopup {
         z-index: $index-4;
@@ -211,7 +231,16 @@ $mapheight: calc(100vh - 5.5rem);
 
         &Wrapper button {
             @include gbutton;
+            margin-left: 1rem;
+        }
+
+        &Wrapper div > button, &Wrapper form > button {
             margin-left: auto;
+        }
+
+        &Wrapper span {
+            margin-left: auto;
+            display: flex;
         }
 
         &Wrapper input, select {
@@ -221,7 +250,7 @@ $mapheight: calc(100vh - 5.5rem);
             padding: 0.25rem;
         }
 
-        &Wrapper > div {
+        &Wrapper > div, &Wrapper > form {
             display: flex;
             flex-direction: column;
         }
@@ -495,15 +524,6 @@ $mapheight: calc(100vh - 5.5rem);
         }
     }
 
-    &__menuLockOverlay {
-        background: rgba(#000000, 0.5);
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-
-    }
-
     &__menuGoogleButton {
         margin-top: 2rem;
         padding: 0.5rem 1rem;
@@ -545,12 +565,19 @@ $mapheight: calc(100vh - 5.5rem);
             border-left: 1px solid darken($text-primary, 20%);
             border-bottom: 1px solid darken($text-primary, 20%);
         }
+        
+        @media #{$mobile-down} {
+            width: 100%;
+            border-left: none;
+        }
     }
 
     &__legend {
         padding: 0.5rem 1rem;
         z-index: $index-top;
         position: absolute;
+        top: 0;
+        left: 0;
         background: $text-primary;
         color: $text-contrast;
         transition: $transition-normal;
@@ -565,10 +592,16 @@ $mapheight: calc(100vh - 5.5rem);
             margin-bottom: 1rem;
         }
 
+        li::after {
+            display: none;
+        }
+
         li {
             @include font--primary(500);
             display: flex;
             align-items: center;
+            padding: 0 !important;
+            text-align: left
 
         }
 
@@ -589,6 +622,11 @@ $mapheight: calc(100vh - 5.5rem);
             margin-right: 0.5rem;
             background-repeat: no-repeat;
             background-size: contain;
+        }
+
+        @media #{$mobile-down} {
+            min-width: 100%;
+            top: 2.2rem;
         }
     }
 }

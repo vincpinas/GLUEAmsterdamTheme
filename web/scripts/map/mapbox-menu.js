@@ -23,6 +23,7 @@ export default class MapMenu {
         const directionButtons = document.querySelectorAll(".c-map__menuDirectionButton")
         const directionCloseButtons = document.querySelectorAll(".c-map__menuDirectionCloseButton")
         const routes = document.querySelectorAll(".c-map__menuRoute")
+        const menu = document.querySelector(".c-map__menu")
 
         this.menuRoutes = routes;
 
@@ -49,75 +50,24 @@ export default class MapMenu {
                 const closeClone = close.cloneNode(true)
                 closeClone.addEventListener("click", () => popup.remove())
 
-                const submit = document.createElement("button")
-                submit.innerHTML = "Submit"
+                const submit1 = document.createElement("button")
+                submit1.innerHTML = "Submit"
+                submit1.type = "submit"
+
+                const submit2 = document.createElement("button")
+                submit2.innerHTML = "Submit"
 
                 const next = document.createElement("button")
-                next.innerHTML = "Next"
+                next.innerHTML = "No account?"
 
-                const title = document.createElement("h2")
-                title.innerHTML = "Register for GLUE routes"
-                const name = document.createElement("input")
-                name.setAttribute("type", "text");
-                name.setAttribute("name", "fullName");
-                name.setAttribute("placeholder", "Fullname");
-                const email = document.createElement("input")
-                email.setAttribute("type", "email");
-                email.setAttribute("name", "email");
-                email.setAttribute("placeholder", "Email");
-                const emailClone = email.cloneNode(true);
-
-                const profession_select = document.createElement("select")
-                const professions = [document.createElement("option"), document.createElement("option"), document.createElement("option")]
-                const prof_values = ["I'm a design professional", "Not a professional, but I'm a design lover!", "I'm from the press"]
-                professions.forEach((prof, index) => {
-                    prof.value = prof_values[index]
-                    prof.innerHTML = prof_values[index]
-                    profession_select.appendChild(prof)
-                })
-
-                const age_select = document.createElement("select")
-                const age_groups = [document.createElement("option"), document.createElement("option"), document.createElement("option")]
-                const age_values = ["-25", "-25 - 45", "45 +"]
-                age_groups.forEach((age, index) => {
-                    age.value = age_values[index]
-                    age.innerHTML = age_values[index]
-                    age_select.appendChild(age)
-                })
-
-                const marketing_label = document.createElement("label")
-                const marketing_perms = document.createElement("input")
-                marketing_perms.setAttribute("type", "checkbox");
-                marketing_label.appendChild(marketing_perms)
-                marketing_label.innerHTML += "Yes, I would like to continue receiving emails from GLUE"
-
-                popup.appendChild(popupWrapper)
-
-                const page1 = document.createElement("div")
-                page1.appendChild(close)
-                page1.appendChild(title)
-                page1.appendChild(email)
-                page1.appendChild(next)
-
-                const page2 = document.createElement("div")
-                page2.appendChild(closeClone)
-                page2.appendChild(title.cloneNode(true))
-                page2.appendChild(name)
-                page2.appendChild(emailClone)
-                page2.appendChild(profession_select)
-                page2.appendChild(age_select)
-                page2.appendChild(marketing_label)
-                page2.appendChild(submit)
-
-                next.addEventListener("click", () => {
+                submit1.addEventListener('click', () => {
                     fetch(`https://glueweb.ddev.site/api?query=query%20MyQuery%20%7B%0A%20%20user(email%3A%20%22${email.value}%22)%20%7B%0A%20%20%20%20email%0A%20%20%7D%0A%7D%0A`).then(response => response.json()).then(query => {
                         return query.data.user
                     }).then(user => {
-                        console.log(user)
-                        if (user) {
+
                             getSessionInfo().then(session => {
                                 const params = new FormData();
-                                params.append("password", "GLUEAms2023")
+                                params.append("password", password.value)
                                 params.append("loginName", user.email)
 
                                 return fetch('/actions/users/login', {
@@ -130,19 +80,22 @@ export default class MapMenu {
                                     body: params,
                                 })
                             }).then(loginReq => {
-                                if (loginReq.status === 200) {
-                                    document.location.reload();
-                                }
+                                return loginReq.json()
+                            }).then(result => {
+                                document.body.appendChild(temp)
+                                document.location.href = result.returnUrl;
                             })
-                        } else {
-                            emailClone.value = email.value
-                            page1.remove();
-                            popupWrapper.appendChild(page2);
-                        }
+
                     })
                 })
 
-                submit.addEventListener("click", () => {
+                next.addEventListener("click", () => {
+                    emailClone.value = email.value
+                    page1.remove();
+                    popupWrapper.appendChild(page2);
+                })
+
+                submit2.addEventListener("click", () => {
                     let token;
 
                     getSessionInfo().then(session => {
@@ -151,7 +104,7 @@ export default class MapMenu {
                         const params = new FormData();
                         params.append("fullName", name.value)
                         params.append("email", emailClone.value)
-                        params.append("password", "GLUEAms2023")
+                        params.append("password", passwordClone.value)
                         params.append("fields[marketingPermissions]", marketing_perms.checked ? "Yes" : "No")
                         params.append("fields[profession]", profession_select.value)
                         params.append("fields[ageGroup]", age_select.value)
@@ -169,7 +122,7 @@ export default class MapMenu {
                     })
                     .then(() => {
                         const params = new FormData();
-                        params.append("password", "GLUEAms2023")
+                        params.append("password", passwordClone.value)
                         params.append("loginName", emailClone.value)
 
                         return fetch('/actions/users/login', {
@@ -183,6 +136,83 @@ export default class MapMenu {
                         })
                     }).then(() => document.location.reload())
                 })
+
+                const buttonrow1 = document.createElement("span")
+                buttonrow1.appendChild(next)
+                buttonrow1.appendChild(submit1)
+
+
+                const title = document.createElement("h2")
+                title.innerHTML = "Login for GLUE routes"
+                const name = document.createElement("input")
+                name.setAttribute("type", "text");
+                name.setAttribute("name", "fullName");
+                name.setAttribute("placeholder", "Fullname");
+                const email = document.createElement("input")
+                email.setAttribute("type", "email");
+                email.setAttribute("name", "loginName");
+                email.setAttribute("placeholder", "Email");
+                email.value = menu.dataset.rememberedUser;
+                const emailClone = email.cloneNode(true);
+                const password = document.createElement("input")
+                password.setAttribute("type", "password");
+                password.setAttribute("name", "password");
+                password.setAttribute("placeholder", "Password");
+                const passwordClone = password.cloneNode(true);
+
+                const profession_select = document.createElement("select")
+                const professions = [document.createElement("option"), document.createElement("option"), document.createElement("option")]
+                const prof_values = ["I'm a design professional", "Not a professional, but I'm a design lover!", "I'm from the press"]
+                professions.forEach((prof, index) => {
+                    prof.value = prof_values[index]
+                    prof.innerHTML = prof_values[index]
+                    profession_select.appendChild(prof)
+                })
+
+                const age_select = document.createElement("select")
+                const age_groups = [document.createElement("option"), document.createElement("option"), document.createElement("option")]
+                const age_values = ["-25", "25 - 45", "45 +"]
+                age_groups.forEach((age, index) => {
+                    age.value = age_values[index]
+                    age.innerHTML = age_values[index]
+                    age_select.appendChild(age)
+                })
+
+                const marketing_label = document.createElement("label")
+                const marketing_perms = document.createElement("input")
+                marketing_perms.setAttribute("type", "checkbox");
+                marketing_label.appendChild(marketing_perms)
+                marketing_label.innerHTML += "Yes, I would like to continue receiving emails from GLUE"
+
+                popup.appendChild(popupWrapper)
+
+                const action = document.createElement("input")
+                action.type = "hidden"
+                action.name = "action"
+                action.value = "users/login"
+
+                const page1 = document.createElement("form")
+                page1.method="post"
+                page1.acceptCharset="UTF-8"
+
+                page1.innerHTML = menu.dataset.csrf
+                page1.appendChild(action)
+                page1.appendChild(close)
+                page1.appendChild(title)
+                page1.appendChild(email)
+                page1.appendChild(password)
+                page1.appendChild(buttonrow1)
+
+                const page2 = document.createElement("div")
+                page2.appendChild(closeClone)
+                page2.appendChild(title.cloneNode(true))
+                page2.appendChild(name)
+                page2.appendChild(emailClone)
+                page2.appendChild(passwordClone)
+                page2.appendChild(profession_select)
+                page2.appendChild(age_select)
+                page2.appendChild(marketing_label)
+                page2.appendChild(submit2)
 
                 popupWrapper.appendChild(page1)
                 document.body.appendChild(popup)
