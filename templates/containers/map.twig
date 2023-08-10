@@ -118,6 +118,7 @@
 			specialProgram: specialProgram,
 			isHub: isHub,
 			fullName: user.fullName,
+			fullNiceName: user.invoiceCompanyName,
 			username: user.username,
 			thumbnail: user.thumbnail.one() ? user.thumbnail.one().url : map.markerThumbnailPlaceholder.one().url,
 		} %}
@@ -276,7 +277,7 @@
 											{% if currentHubName and currentHubName|length > 0 %}
 												{{ currentHubName }}
 											{% else %}
-												{{ address.fullName }}
+												{{ (address.fullNiceName) ? address.fullNiceName : address.fullName }}
 											{% endif %}
 
 											{{ map.hubSuffix }}
@@ -312,7 +313,7 @@
 										{% if currentCollectiveName and currentCollectiveName|length > 0 %}
 											{{ currentCollectiveName }}
 										{% else %}
-											{{ address.fullName }}
+											{{ (address.fullNiceName) ? address.fullNiceName : address.fullName }}
 										{% endif %}
 
 										{{ map.collectiveSuffix }}
@@ -327,7 +328,8 @@
 					{% for address in addresses %}
 						{% if address.id not in hubIDs %}
 							<li class="c-map__locationButtonWrapper" data-postal-code="{{address.postalCode}}" data-c-id="{{address.id}}">
-								<button class="c-map__locationButton">{{address.fullName}}
+								<button class="c-map__locationButton">
+									{{ (address.fullNiceName) ? address.fullNiceName : address.fullName }}
 									<ion-icon name="chevron-forward-sharp"></ion-icon>
 								</button>
 							</li>

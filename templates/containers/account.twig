@@ -18,8 +18,10 @@
 				{% endif %}
 			</div>
 			<div class="c-publicPage__overview">
-				<h2>{{ user.fullName }}</h2>
-
+				<h2>
+				<!-- de invoiceCompanyName wordt hier misbruikt voor de members titel. Hierin kunnen wel speciale characters -->
+				{{ (user.invoiceCompanyName) ? user.invoiceCompanyName : user.fullName }}
+				</h2>			
 				{% if user.largeTextField|length > 0 %}
 					<p class="c-publicPage__bio">{{ user.largeTextField}}</p>
 				{% endif %}
@@ -29,7 +31,7 @@
 					{% if user.venue|length > 0 %}
 						<p style="margin:0;">{{ user.venue }}</p>
 					{% endif %}
-					<p>{{ user.mapAddress }}, {{ user.mapPostalCode }}</p>
+					<p>{{ user.mapAddress }}<br> {{ user.mapPostalCode }} {{ user.city }}</p>
 				{% endif %}
 
 				{% if user.openingTimes %}
@@ -76,35 +78,35 @@
 				{% if user.website|length > 0 %}
 					<h3>Website</h3>
 					<p>
-						<a href="{{user.website}}" target="_blank">{{ user.website}}</a>
+						<a href="{{user.website}}" target="_blank">{{ user.website|replace({'https://': ''}) }}</a>
 					</p>
 				{% endif %}
 
 				{% if user.instagram|length > 0 %}
 					<h3>Instagram</h3>
 					<p>
-						<a href="{{user.instagram}}" target="_blank">{{ user.instagram}}</a>
+						<a href="{{user.instagram}}" target="_blank">{{ user.instagram|replace({'https://': ''}) }}</a>
 					</p>
 				{% endif %}
 
 				{% if user.facebook|length > 0 %}
 					<h3>Facebook</h3>
 					<p>
-						<a href="{{user.facebook}}" target="_blank">{{ user.facebook}}</a>
+						<a href="{{user.facebook}}" target="_blank">{{ user.facebook|replace({'https://': ''}) }}</a>
 					</p>
 				{% endif %}
 
 				{% if user.twitter|length > 0 %}
 					<h3>Twitter</h3>
 					<p>
-						<a href="{{user.twitter}}" target="_blank">{{ user.twitter}}</a>
+						<a href="{{user.twitter}}" target="_blank">{{ user.twitter|replace({'https://': ''}) }}</a>
 					</p>
 				{% endif %}
 
 				{% if user.linkedin|length > 0 %}
 					<h3>LinkedIn</h3>
 					<p>
-						<a href="{{user.linkedin}}" target="_blank">{{ user.linkedin}}</a>
+						<a href="{{user.linkedin}}" target="_blank">{{ user.linkedin|replace({'https://': ''}) }}</a>
 					</p>
 				{% endif %}
 
@@ -112,7 +114,9 @@
 		</main>
 	{% else %}
 		<main class="c-publicPage">
-
+			<p>Unfortunately, the member is not recognized.<br>
+			urlstr: {{ urlstr }}<br>
+			user: {{ user }}</p>
 		</main>
 	{% endif %}
 
