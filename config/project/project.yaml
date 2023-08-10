@@ -1,4 +1,4 @@
-dateModified: 1689119969
+dateModified: 1691675205
 elementSources:
   craft\elements\Entry:
     -
@@ -30,22 +30,19 @@ elementSources:
       key: 'single:8dec35ce-7bad-4407-bbc3-56adc9cccc4a' # Login
       type: native
     -
+      heading: Channels
+      type: heading
+    -
       defaultSort:
-        - title
-        - asc
+        - postDate
+        - desc
       disabled: false
-      key: 'single:cb9b4037-71ad-4f2d-b47e-a020160c2a5c' # Edit page
+      key: 'section:9bc06dfa-790d-40dc-b656-17de5c920ef5' # Program
       tableAttributes:
         - postDate
         - expiryDate
         - author
         - link
-      type: native
-    -
-      heading: Channels
-      type: heading
-    -
-      key: 'section:87f7652e-5125-4528-800a-97b215b156ec' # Program
       type: native
   craft\elements\User:
     -
@@ -173,7 +170,6 @@ meta:
     1a8a2732-cd82-4bf7-8afe-099fb893ac20: Map # Map
     2acb2572-e11c-42ed-ab36-a86081a1c3e2: 'GLUE Live Headless' # GLUE Live Headless
     2e1ecccd-c3ca-4249-b239-5faa3edb6606: City # City
-    3f8cea9b-52ac-487d-a62a-b04f4700bcdc: Default # Default
     3f956c2c-f1e6-4abf-abc1-517adbbd0e3d: VAT # VAT
     3f6049f8-db41-426e-86a4-196457c3e028: Slug # Slug
     3fc5f4d1-e130-417e-8f41-29bb276bfbb2: 'Group Three Handle' # Group Three Handle
@@ -185,6 +181,7 @@ meta:
     7c6ffd50-236d-41ef-b9b0-ed933128ead8: Locations # Locations
     8dec35ce-7bad-4407-bbc3-56adc9cccc4a: Login # Login
     9b440915-1a29-471d-9ebe-88c6673362e7: Map # Map
+    9bc06dfa-790d-40dc-b656-17de5c920ef5: Program # Program
     9cf5f394-9490-4101-bdc7-5f09654f53e7: Thumbnail # Thumbnail
     9ee4a793-9be1-424c-b7c5-3e55b24bd669: New # New
     9f819326-c617-42fe-a427-a0c843eb9312: POI # POI
@@ -200,10 +197,10 @@ meta:
     54d7b784-36c0-4673-ac81-61eb4fec1591: Date # Date
     62bbfaa1-afe7-4d10-86d1-a4f1f257284d: 'Marker thumbnail placeholder' # Marker thumbnail placeholder
     64f81d1c-c242-4549-8d9f-19d9974d28c7: User # User
+    72b5edf2-4be1-4151-82cd-8fecab941ea9: Default # Default
     76b8abf5-b5a7-4316-b76f-042fd9b0e526: Map # Map
     84f5e1d4-3d01-4be8-82df-2de9132f6b6b: 'Link Text' # Link Text
     85b7a402-007c-4598-b380-2ed317ce08bc: LinkedIn # LinkedIn
-    87f7652e-5125-4528-800a-97b215b156ec: Program # Program
     90a58fe8-93e7-4f43-a79c-f92d1076f9c0: 'Glue websites' # Glue websites
     94b2ace0-9736-4772-8b51-5ad1c118ba9b: Register # Register
     97d0a464-bcc8-4a07-bcfc-f91437d0d73d: 'Hub Suffix' # Hub Suffix
@@ -255,11 +252,9 @@ meta:
     c700366d-c002-43b2-b7ce-f8dd82c7afa8: Participants # Participants
     c2872290-8524-4632-b215-9fe238402822: Asset # Asset
     cab00bb9-f285-41cd-9dfc-6b675f5c4817: Map # Map
-    cb9b4037-71ad-4f2d-b47e-a020160c2a5c: 'Edit page' # Edit page
     cd1f3a93-b4a0-445b-97ab-b378129dbb74: 'Map Address' # Map Address
     cdfc6d46-fdd1-4bdf-b53b-7f44b84230a5: Stylesheet # Stylesheet
     ce4c8a98-5c1f-4d39-bbf0-6bfd5fd4ba32: Subtitle # Subtitle
-    d0a790d7-fe64-452d-9082-5e57f70685df: 'Edit page' # Edit page
     d5fda0ac-6099-4e3c-8804-1a5fb5178809: Hub # Hub
     d7f79a98-5851-4ca8-8097-74672ff95134: Facebook # Facebook
     d3712c0e-7898-4805-8cee-c9b619cf6a46: 'One Word' # One Word

@@ -31,10 +31,11 @@
   font-family: "Lausanne";
   font-weight: 500;
   font-style: normal;
-  padding-left: 10%;
+  padding-left: 5%;
   display: flex;
   flex-direction: column;
   overflow-x: scroll;
+  z-index: 10;
 }
 @media screen and (max-width: 991px) {
   .c-editMenu {
@@ -51,6 +52,10 @@
     align-items: center;
     width: 7.5rem;
   }
+}
+.c-editMenu .disabled {
+  cursor: not-allowed;
+  color: #787878;
 }
 
 .c-map {
@@ -1232,6 +1237,12 @@
   justify-content: center;
   flex-direction: column;
   padding: 0rem 20% 0rem 15%;
+  z-index: 1;
+}
+@media screen and (max-width: 767px) {
+  .c-edit__formWrapper {
+    padding: 0rem 10% 0rem 10%;
+  }
 }
 @media screen and (max-width: 991px) {
   .c-edit__formWrapper {
@@ -1242,6 +1253,21 @@
 .c-edit__form {
   display: flex;
   flex-direction: column;
+}
+.c-edit__form > p > a {
+  font-size: 16px;
+  font-family: "Lausanne";
+  font-weight: 300;
+  font-style: normal;
+  line-height: 28px;
+  margin-bottom: 1rem;
+  color: #aea8fc;
+}
+@media screen and (max-width: 767px) {
+  .c-edit__form > p > a {
+    font-size: 14px;
+    line-height: 18px;
+  }
 }
 .c-edit__formHeader {
   margin-top: 1rem;
@@ -1477,6 +1503,145 @@
 }
 .c-edit .red {
   color: #FF0505;
+}
+
+.c-editProgram {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+@media screen and (max-width: 991px) {
+  .c-editProgram {
+    flex-direction: column;
+  }
+}
+.c-editProgram__info, .c-editProgram__form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding: 0rem 20% 0rem 15%;
+  z-index: 1;
+}
+@media screen and (max-width: 767px) {
+  .c-editProgram__info, .c-editProgram__form {
+    padding: 0rem 10% 0rem 10%;
+  }
+}
+.c-editProgram__info > p > a, .c-editProgram__form > p > a {
+  font-size: 16px;
+  font-family: "Lausanne";
+  font-weight: 300;
+  font-style: normal;
+  line-height: 28px;
+  margin-bottom: 1rem;
+  color: #aea8fc;
+}
+@media screen and (max-width: 767px) {
+  .c-editProgram__info > p > a, .c-editProgram__form > p > a {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+.c-editProgram__info input, .c-editProgram__info select, .c-editProgram__form input, .c-editProgram__form select {
+  background: none;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  padding: 0.75rem 1.25rem;
+}
+.c-editProgram__info label, .c-editProgram__form label {
+  font-family: "Lausanne";
+  font-weight: 500;
+  font-style: normal;
+  margin-bottom: 0.5rem;
+}
+.c-editProgram__entries {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+.c-editProgram .c-member__search {
+  border: none;
+  border-bottom: 1px solid #ffffff;
+  width: 100%;
+  position: absolute;
+}
+.c-editProgram .c-member__searchWrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 4rem;
+}
+.c-editProgram .c-member__searchWrapper ion-icon {
+  position: absolute;
+  top: 1rem;
+  left: 0;
+}
+.c-editProgram .c-member__results {
+  margin-bottom: 1rem;
+}
+.c-editProgram .c-member__results label {
+  display: flex;
+  flex-direction: row-reverse;
+  width: fit-content;
+}
+.c-editProgram .c-member__results input {
+  margin-right: 0.5rem;
+}
+.c-editProgram__entry {
+  border: 1px solid #ffffff;
+  width: 100%;
+  font-family: "Lausanne";
+  font-weight: 500;
+  font-style: normal;
+  margin-bottom: 0.5rem;
+}
+.c-editProgram__entry > a {
+  padding: 1rem 2rem 0rem 2rem;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+.c-editProgram__entry h3 {
+  margin-bottom: 0.5rem;
+}
+.c-editProgram__entry p {
+  margin-bottom: 0;
+}
+.c-editProgram__entry p > span {
+  text-transform: capitalize;
+}
+.c-editProgram__delete {
+  color: #FF0505;
+  text-decoration: underline;
+  margin-left: 2rem;
+  width: fit-content;
+  background: none;
+  border: none;
+  outline: none;
+}
+.c-editProgram__buttonRow {
+  display: flex;
+  width: 100%;
+}
+.c-editProgram__buttonRow button,
+.c-editProgram__buttonRow a {
+  margin-left: auto;
+}
+.c-editProgram__create {
+  border: 1px solid #ffffff;
+  padding: 0.75rem 1.25rem;
+  outline: none;
+  background: none;
+  font-family: "Lausanne";
+  font-weight: 300;
+  font-style: normal;
+}
+.c-editProgram__create.disabled {
+  cursor: not-allowed;
+  color: gray;
+  border: 1px solid gray;
 }
 
 .c-publicPage {

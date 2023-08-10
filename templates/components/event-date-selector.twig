@@ -1,0 +1,7 @@
+<select name="fields[date]" id="date">
+	{% for date in event.datetable %}
+		<option value="{{ date["col1"]|date("Y-m-d") }}" {% if date["col1"]|date("Y-m-d") == entry.date|date("Y-m-d") %} selected {% endif %}>
+			{{ date["col1"]|date("n/d/Y") }}
+		</option>
+	{% endfor %}
+</select>

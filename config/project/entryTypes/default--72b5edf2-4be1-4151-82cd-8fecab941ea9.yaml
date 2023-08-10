@@ -1,5 +1,5 @@
 fieldLayouts:
-  1ea675ec-b27a-48d8-8b95-fb85c30293b6:
+  9e3688e9-e5c8-42d7-a354-bcd73728e7d8:
     tabs:
       -
         elementCondition: null
@@ -26,7 +26,7 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\entries\EntryTitleField
-            uid: b1eecb82-4671-43f9-971b-fad5a28ad41c
+            uid: 28da74e6-f315-4af1-8060-58a9ad38cd55
             userCondition: null
             warning: null
             width: 100
@@ -35,22 +35,22 @@ fieldLayouts:
             fieldUid: 1972499d-a514-4921-81a0-426f9e57f7b2 # Program Type
             instructions: null
             label: null
-            required: false
+            required: true
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: bc5f1406-2170-496a-91fc-d3886eb22784
+            uid: c751597a-3904-43b7-810c-88b36ce7841c
             userCondition: null
             warning: null
             width: 100
           -
             elementCondition: null
             fieldUid: 629498d0-534c-4a2a-996f-82b75a6f1864 # Member
-            instructions: 'The member(s) organising / leading the program'
+            instructions: null
             label: Organizer(s)
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: dd20f805-6a4a-4b8a-82df-33ad6956e51b
+            uid: 12eff2da-e6df-455c-ba03-dfc7f6af5887
             userCondition: null
             warning: null
             width: 100
@@ -62,7 +62,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 79c1bf1c-18e1-4fb2-8688-47f72833a28c
+            uid: 32a09e2d-b713-460b-8b5e-715fa039ad73
             userCondition: null
             warning: null
             width: 100
@@ -74,7 +74,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: b122c559-cdbc-4575-bec6-adeaefb8496b
+            uid: 8397c64e-f64a-40fd-91c5-1512649516a0
             userCondition: null
             warning: null
             width: 100
@@ -86,17 +86,17 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 7d849ef8-d291-40ed-9a9d-1d0d5f5385a8
+            uid: 5bf9a831-7d5a-4d3d-91bc-cd754537339e
             userCondition: null
             warning: null
             width: 100
         name: Content
-        uid: 2f26fe76-9697-41f5-9b6e-470769a106ea
+        uid: 8540a214-8817-45cb-ad75-3f6018d4077e
         userCondition: null
 handle: default
 hasTitleField: true
 name: Default
-section: 87f7652e-5125-4528-800a-97b215b156ec # Program
+section: 9bc06dfa-790d-40dc-b656-17de5c920ef5 # Program
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

@@ -13,6 +13,11 @@
         justify-content: center;
         flex-direction: column;
         padding: 0rem 20% 0rem 15%;
+        z-index: $index-1;
+
+        @media #{$mobile-down} {
+            padding: 0rem 10% 0rem 10%;
+        }
 
         @media #{$tablet-down} {
             margin-top: 2rem;
@@ -24,6 +29,10 @@
         display: flex;
         flex-direction: column;
 
+        & > p > a {
+            @include paragraph;
+            color: lighten($special-primary, $amount: 50%);
+        }
     }
 
     &__formHeader {

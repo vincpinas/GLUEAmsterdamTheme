@@ -1,7 +1,8 @@
 <ul class="c-editMenu">
-    <li><a class="c-editMenu__link" href="edit-page">Public page</a></li>
-    <li><a class="c-editMenu__link disabled" href="account-settings">Account settings</a></li>
-    <li><a class="c-editMenu__link disabled" href="upgrade-package">Upgrade package</a></li>
+    <li><a class="c-editMenu__link" href="{{ siteUrl }}edit-page">Public page</a></li>
+    <li><a class="c-editMenu__link" href="{{ siteUrl }}edit-program">Program</a></li>
+    <li><a class="c-editMenu__link disabled" href="{{ siteUrl }}account-settings">Account settings</a></li>
+    <li><a class="c-editMenu__link disabled" href="{{ siteUrl }}upgrade-package">Upgrade package</a></li>
 </ul>
 
 {% block javascripts %}

@@ -25,7 +25,7 @@
 		<div class="c-edit__formWrapper">
 			<form method="post" accept-charset="UTF-8" enctype="multipart/form-data" class="c-edit__form">
 				<h2>public page</h2>
-				<p>Any changes you make here will appear on your dedicated page</p>
+				<p>Any changes you make here will appear on <a href="/{{ user.fullName|replace({' ': "-"}) }}">your dedicated page</a></p>
 
 				{{ csrfInput() }}
 				{{ actionInput('users/save-user') }}

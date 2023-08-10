@@ -1,0 +1,94 @@
+{% extends "index" %}
+
+{% requireLogin %}
+
+{% set new = number is defined and number ? false : true %}
+
+{% set user = user ?? currentUser %}
+{% set entries = craft.entries.authorId(user.id) %}
+
+{% if not new %}
+	{% set entry = craft.entries().section('program').id(number).one() %}
+{% endif %}
+
+{% set entry = entry ?? create('craft\\elements\\Entry') %}
+{% set section = craft.entries().section('program') %}
+
+{% block content %}
+
+	<main class="c-editProgram">
+
+		{% include "components/edit-menu.twig" %}
+
+		{% macro errorList(errors) %}
+			{% if errors %}
+				{{ ul(errors, {class: 'errors'}) }}
+			{% endif %}
+		{% endmacro %}
+
+		<form method="post" accept-charset="UTF-8" class="c-editProgram__form">
+
+			<h2>{{ new ? "new" : "edit" }}
+				entry</h2>
+
+			{{ csrfInput() }}
+			{{ actionInput('entries/save-entry') }}
+			{{ redirectInput('{siteUrl}edit-program') }}
+			{{ hiddenInput('sectionId', section.sectionId[0]) }}
+			{{ hiddenInput('enabled', true) }}
+			{{ hiddenInput('entryId', entry.id) }}
+
+			<label for="title">title</label>
+			{{ input('text', 'title', entry.title, { id: 'title', }) }}
+			{{ _self.errorList(entry.getErrors('title')) }}
+
+			<label for="programType">program type</label>
+			<select id="programType" name="fields[programType]">
+				{% set field = craft.app.fields.getFieldByHandle('programType') %}
+				{% for option in field.options %}
+					<option value="{{ option.value }}" {% if entry.programType is defined and entry.programType == option.value %} selected {% endif %}>
+						{{ option.label }}
+					</option>
+				{% endfor %}
+			</select>
+			{{ _self.errorList(entry.getErrors('programType')) }}
+
+			<label for="member">additional organizer(s)</label>
+			{% include "components/member-selector.twig" %}
+
+			<label for="date">date</label>
+			{% include "components/event-date-selector.twig" %}
+			{{ _self.errorList(entry.getErrors('date')) }}
+
+			<label for="time">time</label>
+			{% include "components/time-selector-program.twig" with { time: entry.time } %}
+			{{ _self.errorList(entry.getErrors('time')) }}
+
+			<label for="rsvp">rsvp</label>
+			{{ input('text', 'fields[rsvp]', entry.rsvp, { id: 'rsvp', }) }}
+			{{ _self.errorList(entry.getErrors('rsvp')) }}
+
+			<span class="c-editProgram__buttonRow">
+				{% if entries|length >= 3 %}
+					<button type="submit" class="c-editProgram__create disabled" disabled>
+						{% if new %}
+							publish
+						{% else %}
+							save
+						{% endif %}
+					</button>
+				{% else %}
+					<button type="submit" class="c-editProgram__create">
+						{% if new %}
+							publish
+						{% else %}
+							save
+						{% endif %}
+					</button>
+				{% endif %}
+			</span>
+		</form>
+
+	</main>
+
+{% endblock %}

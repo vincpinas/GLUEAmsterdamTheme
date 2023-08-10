@@ -138,7 +138,8 @@
 		}
 
 		if(type == "svg") overlay.setAttributeNS(null, "perserveAspectRatio", "xMidYMid meet");
-		setSVG(overlay, container.offsetWidth, container.offsetHeight)
+
+		if(container) setSVG(overlay, container.offsetWidth, container.offsetHeight);
 
 		window.addEventListener("resize", () => {
 			setSVG(overlay, container.offsetWidth, container.offsetHeight)
