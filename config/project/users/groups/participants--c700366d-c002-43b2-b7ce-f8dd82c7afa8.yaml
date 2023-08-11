@@ -1,3 +1,8 @@
 description: ''
 handle: participants
 name: Participants
+permissions:
+  - 'createentries:9bc06dfa-790d-40dc-b656-17de5c920ef5' # Program
+  - 'deleteentries:9bc06dfa-790d-40dc-b656-17de5c920ef5' # Program
+  - 'saveentries:9bc06dfa-790d-40dc-b656-17de5c920ef5' # Program
+  - 'viewentries:9bc06dfa-790d-40dc-b656-17de5c920ef5' # Program

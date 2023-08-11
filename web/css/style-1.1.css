@@ -36,6 +36,7 @@
   flex-direction: column;
   overflow-x: scroll;
   z-index: 10;
+  overflow-x: hidden;
 }
 @media screen and (max-width: 991px) {
   .c-editMenu {
@@ -1548,6 +1549,10 @@
   color: #ffffff;
   padding: 0.75rem 1.25rem;
 }
+.c-editProgram__info select option, .c-editProgram__form select option {
+  color: #ffffff !important;
+  background-color: rgba(0, 0, 0, 0.6) !important;
+}
 .c-editProgram__info label, .c-editProgram__form label {
   font-family: "Lausanne";
   font-weight: 500;
@@ -2103,4 +2108,4 @@ html label {
   }
 }
 
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=style-1.1.css.map */

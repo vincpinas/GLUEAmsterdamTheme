@@ -5,6 +5,7 @@
     flex-direction: column;
     overflow-x: scroll;
     z-index: $index-2;
+    overflow-x: hidden;
 
     @media #{$tablet-down} {
         flex-direction: row;
