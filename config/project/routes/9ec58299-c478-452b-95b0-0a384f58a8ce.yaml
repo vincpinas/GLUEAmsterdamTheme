@@ -1,0 +1,6 @@
+siteUid: null
+sortOrder: 5
+template: containers/program.twig
+uriParts:
+  - program
+uriPattern: program

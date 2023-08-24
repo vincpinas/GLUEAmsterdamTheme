@@ -30,11 +30,6 @@
             color: $text-primary;
             padding: 0.75rem 1.25rem;
         }
-        
-        select option {
-            color: $text-primary !important;
-            background-color: rgba(black, $alpha: 0.6) !important;
-        }
 
         label {
             @include font--primary(500);

@@ -1,5 +1,5 @@
 siteUid: null
-sortOrder: 6
+sortOrder: 7
 template: containers/register-confirm.twig
 uriParts:
   - sign-up/confirmation

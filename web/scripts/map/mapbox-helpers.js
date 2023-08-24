@@ -4,6 +4,7 @@ export default class MapStateMachine {
         this.markerStyles = JSON.parse(mapElement.dataset.markerStyles)
         this.markers = [];
         this.geoJSON = {};
+        this.filterMethod = "address";
         this.token = token;
         this.mapRef = map;
         this.currentRoute = null;
@@ -24,9 +25,17 @@ export default class MapStateMachine {
         let features = [];
 
         datasetParse.forEach((item) => {
-            let search_string = encodeURIComponent(`${item.postalCode.toUpperCase()}, ${this.city}`);
+            let search_string = encodeURIComponent(`${item.address.toUpperCase()}, ${this.city}`);
             const fetchPromise = fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${search_string}.json?access_token=${this.token}`);
-            fetchPromise.then(response => { return response.json() }).then(data => { features.push(data.features[0]) })
+            fetchPromise.then(response => { return response.json() })
+                .then(data => {
+                    data.features[0].cPost = item.postalCode;
+                    data.features[0].cStreet = item.street;
+                    data.features[0].cAddress = item.address;
+
+                    return data;
+                })
+                .then(result => { features.push(result.features[0]) })
         });
 
         return new Promise((resolve, reject) => {
@@ -62,16 +71,38 @@ export default class MapStateMachine {
                 }
 
                 // Get all features postal codes in array and filter to find out which ones are the same and belong to a "HUB"
-                if(this.hubsCollection.length <= 0) {
-                    const featurePostalCodes = []
-                    features.forEach(feature => featurePostalCodes.push(feature.text))
-                    const duplicates = this.toFindDuplicates(featurePostalCodes)
-                    duplicates.forEach(
-                        duplicate => {
-                            const temp = this.filterFeaturesUsingPost(features, duplicate)
-                            this.hubsCollection.push(temp)
-                        }
-                    )
+                if (this.hubsCollection.length <= 0) {
+                    const featureLocations = []
+                    let duplicates;
+
+                    switch (this.filterMethod) {
+                        case "post":
+                            features.forEach(feature => featureLocations.push(feature.cPost))
+                            duplicates = this.toFindDuplicates(featureLocations)
+                            duplicates.forEach(duplicate => {
+                                const temp = this.filterFeaturesUsingPost(features, duplicate)
+                                this.hubsCollection.push(temp)
+                            })
+                            break;
+                        case "street":
+                            features.forEach(feature => featureLocations.push(feature.cStreet))
+                            duplicates = this.toFindDuplicates(featureLocations)
+                            duplicates.forEach(duplicate => {
+                                const temp = this.filterFeaturesUsingStreet(features, duplicate)
+                                this.hubsCollection.push(temp)
+                            })
+                            break;
+                        case "address":
+                            features.forEach(feature => featureLocations.push(feature.cAddress))
+                            duplicates = this.toFindDuplicates(featureLocations)
+                            duplicates.forEach(duplicate => {
+                                const temp = this.filterFeaturesUsingAddress(features, duplicate)
+                                this.hubsCollection.push(temp)
+                            })
+                            break;
+                        default:
+                            break;
+                    }
                 }
 
                 // Marker creation
@@ -87,21 +118,39 @@ export default class MapStateMachine {
                         el.style.backgroundImage = `url(${this.markerStyles.routeIcon})`
                         temp = new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).addTo(map)
                     } else {
-                        let popupInfo = JSON.parse(this.mapElement.dataset.addresses).filter(
-                            address => marker.place_name.includes(address.postalCode.toUpperCase())
-                        )[0]
+                        let popupInfo
+
+                        switch (this.filterMethod) {
+                            case "post":
+                                popupInfo = JSON.parse(this.mapElement.dataset.addresses).filter(
+                                    address => marker.cPost.toUpperCase().includes(address.postalCode.toUpperCase())
+                                )[0]
+                                break;
+                            case "street":
+                                popupInfo = JSON.parse(this.mapElement.dataset.addresses).filter(
+                                    address => marker.cStreet.toUpperCase().includes(address.street.toUpperCase())
+                                )[0]
+                                break;
+                            case "address":
+                                popupInfo = JSON.parse(this.mapElement.dataset.addresses).filter(
+                                    address => marker.cAddress.toUpperCase().includes(address.address.toUpperCase())
+                                )[0]
+                                break;
+                            default:
+                                break;
+                        }
 
                         if (!popupInfo) return;
 
-                        // Check if marker is a hub to prevent a double marker from being made.
+                        // // Check if marker is a hub to prevent a double marker from being made.
                         let inHub = false;
                         this.hubsCollection.forEach((hub) => {
                             hub.indexOf(marker) > -1 ? inHub = true : false
                         })
-                        if(inHub) return;
-                        
-                        if(popupInfo.founder) el.style.backgroundImage = `url(${this.markerStyles.founderIcon})`;
-                        else if(popupInfo.specialProgram) el.style.backgroundImage = `url(${this.markerStyles.specialProgramIcon})`;
+                        if (inHub) return;
+
+                        if (popupInfo.founder) el.style.backgroundImage = `url(${this.markerStyles.founderIcon})`;
+                        else if (popupInfo.specialProgram) el.style.backgroundImage = `url(${this.markerStyles.specialProgramIcon})`;
                         else el.style.backgroundImage = `url(${this.markerStyles.locationsIcon})`;
 
                         let popup = new mapboxgl.Popup({ offset: 15, maxWidth: "300px" })
@@ -132,7 +181,7 @@ export default class MapStateMachine {
                 // Create hub markers
                 if (!route) {
                     this.hubsCollection.forEach((hub) => {
-                        if(hub.length <= 0) return;
+                        if (hub.length <= 0) return;
                         let currentMarker;
                         let count = 0;
                         let popup = new mapboxgl.Popup({ offset: 15 })
@@ -142,7 +191,7 @@ export default class MapStateMachine {
                         el.className = 'c-map__marker';
                         el.style.width = `${this.markerStyles.size}px`
                         el.style.height = `${this.markerStyles.size * 1.3}px`
-                        if(hub.length < this.hubMinimumCount) el.style.backgroundImage = `url(${this.markerStyles.collectiveIcon})`
+                        if (hub.length < this.hubMinimumCount) el.style.backgroundImage = `url(${this.markerStyles.collectiveIcon})`
                         else el.style.backgroundImage = `url(${this.markerStyles.hubIcon})`;
                         currentMarker = new mapboxgl.Marker(el);
                         currentMarker.cLngLat = hub[0].geometry.coordinates
@@ -150,12 +199,12 @@ export default class MapStateMachine {
                         currentMarker.setLngLat(hub[0].geometry.coordinates)
 
                         hub.forEach(expo => {
-                            let popupFilter = JSON.parse(this.mapElement.dataset.addresses).filter(address => expo.place_name.includes(address.postalCode.toUpperCase()))
+                            let popupFilter = JSON.parse(this.mapElement.dataset.addresses).filter(address => expo.cAddress.toUpperCase().includes(address.postalCode.toUpperCase()))
                             let popupInfo = popupFilter[count]
                             if (!popupInfo) return;
                             currentMarker.cId = popupInfo.id;
 
-                            if(popupInfo.isHub) popupSlides = this.createPopupSlide(popupInfo) + popupSlides;
+                            if (popupInfo.isHub) popupSlides = this.createPopupSlide(popupInfo) + popupSlides;
                             else popupSlides += this.createPopupSlide(popupInfo);
 
                             popupDots += `<figure class='c-map__popupSliderDot' data-index=${count}></figure>`
@@ -245,14 +294,14 @@ export default class MapStateMachine {
         const slides = document.querySelectorAll(`.c-map__popupSlider-${sliderId} .c-map__popupSlide`);
         const dots = document.querySelectorAll('.c-map__popupSliderDot');
         let i;
-        
+
         const createInterval = (dur) => {
             return setInterval(() => {
-                if(i === dots.length-1) i = 0
+                if (i === dots.length - 1) i = 0
                 else i++
 
                 slideTo(i)
-            }, dur)    
+            }, dur)
         }
 
         const resetDots = () => dots.forEach((dot) => dot.classList.remove('active'));
@@ -266,7 +315,7 @@ export default class MapStateMachine {
         const activateDots = (e) => {
             i = e.target.dataset.index;
             slideTo(i);
-            if(this.sliderTimer) clearInterval(this.sliderTimer)
+            if (this.sliderTimer) clearInterval(this.sliderTimer)
             this.sliderTimer = createInterval(this.sliderTimeOut)
         }
 
@@ -277,7 +326,7 @@ export default class MapStateMachine {
         function initSlider(n, classObj) {
             i = n;
             slideTo(n);
-            if(classObj.sliderTimer) clearInterval(classObj.sliderTimer)
+            if (classObj.sliderTimer) clearInterval(classObj.sliderTimer)
             classObj.sliderTimer = createInterval(classObj.sliderTimeOut)
         }
 
@@ -303,7 +352,7 @@ export default class MapStateMachine {
             if (uniqueElements.has(item)) {
                 uniqueElements.delete(item);
             } else {
-                return item;
+                return item.toUpperCase();
             }
         });
 
@@ -333,7 +382,15 @@ export default class MapStateMachine {
 
     // Filter through selected features object using postal code
     filterFeaturesUsingPost = (features, postalCode) => {
-        return features.filter(feature => feature.text === postalCode)
+        return features.filter(feature => feature.cPost.toUpperCase() === postalCode.toUpperCase())
+    }
+
+    filterFeaturesUsingStreet = (features, street) => {
+        return features.filter(feature => feature.cStreet.toUpperCase() === street.toUpperCase())
+    }
+
+    filterFeaturesUsingAddress = (features, address) => {
+        return features.filter(feature => feature.cAddress.toUpperCase() === address.toUpperCase())
     }
 
 
@@ -362,7 +419,6 @@ export default class MapStateMachine {
                 .catch(e => reject(e))
         })
     }
-
 
 
 
@@ -413,13 +469,11 @@ export default class MapStateMachine {
 
 
 
-
     removeRoute = () => {
         if (!this.mapRef.getSource('route')) return;
         this.mapRef.removeLayer('route');
         this.mapRef.removeSource('route');
     }
-
 
 
 
@@ -447,7 +501,6 @@ export default class MapStateMachine {
         this.createMarkers(this.geoJSON.features, this.mapRef, false);
         this.centerMap();
     }
-
 
 
 

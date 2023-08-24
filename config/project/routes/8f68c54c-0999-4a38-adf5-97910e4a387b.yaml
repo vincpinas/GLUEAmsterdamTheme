@@ -1,5 +1,5 @@
 siteUid: null
-sortOrder: 8
+sortOrder: 9
 template: containers/password-forget
 uriParts:
   - password-forget

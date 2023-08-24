@@ -76,6 +76,18 @@
     }
 }
 
+@mixin h6 {
+    @include font-size($font-size--h6);
+    @include font--primary();
+    line-height: #{$line-height--h6}px;
+    margin-bottom: 2.5rem;
+
+    @media #{$mobile-down} {
+        @include font-size($s-font-size--h6);
+        line-height: #{$s-line-height--h6}px;
+    }
+}
+
 @mixin paragraph {
     @include font-size($font-size--paragraph);
     @include font--primary();

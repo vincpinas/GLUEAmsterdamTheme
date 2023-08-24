@@ -1,0 +1,201 @@
+.c-program {
+    display: flex;
+    flex-direction: column;
+    padding: 0rem 10rem;
+
+    @media #{$mobile-down} {
+        padding: 0rem 2rem;
+    }
+
+    &__menu {
+        display: flex;
+        flex-direction: row-reverse;
+        position: relative;
+        flex-wrap: wrap;
+        z-index: $index-3;
+
+        @media #{$mobile-down} {
+            justify-content: center;
+        }
+
+        & > * {
+            margin-right: 1rem;
+
+            @media #{$mobile-down} {
+                margin-right: 0;
+            }
+        }
+
+        input, select {
+            background: none;
+            border: 1px solid $text-primary;
+            color: $text-primary;
+            padding: 0.5rem 1.25rem;
+        }
+
+        button:hover {
+            background: $text-primary;
+            color: $special-primary;
+        }
+
+        &Search {
+            border: none !important;
+            border-bottom: 1px solid $text-primary !important;
+            min-width: 10rem;
+
+            @media #{$mobile-down} {
+                min-width: 13.75rem;
+            }
+        }
+
+        &SearchWrapper {
+            position: relative;
+            display: flex;
+        }
+
+        &SearchWrapper ion-icon {
+            position: absolute;
+            top: 0.6rem;
+            left: 0;
+            font-size: 1.1em;
+        }
+
+        &FilterWrapper {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        &Filter {
+            @include gbutton;
+            font-size: 1.2em;
+            padding: 0.5rem 2rem;
+            transition: $transition-fast;
+
+            @media #{$mobile-down} {
+                margin-right: 1rem;
+            }
+        }
+
+        &Filters {
+            top: 100%;
+            width: 150%;
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+            border: 1px solid $text-primary;
+            padding: 0.5rem;
+            background: $special-primary;
+            @include font--primary();
+        }
+
+        &Filters.active {
+            pointer-events: all;
+            opacity: 1;
+        }
+
+        &Filters label input {
+            margin-right: 0.5rem;
+        }
+
+        #date {
+            margin-right: 0;
+        }
+    }
+
+    &__entries {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        margin-top: 5rem;
+    }
+
+    &__entry {
+        position: relative;
+        overflow: hidden;
+        min-height: 15rem;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid $text-primary;
+
+        &:not(:last-of-type) {
+            border-bottom: none;
+        }
+
+        h2, h3, h4, h5, h6 {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+
+            @media #{$mobile-down} {
+                margin-bottom: 0;
+            }
+        }
+
+        h2 span {
+            margin-right: 0.5rem;
+            display: flex;
+
+            @media #{$mobile-down} {
+                display: none;
+            }
+        }
+
+        &Background {
+            width: 100%;
+            position: absolute;
+        }
+
+        &Info {
+            margin: 0;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            padding: 0.5rem 5rem;
+            transition: $transition-fast;
+            background-color: rgba($special-primary, $alpha: 0.4);
+
+            @media #{$mobile-down} {
+                padding: 0.5rem;
+            }
+        }
+
+        &Info:hover {
+            background: $text-primary;
+        }
+
+        &OrganizersWrapper {
+            display: flex;
+            align-items: start;
+        }
+
+        &OrganizersWrapper h3 {
+            margin-right: 1rem;
+        }
+
+        &Organizers {
+            margin-top: 0.25rem;
+            display: flex;
+            flex-direction: column;
+            @include label;
+            @include font--primary();
+            margin-bottom: 1rem;
+        }
+
+        &Organizers h5 {
+            font-weight: 800;
+        }
+    }
+
+    &__entryInfo:hover {
+        h2, h3, h4, h5, h6, p, li {
+            color: $special-primary;
+        }
+    }
+}

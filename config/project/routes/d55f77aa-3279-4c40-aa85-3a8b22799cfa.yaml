@@ -1,5 +1,5 @@
 siteUid: null
-sortOrder: 7
+sortOrder: 8
 template: containers/password-reset.twig
 uriParts:
   - password-reset

@@ -13,6 +13,7 @@
 
 {% set entry = entry ?? create('craft\\elements\\Entry') %}
 {% set section = craft.entries().section('program') %}
+{% set thumbnail = entry.thumbnail ? entry.thumbnail.all() : null %}
 
 {% block content %}
 
@@ -26,7 +27,7 @@
 			{% endif %}
 		{% endmacro %}
 
-		<form method="post" accept-charset="UTF-8" class="c-editProgram__form">
+		<form method="post" accept-charset="UTF-8" enctype="multipart/form-data" class="c-editProgram__form">
 
 			<h2>{{ new ? "new" : "edit" }}
 				entry</h2>
@@ -41,6 +42,27 @@
 			<label for="title">title</label>
 			{{ input('text', 'title', entry.title, { id: 'title', }) }}
 			{{ _self.errorList(entry.getErrors('title')) }}
+
+			<label class="c-edit__formLabel">
+				thumbnail
+				<span class="c-edit__featuredImageContainer">
+					<span class="c-edit__featuredImageOverlay">
+						<ion-icon name="pencil"></ion-icon>
+					</span>
+					{{ input('file', 'fields[thumbnail][]', null, { id: 'thumbnail', accept: 'image/png,image/jpeg', }) }}
+					{% if thumbnail and thumbnail[0] %}
+						<img src="{{ thumbnail[0].url }}" alt="Program Thumbnail">
+					{% else %}
+						<img src="" alt="Program Thumbnail">
+					{% endif %}
+					<p>
+						<ion-icon name="cloud-upload"></ion-icon><br>
+						Drag a file here or
+						<u>Browse</u>
+					</p>
+				</span>
+				<div class="c-edit__featuredImageList"></div>
+			</label>
 
 			<label for="programType">program type</label>
 			<select id="programType" name="fields[programType]">
@@ -69,7 +91,7 @@
 			{{ _self.errorList(entry.getErrors('rsvp')) }}
 
 			<span class="c-editProgram__buttonRow">
-				{% if entries|length >= 3 %}
+				{% if entries|length >= 6 %}
 					<button type="submit" class="c-editProgram__create disabled" disabled>
 						{% if new %}
 							publish
@@ -91,4 +113,17 @@
 
 	</main>
 
+{% endblock %}
+
+{% block javascripts %}
+	<script>
+		const submit = document.querySelector("button[type=submit]")
+const featuredImageInput = document.querySelector("input[type='file']");
+const featuredImage = document.querySelector(".c-edit__featuredImageContainer img");
+
+featuredImageInput.addEventListener("change", (e) => {
+const file = e.target.files[0]
+featuredImage.src = URL.createObjectURL(file)
+})
+	</script>
 {% endblock %}

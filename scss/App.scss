@@ -11,6 +11,7 @@
 @import "Containers/503.scss";
 @import "Containers/Edit-Page.scss";
 @import "Containers/Edit-Program.scss";
+@import "Containers/Program.scss";
 @import "Containers/Account.scss";
 @import "Containers/Password-Reset.scss";
 @import "Containers/Password-Forget.scss";
@@ -104,6 +105,11 @@ html {
     display: flex;
     flex-direction: column;
 
+    select option {
+        color: $text-primary !important;
+        background-color: darken($special-primary, 5%) !important;
+    }
+
     a,
     button,
     input[type="submit"] {
@@ -137,6 +143,10 @@ html {
 
     h5 {
         @include h5;
+    }
+
+    h6 {
+        @include h6;
     }
 
     p {
