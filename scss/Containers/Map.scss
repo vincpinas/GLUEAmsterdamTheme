@@ -61,11 +61,15 @@ $mapheight: calc(100vh - 5.5rem);
             transition: transform 0.8s;
         }
 
+
+        $dot_height: 0.9rem;
+
         &Dot {
-            width: 0.5rem;
-            height: 0.5rem;
-            background-color: $special-primary;
+            width: $dot_height;
+            height: $dot_height;
+            background-color: lighten($special-primary, 10%);
             transition: $transition-fast;
+            cursor: pointer;
         }
 
         &Dot:not(:last-of-type) {
@@ -73,8 +77,10 @@ $mapheight: calc(100vh - 5.5rem);
         }
 
         &Dot.active {
-            height: 0.5rem;
-            width: 1rem;
+            background-color: lighten($special-primary, 40%);
+            transition: $transition-fast;
+            height: $dot_height;
+            width: calc($dot_height + 0.45rem);
         }
     }
 

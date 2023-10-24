@@ -14,13 +14,13 @@
 		<div class="c-editProgram__info">
 			<h2>program entries</h2>
 			<p>Any changes you make here will appear on
-				<a href="https://members.glue.amsterdam/program">members.glue.amsterdam/program</a></p>
+				<a href="{{ siteUrl }}program">{{ siteUrl }}program</a></p>
 
 			<ul class="c-editProgram__entries">
 
 				{% for entry in entries %}
 					<li class="c-editProgram__entry">
-						<a href="/edit-program/{{ entry.id }}">
+						<a href="{{ siteUrl }}edit-program/{{ entry.id }}">
 							<h3>{{ entry.title }}</h3>
 							<p>
 								<span>{{ entry.programType.label }}</span>
@@ -47,7 +47,7 @@
 					Create New
 				</button>
 			{% else %}
-				<a href="/edit-program/new" class="c-editProgram__create">create new</a>
+				<a href="{{ siteUrl }}edit-program/new" class="c-editProgram__create">create new</a>
 			{% endif %}
 		</span>
 	</div>

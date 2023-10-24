@@ -19,7 +19,7 @@
 
 {% set locked = true %}
 {% set break = false %}
-{% set myUserQuery = craft.users().group('participants').status('active') %}
+{% set myUserQuery = craft.users().group('participants').status('active').city(map.city|lower) %}
 {% set users = myUserQuery.all() %}
 {% set addresses = [] %}
 {% set cId = random() %}
@@ -64,7 +64,7 @@
 
 		{% for unique in addresses %}
 			{% if not break %}
-				{% if unique.postalCode == user.mapPostalCode %}
+				{% if unique.address == user.mapAddress ~ ", " ~ user.mapPostalCode %}
 					{% set cId = unique.id %}
 					{% set hubIDs = hubIDs|merge([unique.id]) %}
 					{% set break = true %}
@@ -158,6 +158,7 @@
 								{% set maproute = [{
 						fullName: currentuser.fullName,
 						postalCode: currentuser.mapPostalCode,
+						address: currentuser.mapAddress ~ ", " ~ currentuser.mapPostalCode,
 						username: currentuser.username,
 					}] %}
 								{% set currentroute = currentroute|merge(maproute) %}
@@ -339,7 +340,18 @@
 				</ol>
 			</li>
 		</ul>
-		<div class="c-map" id="map" data-addresses="{{ addresses|json_encode }}" data-token="{{ map.token }}" data-styles="{{ map.stylesheet }}" data-marker-styles="{{ markerstyles|json_encode }}" data-zoom="{{ map.mapZoom }}" data-pitch="{{ map.mapPitch }}" data-bearing="{{ map.mapBearing }}" data-hub-minimum-count="{{ map.hubMinimumCount }}" data-city="{{ map.city }}"></div>
+		<div class="c-map" id="map" 
+			 data-addresses="{{ addresses|json_encode }}"
+			 data-token="{{ map.token }}"
+			 data-styles="{{ map.stylesheet }}"
+			 data-marker-styles="{{ markerstyles|json_encode }}"
+			 data-zoom="{{ map.mapZoom }}"
+			 data-pitch="{{ map.mapPitch }}"
+			 data-bearing="{{ map.mapBearing }}"
+			 data-hub-minimum-count="{{ map.hubMinimumCount }}"
+			 data-city="{{ map.city }}"
+			 data-centre="{{ [map.mapCentre.one().lng, map.mapCentre.one().lat]|json_encode }}"
+		></div>
 	</main>
 {% endblock %}
 

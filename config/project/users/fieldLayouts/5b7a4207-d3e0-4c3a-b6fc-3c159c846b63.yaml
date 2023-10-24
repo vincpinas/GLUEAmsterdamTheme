@@ -8,13 +8,13 @@ tabs:
           operator: in
           uid: 4979d50b-6427-4a34-af1b-1feaa503923c
           values:
-            - c700366d-c002-43b2-b7ce-f8dd82c7afa8 # Participants
+            - c700366d-c002-43b2-b7ce-f8dd82c7afa8
       elementType: craft\elements\User
       fieldContext: global
     elements:
       -
         elementCondition: null
-        fieldUid: f0917fc5-6089-45ec-a4e2-c442ce4726a2 # Package
+        fieldUid: f0917fc5-6089-45ec-a4e2-c442ce4726a2
         instructions: null
         label: null
         required: false
@@ -26,7 +26,7 @@ tabs:
         width: 100
       -
         elementCondition: null
-        fieldUid: 164bc9a4-5b57-4fb1-b7e2-9fb883aebc34 # Phone number
+        fieldUid: 164bc9a4-5b57-4fb1-b7e2-9fb883aebc34
         instructions: null
         label: null
         required: false
@@ -38,7 +38,7 @@ tabs:
         width: 100
       -
         elementCondition: null
-        fieldUid: e3480c4d-8e7a-4311-af43-7a686e25d7a0 # Website
+        fieldUid: e3480c4d-8e7a-4311-af43-7a686e25d7a0
         instructions: null
         label: null
         required: false
@@ -50,7 +50,7 @@ tabs:
         width: 100
       -
         elementCondition: null
-        fieldUid: 0edc21c7-41ec-4128-97f9-48fdbc7a3f31 # Instagram
+        fieldUid: 0edc21c7-41ec-4128-97f9-48fdbc7a3f31
         instructions: null
         label: null
         required: false
@@ -62,7 +62,7 @@ tabs:
         width: 100
       -
         elementCondition: null
-        fieldUid: d7f79a98-5851-4ca8-8097-74672ff95134 # Facebook
+        fieldUid: d7f79a98-5851-4ca8-8097-74672ff95134
         instructions: null
         label: null
         required: false
@@ -74,7 +74,7 @@ tabs:
         width: 100
       -
         elementCondition: null
-        fieldUid: 623f54ba-640b-4690-bb9d-fffae8471ed9 # Twitter
+        fieldUid: 623f54ba-640b-4690-bb9d-fffae8471ed9
         instructions: null
         label: null
         required: false
@@ -86,7 +86,7 @@ tabs:
         width: 100
       -
         elementCondition: null
-        fieldUid: 85b7a402-007c-4598-b380-2ed317ce08bc # LinkedIn
+        fieldUid: 85b7a402-007c-4598-b380-2ed317ce08bc
         instructions: null
         label: null
         required: false
@@ -108,13 +108,13 @@ tabs:
           operator: in
           uid: 968f0bc8-c9b1-4569-9a39-901c6b7f54a4
           values:
-            - c700366d-c002-43b2-b7ce-f8dd82c7afa8 # Participants
+            - c700366d-c002-43b2-b7ce-f8dd82c7afa8
       elementType: craft\elements\User
       fieldContext: global
     elements:
       -
         elementCondition: null
-        fieldUid: 9cf5f394-9490-4101-bdc7-5f09654f53e7 # Thumbnail
+        fieldUid: 9cf5f394-9490-4101-bdc7-5f09654f53e7
         instructions: 'Thumbnail for the user displayed on both their public profile and the map'
         label: null
         required: false
@@ -126,7 +126,7 @@ tabs:
         width: 100
       -
         elementCondition: null
-        fieldUid: bcc4aab8-13e9-4efc-a464-78c59170a854 # Large Text Field
+        fieldUid: bcc4aab8-13e9-4efc-a464-78c59170a854
         instructions: 'Text descriptive of the participant'
         label: 'Profile text'
         required: false
@@ -138,7 +138,7 @@ tabs:
         width: 100
       -
         elementCondition: null
-        fieldUid: 0135bceb-e438-4587-afb0-58be11f4b6ec # Opening Times
+        fieldUid: 0135bceb-e438-4587-afb0-58be11f4b6ec
         instructions: null
         label: null
         required: false
@@ -160,13 +160,25 @@ tabs:
           operator: in
           uid: c43e401d-b92d-4377-8cdf-226c37e3d511
           values:
-            - c700366d-c002-43b2-b7ce-f8dd82c7afa8 # Participants
+            - c700366d-c002-43b2-b7ce-f8dd82c7afa8
       elementType: craft\elements\User
       fieldContext: global
     elements:
       -
         elementCondition: null
-        fieldUid: 20650a18-d4f6-482d-8d9e-6e0c30e087a7 # Venue
+        fieldUid: 2e1ecccd-c3ca-4249-b239-5faa3edb6606
+        instructions: null
+        label: null
+        required: false
+        tip: null
+        type: craft\fieldlayoutelements\CustomField
+        uid: 7398059d-e757-45c1-8458-ecf656f9cc25
+        userCondition: null
+        warning: null
+        width: 100
+      -
+        elementCondition: null
+        fieldUid: 20650a18-d4f6-482d-8d9e-6e0c30e087a7
         instructions: null
         label: null
         required: false
@@ -178,7 +190,7 @@ tabs:
         width: 100
       -
         elementCondition: null
-        fieldUid: cd1f3a93-b4a0-445b-97ab-b378129dbb74 # Map Address
+        fieldUid: cd1f3a93-b4a0-445b-97ab-b378129dbb74
         instructions: null
         label: null
         required: false
@@ -190,7 +202,7 @@ tabs:
         width: 100
       -
         elementCondition: null
-        fieldUid: 49d0005e-81de-4029-985b-30b90f013162 # Map PostalCode
+        fieldUid: 49d0005e-81de-4029-985b-30b90f013162
         instructions: null
         label: null
         required: false
@@ -212,13 +224,13 @@ tabs:
           operator: in
           uid: 8aa656da-65d2-4fca-b598-9687b08a543b
           values:
-            - c700366d-c002-43b2-b7ce-f8dd82c7afa8 # Participants
+            - c700366d-c002-43b2-b7ce-f8dd82c7afa8
       elementType: craft\elements\User
       fieldContext: global
     elements:
       -
         elementCondition: null
-        fieldUid: afaddf10-8b46-42cc-a4c2-3842de0d8fe2 # Company name
+        fieldUid: afaddf10-8b46-42cc-a4c2-3842de0d8fe2
         instructions: null
         label: null
         required: false
@@ -230,7 +242,7 @@ tabs:
         width: 100
       -
         elementCondition: null
-        fieldUid: 455ecd20-d076-49c7-8fc6-57888147a961 # Zip
+        fieldUid: 455ecd20-d076-49c7-8fc6-57888147a961
         instructions: null
         label: null
         required: false
@@ -242,7 +254,7 @@ tabs:
         width: 100
       -
         elementCondition: null
-        fieldUid: 51bd5b4e-75c4-42a1-b1b5-1827613ecaef # Address
+        fieldUid: 51bd5b4e-75c4-42a1-b1b5-1827613ecaef
         instructions: null
         label: null
         required: false
@@ -254,7 +266,7 @@ tabs:
         width: 100
       -
         elementCondition: null
-        fieldUid: 830820ed-79d9-4d46-9e86-4134fc2b8d2b # Country
+        fieldUid: 830820ed-79d9-4d46-9e86-4134fc2b8d2b
         instructions: null
         label: null
         required: false
@@ -266,7 +278,7 @@ tabs:
         width: 100
       -
         elementCondition: null
-        fieldUid: f46c926b-268c-4328-ad61-180b55bea62e # City
+        fieldUid: f46c926b-268c-4328-ad61-180b55bea62e
         instructions: null
         label: null
         required: false
@@ -278,7 +290,7 @@ tabs:
         width: 100
       -
         elementCondition: null
-        fieldUid: 3f956c2c-f1e6-4abf-abc1-517adbbd0e3d # VAT
+        fieldUid: 3f956c2c-f1e6-4abf-abc1-517adbbd0e3d
         instructions: null
         label: null
         required: false
@@ -298,48 +310,48 @@ tabs:
         -
           class: craft\elements\conditions\users\GroupConditionRule
           operator: in
-          uid: 9102a38a-4079-472d-92b7-5f66bc732ad6
+          uid: d1a88ab3-8e1b-4f24-bc91-ea0279734189
           values:
-            - c6635e8d-466b-4c83-a690-b8d9596ed2ee # Guests
+            - c6635e8d-466b-4c83-a690-b8d9596ed2ee
       elementType: craft\elements\User
       fieldContext: global
     elements:
       -
         elementCondition: null
-        fieldUid: 425e9499-b42c-4458-b1a8-07a316d4e328 # Profession
+        fieldUid: 425e9499-b42c-4458-b1a8-07a316d4e328
         instructions: null
         label: null
         required: false
         tip: null
         type: craft\fieldlayoutelements\CustomField
-        uid: a53ce284-c973-4139-b51f-6fe6b925a320
+        uid: cbc0a6cb-4799-4a87-8eba-2b0923afdae2
         userCondition: null
         warning: null
         width: 100
       -
         elementCondition: null
-        fieldUid: 143e2045-0511-4445-8b26-cda06d142159 # Age Group
+        fieldUid: 143e2045-0511-4445-8b26-cda06d142159
         instructions: null
         label: null
         required: false
         tip: null
         type: craft\fieldlayoutelements\CustomField
-        uid: b6475735-75c6-44f2-9a5f-20362c2e4f8e
+        uid: 7a33ba73-c61a-480d-8c9c-fcee20cecadf
         userCondition: null
         warning: null
         width: 100
       -
         elementCondition: null
-        fieldUid: a048000e-e0dc-476a-b101-76110a53ebe6 # Marketing Permissions
+        fieldUid: a048000e-e0dc-476a-b101-76110a53ebe6
         instructions: null
         label: null
         required: false
         tip: null
         type: craft\fieldlayoutelements\CustomField
-        uid: 1fb3e8df-1eb8-4f95-8c5d-777b38c46821
+        uid: 3edf60de-a9c6-4bbd-b3f6-c67792db4b13
         userCondition: null
         warning: null
         width: 100
     name: 'Guest Data'
-    uid: 47f4c1fa-76ff-4619-86ca-6c5f4c13e4ac
+    uid: 93b82fa1-f7c5-4554-a043-d067a414a4e7
     userCondition: null

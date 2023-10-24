@@ -25,7 +25,9 @@
 		<div class="c-edit__formWrapper">
 			<form method="post" accept-charset="UTF-8" enctype="multipart/form-data" class="c-edit__form">
 				<h2>public page</h2>
-				<p>Any changes you make here will appear on <a href="/{{ user.fullName|replace({' ': "-"}) }}">your dedicated page</a></p>
+				<p>Any changes you make here will appear on
+					<a href="{{ siteUrl }}{{ user.fullName|replace({' ': "-"}) }}">your dedicated page</a>
+				</p>
 
 				{{ csrfInput() }}
 				{{ actionInput('users/save-user') }}
@@ -51,8 +53,7 @@
 							<u>Browse</u>
 						</p>
 					</span>
-					<div class="c-edit__featuredImageList">
-					</div>
+					<div class="c-edit__featuredImageList"></div>
 				</label>
 
 				{# Company Name #}
@@ -61,18 +62,32 @@
 					{{ input('text', 'fullName', user.fullName, { id: 'full-name', autocomplete: 'name', }) }}
 				</label>
 
+
 				{# Map Information #}
+				<h3>map location</h3>
 				<span class="c-edit__formInputRow">
 					<label for="fields[venue]" class="c-edit__formLabel">
-						venue
-						{{ input('text', 'fields[venue]', user.venue, { id: 'mapAddress' }) }}
+						city
+						<select name="fields[city]" id="mapCity">
+							{% for location in event.locations %}
+								<option value="{{ location.location }}" {% if location.location|lower == user.city|lower %} selected {% endif %}>
+									{{ location.location }}
+								</option>
+							{% endfor %}
+						</select>
 					</label>
+					<label for="fields[venue]" class="c-edit__formLabel">
+						venue
+						{{ input('text', 'fields[venue]', user.venue, { id: 'mapVenue' }) }}
+					</label>
+				</span>
+				<span class="c-edit__formInputRow">
 					<label for="fields[mapAddress]" class="c-edit__formLabel">
-						map address
+						address
 						{{ input('text', 'fields[mapAddress]', user.mapAddress, { id: 'mapAddress' }) }}
 					</label>
 					<label for="mapPostalCode" class="c-edit__formLabel">
-						map postal code
+						postal code
 						{{ input('text', 'fields[mapPostalCode]', user.mapPostalCode, { id: 'mapPostalCode', autocomplete: 'off' }) }}
 					</label>
 				</span>
@@ -134,7 +149,7 @@
 
 
 				<span class="c-edit__formInputRow options">
-					<a href="/{{ user.fullName|replace({' ': "-"}) }}">View page</a>
+					<a href="{{ siteUrl }}{{ user.fullName|replace({' ': "-"}) }}">View page</a>
 					<button type="submit" class="c-edit__formSubmit disabled" disabled>Save changes</button>
 				</span>
 			</form>
@@ -147,9 +162,9 @@
 
 {% block javascripts %}
 	<script>
-	const submit = document.querySelector("button[type=submit]")
-	const featuredImageInput = document.querySelector("input[type='file']");
-	const featuredImage = document.querySelector(".c-edit__featuredImageContainer img");
+		const submit = document.querySelector("button[type=submit]")
+const featuredImageInput = document.querySelector("input[type='file']");
+const featuredImage = document.querySelector(".c-edit__featuredImageContainer img");
 
 featuredImageInput.addEventListener("change", (e) => {
 const file = e.target.files[0]
@@ -158,13 +173,17 @@ featuredImage.src = URL.createObjectURL(file)
 
 const setCharacterCount = (counter, character_count, max_count, suffix) => {
 if (character_count.length > max_count) {
-	counter.innerHTML = `<span class="red">${character_count.length} / ${suffix}</span>`;
-	submit.disabled = true;
-	submit.classList.add("disabled")
+counter.innerHTML = `<span class="red">${
+character_count.length
+} / ${suffix}</span>`;
+submit.disabled = true;
+submit.classList.add("disabled")
 } else {
-	counter.innerHTML = `${character_count.length} / ${suffix}`;
-	submit.disabled = false;
-	submit.classList.remove("disabled")
+counter.innerHTML = `${
+character_count.length
+} / ${suffix}`;
+submit.disabled = false;
+submit.classList.remove("disabled")
 }
 
 }
@@ -182,11 +201,13 @@ if (typeof checkCondition !== "undefined" && !checkCondition)
 return;
 
 
+
 const label = document.querySelector(labelSelector);
 const error = document.querySelector (`${labelSelector} .c-edit__formError`)
 
 if (condition && error) 
 error.remove();
+
 
 
 // If both the condition is not fullfilled and there is no current error message then create a new error message.
@@ -197,6 +218,10 @@ error.innerHTML = errorMessage;
 
 if (label) 
 label.appendChild(error)
+
+
+
+
 
 return false;
 }
@@ -229,6 +254,5 @@ submit.classList.remove("disabled")
 submit.disabled = true
 submit.classList.add("disabled")
 }
-
 	</script>
 {% endblock %}

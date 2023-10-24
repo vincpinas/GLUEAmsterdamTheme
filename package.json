@@ -4,6 +4,8 @@
     "sass": "^1.60.0"
   },
   "scripts": {
-    "watch": "sass --watch scss/App.scss:web/css/style-1.2.1.css"
+    "watch": "sass --watch scss/App.scss:web/css/style-1.2.1.css",
+    "dev": "colima start && ddev start && sass --watch scss/App.scss:web/css/style-1.2.1.css",
+    "stop": "colima stop"
   }
 }

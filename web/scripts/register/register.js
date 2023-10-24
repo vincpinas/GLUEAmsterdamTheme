@@ -36,7 +36,7 @@ class Register {
                 r && r.package && r.email && r.password && r.company_name ? null : location.replace(`${this.registerBaseUrl}/1`);
                 break;
             case 5:
-                r && r.package && r.email && r.password && r.company_name && r.map_address && r.map_postalCode ? null : location.replace(`${this.registerBaseUrl}/1`);
+                r && r.package && r.email && r.password && r.company_name && r.map_address && r.map_postalCode && r.map_city ? null : location.replace(`${this.registerBaseUrl}/1`);
                 break;
 
             default:
@@ -88,6 +88,8 @@ class Register {
                 params.append("fields[invoiceCountry]", storage.invoice_country)
                 params.append("fields[mapAddress]", storage.map_address)
                 params.append("fields[mapPostalCode]", storage.map_postalCode)
+                params.append("fields[city]", storage.map_city)
+                params.append("fields[venue]", storage.map_venue)
 
                 return fetch('/actions/users/save-user', {
                     method: 'POST',
@@ -273,7 +275,9 @@ class Register {
             const reg_obj = {
                 ...storage,
                 map_address: document.querySelector("#mapaddress").value.trim(),
-                map_postalCode: document.querySelector("#mappostalcode").value.trim()
+                map_postalCode: document.querySelector("#mappostalcode").value.trim(),
+                map_venue: document.querySelector("#mapvenue").value.trim(),
+                map_city: document.querySelector("#mapcity").value.trim()
             }
             sessionStorage.setItem("reg_obj", JSON.stringify(reg_obj))
         }
@@ -285,18 +289,34 @@ class Register {
         const storage = JSON.parse(sessionStorage.getItem("reg_obj"))
         const address = document.querySelector("#mapaddress")
         const postalCode = document.querySelector("#mappostalcode")
+        const venue = document.querySelector("#mapvenue")
+        const city = document.querySelector("#mapcity")
         const validated_fields = [address, postalCode];
 
         if (storage.map_address) address.value = storage.map_address;
         if (storage.map_postalCode) postalCode.value = storage.map_postalCode;
+        if (storage.map_venue) venue.value = storage.map_venue;
+        if (storage.map_city) city.value = storage.map_city;
 
         const validateContinue = (firstRun = false) => {
             const continueButton = document.querySelector(".c-register__formContinue");
-            const regex = /(\d{4})([ ])([A-Z]{2})/
+            let regex
 
             if (!firstRun) {
                 validateFormField(".c-register__formLabel[for='mapaddress']", "Valid address is required", address.value.length > 2, address.value.length > 0)
-                validateFormField(".c-register__formLabel[for='mappostalcode']", "Valid Dutch postal code is required", regex.test(postalCode.value) && postalCode.value.length === 7, postalCode.value.length > 0)
+                console.log(city.value)
+                switch (city.value) {
+                    case "Amsterdam":
+                        regex = /(\d{4})([ ])([A-Z]{2})/
+                        validateFormField(".c-register__formLabel[for='mappostalcode']", "Please fill in a valid postal code for your city", regex.test(postalCode.value) && postalCode.value.length === 7, postalCode.value.length > 0)
+                        break;
+                    case "Dallas":
+                        regex = /(\d{5})/
+                        validateFormField(".c-register__formLabel[for='mappostalcode']", "Please fill in a valid postal code for your city", regex.test(postalCode.value) && postalCode.value.length === 5, postalCode.value.length > 0)
+                        break;
+
+                    default: break;
+                }
             }
 
             if (address.value.length > 2 && regex.test(postalCode.value)) {

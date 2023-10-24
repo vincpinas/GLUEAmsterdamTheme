@@ -1,0 +1,10 @@
+<span class="c-edit__formTimeRow">
+	<span>
+		<p>From:</p>
+		{% include "components/time-selector.twig" with { row: row, col: 1, selector_type: "from" } %}
+	</span>
+	<span>
+		<p>To:</p>
+		{% include "components/time-selector.twig" with { row: row, col: 2, selector_type: "to" } %}
+	</span>
+</span>

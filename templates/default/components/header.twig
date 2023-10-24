@@ -12,8 +12,8 @@
 	
 	{% if currentUser and currentUser.isInGroup('participants') %}
 		<span class="c-header__links">
-			<a href="/edit-page">Account</a>
-			<a href="/logout">Logout</a>
+			<a href="{{ siteUrl }}edit-page">Account</a>
+			<a href="{{ siteUrl }}logout">Logout</a>
 		</span>
 	{% endif %}
 

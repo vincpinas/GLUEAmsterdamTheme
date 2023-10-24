@@ -52,6 +52,7 @@ class Program {
             const info_wrapper = document.createElement("a")
             info_wrapper.className = "c-program__entryInfo"
             info_wrapper.href = this.getRsvp(entry.rsvp);
+            info_wrapper.target = "_blank"
 
             const title = document.createElement("h2");
             title.innerHTML = `<span>${this.getIcon(entry.type.value)} - </span>${entry.title}`

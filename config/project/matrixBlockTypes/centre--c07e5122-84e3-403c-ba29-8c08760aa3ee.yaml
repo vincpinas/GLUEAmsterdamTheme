@@ -1,0 +1,78 @@
+field: 41bce798-33f6-4c59-9ccb-7cce0cc31032
+fieldLayouts:
+  c4956e76-c6c8-4753-87fe-23aaf5daa566:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 2b961231-2dab-4aa1-bb8b-a8aae19bf22f
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e3a0d8ec-7051-48fd-952b-e3d4d53d0492
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 6b9c8402-39e7-4103-b54e-394a286410b8
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d20a4917-3cd3-42df-b51c-d21f4d75fd86
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 86fd9083-8c73-455f-b7a2-765a3bcab910
+        userCondition: null
+fields:
+  2b961231-2dab-4aa1-bb8b-a8aae19bf22f:
+    columnSuffix: yijtuysv
+    contentColumnType: text
+    fieldGroup: null
+    handle: lng
+    instructions: null
+    name: Lng
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: false
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  6b9c8402-39e7-4103-b54e-394a286410b8:
+    columnSuffix: dcbkupqt
+    contentColumnType: text
+    fieldGroup: null
+    handle: lat
+    instructions: null
+    name: Lat
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: false
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+handle: centre
+name: Centre
+sortOrder: 1

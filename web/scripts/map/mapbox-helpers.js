@@ -29,13 +29,31 @@ export default class MapStateMachine {
             const fetchPromise = fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${search_string}.json?access_token=${this.token}`);
             fetchPromise.then(response => { return response.json() })
                 .then(data => {
-                    data.features[0].cPost = item.postalCode;
-                    data.features[0].cStreet = item.street;
-                    data.features[0].cAddress = item.address;
+                    let selected;
 
-                    return data;
+                    if (this.featureSelector(data.features, item.street, "address")) {
+                        selected = this.featureSelector(data.features, item.street, "address")
+                    }
+                    else if (this.featureSelector(data.features, item.street, "postcode")) {
+                        selected = this.featureSelector(data.features, item.street, "postcode")
+                    } 
+                    else if (this.featureSelector(data.features, item.postalCode, "address")) {
+                        selected = this.featureSelector(data.features, item.postalCode, "address")
+                    }
+                    else if (this.featureSelector(data.features, item.postalCode, "postcode")) {
+                        selected = this.featureSelector(data.features, item.postalCode, "postcode")
+                    }
+                    else {
+                        selected = data.features[0]
+                    }
+
+                    selected.cPost = item.postalCode;
+                    selected.cStreet = item.street;
+                    selected.cAddress = item.address;
+
+                    return selected;
                 })
-                .then(result => { features.push(result.features[0]) })
+                .then(result => { features.push(result) })
         });
 
         return new Promise((resolve, reject) => {
@@ -199,7 +217,7 @@ export default class MapStateMachine {
                         currentMarker.setLngLat(hub[0].geometry.coordinates)
 
                         hub.forEach(expo => {
-                            let popupFilter = JSON.parse(this.mapElement.dataset.addresses).filter(address => expo.cAddress.toUpperCase().includes(address.postalCode.toUpperCase()))
+                            let popupFilter = JSON.parse(this.mapElement.dataset.addresses).filter(address => expo.cAddress.toUpperCase().includes(address.address.toUpperCase()))
                             let popupInfo = popupFilter[count]
                             if (!popupInfo) return;
                             currentMarker.cId = popupInfo.id;
@@ -366,7 +384,7 @@ export default class MapStateMachine {
 
         return new Promise((resolve, reject) => {
             route.forEach((item) => {
-                let temp = this.geoJSON.features.filter(location => location.place_name.includes(item.postalCode.toUpperCase()));
+                let temp = this.geoJSON.features.filter(feature => feature.cAddress.toUpperCase() === item.address.toUpperCase());
                 if (temp && temp.length > 0) directions.push(temp[0].center);
             });
 
@@ -393,6 +411,10 @@ export default class MapStateMachine {
         return features.filter(feature => feature.cAddress.toUpperCase() === address.toUpperCase())
     }
 
+
+    featureSelector(features, compare, type) {
+        return features.filter(feature => feature.place_name.toUpperCase().includes(compare.toUpperCase()) && feature.place_type[0] == type)[0]
+    }
 
 
     getDirections = (coordinates) => {
@@ -431,7 +453,7 @@ export default class MapStateMachine {
 
         this.removeMarkers();
         this.createMarkers(markerCoords, this.mapRef, true)
-
+        
         this.mapRef.addLayer({
             'id': 'route',
             'type': 'line',
@@ -479,7 +501,7 @@ export default class MapStateMachine {
 
     centerMap = () => {
         const center = {
-            center: [4.897070, 52.373956,],
+            center: JSON.parse(this.mapElement.dataset.centre),
             zoom: JSON.parse(this.mapElement.dataset.zoom),
             pitch: 0,
             bearing: 0

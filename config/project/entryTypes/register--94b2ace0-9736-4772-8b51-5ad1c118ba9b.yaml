@@ -36,7 +36,7 @@ fieldLayouts:
 handle: register
 hasTitleField: false
 name: Register
-section: 21c100fa-b14d-4c5a-b30a-f1f28bc91e6d # Register
+section: 21c100fa-b14d-4c5a-b30a-f1f28bc91e6d
 sortOrder: 1
 titleFormat: '{section.name|raw}'
 titleTranslationKeyFormat: null

@@ -1,6 +1,6 @@
 columnSuffix: taubnqxq
 contentColumnType: text
-fieldGroup: 1a8a2732-cd82-4bf7-8afe-099fb893ac20 # Map
+fieldGroup: 1a8a2732-cd82-4bf7-8afe-099fb893ac20
 handle: hubSuffix
 instructions: 'The suffix used on the map menu for hubs'
 name: 'Hub Suffix'
@@ -15,5 +15,5 @@ settings:
   placeholder: null
   uiMode: normal
 translationKeyFormat: null
-translationMethod: none
+translationMethod: site
 type: craft\fields\PlainText

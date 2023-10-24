@@ -1,0 +1,152 @@
+{% extends "index" %}
+
+{% set urlstr = craft.app.request.url|replace({'-': ' '})|trim('/') %}
+{% set user = craft.users.fullName(urlstr).one() %}
+
+{% block content %}
+
+	{% if user %}
+		<main class="c-publicPage">
+			<div class="c-publicPage__thumbnailContainer">
+				{% if user.thumbnail.one() %}
+					<img src="{{ user.thumbnail.one().url }}" alt="User thumbnail" class="c-publicPage__thumbnail">
+				{% endif %}
+				{% if general.singleAsset.one() %}
+					{{ svg(general.singleAsset.one()) }}
+
+					{# <img src="{{ general.singleAsset.one().url }}" alt="GLUE overlay" class="c-publicPage__thumbnailOverlay"/> #}
+				{% endif %}
+			</div>
+			<div class="c-publicPage__overview">
+				<h2>
+				<!-- de invoiceCompanyName wordt hier misbruikt voor de members titel. Hierin kunnen wel speciale characters -->
+				{{ (user.invoiceCompanyName) ? user.invoiceCompanyName : user.fullName }}
+				</h2>			
+				{% if user.largeTextField|length > 0 %}
+					<p class="c-publicPage__bio">{{ user.largeTextField}}</p>
+				{% endif %}
+
+				{% if user.mapAddress|length > 0 and user.mapPostalCode|length > 0 %}
+					<h3>Address</h3>
+					{% if user.venue|length > 0 %}
+						<p style="margin:0;">{{ user.venue }}</p>
+					{% endif %}
+					<p>{{ user.mapAddress }}<br> {{ user.mapPostalCode }} {{ user.city }}</p>
+				{% endif %}
+
+				{% if user.openingTimes %}
+					<h3>Visiting Hours</h3>
+					<ul class="c-publicPage__overviewOpeningTimes">
+						{% for date in event.datetable %}
+							{% if user.openingTimes[loop.index - 1] is defined %}
+								<li>
+									{{ date["col1"]|date("l") }}:
+									{{ user.openingTimes[loop.index - 1]["start"] }}
+									-
+									{{ user.openingTimes[loop.index - 1]["end"] }}
+								</li>
+							{% else %}
+								<li>{{ date["col1"]|date("l") }}: - </li>
+							{% endif %}
+						{% endfor %}
+					</ul>
+				{% else %}
+					<h3>Opening Times</h3>
+					<ul class="c-publicPage__overviewOpeningTimes">
+						{% for date in event.datetable %}
+							<li>
+								{{ date["col1"]|date("l") }}: -
+							</li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+
+				{% if user.phoneNumber|length > 0 %}
+					<h3>Phone number</h3>
+					<p>
+						<a href="tel:{{user.phoneNumber}}">{{ user.phoneNumber}}</a>
+					</p>
+				{% endif %}
+
+				{% if user.email|length > 0 %}
+					<h3>Email</h3>
+					<p>
+						<a href="mailto:{{user.email}}">{{ user.email}}</a>
+					</p>
+				{% endif %}
+
+				{% if user.website|length > 0 %}
+					<h3>Website</h3>
+					<p>
+						<a href="{{user.website}}" target="_blank">{{ user.website|replace({'https://': ''}) }}</a>
+					</p>
+				{% endif %}
+
+				{% if user.instagram|length > 0 %}
+					<h3>Instagram</h3>
+					<p>
+						<a href="{{user.instagram}}" target="_blank">{{ user.instagram|replace({'https://': ''}) }}</a>
+					</p>
+				{% endif %}
+
+				{% if user.facebook|length > 0 %}
+					<h3>Facebook</h3>
+					<p>
+						<a href="{{user.facebook}}" target="_blank">{{ user.facebook|replace({'https://': ''}) }}</a>
+					</p>
+				{% endif %}
+
+				{% if user.twitter|length > 0 %}
+					<h3>Twitter</h3>
+					<p>
+						<a href="{{user.twitter}}" target="_blank">{{ user.twitter|replace({'https://': ''}) }}</a>
+					</p>
+				{% endif %}
+
+				{% if user.linkedin|length > 0 %}
+					<h3>LinkedIn</h3>
+					<p>
+						<a href="{{user.linkedin}}" target="_blank">{{ user.linkedin|replace({'https://': ''}) }}</a>
+					</p>
+				{% endif %}
+
+			</div>
+		</main>
+	{% else %}
+		<main class="c-publicPage">
+			<p>Unfortunately, the member is not recognized.<br>
+			urlstr: {{ urlstr }}<br>
+			user: {{ user }}</p>
+		</main>
+	{% endif %}
+
+{% endblock %}
+
+{% block javascripts %}
+	<script>
+		const container = document.querySelector(".c-publicPage__thumbnailContainer");
+		let type = null;
+		const overlay = (() => {
+			if(document.querySelector(".c-publicPage__thumbnailContainer svg")) {
+				type = "svg"
+				return document.querySelector(".c-publicPage__thumbnailContainer svg");
+			} else {
+				type = "img"
+				return document.querySelector(".c-publicPage__thumbnailContainer img")
+			}
+		})();
+
+		const setSVG = (overlay, width, height) => { 
+			overlay.style.width = `${width - 50}px`
+			overlay.style.height = `${height - 50}px`
+		}
+
+		if(type == "svg") overlay.setAttributeNS(null, "perserveAspectRatio", "xMidYMid meet");
+
+		if(container) setSVG(overlay, container.offsetWidth, container.offsetHeight);
+
+		window.addEventListener("resize", () => {
+			setSVG(overlay, container.offsetWidth, container.offsetHeight)
+		})
+	</script>
+{% endblock %}

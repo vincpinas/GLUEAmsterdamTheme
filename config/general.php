@@ -28,8 +28,8 @@ $config = GeneralConfig::create()
     ->useEmailAsUsername(true)
     ->errorTemplatePrefix('_errors/')
     ->aliases([
-        '@stylesheets' => App::env('CRAFT_ENVIRONMENT') == "production" ? '/web/css' : '/css',
-        '@cscripts' => App::env('CRAFT_ENVIRONMENT') == "production" ? '/web/scripts' : '/scripts'
+        '@stylesheets' => App::env('CRAFT_ENVIRONMENT') == "production" ? App::env('PRIMARY_SITE_URL') . 'web/css' : '/css',
+        '@cscripts' => App::env('CRAFT_ENVIRONMENT') == "production" ? App::env('PRIMARY_SITE_URL') . 'web/scripts' : '/scripts'
     ])
     ->autoLoginAfterAccountActivation(true)
     ->activateAccountSuccessPath('/login')

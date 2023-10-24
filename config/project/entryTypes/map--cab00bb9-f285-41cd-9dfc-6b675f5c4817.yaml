@@ -36,7 +36,7 @@ fieldLayouts:
 handle: map
 hasTitleField: false
 name: Map
-section: 76b8abf5-b5a7-4316-b76f-042fd9b0e526 # Map
+section: 76b8abf5-b5a7-4316-b76f-042fd9b0e526
 sortOrder: 1
 titleFormat: '{section.name|raw}'
 titleTranslationKeyFormat: null

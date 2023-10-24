@@ -1,0 +1,14 @@
+{% set format = format ?? "n/d/Y" %}
+{% set all = all ?? false %}
+
+<select name="fields[date]" id="date">
+	{% if all %}
+		<option value="*">All days</option>
+	{% endif %}
+
+	{% for date in event.datetable %}
+		<option value="{{ date["col1"]|date("Y-m-d") }}" {% if entry is defined and date["col1"]|date("Y-m-d") == entry.date|date("Y-m-d") %} selected {% endif %}>
+			{{ date["col1"]|date(format) }}
+		</option>
+	{% endfor %}
+</select>

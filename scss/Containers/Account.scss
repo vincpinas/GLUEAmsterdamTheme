@@ -52,6 +52,14 @@
         margin-top: 1rem
     }
 
+    &__overview {
+        @include paragraph;
+    }
+
+    &__overview a {
+        text-decoration: underline;
+    }
+
     &__overviewOpeningTimes {
         margin-bottom: 1rem;
 

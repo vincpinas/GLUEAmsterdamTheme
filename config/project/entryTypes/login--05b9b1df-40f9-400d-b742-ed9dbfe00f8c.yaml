@@ -36,7 +36,7 @@ fieldLayouts:
 handle: login
 hasTitleField: false
 name: Login
-section: 8dec35ce-7bad-4407-bbc3-56adc9cccc4a # Login
+section: 8dec35ce-7bad-4407-bbc3-56adc9cccc4a
 sortOrder: 1
 titleFormat: '{section.name|raw}'
 titleTranslationKeyFormat: null

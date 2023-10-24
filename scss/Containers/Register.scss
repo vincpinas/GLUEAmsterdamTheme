@@ -271,7 +271,7 @@
             }
         }
 
-        &Input {
+        &Input, select {
             border: none;
             border-bottom: 2px solid $text-primary;
             outline: none;

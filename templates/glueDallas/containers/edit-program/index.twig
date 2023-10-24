@@ -1,0 +1,55 @@
+{% extends "index" %}
+
+{% requireLogin %}
+
+{% block content %}
+
+	<main class="c-editProgram">
+
+		{% include "components/edit-menu.twig" %}
+
+		{% set user = user ?? currentUser %}
+		{% set entries = craft.entries.authorId(user.id) %}
+
+		<div class="c-editProgram__info">
+			<h2>program entries</h2>
+			<p>Any changes you make here will appear on
+				<a href="{{ siteUrl }}program">{{ siteUrl }}program</a></p>
+
+			<ul class="c-editProgram__entries">
+
+				{% for entry in entries %}
+					<li class="c-editProgram__entry">
+						<a href="{{ siteUrl }}edit-program/{{ entry.id }}">
+							<h3>{{ entry.title }}</h3>
+							<p>
+								<span>{{ entry.programType.label }}</span>
+								|
+								{{ entry.date|date("n") }}/{{ entry.date|date("j") }}/{{ entry.date|date("o") }}
+								-
+								{{ entry.time|date("H") }}:{{ entry.time|date("i") }}
+							</p>
+						</a>
+						<form method="post" accept-charset="UTF-8">
+							{{ csrfInput() }}
+							{{ actionInput('elements/delete') }}
+							{{ hiddenInput('elementId', entry.id) }}
+							<button type="submit" class="c-editProgram__delete">delete</button>
+						</form>
+					</li>
+				{% endfor %}
+			</li>
+		</ul>
+
+		<span class="c-editProgram__buttonRow">
+			{% if entries|length >= 6 %}
+				<button type="submit" class="c-editProgram__create disabled">
+					Create New
+				</button>
+			{% else %}
+				<a href="{{ siteUrl }}edit-program/new" class="c-editProgram__create">create new</a>
+			{% endif %}
+		</span>
+	</div>
+
+</main>{% endblock %}

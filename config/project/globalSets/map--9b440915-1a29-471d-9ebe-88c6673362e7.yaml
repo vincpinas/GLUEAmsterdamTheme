@@ -6,7 +6,7 @@ fieldLayouts:
         elements:
           -
             elementCondition: null
-            fieldUid: 2e1ecccd-c3ca-4249-b239-5faa3edb6606 # City
+            fieldUid: 2e1ecccd-c3ca-4249-b239-5faa3edb6606
             instructions: null
             label: null
             required: false
@@ -18,7 +18,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: 8809cf4a-41fd-49bf-9e6c-01bb347d9a21 # Token
+            fieldUid: 8809cf4a-41fd-49bf-9e6c-01bb347d9a21
             instructions: 'Public mapbox API token'
             label: null
             required: true
@@ -30,7 +30,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: cdfc6d46-fdd1-4bdf-b53b-7f44b84230a5 # Stylesheet
+            fieldUid: cdfc6d46-fdd1-4bdf-b53b-7f44b84230a5
             instructions: null
             label: null
             required: true
@@ -42,7 +42,19 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: 294337b5-643e-4cd3-92c7-01c2dade26ce # Map Zoom
+            fieldUid: 41bce798-33f6-4c59-9ccb-7cce0cc31032
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: cd39d536-bdd2-429f-b8de-708bc86a5aa4
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 294337b5-643e-4cd3-92c7-01c2dade26ce
             instructions: null
             label: null
             required: true
@@ -54,7 +66,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: 687bb273-50a1-471a-b240-7ccc88e88288 # Map Pitch
+            fieldUid: 687bb273-50a1-471a-b240-7ccc88e88288
             instructions: null
             label: null
             required: true
@@ -66,7 +78,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: 22ded96b-de85-4414-a36e-ba62898a3e19 # Map Bearing
+            fieldUid: 22ded96b-de85-4414-a36e-ba62898a3e19
             instructions: null
             label: null
             required: true
@@ -78,7 +90,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: 2603f45d-35b6-49c5-8c18-392fc415f0ab # Marker Matrix
+            fieldUid: 2603f45d-35b6-49c5-8c18-392fc415f0ab
             instructions: null
             label: null
             required: false
@@ -90,7 +102,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: 62bbfaa1-afe7-4d10-86d1-a4f1f257284d # Marker thumbnail placeholder
+            fieldUid: 62bbfaa1-afe7-4d10-86d1-a4f1f257284d
             instructions: null
             label: null
             required: true
@@ -102,7 +114,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: 29af6c74-049e-465f-97f6-c25132abd027 # Marker Size
+            fieldUid: 29af6c74-049e-465f-97f6-c25132abd027
             instructions: null
             label: null
             required: true
@@ -114,7 +126,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: fe460ddb-f48c-4b81-bf14-1bb2e54c4e72 # Hub Minimum Count
+            fieldUid: fe460ddb-f48c-4b81-bf14-1bb2e54c4e72
             instructions: null
             label: null
             required: true
@@ -126,7 +138,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: 97d0a464-bcc8-4a07-bcfc-f91437d0d73d # Hub Suffix
+            fieldUid: 97d0a464-bcc8-4a07-bcfc-f91437d0d73d
             instructions: null
             label: null
             required: false
@@ -138,7 +150,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: d441938f-e95b-4f5f-8661-9c03238e51e7 # Collective Suffix
+            fieldUid: d441938f-e95b-4f5f-8661-9c03238e51e7
             instructions: null
             label: null
             required: false
@@ -150,7 +162,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: b293ae54-2bba-485d-814f-af219d5fc776 # HUB slide duration
+            fieldUid: b293ae54-2bba-485d-814f-af219d5fc776
             instructions: null
             label: null
             required: true
@@ -162,7 +174,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: ecf5bd66-ad84-4640-b9b2-cf4172f1b84d # Group One Handle
+            fieldUid: ecf5bd66-ad84-4640-b9b2-cf4172f1b84d
             instructions: null
             label: null
             required: true
@@ -174,7 +186,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: 730ad796-ff23-490f-8887-4f2390c57f97 # Group Two Handle
+            fieldUid: 730ad796-ff23-490f-8887-4f2390c57f97
             instructions: null
             label: null
             required: true
@@ -186,7 +198,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: 3fc5f4d1-e130-417e-8f41-29bb276bfbb2 # Group Three Handle
+            fieldUid: 3fc5f4d1-e130-417e-8f41-29bb276bfbb2
             instructions: null
             label: null
             required: true
@@ -198,7 +210,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: 5da67f8c-ab63-473a-8a06-56f08001fc9c # Group Four Handle
+            fieldUid: 5da67f8c-ab63-473a-8a06-56f08001fc9c
             instructions: null
             label: null
             required: true
@@ -210,7 +222,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: 30663d7d-536d-454c-99fd-820672718f4e # Routes
+            fieldUid: 30663d7d-536d-454c-99fd-820672718f4e
             instructions: null
             label: null
             required: false

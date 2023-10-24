@@ -53,7 +53,8 @@
     }
 
     &__formLabel input,
-    &__formLabel textarea {
+    &__formLabel textarea,
+    &__formLabel select {
         @include font--primary(500);
         border: 1px solid $text-primary;
         background: none;
@@ -61,6 +62,10 @@
         color: $text-primary;
         outline: none;
         margin-top: 0.5rem;
+    }
+
+    &__formLabel select {
+        padding: 0.875rem 1.25rem;
     }
 
     &__formError {

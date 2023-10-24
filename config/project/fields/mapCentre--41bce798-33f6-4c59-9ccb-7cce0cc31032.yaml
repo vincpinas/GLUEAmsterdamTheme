@@ -1,0 +1,16 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: 1a8a2732-cd82-4bf7-8afe-099fb893ac20
+handle: mapCentre
+instructions: null
+name: 'Map Centre'
+searchable: false
+settings:
+  contentTable: '{{%matrixcontent_mapcentre}}'
+  maxBlocks: null
+  minBlocks: null
+  propagationKeyFormat: null
+  propagationMethod: none
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

@@ -6,7 +6,7 @@ fieldLayouts:
         elements:
           -
             elementCondition: null
-            fieldUid: 0b32d131-99b5-4a85-8221-f63acc57f704 # Single Asset
+            fieldUid: 0b32d131-99b5-4a85-8221-f63acc57f704
             instructions: 'this image is overlayed on images like a users public page thumbnail'
             label: 'GLUE image overlay'
             required: false
@@ -18,7 +18,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: 3f6049f8-db41-426e-86a4-196457c3e028 # Slug
+            fieldUid: 3f6049f8-db41-426e-86a4-196457c3e028
             instructions: 'A link pointing towards a page (usually home) always shown in the header'
             label: 'Return Link'
             required: false
@@ -30,7 +30,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: d3712c0e-7898-4805-8cee-c9b619cf6a46 # One Word
+            fieldUid: d3712c0e-7898-4805-8cee-c9b619cf6a46
             instructions: 'The text displayed in the return link'
             label: 'Return name'
             required: false
@@ -42,7 +42,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: bd5e2840-24bf-449d-8949-c7c8429d4018 # Title
+            fieldUid: bd5e2840-24bf-449d-8949-c7c8429d4018
             instructions: 'Title shown in the browser tab'
             label: 'Site title'
             required: false

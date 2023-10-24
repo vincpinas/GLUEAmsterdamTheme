@@ -10,15 +10,14 @@
 
 {% if currentUser %}
 	{% set urlstr = currentUser.fullName|replace({' ': "-"}) %}
-    {% redirect "/" ~ urlstr %}
+	{% redirect "/" ~ urlstr %}
 {% endif %}
 
 {% block content %}
 	<main class="c-register">
 		<h2 class="c-register__title">Welcome to GLUE!</h2>
 
-        <div class="c-register__errors">
-        </div>
+		<div class="c-register__errors"></div>
 
 		<div class="c-register__progress">
 			{% for point in progressPoints %}
@@ -168,6 +167,22 @@
 						<input type="text" class="c-register__formInput" name="mappostalcode" id="mappostalcode" placeholder="E.g. 2000 AB" autocomplete="off">
 					</label>
 				</span>
+				<span class="c-register__formInputRow">
+					<label for="mapvenue" class="c-register__formLabel">
+						Venue
+						<input type="text" class="c-register__formInput" name="mapvenue" id="mapvenue" placeholder="">
+					</label>
+					<label for="mapcuty" class="c-register__formLabel">
+						City*
+						<select name="fields[city]" id="mapcity">
+							{% for location in event.locations %}
+								<option value="{{ location.location }}">
+									{{ location.location }}
+								</option>
+							{% endfor %}
+						</select>
+					</label>
+				</span>
 
 				<span class="c-register__formPagination">
 					<button class="c-register__formPrevious">Previous</button>
@@ -206,7 +221,9 @@
 						<input type="text" class="c-register__formInput" name="invoicecity" id="invoicecity" placeholder="E.g. Amsterdam">
 					</label>
 					<label for="VAT" class="c-register__formLabel">
-                        <span>VAT number <span class="red">(Only if your company is based overseas)</span></span>
+						<span>VAT number
+							<span class="red">(Only if your company is based overseas)</span>
+						</span>
 						<input type="text" class="c-register__formInput" name="VAT" id="VAT" placeholder="Type your VAT number here">
 					</label>
 				</span>

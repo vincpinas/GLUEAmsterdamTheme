@@ -1,6 +1,6 @@
 columnSuffix: asiwdynh
 contentColumnType: text
-fieldGroup: e6ea2a09-6abe-4046-8a6f-c483f1d58716 # Common
+fieldGroup: e6ea2a09-6abe-4046-8a6f-c483f1d58716
 handle: postSlug
 instructions: 'Public link pointing towards a post or related content'
 name: Slug
@@ -15,5 +15,5 @@ settings:
   placeholder: 'E.g. our-new-website'
   uiMode: normal
 translationKeyFormat: null
-translationMethod: none
+translationMethod: site
 type: craft\fields\PlainText

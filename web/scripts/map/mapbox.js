@@ -8,10 +8,7 @@ mapboxgl.accessToken = mapElement.dataset.token;
 const map = new mapboxgl.Map({
     container: 'map',
     style: mapElement.dataset.styles,
-    center: [
-        4.897070,
-        52.373956,
-    ],
+    center: JSON.parse(mapElement.dataset.centre),
     zoom: JSON.parse(mapElement.dataset.zoom),
     pitch: JSON.parse(mapElement.dataset.pitch),
     bearing: JSON.parse(mapElement.dataset.bearing)

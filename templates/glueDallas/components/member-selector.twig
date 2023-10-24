@@ -1,0 +1,28 @@
+{{ hiddenInput('fields[member]', '') }}
+
+{# Get all of the possible user options #}
+{% set possibleUsers = craft.users()
+  .group('participants')
+  .orderBy('username ASC')
+  .all() %}
+
+{# Get the currently related user IDs #}
+{% set relatedUserIds = entry is defined and entry.member ? entry.member.ids() : [] %}
+
+<span class="c-member__searchWrapper">
+	<ion-icon name="search-outline"></ion-icon>
+	<input type="text" class="c-member__search">
+</span>
+
+{% set shortlist = [] %}
+
+{% for possibleUser in possibleUsers %}
+	{% set tempuser = { id: possibleUser.id, name: possibleUser.fullName } %}
+
+	{% set shortlist = shortlist|merge([tempuser]) %}
+{% endfor %}
+
+
+<ul class="c-member__results" data-members="{{ shortlist|json_encode }}" data-related="{{ relatedUserIds|json_encode }}"></ul>
+
+<script type="module" src="/scripts/membersearch.js"></script>

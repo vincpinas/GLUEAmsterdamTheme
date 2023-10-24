@@ -1,0 +1,20 @@
+{% set pages = craft.entries.section('pages') %}
+
+<header class="c-header">
+	<a class="c-header__return" href="{{ general.postSlug }}">
+		<ion-icon name="arrow-back-outline"></ion-icon>
+		{{ general.oneWord }}
+	</a>
+	{% if craft.app.request.url != "/" %}
+		<a class="c-header__map" href="/">Map</a>
+	{% endif %}
+	
+	
+	{% if currentUser and currentUser.isInGroup('participants') %}
+		<span class="c-header__links">
+			<a href="{{ siteUrl }}edit-page">Account</a>
+			<a href="{{ siteUrl }}logout">Logout</a>
+		</span>
+	{% endif %}
+
+</header>

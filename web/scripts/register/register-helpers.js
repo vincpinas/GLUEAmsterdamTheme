@@ -23,6 +23,7 @@ const validateFormField = (labelSelector, errorMessage, condition, checkConditio
     if (!condition && !error) {
         let error = document.createElement("span");
         error.className = "c-register__formError";
+        error.innerHTML = "";
         error.innerHTML = errorMessage;
 
         if (label) label.appendChild(error)

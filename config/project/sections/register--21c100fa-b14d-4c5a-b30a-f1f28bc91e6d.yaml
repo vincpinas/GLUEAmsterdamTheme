@@ -16,7 +16,12 @@ previewTargets:
         - '1'
 propagationMethod: all
 siteSettings:
-  c5fb5f28-2f93-4a73-bcd6-9c57ee22f86f: # $SITE_NAME
+  6dfdd3d3-bde1-4ee1-893a-3bf36599a903:
+    enabledByDefault: true
+    hasUrls: true
+    template: containers/register.twig
+    uriFormat: sign-up
+  c5fb5f28-2f93-4a73-bcd6-9c57ee22f86f:
     enabledByDefault: true
     hasUrls: true
     template: containers/register.twig

@@ -1,6 +1,6 @@
 columnSuffix: null
 contentColumnType: string
-fieldGroup: 1a8a2732-cd82-4bf7-8afe-099fb893ac20 # Map
+fieldGroup: 1a8a2732-cd82-4bf7-8afe-099fb893ac20
 handle: markerThumbnailPlaceholder
 instructions: null
 name: 'Marker thumbnail placeholder'
@@ -11,7 +11,7 @@ settings:
   allowUploads: true
   allowedKinds: null
   branchLimit: null
-  defaultUploadLocationSource: 'volume:8634fab2-bde5-4665-80a8-324c56cb1c35' # Web Images
+  defaultUploadLocationSource: 'volume:8634fab2-bde5-4665-80a8-324c56cb1c35'
   defaultUploadLocationSubpath: null
   localizeRelations: false
   maintainHierarchy: false
@@ -21,7 +21,7 @@ settings:
   restrictFiles: false
   restrictLocation: true
   restrictedDefaultUploadSubpath: null
-  restrictedLocationSource: 'volume:8634fab2-bde5-4665-80a8-324c56cb1c35' # Web Images
+  restrictedLocationSource: 'volume:8634fab2-bde5-4665-80a8-324c56cb1c35'
   restrictedLocationSubpath: null
   selectionCondition:
     __assoc__:
@@ -39,7 +39,7 @@ settings:
   showUnpermittedFiles: false
   showUnpermittedVolumes: false
   sources:
-    - 'volume:8634fab2-bde5-4665-80a8-324c56cb1c35' # Web Images
+    - 'volume:8634fab2-bde5-4665-80a8-324c56cb1c35'
   targetSiteId: null
   validateRelatedElements: false
   viewMode: list

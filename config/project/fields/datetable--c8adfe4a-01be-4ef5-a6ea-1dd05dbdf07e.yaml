@@ -1,6 +1,6 @@
 columnSuffix: arhflwwu
 contentColumnType: text
-fieldGroup: e6ea2a09-6abe-4046-8a6f-c483f1d58716 # Common
+fieldGroup: e6ea2a09-6abe-4046-8a6f-c483f1d58716
 handle: datetable
 instructions: null
 name: DateTable
@@ -29,5 +29,5 @@ settings:
   maxRows: null
   minRows: null
 translationKeyFormat: null
-translationMethod: none
+translationMethod: site
 type: craft\fields\Table

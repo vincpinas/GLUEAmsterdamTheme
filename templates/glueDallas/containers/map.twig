@@ -1,0 +1,360 @@
+{% extends "index" %}
+
+{% block external_scripts %}
+	<link href="https://api.mapbox.com/mapbox-gl-js/v2.14.0/mapbox-gl.css" rel="stylesheet">
+	<script src="https://api.mapbox.com/mapbox-gl-js/v2.14.0/mapbox-gl.js"></script>
+	<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+	<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
+	<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.4.1/mapbox-gl-draw.js"></script>
+	<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.4.0/mapbox-gl-draw.css" type="text/css">
+{% endblock %}
+
+{% block styles %}
+	<style>
+		.c-header {
+			padding: 2rem 2rem 0.3rem;
+		}
+	</style>
+{% endblock %}
+
+{% set locked = true %}
+{% set break = false %}
+{% set myUserQuery = craft.users().group('participants').status('active').city(map.city|lower) %}
+{% set users = myUserQuery.all() %}
+{% set addresses = [] %}
+{% set cId = random() %}
+{% set hubIDs = [] %}
+{% set countedHubIDs = [] %}
+{% set currentHubID = null %}
+{% set collectiveIDs = [] %}
+{% set countedCollectiveIDs = [] %}
+{% set currentCollectiveID = null %}
+{% set currentCollectiveName = "" %}
+{% set hubLengthCount = [] %}
+{% set founder = false %}
+{% set isHub = false %}
+{% set specialProgram = false %}
+{% set markerMatrix = map.markerMatrix.one() %}
+{% set markerstyles = { 
+	routeIcon: markerMatrix.route.one() ? markerMatrix.route.one().url : "",
+	hubIcon: markerMatrix.hub.one() ? markerMatrix.hub.one().url : "",
+	collectiveIcon: markerMatrix.collective.one() ? markerMatrix.collective.one().url : "",
+	specialProgramIcon: markerMatrix.specialProgram.one() ? markerMatrix.specialProgram.one().url : "",
+	founderIcon: markerMatrix.founder.one() ? markerMatrix.founder.one().url : "",
+	locationsIcon: markerMatrix.locations.one() ? markerMatrix.locations.one().url : "",
+	hubSlideDuration: map.hubSlideDuration,
+	size: map.markerSize,
+} %}
+{% set directionsArray = ["one", "two", "three", "four"] %}
+
+{% if craft.app.user.rememberedUsername is defined and craft.app.user.rememberedUsername %}
+	{% set remembered = craft.app.user.rememberedUsername %}
+{% else %}
+	{% set remembered = "" %}
+{% endif %}
+
+
+{% if currentUser %}
+	{% set locked = false %}
+{% endif %}
+
+{# Generate data tags with user info for making map markers #}
+{% for user in users %}
+	{% if user.mapAddress|length > 0 and user.mapPostalCode|length > 0 %}
+
+		{% for unique in addresses %}
+			{% if not break %}
+				{% if unique.address == user.mapAddress ~ ", " ~ user.mapPostalCode %}
+					{% set cId = unique.id %}
+					{% set hubIDs = hubIDs|merge([unique.id]) %}
+					{% set break = true %}
+				{% else %}
+					{% set cId = random() %}
+				{% endif %}
+			{% endif %}
+		{% endfor %}
+
+		{% set break = false %}
+		{% for group in user.groups %}
+			{% if not break %}
+				{% if group.handle == "founders" %}
+					{% set founder = true %}
+					{% set break = true %}
+				{% else %}
+					{% set founder = false %}
+				{% endif %}
+			{% endif %}
+		{% endfor %}
+
+		{% set break = false %}
+		{% for group in user.groups %}
+			{% if not break %}
+				{% if group.handle == "specialProgram" %}
+					{% set specialProgram = true %}
+					{% set break = true %}
+				{% else %}
+					{% set specialProgram = false %}
+				{% endif %}
+			{% endif %}
+		{% endfor %}
+
+		{% set break = false %}
+		{% for group in user.groups %}
+			{% if not break %}
+				{% if group.handle == "hub" %}
+					{% set isHub = true %}
+					{% set break = true %}
+				{% else %}
+					{% set isHub = false %}
+				{% endif %}
+			{% endif %}
+		{% endfor %}
+
+		{% set address = { 
+			id: cId,
+			postalCode: user.mapPostalCode,
+			address: user.mapAddress ~ ", " ~ user.mapPostalCode,
+			street: user.mapAddress,
+			founder: founder,
+			specialProgram: specialProgram,
+			isHub: isHub,
+			fullName: user.fullName,
+			fullNiceName: user.invoiceCompanyName,
+			username: user.username,
+			thumbnail: user.thumbnail.one() ? user.thumbnail.one().url : map.markerThumbnailPlaceholder.one().url,
+		} %}
+		{% set addresses = addresses|merge([address]) %}
+		{% set break = false %}
+	{% endif %}
+{% endfor %}
+
+{% block content %}
+	{% if errorMessage is defined %}
+		<p>{{ errorMessage }}</p>
+	{% endif %}
+
+	<main class="c-map__wrapper" style="{% if addresses|length == 0 %} grid-template-columns: 1fr; grid-template-areas: 'map'; {% endif %}">
+		<ul class="c-map__headers">
+			<li class="c-map__headersClose">
+				<button class="c-map__menuDirectionCloseButton">
+					<ion-icon name="arrow-back-outline"></ion-icon>
+					Close
+				</button>
+			</li>
+			<li class="c-map__headersGroup"></li>
+		</ul>
+		<ul class="c-map__menu" style="{% if addresses|length == 0 %} display:none; {% endif %}" data-locked="{{ locked|json_encode }}" data-csrf='{{ csrfInput() }}' data-remembered-user='{{ remembered }}'>
+			{% if locked %}
+				<ion-icon name="lock-closed-outline" class="c-map__menuLock"></ion-icon>
+			{% endif %}
+
+			{% for direction in directionsArray %}
+				{% if map.routes.cardinalDirection(direction).all()|length > 0 %}
+					<div class="c-map__menuDirectionTab c-map__menuDirectionTab-{{loop.index}}">
+						{% for route in map.routes.cardinalDirection(direction).all() %}
+							{% set currentroute = [] %}
+							{% for poi in route.poi.all() %}
+								{% set currentuser = craft.users().id(poi.id).one() %}
+								{% set maproute = [{
+						fullName: currentuser.fullName,
+						postalCode: currentuser.mapPostalCode,
+						address: currentuser.mapAddress ~ ", " ~ currentuser.mapPostalCode,
+						username: currentuser.username,
+					}] %}
+								{% set currentroute = currentroute|merge(maproute) %}
+							{% endfor %}
+							{% set currentroute = { routeName: route.routeName, pois: currentroute } %}
+							<li class="c-map__menuItem c-map__menuTab c-map__menuRoute" data-route="{{ currentroute|json_encode }}">
+								<h2>{{ route.routeName }}</h2>
+							</li>
+						{% endfor %}
+					</div>
+				{% endif %}
+			{% endfor %}
+
+			{% for direction in directionsArray %}
+				{% if map.routes.cardinalDirection(direction).all()|length > 0 %}
+					{% if loop.index == 1 %}
+						{% set groupHandle = map.groupOneHandle %}
+					{% elseif loop.index == 2 %}
+						{% set groupHandle = map.groupTwoHandle %}
+					{% elseif loop.index == 3 %}
+						{% set groupHandle = map.groupThreeHandle %}
+					{% elseif loop.index == 4 %}
+						{% set groupHandle = map.groupFourHandle %}
+					{% endif %}
+
+					<li class="c-map__menuDirectionButton c-map__menuItem" data-i="{{loop.index}}" data-group="{{groupHandle}}">
+						{% if locked %}
+							<span class="c-map__menuLockOverlay"></span>
+						{% endif %}
+						<h2>
+							{{groupHandle}}
+						</h2>
+					</li>
+				{% endif %}
+			{% endfor %}
+
+			<li class="c-map__locationsOverview c-map__menuItem-{{directionsArray|length + 1}} c-map__menuItem">
+				<ul class="c-map__legend">
+					<li>
+						<div class="c-map__legendIcon" style="background-image:url({{ markerstyles.routeIcon }});"></div>
+						<div>
+							<h5>Route</h5>
+							<p>Icon displayed for each point in a route</p>
+						</div>
+					</li>
+					<li>
+						<div class="c-map__legendIcon" style="background-image:url({{ markerstyles.hubIcon }});"></div>
+						<div>
+							<h5>Hub</h5>
+							<p>Location containing
+								{{ map.hubMinimumCount }}+ expositions</p>
+						</div>
+					</li>
+					<li>
+						<div class="c-map__legendIcon" style="background-image:url({{ markerstyles.collectiveIcon }});"></div>
+						<div>
+							<h5>Collective</h5>
+							<p>Location containing multiple expositions</p>
+						</div>
+					</li>
+					<li>
+						<div class="c-map__legendIcon" style="background-image:url({{ markerstyles.specialProgramIcon }});"></div>
+						<div>
+							<h5>Special Program</h5>
+							<p>Exposition with a special program</p>
+						</div>
+					</li>
+					<li>
+						<div class="c-map__legendIcon" style="background-image:url({{ markerstyles.founderIcon }});"></div>
+						<div>
+							<h5>Founder</h5>
+							<p>Founding member of GLUE</p>
+						</div>
+					</li>
+					<li>
+						<div class="c-map__legendIcon" style="background-image:url({{ markerstyles.locationsIcon }});"></div>
+						<div>
+							<h5>Location</h5>
+							<p>Normal GLUE member</p>
+						</div>
+					</li>
+				</ul>
+
+				<button class="c-map__legendButton">Symbols on the map</button>
+
+				<h2>Locations</h2>
+				<ol>
+					{# HUBS #}
+					{% for address in addresses %}
+						{% if address.id in hubIDs and currentHubID != address.id  %}
+							{% set currentHubID = address.id %}
+							{% set currentHubName = "" %}
+						{% endif %}
+
+						{% for address in addresses %}
+							{% if currentHubID == address.id and address.isHub %}
+								{% set currentHubName = address.fullName %}
+							{% endif %}
+						{% endfor %}
+
+						{% if address.id in hubIDs %}
+							{% if address.id not in countedHubIDs %}
+								{% set countedHubIDs = countedHubIDs|merge([address.id]) %}
+
+								{% for id in hubIDs %}
+									{%  if id == address.id  %}
+										{% set hubLengthCount = hubLengthCount|merge([address.id]) %}
+									{% endif %}
+								{% endfor %}
+								{% set hubLengthCount = hubLengthCount|merge([address.id]) %}
+
+								{% if hubLengthCount|length < map.hubMinimumCount %}
+									{% set collectiveIDs = collectiveIDs|merge([address.id]) %}
+								{% else %}
+									<li class="c-map__locationButtonWrapper" data-postal-code="{{address.postalCode}}" data-c-id="{{address.id}}">
+										<button class="c-map__locationButton">
+
+											{% if currentHubName and currentHubName|length > 0 %}
+												{{ currentHubName }}
+											{% else %}
+												{{ (address.fullNiceName) ? address.fullNiceName : address.fullName }}
+											{% endif %}
+
+											{{ map.hubSuffix }}
+
+											<ion-icon name="chevron-forward-sharp"></ion-icon>
+
+										</button>
+									</li>
+								{% endif %}
+								{% set hubLengthCount = [] %}
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+
+					{# COLLECTIVES #}
+					{% for address in addresses %}
+						{% if address.id in collectiveIDs and currentCollectiveID != address.id  %}
+							{% set currentCollectiveID = address.id %}
+							{% set currentCollectiveName = "" %}
+						{% endif %}
+
+						{% for address in addresses %}
+							{% if currentCollectiveID == address.id and address.isHub %}
+								{% set currentCollectiveName = address.fullName %}
+							{% endif %}
+						{% endfor %}
+
+						{% if address.id in collectiveIDs %}
+							{% if address.id not in countedCollectiveIDs %}
+								{% set countedCollectiveIDs = countedCollectiveIDs|merge([address.id]) %}
+								<li class="c-map__locationButtonWrapper" data-postal-code="{{address.postalCode}}" data-c-id="{{address.id}}">
+									<button class="c-map__locationButton">
+										{% if currentCollectiveName and currentCollectiveName|length > 0 %}
+											{{ currentCollectiveName }}
+										{% else %}
+											{{ (address.fullNiceName) ? address.fullNiceName : address.fullName }}
+										{% endif %}
+
+										{{ map.collectiveSuffix }}
+										<ion-icon name="chevron-forward-sharp"></ion-icon>
+									</button>
+								</li>
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+
+					{# LOCATIONS #}
+					{% for address in addresses %}
+						{% if address.id not in hubIDs %}
+							<li class="c-map__locationButtonWrapper" data-postal-code="{{address.postalCode}}" data-c-id="{{address.id}}">
+								<button class="c-map__locationButton">
+									{{ (address.fullNiceName) ? address.fullNiceName : address.fullName }}
+									<ion-icon name="chevron-forward-sharp"></ion-icon>
+								</button>
+							</li>
+						{% endif %}
+					{% endfor %}
+				</ol>
+			</li>
+		</ul>
+		<div class="c-map" id="map" 
+			 data-addresses="{{ addresses|json_encode }}"
+			 data-token="{{ map.token }}"
+			 data-styles="{{ map.stylesheet }}"
+			 data-marker-styles="{{ markerstyles|json_encode }}"
+			 data-zoom="{{ map.mapZoom }}"
+			 data-pitch="{{ map.mapPitch }}"
+			 data-bearing="{{ map.mapBearing }}"
+			 data-hub-minimum-count="{{ map.hubMinimumCount }}"
+			 data-city="{{ map.city }}"
+			 data-centre="{{ [map.mapCentre.one().lng, map.mapCentre.one().lat]|json_encode }}"
+		></div>
+	</main>
+{% endblock %}
+
+{% block javascripts %}
+	<script src="{{ alias('@cscripts') }}/map/mapbox.js" type="module" defer></script>
+{% endblock %}

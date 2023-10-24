@@ -1,0 +1,44 @@
+columnSuffix: hywtofqk
+contentColumnType: text
+fieldGroup: e6ea2a09-6abe-4046-8a6f-c483f1d58716
+handle: locations
+instructions: null
+name: Locations
+searchable: false
+settings:
+  addRowLabel: 'Add a row'
+  columnType: text
+  columns:
+    __assoc__:
+      -
+        - col1
+        -
+          __assoc__:
+            -
+              - heading
+              - Location
+            -
+              - handle
+              - location
+            -
+              - width
+              - ''
+            -
+              - type
+              - singleline
+  defaults:
+    -
+      __assoc__:
+        -
+          - col1
+          - Amsterdam
+    -
+      __assoc__:
+        -
+          - col1
+          - Dallas
+  maxRows: null
+  minRows: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Table

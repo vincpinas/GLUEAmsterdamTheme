@@ -1,7 +1,7 @@
 isPublic: true
 name: 'Public Schema'
 scope:
-  - 'sites.c5fb5f28-2f93-4a73-bcd6-9c57ee22f86f:read' # $SITE_NAME
+  - 'sites.c5fb5f28-2f93-4a73-bcd6-9c57ee22f86f:read'
   - 'elements.drafts:read'
   - 'elements.revisions:read'
   - 'elements.inactive:read'
@@ -11,5 +11,5 @@ scope:
   - 'entrytypes.850d1fd6-598a-4264-a562-cf6f27d6dd5a:read'
   - 'sections.994745bc-5470-46e9-9990-b36b218f7269:read'
   - 'entrytypes.7c4c875d-b26b-4ca2-9e5e-3e337d3941ef:read'
-  - 'volumes.b8f74062-ae64-4520-a7ed-fe4272ee4456:read' # User Avatars
+  - 'volumes.b8f74062-ae64-4520-a7ed-fe4272ee4456:read'
   - 'usergroups.everyone:read'
