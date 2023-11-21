@@ -1,4 +1,4 @@
-field: 41bce798-33f6-4c59-9ccb-7cce0cc31032
+field: 41bce798-33f6-4c59-9ccb-7cce0cc31032 # Map Centre
 fieldLayouts:
   c4956e76-c6c8-4753-87fe-23aaf5daa566:
     tabs:
@@ -7,7 +7,7 @@ fieldLayouts:
         elements:
           -
             elementCondition: null
-            fieldUid: 2b961231-2dab-4aa1-bb8b-a8aae19bf22f
+            fieldUid: 2b961231-2dab-4aa1-bb8b-a8aae19bf22f # Lng
             instructions: null
             label: null
             required: true
@@ -19,7 +19,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: 6b9c8402-39e7-4103-b54e-394a286410b8
+            fieldUid: 6b9c8402-39e7-4103-b54e-394a286410b8 # Lat
             instructions: null
             label: null
             required: true
@@ -33,7 +33,7 @@ fieldLayouts:
         uid: 86fd9083-8c73-455f-b7a2-765a3bcab910
         userCondition: null
 fields:
-  2b961231-2dab-4aa1-bb8b-a8aae19bf22f:
+  2b961231-2dab-4aa1-bb8b-a8aae19bf22f: # Lng
     columnSuffix: yijtuysv
     contentColumnType: text
     fieldGroup: null
@@ -53,7 +53,7 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\PlainText
-  6b9c8402-39e7-4103-b54e-394a286410b8:
+  6b9c8402-39e7-4103-b54e-394a286410b8: # Lat
     columnSuffix: dcbkupqt
     contentColumnType: text
     fieldGroup: null

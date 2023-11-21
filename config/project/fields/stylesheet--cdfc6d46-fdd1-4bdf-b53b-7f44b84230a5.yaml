@@ -1,6 +1,6 @@
 columnSuffix: dvyzdhwy
 contentColumnType: text
-fieldGroup: 1a8a2732-cd82-4bf7-8afe-099fb893ac20
+fieldGroup: 1a8a2732-cd82-4bf7-8afe-099fb893ac20 # Map
 handle: stylesheet
 instructions: 'Link to the mapbox stylesheet'
 name: Stylesheet

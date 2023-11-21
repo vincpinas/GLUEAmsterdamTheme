@@ -67,16 +67,6 @@
 				<h3>map location</h3>
 				<span class="c-edit__formInputRow">
 					<label for="fields[venue]" class="c-edit__formLabel">
-						city
-						<select name="fields[city]" id="mapCity">
-							{% for location in event.locations %}
-								<option value="{{ location.location }}" {% if location.location|lower == user.city|lower %} selected {% endif %}>
-									{{ location.location }}
-								</option>
-							{% endfor %}
-						</select>
-					</label>
-					<label for="fields[venue]" class="c-edit__formLabel">
 						venue
 						{{ input('text', 'fields[venue]', user.venue, { id: 'mapVenue' }) }}
 					</label>
@@ -230,29 +220,42 @@ return true;
 }
 
 const postalCode = document.querySelector("#mapPostalCode")
-const postalRegex = /(\d{4})([ ])([A-Z]{2})/;
+const city = document.querySelector("#mapCity")
+let regex = /(\d{4})([ ])([A-Z]{2})/
 
 postalCode.addEventListener("input", () => {
-validateFormField(".c-edit__formLabel[for='mapPostalCode']", "Valid Dutch postal code is required", postalRegex.test(postalCode.value) && postalCode.value.length === 7, postalCode.value.length > 0)
+validateFormField(".c-register__formLabel[for='mappostalcode']", "Please fill in a valid postal code for your city", regex.test(postalCode.value) && postalCode.value.length === 7, postalCode.value.length > 0)
+}
 
-postalRegex.test(postalCode.value)
-
-if (postalRegex.test(postalCode.value) && postalCode.value.length === 7) {
+if (regex.test(postalCode.value)) {
 submit.disabled = false;
 submit.classList.remove("disabled")
 } else {
-submit.disabled = true
+submit.disabled = true;
+if (!submit.classList.contains("disabled")) 
 submit.classList.add("disabled")
 }
 })
 
-validateFormField(".c-edit__formLabel[for='mapPostalCode']", "Valid Dutch postal code is required", postalRegex.test(postalCode.value) && postalCode.value.length === 7, postalCode.value.length > 0)
-if (postalRegex.test(postalCode.value) && postalCode.value.length === 7) {
+switch (city.value) {
+case "Amsterdam": regex = /(\d{4})([ ])([A-Z]{2})/
+validateFormField(".c-register__formLabel[for='mappostalcode']", "Please fill in a valid postal code for your city", regex.test(postalCode.value) && postalCode.value.length === 7, postalCode.value.length > 0)
+break;
+case "Dallas": regex = /(\d{5})/
+validateFormField(".c-register__formLabel[for='mappostalcode']", "Please fill in a valid postal code for your city", regex.test(postalCode.value) && postalCode.value.length === 5, postalCode.value.length > 0)
+break;
+default:
+break;
+}
+
+if (regex.test(postalCode.value)) {
 submit.disabled = false;
 submit.classList.remove("disabled")
 } else {
-submit.disabled = true
+submit.disabled = true;
+if (!submit.classList.contains("disabled")) 
 submit.classList.add("disabled")
+
 }
 	</script>
 {% endblock %}

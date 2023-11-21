@@ -1,9 +1,0 @@
-baseUrl: $DALLAS_SITE_URL
-enabled: '1'
-handle: glueDallas
-hasUrls: true
-language: en-US
-name: $DALLAS_SITE_NAME
-primary: false
-siteGroup: 90a58fe8-93e7-4f43-a79c-f92d1076f9c0
-sortOrder: 2

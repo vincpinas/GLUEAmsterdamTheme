@@ -1,4 +1,4 @@
-field: 30663d7d-536d-454c-99fd-820672718f4e
+field: 30663d7d-536d-454c-99fd-820672718f4e # Routes
 fieldLayouts:
   48cd0f9b-422d-4668-adae-3f0d93ea9acb:
     tabs:
@@ -7,7 +7,7 @@ fieldLayouts:
         elements:
           -
             elementCondition: null
-            fieldUid: 28df0b76-c9f0-4d20-8ca1-a15c637783ea
+            fieldUid: 28df0b76-c9f0-4d20-8ca1-a15c637783ea # Route Name
             instructions: null
             label: null
             required: true
@@ -19,7 +19,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: 9f819326-c617-42fe-a427-a0c843eb9312
+            fieldUid: 9f819326-c617-42fe-a427-a0c843eb9312 # POI
             instructions: null
             label: null
             required: true
@@ -31,7 +31,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: acb4d8ea-f708-4993-846b-d1e591d442ff
+            fieldUid: acb4d8ea-f708-4993-846b-d1e591d442ff # Route Group
             instructions: null
             label: null
             required: true
@@ -45,7 +45,7 @@ fieldLayouts:
         uid: 7c9e44e7-5d22-4316-8ba0-71b48dd8651f
         userCondition: null
 fields:
-  9f819326-c617-42fe-a427-a0c843eb9312:
+  9f819326-c617-42fe-a427-a0c843eb9312: # POI
     columnSuffix: null
     contentColumnType: string
     fieldGroup: null
@@ -74,14 +74,14 @@ fields:
       selectionLabel: null
       showSiteMenu: true
       sources:
-        - 'group:c700366d-c002-43b2-b7ce-f8dd82c7afa8'
+        - 'group:c700366d-c002-43b2-b7ce-f8dd82c7afa8' # Participants
       targetSiteId: null
       validateRelatedElements: false
       viewMode: null
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Users
-  28df0b76-c9f0-4d20-8ca1-a15c637783ea:
+  28df0b76-c9f0-4d20-8ca1-a15c637783ea: # Route Name
     columnSuffix: fcuvkzgt
     contentColumnType: text
     fieldGroup: null
@@ -101,7 +101,7 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\PlainText
-  acb4d8ea-f708-4993-846b-d1e591d442ff:
+  acb4d8ea-f708-4993-846b-d1e591d442ff: # Route Group
     columnSuffix: abeqidbj
     contentColumnType: string
     fieldGroup: null

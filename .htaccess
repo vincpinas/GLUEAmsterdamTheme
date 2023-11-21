@@ -1,7 +1,4 @@
 <IfModule mod_rewrite.c>
-    Header set Access-Control-Allow-Origin "https://dallas.glue.amsterdam/"
-    Header set Access-Control-Allow-Origin "https://dallas.glue.amsterdam"
-
     RewriteEngine On
     # Send would-be 404 requests to Craft
     RewriteCond %{HTTP_HOST} ^(www.)?members.glue.amsterdam$

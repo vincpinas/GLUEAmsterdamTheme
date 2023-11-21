@@ -51,27 +51,41 @@ class Module extends \yii\base\Module
             }
         });
 
+        // Participant Register
         Event::on(Elements::class, Elements::EVENT_AFTER_SAVE_ELEMENT, function (Event $event) {
-            // only execute code if element is of type user and guest.
+            // only execute code if element is of type user and not a guest.
             $guest_reg = Craft::$app->request->getBodyParam("guestRegister");
+            $package = Craft::$app->request->getBodyParam("fields[package]");
 
-            if (!$event->element instanceof User || !$guest_reg) {
+            // file_put_contents("request_data.json", json_encode(Craft::$app->request->getBodyParam("fields[package]")));
+
+            if (!$event->element instanceof User || $guest_reg) {
                 return;
             }
 
-            function getParticipantsGroup()
+            function getGroup($package)
             {
-                foreach (Craft::$app->userGroups->allGroups as $group) {
-                    if ("participants" == $group->handle) {
-                        return $group;
+                if($package == "MEMBERSHIP ONLY") {
+                    foreach (Craft::$app->userGroups->allGroups as $group) {
+                        if ("members" == $group->handle) {
+                            return $group;
+                        }
+                    }
+                } else {
+                    foreach (Craft::$app->userGroups->allGroups as $group) {
+                        if ("participants" == $group->handle) {
+                            return $group;
+                        }
                     }
                 }
             };
 
-            $participants_group = getParticipantsGroup()->id;
-            Craft::$app->users->assignUserToGroups($event->element->id, [$participants_group]);
+            $group_id = getGroup($package)->id;
+            Craft::$app->users->assignUserToGroups($event->element->id, [$group_id]);
         });
 
+
+        // Guest register
         Event::on(Elements::class, Elements::EVENT_AFTER_SAVE_ELEMENT, function (Event $event) {
             // only execute code if element is of type user and guest.
             $guest_reg = Craft::$app->request->getBodyParam("guestRegister");

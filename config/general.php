@@ -37,6 +37,8 @@ $config = GeneralConfig::create()
     ->setPasswordPath('/password-reset')
     ->setPasswordSuccessPath('/login')
     ->enableTemplateCaching(App::env('CRAFT_ENVIRONMENT') == "production" ? false : true)
+    // ->allowedGraphqlOrigins(["https://glue.amsterdam/"])
+    ->allowedGraphqlOrigins(false)
 ;
 
 return $config;

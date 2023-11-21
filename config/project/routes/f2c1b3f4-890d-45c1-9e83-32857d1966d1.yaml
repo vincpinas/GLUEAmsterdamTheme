@@ -1,9 +1,0 @@
-siteUid: null
-sortOrder: 6
-template: containers/register.twig
-uriParts:
-  - sign-up/
-  -
-    - number
-    - \d+
-uriPattern: 'sign-up/<number:\d+>'

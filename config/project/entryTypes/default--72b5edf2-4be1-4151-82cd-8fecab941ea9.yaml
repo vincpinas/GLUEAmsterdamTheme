@@ -32,7 +32,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: 9cf5f394-9490-4101-bdc7-5f09654f53e7
+            fieldUid: 9cf5f394-9490-4101-bdc7-5f09654f53e7 # Thumbnail
             instructions: null
             label: null
             required: false
@@ -44,7 +44,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: 1972499d-a514-4921-81a0-426f9e57f7b2
+            fieldUid: 1972499d-a514-4921-81a0-426f9e57f7b2 # Program Type
             instructions: null
             label: null
             required: true
@@ -56,7 +56,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: 629498d0-534c-4a2a-996f-82b75a6f1864
+            fieldUid: 629498d0-534c-4a2a-996f-82b75a6f1864 # Member
             instructions: null
             label: Organizer(s)
             required: false
@@ -68,7 +68,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: 54d7b784-36c0-4673-ac81-61eb4fec1591
+            fieldUid: 54d7b784-36c0-4673-ac81-61eb4fec1591 # Date
             instructions: null
             label: null
             required: false
@@ -80,7 +80,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: 777e0919-b16b-490f-a586-9bc96baf546d
+            fieldUid: 777e0919-b16b-490f-a586-9bc96baf546d # Time
             instructions: null
             label: null
             required: false
@@ -92,7 +92,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: 6f166b0f-35de-422d-b4b1-66441ce46253
+            fieldUid: 6f166b0f-35de-422d-b4b1-66441ce46253 # Rsvp
             instructions: null
             label: null
             required: false
@@ -108,7 +108,7 @@ fieldLayouts:
 handle: default
 hasTitleField: true
 name: Default
-section: 9bc06dfa-790d-40dc-b656-17de5c920ef5
+section: 9bc06dfa-790d-40dc-b656-17de5c920ef5 # Program
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

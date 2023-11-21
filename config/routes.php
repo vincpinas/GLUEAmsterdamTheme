@@ -12,18 +12,8 @@
 return [
     // Amsterdam
     'default' => [
-        'edit-page' => ['template' => 'containers/edit-page'],
-        'edit-program' => ['template' => 'containers/edit-program/index'],
-        'edit-program/new' => ['template' => 'containers/edit-program/_edit'],
-        'edit-program/<number:\d+>' => ['template' => 'containers/edit-program/_edit'],
-        'program' => ['template' => 'containers/program'],
-        'sign-up/<number:\d+>' => ['template' => 'containers/register'],
-        'sign-up/confirmation' => ['template' => 'containers/register-confirm'],
-        'password-reset' => ['template' => 'containers/password-reset'],
-        'password-forget' => ['template' => 'containers/password-forget'],
-    ],
-    // Dallas
-    'glueDallas' => [
+        '/' => ['template' => 'containers/map'],
+        'login' => ['template' => 'containers/login'],
         'edit-page' => ['template' => 'containers/edit-page'],
         'edit-program' => ['template' => 'containers/edit-program/index'],
         'edit-program/new' => ['template' => 'containers/edit-program/_edit'],

@@ -1,6 +1,6 @@
 columnSuffix: null
 contentColumnType: string
-fieldGroup: e6ea2a09-6abe-4046-8a6f-c483f1d58716
+fieldGroup: e6ea2a09-6abe-4046-8a6f-c483f1d58716 # Common
 handle: singleAsset
 instructions: null
 name: 'Single Asset'
@@ -11,7 +11,7 @@ settings:
   allowUploads: true
   allowedKinds: null
   branchLimit: null
-  defaultUploadLocationSource: 'volume:8634fab2-bde5-4665-80a8-324c56cb1c35'
+  defaultUploadLocationSource: 'volume:8634fab2-bde5-4665-80a8-324c56cb1c35' # Web Images
   defaultUploadLocationSubpath: null
   localizeRelations: false
   maintainHierarchy: false
@@ -21,7 +21,7 @@ settings:
   restrictFiles: false
   restrictLocation: true
   restrictedDefaultUploadSubpath: null
-  restrictedLocationSource: 'volume:8634fab2-bde5-4665-80a8-324c56cb1c35'
+  restrictedLocationSource: 'volume:8634fab2-bde5-4665-80a8-324c56cb1c35' # Web Images
   restrictedLocationSubpath: null
   selectionCondition:
     __assoc__:
@@ -39,7 +39,7 @@ settings:
   showUnpermittedFiles: false
   showUnpermittedVolumes: false
   sources:
-    - 'volume:8634fab2-bde5-4665-80a8-324c56cb1c35'
+    - 'volume:8634fab2-bde5-4665-80a8-324c56cb1c35' # Web Images
   targetSiteId: null
   validateRelatedElements: false
   viewMode: list

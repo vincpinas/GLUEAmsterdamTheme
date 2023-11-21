@@ -36,7 +36,6 @@
   flex-direction: column;
   overflow-x: scroll;
   z-index: 10;
-  overflow-x: hidden;
 }
 @media screen and (max-width: 991px) {
   .c-editMenu {
@@ -118,20 +117,17 @@
   transition: transform 0.8s;
 }
 .c-map__popupSliderDot {
-  width: 0.9rem;
-  height: 0.9rem;
-  background-color: #1508d0;
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: #10069F;
   transition: 0.35s;
-  cursor: pointer;
 }
 .c-map__popupSliderDot:not(:last-of-type) {
   margin-right: 0.5rem;
 }
 .c-map__popupSliderDot.active {
-  background-color: #8077fa;
-  transition: 0.35s;
-  height: 0.9rem;
-  width: 1.35rem;
+  height: 0.5rem;
+  width: 1rem;
 }
 .c-map__popupSliderDots {
   display: flex;
@@ -709,7 +705,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: hidden;
 }
 .c-register__title {
   text-align: center;
@@ -888,20 +883,14 @@
 }
 .c-register__formPackages {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
   margin-bottom: 1rem;
-  overflow-x: scroll;
-  width: 85vw;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 }
 @media screen and (max-width: 991px) {
   .c-register__formPackages {
     align-items: center;
   }
-}
-.c-register__formPackages::-webkit-scrollbar {
-  display: none;
 }
 .c-register__formPackage {
   display: flex;
@@ -909,7 +898,7 @@
   border: 1px solid #ffffff;
   padding: 1rem;
   position: relative;
-  min-width: 22rem;
+  max-width: 22rem;
   margin-bottom: 2rem;
   margin-right: 2rem;
 }
@@ -966,9 +955,6 @@
 .c-register__formPackageHeading h3 {
   margin: 0;
 }
-.c-register__formPackageHeading p {
-  height: 7rem;
-}
 .c-register__form label {
   display: flex;
   flex-direction: column;
@@ -999,8 +985,7 @@
     min-width: initial;
   }
 }
-.c-register__formInput,
-.c-register__form select {
+.c-register__formInput {
   border: none;
   border-bottom: 2px solid #ffffff;
   outline: none;
@@ -1011,20 +996,9 @@
   color: #ffffff;
 }
 @media screen and (max-width: 991px) {
-  .c-register__formInput,
-  .c-register__form select {
+  .c-register__formInput {
     min-width: 15rem;
   }
-}
-.c-register__form label[for=nolocation], .c-register__form label[for=alreadymember] {
-  flex-direction: row;
-  align-items: center;
-}
-.c-register__form label[for=nolocation] input, .c-register__form label[for=alreadymember] input {
-  width: initial;
-  min-width: unset;
-  margin: 0;
-  margin-right: 1rem;
 }
 .c-register__formInput::placeholder {
   color: #bfbfbf;
@@ -1045,8 +1019,7 @@
     margin: 0;
   }
 }
-.c-register__formError,
-.c-register__form .red {
+.c-register__formError, .c-register__form .red {
   color: #FF0505;
 }
 .c-register__formPasswordVisiblity {
@@ -1322,7 +1295,7 @@
   outline: none;
   background: none;
 }
-.c-edit__formLabel input, .c-edit__formLabel textarea, .c-edit__formLabel select {
+.c-edit__formLabel input, .c-edit__formLabel textarea {
   font-family: "Lausanne";
   font-weight: 500;
   font-style: normal;
@@ -1332,9 +1305,6 @@
   color: #ffffff;
   outline: none;
   margin-top: 0.5rem;
-}
-.c-edit__formLabel select {
-  padding: 0.875rem 1.25rem;
 }
 .c-edit__formError {
   position: absolute;
@@ -1674,203 +1644,6 @@
   border: 1px solid gray;
 }
 
-.c-program {
-  display: flex;
-  flex-direction: column;
-  padding: 0rem 10rem;
-}
-@media screen and (max-width: 767px) {
-  .c-program {
-    padding: 0rem 2rem;
-  }
-}
-.c-program__menu {
-  display: flex;
-  flex-direction: row-reverse;
-  position: relative;
-  flex-wrap: wrap;
-  z-index: 50;
-}
-@media screen and (max-width: 767px) {
-  .c-program__menu {
-    justify-content: center;
-  }
-}
-.c-program__menu > * {
-  margin-right: 1rem;
-}
-@media screen and (max-width: 767px) {
-  .c-program__menu > * {
-    margin-right: 0;
-  }
-}
-.c-program__menu input, .c-program__menu select {
-  background: none;
-  border: 1px solid #ffffff;
-  color: #ffffff;
-  padding: 0.5rem 1.25rem;
-}
-.c-program__menu button:hover {
-  background: #ffffff;
-  color: #10069F;
-}
-.c-program__menuSearch {
-  border: none !important;
-  border-bottom: 1px solid #ffffff !important;
-  min-width: 10rem;
-}
-@media screen and (max-width: 767px) {
-  .c-program__menuSearch {
-    min-width: 13.75rem;
-  }
-}
-.c-program__menuSearchWrapper {
-  position: relative;
-  display: flex;
-}
-.c-program__menuSearchWrapper ion-icon {
-  position: absolute;
-  top: 0.6rem;
-  left: 0;
-  font-size: 1.1em;
-}
-.c-program__menuFilterWrapper {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-.c-program__menuFilter {
-  border: 1px solid #ffffff;
-  padding: 0.75rem 1.25rem;
-  outline: none;
-  background: none;
-  font-size: 1.2em;
-  padding: 0.5rem 2rem;
-  transition: 0.35s;
-}
-@media screen and (max-width: 767px) {
-  .c-program__menuFilter {
-    margin-right: 1rem;
-  }
-}
-.c-program__menuFilters {
-  top: 100%;
-  width: 150%;
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-  border: 1px solid #ffffff;
-  padding: 0.5rem;
-  background: #10069F;
-  font-family: "Lausanne";
-  font-weight: 300;
-  font-style: normal;
-}
-.c-program__menuFilters.active {
-  pointer-events: all;
-  opacity: 1;
-}
-.c-program__menuFilters label input {
-  margin-right: 0.5rem;
-}
-.c-program__menu #date {
-  margin-right: 0;
-}
-.c-program__entries {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: center;
-  margin-top: 5rem;
-}
-.c-program__entry {
-  position: relative;
-  overflow: hidden;
-  min-height: 15rem;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid #ffffff;
-}
-.c-program__entry:not(:last-of-type) {
-  border-bottom: none;
-}
-.c-program__entry h2, .c-program__entry h3, .c-program__entry h4, .c-program__entry h5, .c-program__entry h6 {
-  margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-}
-@media screen and (max-width: 767px) {
-  .c-program__entry h2, .c-program__entry h3, .c-program__entry h4, .c-program__entry h5, .c-program__entry h6 {
-    margin-bottom: 0;
-  }
-}
-.c-program__entry h2 span {
-  margin-right: 0.5rem;
-  display: flex;
-}
-@media screen and (max-width: 767px) {
-  .c-program__entry h2 span {
-    display: none;
-  }
-}
-.c-program__entryBackground {
-  width: 100%;
-  position: absolute;
-}
-.c-program__entryInfo {
-  margin: 0;
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  padding: 0.5rem 5rem;
-  transition: 0.35s;
-  background-color: rgba(16, 6, 159, 0.4);
-}
-@media screen and (max-width: 767px) {
-  .c-program__entryInfo {
-    padding: 0.5rem;
-  }
-}
-.c-program__entryInfo:hover {
-  background: #ffffff;
-}
-.c-program__entryOrganizersWrapper {
-  display: flex;
-  align-items: start;
-}
-.c-program__entryOrganizersWrapper h3 {
-  margin-right: 1rem;
-}
-.c-program__entryOrganizers {
-  margin-top: 0.25rem;
-  display: flex;
-  flex-direction: column;
-  font-size: 14px;
-  line-height: 20px;
-  margin-bottom: 1rem;
-  font-family: "Lausanne";
-  font-weight: 300;
-  font-style: normal;
-  margin-bottom: 1rem;
-}
-@media screen and (max-width: 767px) {
-  .c-program__entryOrganizers {
-    font-size: 12px;
-    line-height: 16px;
-  }
-}
-.c-program__entryOrganizers h5 {
-  font-weight: 800;
-}
-.c-program__entryInfo:hover h2, .c-program__entryInfo:hover h3, .c-program__entryInfo:hover h4, .c-program__entryInfo:hover h5, .c-program__entryInfo:hover h6, .c-program__entryInfo:hover p, .c-program__entryInfo:hover li {
-  color: #10069F;
-}
-
 .c-publicPage {
   display: flex;
   width: 100%;
@@ -1923,23 +1696,6 @@
   text-transform: uppercase;
   margin-bottom: 0.5rem;
   margin-top: 1rem;
-}
-.c-publicPage__overview {
-  font-size: 16px;
-  font-family: "Lausanne";
-  font-weight: 300;
-  font-style: normal;
-  line-height: 28px;
-  margin-bottom: 1rem;
-}
-@media screen and (max-width: 767px) {
-  .c-publicPage__overview {
-    font-size: 14px;
-    line-height: 18px;
-  }
-}
-.c-publicPage__overview a {
-  text-decoration: underline;
 }
 .c-publicPage__overviewOpeningTimes {
   margin-bottom: 1rem;
@@ -2202,11 +1958,6 @@ html {
   display: flex;
   flex-direction: column;
 }
-body select option,
-html select option {
-  color: #ffffff !important;
-  background-color: #0e0586 !important;
-}
 body a,
 body button,
 body input[type=submit],
@@ -2302,8 +2053,8 @@ html h4 {
 @media screen and (max-width: 767px) {
   body h4,
   html h4 {
-    font-size: 18px;
-    line-height: 24px;
+    font-size: 12px;
+    line-height: 28px;
   }
 }
 body h5,
@@ -2320,22 +2071,6 @@ html h5 {
   html h5 {
     font-size: 14px;
     line-height: 20px;
-  }
-}
-body h6,
-html h6 {
-  font-size: 16px;
-  font-family: "Lausanne";
-  font-weight: 300;
-  font-style: normal;
-  line-height: 18px;
-  margin-bottom: 2.5rem;
-}
-@media screen and (max-width: 767px) {
-  body h6,
-  html h6 {
-    font-size: 12px;
-    line-height: 18px;
   }
 }
 body p,
@@ -2368,4 +2103,4 @@ html label {
   }
 }
 
-/*# sourceMappingURL=style-1.2.1.css.map */
+/*# sourceMappingURL=style.css.map */

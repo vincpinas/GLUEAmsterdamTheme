@@ -16,12 +16,7 @@ previewTargets:
         - '1'
 propagationMethod: none
 siteSettings:
-  6dfdd3d3-bde1-4ee1-893a-3bf36599a903:
-    enabledByDefault: true
-    hasUrls: true
-    template: program/_entry
-    uriFormat: 'program/{slug}'
-  c5fb5f28-2f93-4a73-bcd6-9c57ee22f86f:
+  c5fb5f28-2f93-4a73-bcd6-9c57ee22f86f: # $SITE_NAME
     enabledByDefault: true
     hasUrls: true
     template: program/_entry

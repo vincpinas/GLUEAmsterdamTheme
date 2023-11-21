@@ -1,6 +1,6 @@
 columnSuffix: null
 contentColumnType: string
-fieldGroup: e6ea2a09-6abe-4046-8a6f-c483f1d58716
+fieldGroup: e6ea2a09-6abe-4046-8a6f-c483f1d58716 # Common
 handle: thumbnail
 instructions: null
 name: Thumbnail
@@ -11,7 +11,7 @@ settings:
   allowUploads: true
   allowedKinds: null
   branchLimit: null
-  defaultUploadLocationSource: 'volume:b8f74062-ae64-4520-a7ed-fe4272ee4456'
+  defaultUploadLocationSource: 'volume:b8f74062-ae64-4520-a7ed-fe4272ee4456' # User Avatars
   defaultUploadLocationSubpath: null
   localizeRelations: false
   maintainHierarchy: false
@@ -21,7 +21,7 @@ settings:
   restrictFiles: false
   restrictLocation: false
   restrictedDefaultUploadSubpath: null
-  restrictedLocationSource: 'volume:b8f74062-ae64-4520-a7ed-fe4272ee4456'
+  restrictedLocationSource: 'volume:b8f74062-ae64-4520-a7ed-fe4272ee4456' # User Avatars
   restrictedLocationSubpath: null
   selectionCondition:
     __assoc__:

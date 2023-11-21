@@ -36,7 +36,7 @@ class Register {
                 r && r.package && r.email && r.password && r.company_name ? null : location.replace(`${this.registerBaseUrl}/1`);
                 break;
             case 5:
-                r && r.package && r.email && r.password && r.company_name && r.map_address && r.map_postalCode && r.map_city ? null : location.replace(`${this.registerBaseUrl}/1`);
+                r && r.package && r.email && r.password && r.company_name ? null : location.replace(`${this.registerBaseUrl}/1`);
                 break;
 
             default:
@@ -88,7 +88,6 @@ class Register {
                 params.append("fields[invoiceCountry]", storage.invoice_country)
                 params.append("fields[mapAddress]", storage.map_address)
                 params.append("fields[mapPostalCode]", storage.map_postalCode)
-                params.append("fields[city]", storage.map_city)
                 params.append("fields[venue]", storage.map_venue)
 
                 return fetch('/actions/users/save-user', {
@@ -106,9 +105,9 @@ class Register {
                     // Handle register errors otherwise go to login page.
                     if (result.errors) {
                         handleErrorMessage(Object.values(result.errors), document.querySelector(".c-register__errors"), result.message)
+                    } else {
+                        location.href = "/sign-up/confirmation"
                     }
-
-                    location.href = "/sign-up/confirmation"
 
                     return { ...session, userId: result.id }
                 })
@@ -277,7 +276,6 @@ class Register {
                 map_address: document.querySelector("#mapaddress").value.trim(),
                 map_postalCode: document.querySelector("#mappostalcode").value.trim(),
                 map_venue: document.querySelector("#mapvenue").value.trim(),
-                map_city: document.querySelector("#mapcity").value.trim()
             }
             sessionStorage.setItem("reg_obj", JSON.stringify(reg_obj))
         }
@@ -290,33 +288,40 @@ class Register {
         const address = document.querySelector("#mapaddress")
         const postalCode = document.querySelector("#mappostalcode")
         const venue = document.querySelector("#mapvenue")
-        const city = document.querySelector("#mapcity")
+        const nolocation = document.querySelector("#nolocation")
         const validated_fields = [address, postalCode];
+        const continueButton = document.querySelector(".c-register__formContinue");
 
         if (storage.map_address) address.value = storage.map_address;
         if (storage.map_postalCode) postalCode.value = storage.map_postalCode;
         if (storage.map_venue) venue.value = storage.map_venue;
-        if (storage.map_city) city.value = storage.map_city;
+
+        nolocation.addEventListener("click", (e) => {
+            const elements = [address, postalCode, venue]
+
+            if(e.target.checked) {
+                elements.forEach(input => {
+                    input.parentElement.style.opacity = 0.4;
+                    input.disabled = true;
+                    continueButton.disabled = false;
+                    continueButton.classList.remove("disabled")
+                })
+            } else {
+                elements.forEach(input => {
+                    input.parentElement.style.opacity = 1;
+                    input.disabled = false;
+                    continueButton.disabled = true;
+                    if (!continueButton.classList.contains("disabled")) continueButton.classList.add("disabled")
+                })
+            }
+        })
 
         const validateContinue = (firstRun = false) => {
-            const continueButton = document.querySelector(".c-register__formContinue");
-            let regex
+            let regex = /(\d{4})([ ])([A-Z]{2})/
 
             if (!firstRun) {
                 validateFormField(".c-register__formLabel[for='mapaddress']", "Valid address is required", address.value.length > 2, address.value.length > 0)
-                console.log(city.value)
-                switch (city.value) {
-                    case "Amsterdam":
-                        regex = /(\d{4})([ ])([A-Z]{2})/
-                        validateFormField(".c-register__formLabel[for='mappostalcode']", "Please fill in a valid postal code for your city", regex.test(postalCode.value) && postalCode.value.length === 7, postalCode.value.length > 0)
-                        break;
-                    case "Dallas":
-                        regex = /(\d{5})/
-                        validateFormField(".c-register__formLabel[for='mappostalcode']", "Please fill in a valid postal code for your city", regex.test(postalCode.value) && postalCode.value.length === 5, postalCode.value.length > 0)
-                        break;
-
-                    default: break;
-                }
+                validateFormField(".c-register__formLabel[for='mappostalcode']", "Please fill in a valid Dutch postal code", regex.test(postalCode.value) && postalCode.value.length === 7, postalCode.value.length > 0)
             }
 
             if (address.value.length > 2 && regex.test(postalCode.value)) {
@@ -358,7 +363,9 @@ class Register {
         const country = document.querySelector("#invoicecountry")
         const city = document.querySelector("#invoicecity")
         const VAT = document.querySelector("#VAT")
+        const already_member = document.querySelector("#alreadymember")
         const validated_fields = [name, zip, address, country, city];
+        const finishButton = document.querySelector(".c-register__formFinish");
 
         if (storage.invoice_name) name.value = storage.invoice_name;
         if (storage.invoice_zip) zip.value = storage.invoice_zip;
@@ -367,9 +374,27 @@ class Register {
         if (storage.invoice_city) city.value = storage.invoice_city;
         if (storage.VAT) VAT.value = storage.VAT;
 
-        const validateContinue = (firstRun = false) => {
-            const finishButton = document.querySelector(".c-register__formFinish");
+        already_member.addEventListener("click", (e) => {
+            const elements = [name, zip, address, country, city, VAT];
 
+            if(e.target.checked) {
+                elements.forEach(input => {
+                    input.parentElement.style.opacity = 0.4;
+                    input.disabled = true;
+                    finishButton.disabled = false;
+                    finishButton.classList.remove("disabled")
+                })
+            } else {
+                elements.forEach(input => {
+                    input.parentElement.style.opacity = 1;
+                    input.disabled = false;
+                    finishButton.disabled = true;
+                    if (!finishButton.classList.contains("disabled")) finishButton.classList.add("disabled")
+                })
+            }
+        })
+
+        const validateContinue = (firstRun = false) => {
             if (!firstRun) {
                 validateFormField(".c-register__formLabel[for='invoicename']", "Company name is required", name.value.length >= 1)
                 validateFormField(".c-register__formLabel[for='invoicezip']", "Valid zip code is required", zip.value.length >= 2, zip.value.length > 0)

@@ -1,6 +1,0 @@
-siteUid: null
-sortOrder: 1
-template: containers/edit-page.twig
-uriParts:
-  - edit-page
-uriPattern: edit-page

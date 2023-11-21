@@ -1,6 +1,6 @@
 columnSuffix: xafhsdtz
 contentColumnType: integer(10)
-fieldGroup: 1a8a2732-cd82-4bf7-8afe-099fb893ac20
+fieldGroup: 1a8a2732-cd82-4bf7-8afe-099fb893ac20 # Map
 handle: hubSlideDuration
 instructions: 'The duration of each slide on the slideshow when opening a hub popup'
 name: 'HUB slide duration'

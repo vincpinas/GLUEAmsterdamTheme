@@ -5,5 +5,5 @@ hasUrls: true
 language: en-US
 name: $SITE_NAME
 primary: true
-siteGroup: 90a58fe8-93e7-4f43-a79c-f92d1076f9c0
+siteGroup: 90a58fe8-93e7-4f43-a79c-f92d1076f9c0 # Glue locations
 sortOrder: 1

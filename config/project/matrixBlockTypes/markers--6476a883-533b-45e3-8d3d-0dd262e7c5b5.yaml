@@ -1,4 +1,4 @@
-field: 2603f45d-35b6-49c5-8c18-392fc415f0ab
+field: 2603f45d-35b6-49c5-8c18-392fc415f0ab # Marker Matrix
 fieldLayouts:
   feb74658-f02e-4103-b8bd-f488379bf952:
     tabs:
@@ -7,7 +7,7 @@ fieldLayouts:
         elements:
           -
             elementCondition: null
-            fieldUid: bab14c41-889d-40ef-bed6-cb4f4fc062ac
+            fieldUid: bab14c41-889d-40ef-bed6-cb4f4fc062ac # Route
             instructions: null
             label: null
             required: false
@@ -19,7 +19,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: 7c6ffd50-236d-41ef-b9b0-ed933128ead8
+            fieldUid: 7c6ffd50-236d-41ef-b9b0-ed933128ead8 # Locations
             instructions: null
             label: null
             required: false
@@ -31,7 +31,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: 224d134b-3e57-4e94-a6b0-97108c266b94
+            fieldUid: 224d134b-3e57-4e94-a6b0-97108c266b94 # Hub
             instructions: null
             label: null
             required: false
@@ -43,7 +43,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: 8338e071-a901-4ca5-80a4-ea0b0e33acec
+            fieldUid: 8338e071-a901-4ca5-80a4-ea0b0e33acec # Collective
             instructions: null
             label: null
             required: false
@@ -55,7 +55,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: e49004dc-97e1-4069-852d-2b53e7f5b8a1
+            fieldUid: e49004dc-97e1-4069-852d-2b53e7f5b8a1 # Founder
             instructions: null
             label: null
             required: false
@@ -67,7 +67,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: e4e090a3-6fa6-47ce-a91b-8171b1a84a58
+            fieldUid: e4e090a3-6fa6-47ce-a91b-8171b1a84a58 # Special Program
             instructions: null
             label: null
             required: false
@@ -81,7 +81,7 @@ fieldLayouts:
         uid: 4e3a81d5-3419-4fe2-8e69-2d8c2818800e
         userCondition: null
 fields:
-  7c6ffd50-236d-41ef-b9b0-ed933128ead8:
+  7c6ffd50-236d-41ef-b9b0-ed933128ead8: # Locations
     columnSuffix: null
     contentColumnType: string
     fieldGroup: null
@@ -96,7 +96,7 @@ fields:
       allowedKinds:
         - image
       branchLimit: null
-      defaultUploadLocationSource: 'volume:b8f74062-ae64-4520-a7ed-fe4272ee4456'
+      defaultUploadLocationSource: 'volume:b8f74062-ae64-4520-a7ed-fe4272ee4456' # User Avatars
       defaultUploadLocationSubpath: null
       localizeRelations: false
       maintainHierarchy: false
@@ -106,7 +106,7 @@ fields:
       restrictFiles: true
       restrictLocation: true
       restrictedDefaultUploadSubpath: null
-      restrictedLocationSource: 'volume:8634fab2-bde5-4665-80a8-324c56cb1c35'
+      restrictedLocationSource: 'volume:8634fab2-bde5-4665-80a8-324c56cb1c35' # Web Images
       restrictedLocationSubpath: null
       selectionCondition:
         __assoc__:
@@ -130,7 +130,7 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Assets
-  224d134b-3e57-4e94-a6b0-97108c266b94:
+  224d134b-3e57-4e94-a6b0-97108c266b94: # Hub
     columnSuffix: null
     contentColumnType: string
     fieldGroup: null
@@ -145,7 +145,7 @@ fields:
       allowedKinds:
         - image
       branchLimit: null
-      defaultUploadLocationSource: 'volume:b8f74062-ae64-4520-a7ed-fe4272ee4456'
+      defaultUploadLocationSource: 'volume:b8f74062-ae64-4520-a7ed-fe4272ee4456' # User Avatars
       defaultUploadLocationSubpath: null
       localizeRelations: false
       maintainHierarchy: false
@@ -155,7 +155,7 @@ fields:
       restrictFiles: true
       restrictLocation: true
       restrictedDefaultUploadSubpath: null
-      restrictedLocationSource: 'volume:8634fab2-bde5-4665-80a8-324c56cb1c35'
+      restrictedLocationSource: 'volume:8634fab2-bde5-4665-80a8-324c56cb1c35' # Web Images
       restrictedLocationSubpath: null
       selectionCondition:
         __assoc__:
@@ -179,7 +179,7 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Assets
-  8338e071-a901-4ca5-80a4-ea0b0e33acec:
+  8338e071-a901-4ca5-80a4-ea0b0e33acec: # Collective
     columnSuffix: null
     contentColumnType: string
     fieldGroup: null
@@ -194,7 +194,7 @@ fields:
       allowedKinds:
         - image
       branchLimit: null
-      defaultUploadLocationSource: 'volume:b8f74062-ae64-4520-a7ed-fe4272ee4456'
+      defaultUploadLocationSource: 'volume:b8f74062-ae64-4520-a7ed-fe4272ee4456' # User Avatars
       defaultUploadLocationSubpath: null
       localizeRelations: false
       maintainHierarchy: false
@@ -204,7 +204,7 @@ fields:
       restrictFiles: true
       restrictLocation: true
       restrictedDefaultUploadSubpath: null
-      restrictedLocationSource: 'volume:8634fab2-bde5-4665-80a8-324c56cb1c35'
+      restrictedLocationSource: 'volume:8634fab2-bde5-4665-80a8-324c56cb1c35' # Web Images
       restrictedLocationSubpath: null
       selectionCondition:
         __assoc__:
@@ -228,7 +228,7 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Assets
-  bab14c41-889d-40ef-bed6-cb4f4fc062ac:
+  bab14c41-889d-40ef-bed6-cb4f4fc062ac: # Route
     columnSuffix: null
     contentColumnType: string
     fieldGroup: null
@@ -243,7 +243,7 @@ fields:
       allowedKinds:
         - image
       branchLimit: null
-      defaultUploadLocationSource: 'volume:b8f74062-ae64-4520-a7ed-fe4272ee4456'
+      defaultUploadLocationSource: 'volume:b8f74062-ae64-4520-a7ed-fe4272ee4456' # User Avatars
       defaultUploadLocationSubpath: null
       localizeRelations: false
       maintainHierarchy: false
@@ -253,7 +253,7 @@ fields:
       restrictFiles: true
       restrictLocation: true
       restrictedDefaultUploadSubpath: null
-      restrictedLocationSource: 'volume:8634fab2-bde5-4665-80a8-324c56cb1c35'
+      restrictedLocationSource: 'volume:8634fab2-bde5-4665-80a8-324c56cb1c35' # Web Images
       restrictedLocationSubpath: null
       selectionCondition:
         __assoc__:
@@ -277,7 +277,7 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Assets
-  e4e090a3-6fa6-47ce-a91b-8171b1a84a58:
+  e4e090a3-6fa6-47ce-a91b-8171b1a84a58: # Special Program
     columnSuffix: null
     contentColumnType: string
     fieldGroup: null
@@ -292,7 +292,7 @@ fields:
       allowedKinds:
         - image
       branchLimit: null
-      defaultUploadLocationSource: 'volume:b8f74062-ae64-4520-a7ed-fe4272ee4456'
+      defaultUploadLocationSource: 'volume:b8f74062-ae64-4520-a7ed-fe4272ee4456' # User Avatars
       defaultUploadLocationSubpath: null
       localizeRelations: false
       maintainHierarchy: false
@@ -302,7 +302,7 @@ fields:
       restrictFiles: true
       restrictLocation: true
       restrictedDefaultUploadSubpath: null
-      restrictedLocationSource: 'volume:8634fab2-bde5-4665-80a8-324c56cb1c35'
+      restrictedLocationSource: 'volume:8634fab2-bde5-4665-80a8-324c56cb1c35' # Web Images
       restrictedLocationSubpath: null
       selectionCondition:
         __assoc__:
@@ -326,7 +326,7 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Assets
-  e49004dc-97e1-4069-852d-2b53e7f5b8a1:
+  e49004dc-97e1-4069-852d-2b53e7f5b8a1: # Founder
     columnSuffix: null
     contentColumnType: string
     fieldGroup: null
@@ -341,7 +341,7 @@ fields:
       allowedKinds:
         - image
       branchLimit: null
-      defaultUploadLocationSource: 'volume:b8f74062-ae64-4520-a7ed-fe4272ee4456'
+      defaultUploadLocationSource: 'volume:b8f74062-ae64-4520-a7ed-fe4272ee4456' # User Avatars
       defaultUploadLocationSubpath: null
       localizeRelations: false
       maintainHierarchy: false
@@ -351,7 +351,7 @@ fields:
       restrictFiles: true
       restrictLocation: true
       restrictedDefaultUploadSubpath: null
-      restrictedLocationSource: 'volume:8634fab2-bde5-4665-80a8-324c56cb1c35'
+      restrictedLocationSource: 'volume:8634fab2-bde5-4665-80a8-324c56cb1c35' # Web Images
       restrictedLocationSubpath: null
       selectionCondition:
         __assoc__:

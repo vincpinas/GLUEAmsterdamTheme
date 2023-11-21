@@ -1,9 +1,0 @@
-siteUid: null
-sortOrder: 4
-template: containers/edit-program/_edit.twig
-uriParts:
-  - edit-program/
-  -
-    - number
-    - \d+
-uriPattern: 'edit-program/<number:\d+>'

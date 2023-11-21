@@ -1,6 +1,6 @@
 columnSuffix: noblvuhh
 contentColumnType: text
-fieldGroup: e6ea2a09-6abe-4046-8a6f-c483f1d58716
+fieldGroup: e6ea2a09-6abe-4046-8a6f-c483f1d58716 # Common
 handle: largeTextField
 instructions: 'An WYSIWYG field allowing for flexible content'
 name: 'Large Text Field'

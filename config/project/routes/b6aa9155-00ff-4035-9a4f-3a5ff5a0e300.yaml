@@ -1,6 +1,0 @@
-siteUid: null
-sortOrder: 2
-template: containers/edit-program/index.twig
-uriParts:
-  - edit-program
-uriPattern: edit-program

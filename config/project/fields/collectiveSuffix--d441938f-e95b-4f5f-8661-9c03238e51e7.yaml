@@ -1,6 +1,6 @@
 columnSuffix: tgxigmay
 contentColumnType: text
-fieldGroup: 1a8a2732-cd82-4bf7-8afe-099fb893ac20
+fieldGroup: 1a8a2732-cd82-4bf7-8afe-099fb893ac20 # Map
 handle: collectiveSuffix
 instructions: 'The suffix used for a collection of members, like a hub that are not a hub'
 name: 'Collective Suffix'

@@ -1,6 +1,0 @@
-siteUid: null
-sortOrder: 7
-template: containers/register-confirm.twig
-uriParts:
-  - sign-up/confirmation
-uriPattern: sign-up/confirmation
