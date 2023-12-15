@@ -1,0 +1,58 @@
+fieldLayouts:
+  4ead5135-f4b1-47a4-aec8-44144fb6b847:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 7f936856-2916-4e05-86b9-33f039e8d4fd
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: a1a284ed-b660-4132-9e98-a7af09a3cc32 # Rich Text
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f1b48cdb-9b1e-4e46-9646-47ebdc1f7e5a
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 4065bc07-fc6f-4bef-9ef4-a59c69e695c2
+        userCondition: null
+handle: termsConditions
+hasTitleField: false
+name: 'Terms & Conditions'
+section: 668738fd-0979-4b4f-9baa-b83f18974c13 # Terms & Conditions
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+sortOrder: 1
+titleFormat: '{section.name|raw}'
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

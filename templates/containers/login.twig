@@ -22,7 +22,11 @@
                     <h5 class="c-login__errorTitle">{{ errorCode }}</h5>
                     <ion-icon name="close-outline" class="c-login__errorClose"></ion-icon>
                 </span>
-				<p class="c-login__errorMessage">{{ errorMessage }}</p>
+				{% if "suspended" in errorMessage|lower %}
+					<p class="c-login__errorMessage">{{ errorMessage|replace({'.': ''}) }}, you might need to pay your yearly fee</p>
+				{% else %}
+					<p class="c-login__errorMessage">{{ errorMessage }}</p>
+				{% endif %}
              </div>
 			{% endif %}
         </div>

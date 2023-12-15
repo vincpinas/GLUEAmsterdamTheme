@@ -1,0 +1,24 @@
+defaultPlacement: end
+enableVersioning: true
+handle: login
+name: Login
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  c5fb5f28-2f93-4a73-bcd6-9c57ee22f86f: # $SITE_NAME
+    enabledByDefault: true
+    hasUrls: true
+    template: containers/login.twig
+    uriFormat: login
+type: single

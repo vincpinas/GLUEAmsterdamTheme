@@ -1,0 +1,7 @@
+.c-privacy {
+    padding: 2rem 10rem;
+
+    @media #{$mobile-down} {
+        padding: 2rem;
+    }
+}

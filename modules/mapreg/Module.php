@@ -16,9 +16,9 @@ class Module extends \yii\base\Module
 
         // Set the controllerNamespace based on whether this is a console or web request
         if (Craft::$app->getRequest()->getIsConsoleRequest()) {
-            $this->controllerNamespace = 'foo\\console\\controllers';
+            $this->controllerNamespace = 'reghandle\\console\\controllers';
         } else {
-            $this->controllerNamespace = 'foo\\controllers';
+            $this->controllerNamespace = 'reghandle\\controllers';
         }
 
         parent::init();
@@ -51,48 +51,62 @@ class Module extends \yii\base\Module
             }
         });
 
-        // Participant Register
+        // Participant Register           
         Event::on(Elements::class, Elements::EVENT_AFTER_SAVE_ELEMENT, function (Event $event) {
             // only execute code if element is of type user and not a guest.
+            $cp_request = Craft::$app->request->isCpRequest;
             $guest_reg = Craft::$app->request->getBodyParam("guestRegister");
-            $package = Craft::$app->request->getBodyParam("fields[package]");
+            $package = Craft::$app->request->getBodyParam("fields[package]") ?? $event->element->package;
+            $requestBody = Craft::$app->request->getBodyParams();
+            $user = $event->element;
 
-            // file_put_contents("request_data.json", json_encode(Craft::$app->request->getBodyParam("fields[package]")));
-
-            if (!$event->element instanceof User || $guest_reg) {
+            if (!$event->element instanceof User || $guest_reg || $cp_request) {
                 return;
             }
 
             function getGroup($package)
             {
-                if($package == "MEMBERSHIP ONLY") {
-                    foreach (Craft::$app->userGroups->allGroups as $group) {
+                $groups = Craft::$app->userGroups->allGroups;
+    
+                if ($package == "MEMBERSHIP ONLY") {
+                    foreach ($groups as $group) {
                         if ("members" == $group->handle) {
                             return $group;
                         }
                     }
                 } else {
-                    foreach (Craft::$app->userGroups->allGroups as $group) {
+                    foreach ($groups as $group) {
                         if ("participants" == $group->handle) {
                             return $group;
                         }
                     }
                 }
-            };
+            }
 
             $group_id = getGroup($package)->id;
             Craft::$app->users->assignUserToGroups($event->element->id, [$group_id]);
+
+            foreach ($requestBody["fields"] as $key => $value) {
+                $user->setFieldValue($key, $value);
+            }
+
+            if (Craft::$app->elements->saveElement($user)) {
+                return $user;
+            } else {
+                throw new \Exception("Couldn't save user: " . print_r($user->getErrors(), true));
+            }
         });
 
 
         // Guest register
         Event::on(Elements::class, Elements::EVENT_AFTER_SAVE_ELEMENT, function (Event $event) {
             // only execute code if element is of type user and guest.
+            $cp_request = Craft::$app->request->isCpRequest;
             $guest_reg = Craft::$app->request->getBodyParam("guestRegister");
             $user = $event->element;
             $requestBody = Craft::$app->request->getBodyParams();
 
-            if (!$event->element instanceof User || !$guest_reg) {
+            if (!$event->element instanceof User || !$guest_reg || $cp_request) {
                 return;
             }
 
@@ -109,7 +123,7 @@ class Module extends \yii\base\Module
                         return $group;
                     }
                 }
-            };
+            }
 
             $guest_group = getGuestGroup()->id;
             Craft::$app->users->assignUserToGroups($user->id, [$guest_group]);

@@ -7,6 +7,15 @@
         padding: 0rem 2rem;
     }
 
+    & > p {
+        text-align: center;
+
+        a {
+            text-decoration: underline;
+            @include paragraph;
+        }
+    }
+
     &__menu {
         display: flex;
         flex-direction: row-reverse;

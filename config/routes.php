@@ -12,8 +12,6 @@
 return [
     // Amsterdam
     'default' => [
-        '/' => ['template' => 'containers/map'],
-        'login' => ['template' => 'containers/login'],
         'edit-page' => ['template' => 'containers/edit-page'],
         'edit-program' => ['template' => 'containers/edit-program/index'],
         'edit-program/new' => ['template' => 'containers/edit-program/_edit'],

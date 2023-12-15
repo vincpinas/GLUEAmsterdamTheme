@@ -1,9 +1,12 @@
 {
   "require": {
-    "craftcms/cms": "4.4.15",
+    "craftcms/cms": "4.5.10",
     "craftcms/redactor": "^3.0",
     "doublesecretagency/craft-cpcss": "2.6.0",
     "mmikkel/cp-field-inspect": "^1.4",
+    "nystudio107/craft-connect": "^4.0",
+    "psr/log": "~1.1.4",
+    "samdark/yii2-psr-log-target": "1.1.3",
     "sebastianlenz/linkfield": "2.1.5",
     "utakka/redactor-anchors": "^1.4",
     "verbb/expanded-singles": "2.0.2",

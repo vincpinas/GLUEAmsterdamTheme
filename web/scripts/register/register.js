@@ -45,7 +45,7 @@ class Register {
     }
 
     // Pagination
-    continueButton = (func) => {
+    continueButton = (func, d = null) => {
         const button = document.querySelector(".c-register__formContinue");
         if (button) button.addEventListener("click", () => {
             if (func) func();
@@ -269,21 +269,6 @@ class Register {
     }
 
     formFour = () => {
-        const save_form = () => {
-            const storage = JSON.parse(sessionStorage.getItem("reg_obj"))
-            const reg_obj = {
-                ...storage,
-                map_address: document.querySelector("#mapaddress").value.trim(),
-                map_postalCode: document.querySelector("#mappostalcode").value.trim(),
-                map_venue: document.querySelector("#mapvenue").value.trim(),
-            }
-            sessionStorage.setItem("reg_obj", JSON.stringify(reg_obj))
-        }
-
-        this.previousButton(save_form);
-        this.continueButton(save_form);
-        this.validate(4);
-
         const storage = JSON.parse(sessionStorage.getItem("reg_obj"))
         const address = document.querySelector("#mapaddress")
         const postalCode = document.querySelector("#mappostalcode")
@@ -291,15 +276,46 @@ class Register {
         const nolocation = document.querySelector("#nolocation")
         const validated_fields = [address, postalCode];
         const continueButton = document.querySelector(".c-register__formContinue");
+        const regex = /(\d{4})([ ])([A-Z]{2})/
 
+        const save_form = () => {
+            const storage = JSON.parse(sessionStorage.getItem("reg_obj"))
+            let reg_obj = {
+                ...storage,
+                no_location: nolocation.checked,
+            }
+
+            if(!nolocation.checked) {
+                reg_obj = {
+                    ...reg_obj,
+                    map_address: address.value.trim(),
+                    map_postalCode: postalCode.value.trim(),
+                    map_venue: venue.value.trim(),
+                }
+            } else {
+                reg_obj = {
+                    ...reg_obj,
+                    map_address: "",
+                    map_postalCode: "",
+                    map_venue: "",
+                }
+            }
+
+            sessionStorage.setItem("reg_obj", JSON.stringify(reg_obj))
+        }
+
+        this.previousButton(save_form);
+        this.continueButton(save_form);
+        this.validate(4);
+
+        if (storage.no_location) nolocation.checked = storage.no_location
         if (storage.map_address) address.value = storage.map_address;
         if (storage.map_postalCode) postalCode.value = storage.map_postalCode;
         if (storage.map_venue) venue.value = storage.map_venue;
 
-        nolocation.addEventListener("click", (e) => {
+        const checkIfLocation = () => {
             const elements = [address, postalCode, venue]
-
-            if(e.target.checked) {
+            if(nolocation.checked) {
                 elements.forEach(input => {
                     input.parentElement.style.opacity = 0.4;
                     input.disabled = true;
@@ -314,15 +330,27 @@ class Register {
                     if (!continueButton.classList.contains("disabled")) continueButton.classList.add("disabled")
                 })
             }
-        })
+
+            if(nolocation.checked) return;
+
+            if (address.value.length > 2 && regex.test(postalCode.value)) {
+                continueButton.disabled = false;
+                continueButton.classList.remove("disabled")
+            } else {
+                continueButton.disabled = true;
+                if (!continueButton.classList.contains("disabled")) continueButton.classList.add("disabled")
+            }
+        }
+
+        nolocation.addEventListener("click", () => checkIfLocation())
 
         const validateContinue = (firstRun = false) => {
-            let regex = /(\d{4})([ ])([A-Z]{2})/
-
             if (!firstRun) {
                 validateFormField(".c-register__formLabel[for='mapaddress']", "Valid address is required", address.value.length > 2, address.value.length > 0)
                 validateFormField(".c-register__formLabel[for='mappostalcode']", "Please fill in a valid Dutch postal code", regex.test(postalCode.value) && postalCode.value.length === 7, postalCode.value.length > 0)
             }
+
+            if(nolocation.checked) return;
 
             if (address.value.length > 2 && regex.test(postalCode.value)) {
                 continueButton.disabled = false;
@@ -334,6 +362,7 @@ class Register {
         }
 
         validated_fields.forEach(field => field.addEventListener("input", () => validateContinue(false)));
+        checkIfLocation();
         validateContinue(true);
     }
 
@@ -363,7 +392,6 @@ class Register {
         const country = document.querySelector("#invoicecountry")
         const city = document.querySelector("#invoicecity")
         const VAT = document.querySelector("#VAT")
-        const already_member = document.querySelector("#alreadymember")
         const validated_fields = [name, zip, address, country, city];
         const finishButton = document.querySelector(".c-register__formFinish");
 
@@ -373,26 +401,6 @@ class Register {
         if (storage.invoice_country) country.value = storage.invoice_country;
         if (storage.invoice_city) city.value = storage.invoice_city;
         if (storage.VAT) VAT.value = storage.VAT;
-
-        already_member.addEventListener("click", (e) => {
-            const elements = [name, zip, address, country, city, VAT];
-
-            if(e.target.checked) {
-                elements.forEach(input => {
-                    input.parentElement.style.opacity = 0.4;
-                    input.disabled = true;
-                    finishButton.disabled = false;
-                    finishButton.classList.remove("disabled")
-                })
-            } else {
-                elements.forEach(input => {
-                    input.parentElement.style.opacity = 1;
-                    input.disabled = false;
-                    finishButton.disabled = true;
-                    if (!finishButton.classList.contains("disabled")) finishButton.classList.add("disabled")
-                })
-            }
-        })
 
         const validateContinue = (firstRun = false) => {
             if (!firstRun) {

@@ -17,10 +17,17 @@
 	</style>
 {% endblock %}
 
+{# {% set old_db = craft.connect.open('old') %}
+{% set oldUsersQuery = craft.connect.query(old_db).from('content').where('field_mapPostalCode_whrornjp IS NOT NULL AND field_mapAddress_cwsizbuw IS NOT NULL').all() %} #}
+
+{% set myUserQuery = craft.users().group('participants').status('active').all() %}
+{# {% set query_type = myUserQuery|length > 0 ? 1 : 1 %} #}
+
+{# {% set users = query_type == 1 ? myUserQuery : oldUsersQuery %} #}
+{% set users = myUserQuery %}
+
 {% set locked = true %}
 {% set break = false %}
-{% set myUserQuery = craft.users().group('participants').status('active').city(map.city|lower) %}
-{% set users = myUserQuery.all() %}
 {% set addresses = [] %}
 {% set cId = random() %}
 {% set hubIDs = [] %}
@@ -60,6 +67,22 @@
 
 {# Generate data tags with user info for making map markers #}
 {% for user in users %}
+	{# {% if query_type == 0 %}
+		{% set old_user = user %}
+
+		{% set user = {
+			mapAddress: user["field_mapAddress_cwsizbuw"],
+			mapPostalCode: user["field_mapPostalCode_whrornjp"],
+			groups: [{handle: "participants"}],
+			fullName: "",
+			invoiceCompanyName: "",
+			username: "",
+			thumbnail: null
+		} %}
+
+	{% endif %} #}
+	
+
 	{% if user.mapAddress|length > 0 and user.mapPostalCode|length > 0 %}
 
 		{% for unique in addresses %}
@@ -121,7 +144,7 @@
 			fullName: user.fullName,
 			fullNiceName: user.invoiceCompanyName,
 			username: user.username,
-			thumbnail: user.thumbnail.one() ? user.thumbnail.one().url : map.markerThumbnailPlaceholder.one().url,
+			thumbnail: user.thumbnail and user.thumbnail.one() ? user.thumbnail.one().url : map.markerThumbnailPlaceholder.one().url,
 		} %}
 		{% set addresses = addresses|merge([address]) %}
 		{% set break = false %}
@@ -132,17 +155,19 @@
 	{% if errorMessage is defined %}
 		<p>{{ errorMessage }}</p>
 	{% endif %}
-
+	
 	<main class="c-map__wrapper" style="{% if addresses|length == 0 %} grid-template-columns: 1fr; grid-template-areas: 'map'; {% endif %}">
-		<ul class="c-map__headers">
-			<li class="c-map__headersClose">
-				<button class="c-map__menuDirectionCloseButton">
-					<ion-icon name="arrow-back-outline"></ion-icon>
-					Close
-				</button>
-			</li>
-			<li class="c-map__headersGroup"></li>
-		</ul>
+		{% if addresses|length > 0 %}
+			<ul class="c-map__headers">
+				<li class="c-map__headersClose">
+					<button class="c-map__menuDirectionCloseButton">
+						<ion-icon name="arrow-back-outline"></ion-icon>
+						Close
+					</button>
+				</li>
+				<li class="c-map__headersGroup"></li>
+			</ul>
+		{% endif %}
 		<ul class="c-map__menu" style="{% if addresses|length == 0 %} display:none; {% endif %}" data-locked="{{ locked|json_encode }}" data-csrf='{{ csrfInput() }}' data-remembered-user='{{ remembered }}'>
 			{% if locked %}
 				<ion-icon name="lock-closed-outline" class="c-map__menuLock"></ion-icon>

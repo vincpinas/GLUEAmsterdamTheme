@@ -4,9 +4,13 @@
     align-items: center;
     overflow: hidden;
 
-    &__title {
+    &__title, &__title + p {
         text-align: center;
-        padding-bottom: 1rem;
+    }
+
+    &__title + p > a {
+        @include paragraph;
+        text-decoration: underline;
     }
 
     &__error {
@@ -202,6 +206,7 @@
         }
 
         &Package {
+            height: 60rem;
             display: flex;
             flex-direction: column;
             border: 1px solid $text-primary;
@@ -265,8 +270,17 @@
             margin: 0;
         }
 
-        &PackageHeading p {
+        &PackageHeading > p:first-of-type {
             height: 7rem;
+
+            @media #{$mobile-down} {
+                height: 4rem;
+            }
+        }
+
+        &PackageWarning {
+            @include label;
+            margin-top: 1rem;
         }
 
 
